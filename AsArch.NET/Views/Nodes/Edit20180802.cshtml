@@ -1,0 +1,177 @@
+﻿@using AsArch.NET.EntityDataModel
+@model NODE
+
+@{
+    ViewBag.Title = "Редактировать";
+}
+
+<h2>@ViewBag.Title</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>@Model.STR_LABEL</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.ID_NODE)
+        <div class="form-group">
+            @*наименование*@
+            @Html.LabelFor(model => model.STR_LABEL, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.STR_LABEL, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.STR_LABEL, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        @*Тип*@
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.ID_ITEMTYPE, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("ID_ITEMTYPE", null, htmlAttributes: new { @class = "form-control  itemtype"})
+                @Html.ValidationMessageFor(model => model.ID_ITEMTYPE, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+        @*Список аребутов*@
+        @foreach (var item in Model.ITEMTYPE.TYPE_ATTR)
+        {
+            <div class="form-group">
+                @Html.Label(item.ATTR.STR_NAME, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.Label(item.ATTR.ATTRTYPE.STR_NAME)
+                    @if (item.ATTR.ATTRTYPE.STR_NAME == "Строка текста")
+                    {
+                        @Html.TextBox("test", "Введите " + item.ATTR.STR_NAME, htmlAttributes: new { @class = "form-control" })
+                    }
+                    @*@Html.EditorFor("ID_PARENT", null, htmlAttributes: new { @class = "form-control" })*@
+                </div>
+            </div>
+        }
+
+        @*@Html.LabelFor(model => model.ID_PARENT, "ID_PARENT", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("ID_PARENT", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ID_PARENT, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+
+
+
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.ID_PARENT, "ID_PARENT", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("ID_PARENT", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ID_PARENT, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ID_ITEMTYPE, "ID_ITEMTYPE", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("ID_ITEMTYPE", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ID_ITEMTYPE, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.N_ORDER, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.N_ORDER, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.N_ORDER, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.STR_LABEL, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.STR_LABEL, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.STR_LABEL, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.DATE_LAST, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.DATE_LAST, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.DATE_LAST, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.DATE_CREATE, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.DATE_CREATE, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.DATE_CREATE, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ID_USER, "ID_USER", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("ID_USER", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ID_USER, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ID_OLDPARENT, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ID_OLDPARENT, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ID_OLDPARENT, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.N_MODE, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.N_MODE, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.N_MODE, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.LINK_COUNTER, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.LINK_COUNTER, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.LINK_COUNTER, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.DATE_MODIFY, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.DATE_MODIFY, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.DATE_MODIFY, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Сохранить" class="btn btn-default itemtype" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Назад", "Index", new { id = 0 }, new { @class = "btn btn-default" })
+</div>
+
+@section Scripts {
+        <script>
+           $(function () {
+               $('.itemtype').change(function()
+               {
+                   $(this).closest('form').trigger('submit');
+               })
+           })
+        </script>
+    }
+
+
+@*@section Scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}*@

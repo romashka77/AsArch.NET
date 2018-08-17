@@ -1,0 +1,114 @@
+﻿@model AsArch.NET.EntityDataModel.NODE
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>NODE</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.N_ORDER)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.N_ORDER)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.STR_LABEL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.STR_LABEL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DATE_LAST)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DATE_LAST)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DATE_CREATE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DATE_CREATE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ID_OLDPARENT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID_OLDPARENT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.N_MODE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.N_MODE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LINK_COUNTER)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LINK_COUNTER)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DATE_MODIFY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DATE_MODIFY)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EXTERNAL_DB.BASE_XML)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EXTERNAL_DB.BASE_XML)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ITEMTYPE.STR_NAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ITEMTYPE.STR_NAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NODE2.STR_LABEL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NODE2.STR_LABEL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.USER.STR_LOGIN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.USER.STR_LOGIN)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_NODE }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsArch.NET", "AsArch.NET\AsArch.NET.csproj", "{33870F4F-E42E-443E-89A0-C6B1CF3E894B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsArch.NET.Tests", "AsArch.NET.Tests\AsArch.NET.Tests.csproj", "{F6FA5BA7-C6C2-4E7E-BC83-10256C98ADDF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{33870F4F-E42E-443E-89A0-C6B1CF3E894B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33870F4F-E42E-443E-89A0-C6B1CF3E894B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33870F4F-E42E-443E-89A0-C6B1CF3E894B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33870F4F-E42E-443E-89A0-C6B1CF3E894B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6FA5BA7-C6C2-4E7E-BC83-10256C98ADDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6FA5BA7-C6C2-4E7E-BC83-10256C98ADDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6FA5BA7-C6C2-4E7E-BC83-10256C98ADDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6FA5BA7-C6C2-4E7E-BC83-10256C98ADDF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F1B386FE-7919-4A12-854E-0A6F1B0ED6CA}
+	EndGlobalSection
+EndGlobal

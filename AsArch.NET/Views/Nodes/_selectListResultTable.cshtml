@@ -1,0 +1,4 @@
+﻿@using AsArch.NET.EntityDataModel.Entytis
+@model NodeAttr
+
+@Html.DropDownListFor(model => model.CHAR_VALUE, new SelectList(new[] { "На рассмотрении", "Не вступило в законную силу", "Не определено", "Отказано", "Прекращено", "Удовлетворено","" }, Model.CHAR_VALUE), "", new { htmlAttributes = new { @class = "form-control" } })

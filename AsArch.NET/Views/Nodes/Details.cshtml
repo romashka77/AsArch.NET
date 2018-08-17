@@ -1,0 +1,307 @@
+﻿@using AsArch.NET.EntityDataModel
+@model NODE
+
+@{
+    ViewBag.Title = "Детали";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div>
+    <h4>@Model.STR_LABEL</h4>
+    <hr />
+    @if (@Model.ATTRVAL_CHAR.Count > 0)
+    {
+        <div>ATTRVAL_CHAR</div>
+        <dl class="dl-horizontal">
+            @foreach (ATTRVAL_CHAR attrs in Model.ATTRVAL_CHAR)
+            {
+                <dt>
+                    @attrs.ATTR.STR_NAME
+
+                </dt>
+                <dd>
+                    @attrs.CHAR_VALUE
+                </dd>
+            }
+
+        </dl>
+    }
+
+    @if (@Model.REFATTRS.Count > 0)
+    {
+        <h4>REFATTRS</h4>
+        <dl class="dl-horizontal">
+            @foreach (REFATTR item in Model.REFATTRS)
+            {
+                <dt>@item.NODE1.ID_NODE</dt>
+                <dd>
+                    @Html.ActionLink(@item.NODE1.STR_LABEL, "Details", new { id = @item.NODE1.ID_NODE })
+                </dd>
+
+            }
+        </dl>
+    }
+
+    @if (@Model.REFATTRS1.Count > 0)
+    {
+        <div>REFATTRS1</div>
+        <h4>Иски</h4>
+        <dl class="dl-horizontal">
+            @foreach (REFATTR item in Model.REFATTRS1)
+            {
+                <dt>@item.NODE.ID_NODE</dt>
+                <dd>
+                    @Html.ActionLink(@item.NODE.STR_LABEL, "Details", new { id = @item.NODE.ID_NODE })
+                </dd>
+            }
+        </dl>
+
+    }
+    =======================================================================
+    @if (@Model.ATTRS.Count > 0)
+    {
+        <div>ATTRS</div>
+        <dl class="dl-horizontal">
+            @foreach (ATTR item in Model.ATTRS)
+            {
+                <dt>
+                    @item.STR_NAME
+                </dt>
+
+                <dd>
+                    @item.ID_ATTR
+                </dd>
+                <dd>
+                    @item.ATTRTYPE.STR_NAME
+                </dd>
+            }
+        </dl>
+    }
+
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ID_NODE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID_NODE)
+        </dd>
+    </dl>
+
+    @if (@Model.ATTRVAL_IMAGE.Count > 0)
+    {
+        <div>ATTRVAL_IMAGE</div>
+        <dl class="dl-horizontal">
+            @foreach (ATTRVAL_IMAGE attrs in Model.ATTRVAL_IMAGE)
+            {
+                <dt>
+                    @attrs.ATTR.STR_NAME
+                </dt>
+                <dd>
+                    @attrs.IMAGE_VALUE
+                </dd>
+            }
+        </dl>
+    }
+
+    @if (@Model.ATTRVAL_TEXT.Count > 0)
+    {
+        <div>ATTRVAL_TEXT</div>
+        <dl class="dl-horizontal">
+            @foreach (ATTRVAL_TEXT attrs in Model.ATTRVAL_TEXT)
+            {
+                <dt>
+                    @attrs.ATTR.STR_NAME
+                </dt>
+                <dd>
+                    @attrs.TEXT_VALUE
+                </dd>
+            }
+        </dl>
+    }
+
+    @if (@Model.ATTRVAL_LV.Count > 0)
+    {
+        <div>ATTRVAL_LV</div>
+        <dl class="dl-horizontal">
+            @foreach (ATTRVAL_LV attrs in Model.ATTRVAL_LV)
+            {
+                <dt>
+                    @attrs.ATTR.STR_NAME
+                </dt>
+                <dd>
+                    @attrs.CHAR_VALUE
+                </dd>
+            }
+        </dl>
+    }
+
+    @if (@Model.ATTRVAL_INT.Count > 0)
+    {
+        <div>ATTRVAL_INT</div>
+        <dl class="dl-horizontal">
+            @foreach (ATTRVAL_INT attrs in Model.ATTRVAL_INT)
+            {
+                <dt>
+                    @attrs.ATTR.STR_NAME
+                </dt>
+                <dd>
+                    @attrs.INT_VALUE
+                </dd>
+            }
+        </dl>
+    }
+
+    @if (@Model.ATTRVAL_FLOAT.Count > 0)
+    {
+        <div>ATTRVAL_FLOAT</div>
+        <dl class="dl-horizontal">
+            @foreach (ATTRVAL_FLOAT attrs in Model.ATTRVAL_FLOAT)
+            {
+                <dt>
+                    @attrs.ATTR.STR_NAME
+                </dt>
+                <dd>
+                    @attrs.FLOAT_VALUE
+                </dd>
+            }
+        </dl>
+    }
+    @if (@Model.ATTRVAL_DATE.Count > 0)
+    {
+        <div>ATTRVAL_DATE</div>
+        <dl class="dl-horizontal">
+            @foreach (ATTRVAL_DATE attrs in Model.ATTRVAL_DATE)
+            {
+                <dt>
+                    @attrs.ATTR.STR_NAME
+                </dt>
+                <dd>
+                    @attrs.DATE_VALUE
+                </dd>
+            }
+        </dl>
+    }
+
+        <dl class="dl-horizontal">
+            @*<dt>
+            @Html.DisplayNameFor(model => model.EXTERNAL_DB.BASE_XML)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EXTERNAL_DB.BASE_XML)
+        </dd>*@
+
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ID_ITEMTYPE)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ID_ITEMTYPE)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ITEMTYPE.STR_NAME)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ITEMTYPE.STR_NAME)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.NODE2.STR_LABEL)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.NODE2.STR_LABEL)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.USER.STR_LOGIN)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.USER.STR_LOGIN)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.USER.ID_USER)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.USER.ID_USER)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.N_ORDER)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.N_ORDER)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.STR_LABEL)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.STR_LABEL)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DATE_LAST)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DATE_LAST)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DATE_CREATE)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DATE_CREATE)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ID_OLDPARENT)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ID_OLDPARENT)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.N_MODE)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.N_MODE)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.LINK_COUNTER)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.LINK_COUNTER)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DATE_MODIFY)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DATE_MODIFY)
+            </dd>
+
+        </dl>
+</div>
+<p>
+    @Html.ActionLink("Редактировать", "Edit", new { id = Model.ID_NODE }, new { @class = "btn btn-default" })
+    @Html.ActionLink("Назад", "Index", new { id = 0 }, new { @class = "btn btn-default" })
+</p>

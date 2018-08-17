@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="38c2db5b42c745dc83989962221e60b3" Name="Diagram1" ZoomLevel="76">
+        <EntityTypeShape EntityType="pfr_sapModel.ACCOUNT" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.ATTR_FUNCTIONS" Width="1.5" PointX="5.25" PointY="55.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.ATTR" Width="1.5" PointX="3" PointY="60" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.ATTRTYPE" Width="1.5" PointX="0.75" PointY="63.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.ATTRVAL_CHAR" Width="1.5" PointX="5.25" PointY="63.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.ATTRVAL_DATE" Width="1.5" PointX="5.25" PointY="60.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.ATTRVAL_FLOAT" Width="1.5" PointX="5.25" PointY="66.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.ATTRVAL_IMAGE" Width="1.5" PointX="8.25" PointY="63.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.ATTRVAL_INT" Width="1.5" PointX="8.25" PointY="60.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.ATTRVAL_LV" Width="1.5" PointX="8.25" PointY="66.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.ATTRVAL_TEXT" Width="1.5" PointX="5.25" PointY="69.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.AUTOREF" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.CATALOG_RULES" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.CATALOG_TYPES" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.CHILD_ATTRS" Width="1.5" PointX="11.25" PointY="63" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.CHILD_USER_ATTRS" Width="1.5" PointX="11.25" PointY="59" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.CONFSEQ" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.CONTROLS_CONDITION" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.CONTROLS_GROUP" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.CONTROLS_XML" Width="1.5" PointX="6.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.DATA_IMAGES" Width="1.5" PointX="6.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.DEFAULT_TREE" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.DEFAULT_VALUES" Width="1.5" PointX="2.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.DICTIONARy" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.EVENT_TYPES" Width="1.5" PointX="8.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.EVENTRULE_ACTIONS" Width="1.5" PointX="13.5" PointY="78" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.EVENTRULE_CONDS" Width="1.5" PointX="15.75" PointY="77.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.EVENTRULE_OBJECTS" Width="1.5" PointX="11.25" PointY="47" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.EVENT" Width="1.5" PointX="11.25" PointY="66.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.EXTERNAL_CHILD_ATTRS" Width="1.5" PointX="8.25" PointY="56.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.EXTERNAL_CONFIG" Width="1.5" PointX="5.25" PointY="94" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.EXTERNAL_DB" Width="1.5" PointX="16.5" PointY="56.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.EXTERNAL_LINKS" Width="1.5" PointX="8.25" PointY="69.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.FACECONFIG" Width="1.5" PointX="5.25" PointY="102.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.FACECONFIG_TYPES" Width="1.5" PointX="8.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.FACENAV" Width="1.5" PointX="4.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.FAVOURITES_TREE" Width="1.5" PointX="22.5" PointY="62.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.FILESCONFIG" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.FILESCONFIG_NODE" Width="1.5" PointX="16.5" PointY="71.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.FUNCTIONS_PARAM" Width="1.5" PointX="10.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.GROUP" Width="1.5" PointX="23.25" PointY="55.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.HISTORY_EVENTS" Width="1.5" PointX="10.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.HISTORY_TYPES" Width="1.5" PointX="6.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.IMPORT_LOG" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.IMPORTNODE" Width="1.5" PointX="8.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.IMPORTSETTING" Width="1.5" PointX="10.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.ITEMTYPE_REF" Width="1.5" PointX="11.25" PointY="50.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.ITEMTYPE" Width="1.5" PointX="9" PointY="48" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.ITEMTYPES_TREE" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.NAV_BUTTONS" Width="1.5" PointX="2.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.NODE" Width="1.5" PointX="14.25" PointY="59.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.NODE_GROUP" Width="1.5" PointX="22.5" PointY="59.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.OPTION" Width="1.5" PointX="12.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.QUERy" Width="1.5" PointX="12.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.QUERY_USER" Width="1.5" PointX="27.75" PointY="63.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.REFATTR" Width="1.5" PointX="16.5" PointY="63" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.REFATTRS_USER" Width="1.5" PointX="19.5" PointY="63.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.REFTREE" Width="1.5" PointX="12.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.REFTREE_LINKS" Width="1.5" PointX="4.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.REFTREE_TABLE" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.REFTREE_TABLECONFIG" Width="1.5" PointX="14.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.REFTREE_TYPES" Width="1.5" PointX="6.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.repl_node" Width="1.5" PointX="14.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.REPORT" Width="1.5" PointX="14.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.REPORTS_WORD" Width="1.5" PointX="0.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.ROLE_CONTROLS_CONDITION" Width="1.5" PointX="8.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.ROLE_CONTROLS_GROUP" Width="1.5" PointX="10.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.ROLE_CONTROLS_XML" Width="1.5" PointX="12.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.ROLE_DATA_IMAGES" Width="1.5" PointX="14.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.ROLE_FORMS" Width="1.5" PointX="25.5" PointY="57.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.ROLE" Width="1.5" PointX="23.25" PointY="70.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.SEARCH_TABLES" Width="1.5" PointX="11.25" PointY="54.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.SEARCHTABLE_CONDS" Width="1.5" PointX="16.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.SEARCHTABLE_TYPES" Width="1.5" PointX="16.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.SECURITY_LOG" Width="1.5" PointX="16.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.SEQ" Width="1.5" PointX="16.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.SIGNAL_TABLE" Width="1.5" PointX="16.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.SIGNAL_TABLE2" Width="1.5" PointX="16.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.STATUSBAR" Width="1.5" PointX="2.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.STORAGE" Width="1.5" PointX="16.5" PointY="74.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.SYSTEM_REPLICATIONCHECK" Width="1.5" PointX="4.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.SYSTEM_REPLICCONFIG" Width="1.5" PointX="18.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.SYSTEM_REPLICQUEUE" Width="1.5" PointX="18.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.SYSTEM_REPLICREGIONS" Width="1.5" PointX="18.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.TABLE_SORTING" Width="1.5" PointX="7.5" PointY="95.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.TABLECONFIG" Width="1.5" PointX="5.25" PointY="129.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.TABLELISTCONFIG" Width="1.5" PointX="5.25" PointY="133.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.TABLEVAL_CHAR" Width="1.5" PointX="16.5" PointY="59.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.TABLEVAL_DATE" Width="1.5" PointX="16.5" PointY="67.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.TABLEVAL_FLOAT" Width="1.5" PointX="19.5" PointY="59.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.TABLEVAL_INT" Width="1.5" PointX="19.5" PointY="67.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.TREE_ATTRS" Width="1.5" PointX="11.25" PointY="71.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.TREE_CONFIG" Width="1.5" PointX="9" PointY="74.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.TYPE_ATTR" Width="1.5" PointX="5.25" PointY="72.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.USER_CONFIG" Width="1.5" PointX="18.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.USER_FILES" Width="1.5" PointX="22.5" PointY="67.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.USER" Width="1.5" PointX="25.5" PointY="60.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.VIRTUAL_ATTRS" Width="1.5" PointX="11.25" PointY="43" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.VIRTUAL_CONDS" Width="1.5" PointX="10.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pfr_sapModel.ASCONF" Width="1.5" PointX="12.75" PointY="18.75" IsExpanded="true" />
+        <AssociationConnector Association="pfr_sapModel.FK_ATTR_FUNCTIONS_ATTRS" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_ATTRS_ATTRTYPES" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_ATTRVAL_CHAR_ATTRS" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_ATTRVAL_DATE_ATTRS" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_ATTRVAL_FLOAT_ATTRS" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_ATTRVAL_IMAGE_ATTRS" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_ATTRVAL_INT_ATTRS" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_ATTRVAL_LV_ATTRS" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_ATTRVAL_TEXT_ATTRS" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_CHILD_ATTRS_ATTRS" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_CHILD_ATTRS_ATTRS1" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_CHILD_ATTRS_ATTRS2" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_CHILD_USER_ATTRS_ATTRS" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_CHILD_USER_ATTRS_ATTRS1" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_EVENTS_ATTRS" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_EXTERNAL_CHILD_ATTRS_ATTRS" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_EXTERNAL_CHILD_ATTRS_ATTRS1" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_EXTERNAL_CONFIG_ATTRS" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_EXTERNAL_LINKS_ATTRS" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_FACECONFIG_ATTRS" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_REFATTRS_ATTRS" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_REFATTRS_USER_ATTRS" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_SEARCH_TABLES_ATTRS" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_TABLE_SORTING_ATTRS" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_TABLECONFIG_ATTRS" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_TABLELISTCONFIG_ATTRS" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_TABLEVAL_CHAR_ATTRS" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_TABLEVAL_DATE_ATTRS" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_TABLEVAL_FLOAT_ATTRS" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_TABLEVAL_INT_ATTRS" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_TREE_ATTRS_ATTRS" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_TYPE_ATTR_ATTRS" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_ATTRVAL_CHAR_NODE" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_ATTRVAL_DATE_NODE" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_ATTRVAL_FLOAT_NODE" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_ATTRVAL_IMAGE_NODE" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_ATTRVAL_INT_NODE" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_ATTRVAL_LV_NODE" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_ATTRVAL_TEXT_NODE" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_CHILD_ATTRS_ITEMTYPES" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_CHILD_USER_ATTRS_ITEMTYPES" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_EVENTRULE_ACTIONS_EVENTS" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_EVENTRULE_CONDS_EVENTRULE_ACTIONS" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_EVENTRULE_OBJECTS_ITEMTYPES" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_EVENTS_ITEMTYPES" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_EXTERNAL_CHILD_ATTRS_ITEMTYPES" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_EXTERNAL_DB_NODE" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_EXTERNAL_LINKS_NODE" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_EXTERNAL_LINKS_NODE1" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_FAVOURITES_TREE_FAVOURITES_TREE" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_FAVOURITES_TREE_NODE" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_FAVOURITES_TREE_USERS" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_FILESCONFIG_NODE_NODE" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_NODE_GROUP_GROUPS" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_ITEMTYPE_REF1" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_ITEMTYPE_REF2" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_ITEMTYPE_NODE" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_ROLE_FORMS_ITEMTYPES" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_SEARCH_TABLES_ITEMTYPES" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_TREE_ATTRS_ITEMTYPES" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_TREE_CONFIG_ITEMTYPES" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_TYPE_ATTR_ITEMTYPES" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_VIRTUAL_ATTRS_ITEMTYPES" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_NODE_GROUP_NODE" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_PARENT_NODE" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_REFATTRS_NODE" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_REFATTRS_NODE1" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_REFATTRS_USER_NODE" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_STORAGE_NODE" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_TABLEVAL_CHAR_NODE" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_TABLEVAL_DATE_NODE" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_TABLEVAL_FLOAT_NODE" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_TABLEVAL_INT_NODE" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_USER_FILES_NODE" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_USER_NODE" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_QUERY_USER_USERS" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_REFATTRS_USER_USERS" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_ROLE_FORMS_ROLES" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_TABLE_SORTING_TABLECONFIG" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_TREE_ATTRS_TREE_CONFIG" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.FK_USER_FILES_USERS" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.ATTRS_DEFAULT" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.INFORM_EVENTS" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.INFORM_TYPES" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.ROLE_USER" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.TREE_GROUP" ManuallyRouted="false" />
+        <AssociationConnector Association="pfr_sapModel.USER_GROUP" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

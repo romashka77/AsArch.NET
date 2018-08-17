@@ -1,0 +1,38 @@
+﻿@using AsArch.NET.Models
+@model NodeEditViewModels
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        <h4>@Model.NameNode</h4>
+        <hr />
+        @{
+            Html.ValidationSummary(true, "", new { @class = "text-danger" });
+
+
+
+
+
+            //Вид споров
+            //Model.IdAttr = 2324;
+            //Html.RenderPartial("_selectList", Model);
+
+            ////Категория споров
+            //Model.IdAttr = 2298;
+            //Html.RenderPartial("_selectList", Model);
+            ////Html.RenderPartial("_selectListCateg", Model.Attrs[2298]);
+            //////Код группы исков
+            //Model.IdAttr = 2288;
+            //Html.RenderPartial("_selectList", Model);
+            //Html.RenderPartial("_selectListCodGrIskov", Model.Attrs[2288]);
+
+            //Наименование группы исков
+
+
+
+            //Код предмета иска
+
+            //Наименование предмета иска
+        }
+    </div>
+            }

@@ -1,0 +1,95 @@
+﻿@*@model X.PagedList.IPagedList<AsArch.NET.EntityDataModel.NODE>*@
+@model X.PagedList.IPagedList<AsArch.NET.EntityDataModel.Entytis.ItemNode>
+
+
+@*@{
+        ViewBag.Title = "Index";
+    }*@
+
+<h2>@ViewBag.Title</h2>
+
+
+
+<div>
+    @Html.ActionLink("Создать объект учета", "Create", new { id_parent = @ViewBag.ID, id_itemType = @ViewBag.ItemType }, new { @class = "btn btn-default" })
+</div>
+<!-- #region фильтрация -->
+<div>
+    @using (Html.BeginForm())
+    {
+        <div>
+            Поиск: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+            <input type="submit" value="Найти" />
+        </div>
+    }
+</div>
+<!-- #endregion -->
+
+
+@if (@Model.PageCount > 0)
+{
+    <!--#region пагинация-->
+    @Html.Partial("_pagination", Model)
+    <!-- #endregion -->
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <tr>
+                <th>
+                    @*ICON*@
+                </th>
+                <th>
+                    @*@Html.DisplayNameFor(model => model.ITEMTYPES.STR_NAME)*@
+                    Тип
+                </th>
+                <th>
+                    @Html.ActionLink("Наименование", "Index", new { sortOrder = ViewBag.NameSortParm, searchString = ViewBag.CurrentFilter })
+                    @*@Html.DisplayNameFor(model => model.STR_LABEL)*@
+                </th>
+                <th>
+
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @if (item.@*ITEMTYPE.*@Icon != null)
+  {
+    @Html.Raw("<img style='width:24px; height:24px;' src=\"data:image/jpeg;base64," + Convert.ToBase64String(item.@*ITEMTYPE.*@Icon) + "\" />")
+}
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.@*ITEMTYPE.*@TypeName)
+                        @*@Html.DisplayFor(modelItem => item.ITEMTYPES.ICON)*@
+                    </td>
+                    <td>
+                        @Html.ActionLink(item.@*STR_LABEL*@Name, "Index", new
+                        {
+                            id = item.@*ID_NODE*@Id
+                                      })
+                    </td>
+                    <td>
+                        @Html.ActionLink("Редактировать", "Edit", new { id = item.@*ID_NODE*@Id
+}) |
+                        @Html.ActionLink("Детали", "Details", new { id = item.@*ID_NODE*@Id
+}) |
+                        @Html.ActionLink("Удалить", "Delete", new { id = item.@*ID_NODE*@Id
+})
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+    <br />
+    <!--#region пагинация-->
+    @Html.Partial("_pagination", Model)
+    <!-- #endregion -->
+
+}
+<!--#region Назад-->
+<div>
+    @Html.ActionLink((string)ViewBag.NAME_PARENT, "Index", new { id = @ViewBag.ID_PARENT }, new { @class = "btn btn-default" })
+</div>
+<!-- #endregion -->

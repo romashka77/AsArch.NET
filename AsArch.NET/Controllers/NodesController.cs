@@ -156,8 +156,7 @@ namespace AsArch.NET.Controllers
                 case 1954://исковое заявление
                     ViewBag.ListCodIska = repository.ListNode(3).OrderBy(n => n.STR_LABEL).ToList().Select(n => new SelectListItem { Text = n.STR_LABEL, Value = n.ID_NODE.ToString() });
                     ViewBag.ListSud = repository.ListNode(2).OrderBy(n => n.STR_LABEL).ToList().Select(n => new SelectListItem { Text = n.STR_LABEL, Value = n.ID_NODE.ToString() });
-                    //---------------------------------------------
-                    ViewBag.ListStoronaProc = repository.ListNode(10719).OrderBy(n => n.STR_LABEL).ToList().Select(n => new SelectListItem { Text = n.STR_LABEL, Value = n.ID_NODE.ToString() });
+                    ViewBag.ListStoronaProc = repository.ListStoronaProc(model.Id_GrantParent).ToList().Select(n => new SelectListItem { Text = n.Name, Value = n.Id.ToString() });
                     break;
                 case 2286://предмет иска
 
@@ -192,7 +191,8 @@ namespace AsArch.NET.Controllers
                 Id_node = node.ID_NODE,
                 Id_itemtype = node.ID_ITEMTYPE,
                 Id_parent = node.ID_PARENT,
-                NameNode = node.STR_LABEL
+                NameNode = node.STR_LABEL,
+                Id_GrantParent=node.NODE2.ID_PARENT
             };
             var query = repository.GetNodeAttrs(model.Id_itemtype, model.Id_node).ToList();
 

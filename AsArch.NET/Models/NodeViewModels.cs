@@ -13,6 +13,7 @@ namespace AsArch.NET.Models
     {
 
         public int? Id_parent { get; set; }
+        public int? Id_GrantParent { get; set; }
         [Display(Name = "Тип")]
         public int Id_itemtype { get; set; }
         [Required(ErrorMessage = "Заполните поле {0}.")]

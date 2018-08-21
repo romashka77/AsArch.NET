@@ -30,6 +30,8 @@ namespace AsArch.NET.EntityDataModel.Entytis
         public string RefCharValue { get; set; }
         public int? RefNOrder { get; set; }
 
+        public int? ID_PARENT { get; set; }
+        public string ParentName { get; set; }
     }
     
 }

@@ -7,13 +7,18 @@
     <div class="col-md-10">
         @if (Model.Attrs[Model.IdAttr].Options == 2)
         {
-            @Html.DisplayFor(model => model.Dict.ToList().SingleOrDefault(a => a.ID_ATTR ==Model.IdAttr).STR_NAME, new { htmlAttributes = new { @class = "form-control" } })
-        }
-        else
-        {
-            @Html.DropDownListFor(model => model.Attrs[Model.IdAttr].CHAR_VALUE, Model.Dict.Where(a => a.ID_ATTR == Model.IdAttr).OrderBy(a => a.STR_NAME).ToList().Select(a => new SelectListItem { Text = a.STR_NAME, Value = a.ID_DICT.ToString(), Selected = (a.STR_NAME == Model.Attrs[Model.IdAttr].CHAR_VALUE) }), "Выберите " + Model.Attrs[Model.IdAttr].NameAttr, new { htmlAttributes = new { @class = "form-control" } })
-    @*@Html.ValidationMessageFor(model => model.CHAR_VALUE, "", new { @class = "text-danger" })*@
-}
+            if (Model.Attrs[Model.IdAttr].ID_PARENT == null)
+            {
+                @Html.DisplayFor(model => model.Dict.ToList().SingleOrDefault(a => a.ID_ATTR == Model.IdAttr).STR_NAME, new { htmlAttributes = new { @class = "form-control" } })
+            }
+            else
+            { @Html.ActionLink(Model.Attrs[Model.IdAttr].ParentName, "Index", new { id = Model.Attrs[Model.IdAttr].ID_PARENT }, new { @class = "btn btn-default" })}
+    }
+    else
+    {
+        @Html.DropDownListFor(model => model.Attrs[Model.IdAttr].CHAR_VALUE, Model.Dict.Where(a => a.ID_ATTR == Model.IdAttr).OrderBy(a => a.STR_NAME).ToList().Select(a => new SelectListItem { Text = a.STR_NAME, Value = a.ID_DICT.ToString(), Selected = (a.STR_NAME == Model.Attrs[Model.IdAttr].CHAR_VALUE) }), "Выберите " + Model.Attrs[Model.IdAttr].NameAttr, new { htmlAttributes = new { @class = "form-control" } })
+        @*@Html.ValidationMessageFor(model => model.CHAR_VALUE, "", new { @class = "text-danger" })*@
+    }
 
     </div>
 </div>

@@ -28,6 +28,16 @@
                             Html.RenderPartial("_attrChar", Model.Attrs[1958]);
                             //Дата принятия иска
                             Html.RenderPartial("_attrDate", Model.Attrs[2506]);
+
+                            Model.IdAttr = 2203;
+                            Html.RenderPartial("_selectList", Model);
+
+                            Model.IdAttr = 2205;
+                            Html.RenderPartial("_selectList", Model);
+
+                            Model.IdAttr = 2207;
+                            Html.RenderPartial("_selectList", Model);
+
                             //Категория споров
                             Model.IdAttr = 2298;
                             Html.RenderPartial("_selectList", Model);

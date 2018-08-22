@@ -150,7 +150,6 @@ namespace AsArch.NET.Controllers
         {
             model.Dict = repository.ListDict();
 
-
             switch (model.Id_itemtype)
             {
                 case 1954://исковое заявление
@@ -177,15 +176,7 @@ namespace AsArch.NET.Controllers
             {
                 return HttpNotFound();
             }
-            //foreach (var item in node.ATTRS)
-            //{
-            //    foreach (var item1 in item.TREE_ATTRS)
-            //    {
-            //        item1.ITEMTYPE.SEARCH_TABLES
-            //    }
-            //}
-
-
+            
             var model = new NodeEditViewModels
             {
                 Id_node = node.ID_NODE,
@@ -223,14 +214,8 @@ namespace AsArch.NET.Controllers
                     return RedirectToAction(nameof(Edit), new { id = model.Id_node });
                 }
 
-                //db.Entry(nODE).State = EntityState.Modified;
-                //await db.SaveChangesAsync();
-                //return RedirectToAction("Index");
+
             }
-            //ViewBag.ID_NODE = new SelectList(db.EXTERNAL_DB, "ID_NODE", "BASE_XML", nODE.ID_NODE);
-            //ViewBag.ID_ITEMTYPE = repository.GetListItemTypes(model.ID_ITEMTYPE);
-            //ViewBag.ID_PARENT = new SelectList(db.NODEs, "ID_NODE", "STR_LABEL", nODE.ID_PARENT);
-            //ViewBag.ID_USER = new SelectList(db.USERS, "ID_USER", "STR_LOGIN", nODE.ID_USER);
             return View(model);
         }
         #endregion

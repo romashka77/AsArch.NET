@@ -597,6 +597,7 @@
     <Content Include="EntityDataModel\DB_pfr_sap.edmx.diagram">
       <DependentUpon>DB_pfr_sap.edmx</DependentUpon>
     </Content>
+    <Content Include="ClassDiagram1.cd" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />

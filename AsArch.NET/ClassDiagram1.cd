@@ -1,0 +1,1044 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="AsArch.NET.BundleConfig" Collapsed="true">
+    <Position X="17.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\BundleConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.FilterConfig" Collapsed="true">
+    <Position X="15.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\FilterConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EmailService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="24.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\IdentityConfig.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AsArch.NET.SmsService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="17.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\IdentityConfig.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AsArch.NET.ApplicationUserManager" Collapsed="true">
+    <Position X="15.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\IdentityConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.ApplicationSignInManager" Collapsed="true">
+    <Position X="12.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\IdentityConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.RouteConfig" Collapsed="true">
+    <Position X="21" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\RouteConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.Startup" Collapsed="true">
+    <Position X="19.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAgAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\Startup.Auth.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.MvcApplication" Collapsed="true">
+    <Position X="8.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Global.asax.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.App_Start.NinjectWebCommon" Collapsed="true">
+    <Position X="14" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAACAAAQACAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\Ninject.Web.Common.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.Controllers.AccountController" Collapsed="true">
+    <Position X="7" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAChACAAAAAAAAFgEgAABAABMKIAAAMRAAQgAAA=</HashCode>
+      <FileName>Controllers\AccountController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.Controllers.HomeController" Collapsed="true">
+    <Position X="8.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAEACAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\HomeController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.Controllers.ManageController" Collapsed="true">
+    <Position X="24.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABACAQiAAgAAAAEFhAAAAAAEAIMIAAEEEgAAkAAA=</HashCode>
+      <FileName>Controllers\ManageController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.Controllers.NodesController" Collapsed="true">
+    <Position X="21" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACADAACCAAAAAAAAAAEAAEACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\NodesController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.DB_pfr_sap" Collapsed="true">
+    <Position X="17.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>76SJ0ejrDzbg3YjeR6n/P5HMn13lc36xa1TloRr+gHw=</HashCode>
+      <FileName>EntityDataModel\DB_pfr_sap.Context.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.ACCOUNT" Collapsed="true">
+    <Position X="5.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>EntityDataModel\ACCOUNT.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.ASCONF" Collapsed="true">
+    <Position X="17.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>EntityDataModel\ASCONF.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.ATTR" Collapsed="true">
+    <Position X="19.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CgCRAACAAgAIAAiCQwACFIEAAAyBAEIAQAAgAQIAABA=</HashCode>
+      <FileName>EntityDataModel\ATTR.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.ATTR_FUNCTIONS" Collapsed="true">
+    <Position X="21" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAACAAAAAAAAAAADAAAgAAAQAAAAA=</HashCode>
+      <FileName>EntityDataModel\ATTR_FUNCTIONS.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.ATTRTYPE" Collapsed="true">
+    <Position X="22.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAAAAAAAAAAAAAQAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>EntityDataModel\ATTRTYPE.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.ATTRVAL_CHAR" Collapsed="true">
+    <Position X="24.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAQAAAAAAAAAAACAAAAAAAQAgAAA=</HashCode>
+      <FileName>EntityDataModel\ATTRVAL_CHAR.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.ATTRVAL_DATE" Collapsed="true">
+    <Position X="5.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQAAAAAAAAAAACAAACAAAQAgAAA=</HashCode>
+      <FileName>EntityDataModel\ATTRVAL_DATE.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.ATTRVAL_FLOAT" Collapsed="true">
+    <Position X="7" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQAAAAQAAAAAACAAAAAAAQAgAAA=</HashCode>
+      <FileName>EntityDataModel\ATTRVAL_FLOAT.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.ATTRVAL_IMAGE" Collapsed="true">
+    <Position X="8.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQAAAAAIAAAAACAAAAAAAQAgAAA=</HashCode>
+      <FileName>EntityDataModel\ATTRVAL_IMAGE.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.ATTRVAL_INT" Collapsed="true">
+    <Position X="10.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQAAAAAAAAIAACAAAAAAAQAgAAA=</HashCode>
+      <FileName>EntityDataModel\ATTRVAL_INT.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.ATTRVAL_LV" Collapsed="true">
+    <Position X="12.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAQAAAAAAAAAAACAAAAAAgQAgAAA=</HashCode>
+      <FileName>EntityDataModel\ATTRVAL_LV.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.ATTRVAL_TEXT" Collapsed="true">
+    <Position X="14" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQAAAAAAAAAAACAAAAAAAQAgAAA=</HashCode>
+      <FileName>EntityDataModel\ATTRVAL_TEXT.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.AUTOREF" Collapsed="true">
+    <Position X="15.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAACIBAAAgAAAAAAAAAAAAAAAAAAAQAAIAA=</HashCode>
+      <FileName>EntityDataModel\AUTOREF.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.CATALOG_RULES" Collapsed="true">
+    <Position X="19.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAABAAAIAAAAAAAAAAAAAAAAAgAAQAAA=</HashCode>
+      <FileName>EntityDataModel\CATALOG_RULES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.CATALOG_TYPES" Collapsed="true">
+    <Position X="21" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>EntityDataModel\CATALOG_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.CHILD_ATTRS" Collapsed="true">
+    <Position X="24.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAMgAAAAAAAAAAAAAAACAAADAAAABAAQAAAAA=</HashCode>
+      <FileName>EntityDataModel\CHILD_ATTRS.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.CHILD_USER_ATTRS" Collapsed="true">
+    <Position X="5.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAMgAAAAAAAAAAAAAAACAAADAAAABAAQAAAAA=</HashCode>
+      <FileName>EntityDataModel\CHILD_USER_ATTRS.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.CONFSEQ" Collapsed="true">
+    <Position X="8.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EntityDataModel\CONFSEQ.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.CONTROLS_CONDITION" Collapsed="true">
+    <Position X="10.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAACAAAAAAAAAAAAAQAAAQAAoAAgAAAAAA=</HashCode>
+      <FileName>EntityDataModel\CONTROLS_CONDITION.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.CONTROLS_GROUP" Collapsed="true">
+    <Position X="12.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAAAAAAACAYAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EntityDataModel\CONTROLS_GROUP.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.CONTROLS_XML" Collapsed="true">
+    <Position X="14" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAAAAAAAAAQAAAAAIAAAAQAAAAA=</HashCode>
+      <FileName>EntityDataModel\CONTROLS_XML.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.DATA_IMAGES" Collapsed="true">
+    <Position X="15.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAQgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EntityDataModel\DATA_IMAGES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.DEFAULT_TREE" Collapsed="true">
+    <Position X="19.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQAAgAAAAAAAAAAAAAAAgAgwAAA=</HashCode>
+      <FileName>EntityDataModel\DEFAULT_TREE.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.DEFAULT_VALUES" Collapsed="true">
+    <Position X="21" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAQAgAAA=</HashCode>
+      <FileName>EntityDataModel\DEFAULT_VALUES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.DICTIONARy" Collapsed="true">
+    <Position X="22.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>KAAAAAAAAAAAAAAAAAAAgAAAAAQAAAAAAAAAgRgAAAA=</HashCode>
+      <FileName>EntityDataModel\DICTIONARy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.EVENT" Collapsed="true">
+    <Position X="5.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAIgAAAAAAACAEAAAAAAAAACAAAgAAAQAABAA=</HashCode>
+      <FileName>EntityDataModel\EVENT.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.EVENT_TYPES" Collapsed="true">
+    <Position X="7" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAQAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EntityDataModel\EVENT_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.EVENTRULE_ACTIONS" Collapsed="true">
+    <Position X="8.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAQAAAAABAACgAAQAgAAAAAAIAAAgAAAAAA=</HashCode>
+      <FileName>EntityDataModel\EVENTRULE_ACTIONS.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.EVENTRULE_CONDS" Collapsed="true">
+    <Position X="10.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAEAAAAACIAAAAAooAAgQACAAA=</HashCode>
+      <FileName>EntityDataModel\EVENTRULE_CONDS.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.EVENTRULE_OBJECTS" Collapsed="true">
+    <Position X="12.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAIgAAAAAAAAAAgAAAAAAAAQEAAAAAgAAAAAA=</HashCode>
+      <FileName>EntityDataModel\EVENTRULE_OBJECTS.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.EXTERNAL_CHILD_ATTRS" Collapsed="true">
+    <Position X="14" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIgAAAAAAAAAAAAAABCAAACAAAABAAQAAAAA=</HashCode>
+      <FileName>EntityDataModel\EXTERNAL_CHILD_ATTRS.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.EXTERNAL_CONFIG" Collapsed="true">
+    <Position X="15.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAIAAIAAAAAAAAGAAAgACAAAAACAAAAAAAUgAIAA=</HashCode>
+      <FileName>EntityDataModel\EXTERNAL_CONFIG.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.EXTERNAL_DB" Collapsed="true">
+    <Position X="17.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>EntityDataModel\EXTERNAL_DB.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.EXTERNAL_LINKS" Collapsed="true">
+    <Position X="19.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAAAAQAAAAAEAAAAACIAAQAAgQAgAAA=</HashCode>
+      <FileName>EntityDataModel\EXTERNAL_LINKS.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.FACECONFIG" Collapsed="true">
+    <Position X="24.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAAAAAAAAAAAAAAAACAAAAAAgYAAAAA=</HashCode>
+      <FileName>EntityDataModel\FACECONFIG.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.FACECONFIG_TYPES" Collapsed="true">
+    <Position X="5.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAACAAAAAAAAAAAAAAAAAAAAAAAAgYAAAAA=</HashCode>
+      <FileName>EntityDataModel\FACECONFIG_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.FACENAV" Collapsed="true">
+    <Position X="7" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAgAAAAAQAAAAAAAAAgQAAAAA=</HashCode>
+      <FileName>EntityDataModel\FACENAV.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.FAVOURITES_TREE" Collapsed="true">
+    <Position X="10.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQQAgAAAAAgAAAEAAIABgAggAAA=</HashCode>
+      <FileName>EntityDataModel\FAVOURITES_TREE.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.FILESCONFIG" Collapsed="true">
+    <Position X="12.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAIAAQAAAAAAAAAAAAAAQAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>EntityDataModel\FILESCONFIG.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.FILESCONFIG_NODE" Collapsed="true">
+    <Position X="14" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAAAQAAAAAAAAQAAAAAAAAAgAAgAAA=</HashCode>
+      <FileName>EntityDataModel\FILESCONFIG_NODE.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.FUNCTIONS_PARAM" Collapsed="true">
+    <Position X="21" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAAAAAAAAAAABAAAAAAAAAAAAAgQQAAAA=</HashCode>
+      <FileName>EntityDataModel\FUNCTIONS_PARAM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.GetChildRenameFileNames_Result" Collapsed="true">
+    <Position X="22.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>EntityDataModel\GetChildRenameFileNames_Result.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.GROUP" Collapsed="true">
+    <Position X="24.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACACAAAAAAAAAAAAAAAACAYAAAAAAEAAAAAAAAg=</HashCode>
+      <FileName>EntityDataModel\GROUP.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.HISTORY_EVENTS" Collapsed="true">
+    <Position X="5.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAQAAAAAAAAAgIEAAAACFAAAAAAAAAABCAgQAgIAA=</HashCode>
+      <FileName>EntityDataModel\HISTORY_EVENTS.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.HISTORY_TYPES" Collapsed="true">
+    <Position X="7" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAQAAAAAAQAAAAAAAAAAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>EntityDataModel\HISTORY_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.IMPORT_LOG" Collapsed="true">
+    <Position X="10.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>EntityDataModel\IMPORT_LOG.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.IMPORTNODE" Collapsed="true">
+    <Position X="12.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAQAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAgA=</HashCode>
+      <FileName>EntityDataModel\IMPORTNODE.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.IMPORTSETTING" Collapsed="true">
+    <Position X="14" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAMCgAAAAAAAAAAAACAAAAAAAAAAAAAQAgAAA=</HashCode>
+      <FileName>EntityDataModel\IMPORTSETTING.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.ITEMTYPE" Collapsed="true">
+    <Position X="17.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAMCAgCAgAgAAwACAABAAAQAACAQAAighAIQAAw=</HashCode>
+      <FileName>EntityDataModel\ITEMTYPE.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.ITEMTYPE_REF" Collapsed="true">
+    <Position X="19.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAgAAAAAAQAAA=</HashCode>
+      <FileName>EntityDataModel\ITEMTYPE_REF.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.ITEMTYPES_TREE" Collapsed="true">
+    <Position X="21" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAgEAAAAAAAAAAAAAAgQgQAAA=</HashCode>
+      <FileName>EntityDataModel\ITEMTYPES_TREE.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.MESENGER_Result" Collapsed="true">
+    <Position X="7" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>EntityDataModel\MESENGER_Result.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.NAV_BUTTONS" Collapsed="true">
+    <Position X="10.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAIQAAE=</HashCode>
+      <FileName>EntityDataModel\NAV_BUTTONS.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.NODE" Collapsed="true">
+    <Position X="15.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACBACGBAgBAAACCQAAAlIAAqgiBACOAAUAggAgwABg=</HashCode>
+      <FileName>EntityDataModel\NODE.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.NODE_GROUP" Collapsed="true">
+    <Position X="17.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAABAAAAAAQAAAAAACAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>EntityDataModel\NODE_GROUP.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.OPTION" Collapsed="true">
+    <Position X="24.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAhAAAAAAAAABAAAAAAAAAAAAAACABCAA=</HashCode>
+      <FileName>EntityDataModel\OPTION.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.QUERy" Collapsed="true">
+    <Position X="5.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAQAAAAAAAAAAAAAAAAQAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>EntityDataModel\QUERy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.QUERY_USER" Collapsed="true">
+    <Position X="7" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIQAAAAAAAAAAAAAAAAgAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>EntityDataModel\QUERY_USER.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.REFATTR" Collapsed="true">
+    <Position X="8.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAEAQAAAAAAAAAAACAAAAAAgQAAAEA=</HashCode>
+      <FileName>EntityDataModel\REFATTR.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.REFATTRS_USER" Collapsed="true">
+    <Position X="10.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQAAAAAAAAgAACEAAAAAgQAgAAA=</HashCode>
+      <FileName>EntityDataModel\REFATTRS_USER.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.REFTREE" Collapsed="true">
+    <Position X="12.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAAAAAAAAAAQgAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EntityDataModel\REFTREE.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.REFTREE_LINKS" Collapsed="true">
+    <Position X="14" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQEAAABAAAAAAAACAAAAAAAAAAAAAAABAgAAAAAA=</HashCode>
+      <FileName>EntityDataModel\REFTREE_LINKS.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.REFTREE_TABLE" Collapsed="true">
+    <Position X="15.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAIBAAAAAAAEAAAAAAAAAAAAAAAAAAgQAAAAA=</HashCode>
+      <FileName>EntityDataModel\REFTREE_TABLE.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.REFTREE_TABLECONFIG" Collapsed="true">
+    <Position X="17.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABACAAAAAEAAAAAAAAQAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EntityDataModel\REFTREE_TABLECONFIG.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.REFTREE_TYPES" Collapsed="true">
+    <Position X="19.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAIBAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>EntityDataModel\REFTREE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.repl_node" Collapsed="true">
+    <Position X="22.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAACAAAEIAAAAAAAAAAgAAACAA=</HashCode>
+      <FileName>EntityDataModel\repl_node.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.REPORT" Collapsed="true">
+    <Position X="24.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAIAAAAAAAgAAAAAAAAAAAAAAAgAgQAAA=</HashCode>
+      <FileName>EntityDataModel\REPORT.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.REPORTS_WORD" Collapsed="true">
+    <Position X="5.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAIAAAAAAAgAAAAAAAAAAAAAAAgAgQAAA=</HashCode>
+      <FileName>EntityDataModel\REPORTS_WORD.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.ROLE" Collapsed="true">
+    <Position X="10.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAgAAAQCAAIAAAQAAAAAAAAAACAAAAg=</HashCode>
+      <FileName>EntityDataModel\ROLE.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.ROLE_CONTROLS_CONDITION" Collapsed="true">
+    <Position X="12.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAACAAAAAAAAAIAAAQAAAQAAoAAgAAAAAA=</HashCode>
+      <FileName>EntityDataModel\ROLE_CONTROLS_CONDITION.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.ROLE_CONTROLS_GROUP" Collapsed="true">
+    <Position X="14" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAAAAAIACAYAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EntityDataModel\ROLE_CONTROLS_GROUP.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.ROLE_CONTROLS_XML" Collapsed="true">
+    <Position X="15.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAAAAAIAAAQAAAAAIAAAAQAAAAA=</HashCode>
+      <FileName>EntityDataModel\ROLE_CONTROLS_XML.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.ROLE_DATA_IMAGES" Collapsed="true">
+    <Position X="17.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAQAAAAAAACAAIAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EntityDataModel\ROLE_DATA_IMAGES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.ROLE_FORMS" Collapsed="true">
+    <Position X="19.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAQAAAAIAAAAAAAAAAAAAABAQAAA=</HashCode>
+      <FileName>EntityDataModel\ROLE_FORMS.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.SEARCH_TABLES" Collapsed="true">
+    <Position X="22.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAiAACAAAAAAAAACAAAAAACAAAoAAgQBAAAA=</HashCode>
+      <FileName>EntityDataModel\SEARCH_TABLES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.SEARCHTABLE_CONDS" Collapsed="true">
+    <Position X="24.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAwAAIAA=</HashCode>
+      <FileName>EntityDataModel\SEARCHTABLE_CONDS.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.SEARCHTABLE_TYPES" Collapsed="true">
+    <Position X="5.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgQBAAAA=</HashCode>
+      <FileName>EntityDataModel\SEARCHTABLE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.SECURITY_LOG" Collapsed="true">
+    <Position X="7" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAEAIIAAAoAAAAAAAAAAEAAAAAAAAAAAAQAQAQAA=</HashCode>
+      <FileName>EntityDataModel\SECURITY_LOG.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.SEQ" Collapsed="true">
+    <Position X="10.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EntityDataModel\SEQ.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.SIGNAL_TABLE" Collapsed="true">
+    <Position X="14" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>EntityDataModel\SIGNAL_TABLE.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.SIGNAL_TABLE2" Collapsed="true">
+    <Position X="15.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEgAAAAAAAAAAAAAAAAAAAAAABAAgAAAA=</HashCode>
+      <FileName>EntityDataModel\SIGNAL_TABLE2.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.STATUSBAR" Collapsed="true">
+    <Position X="21" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAAAAAACAAAAAAAAAAAAAAQABAAQAAA=</HashCode>
+      <FileName>EntityDataModel\STATUSBAR.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.STORAGE" Collapsed="true">
+    <Position X="22.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAAAAQAAAAAAAAAAAAAAEAAAgAAgAAA=</HashCode>
+      <FileName>EntityDataModel\STORAGE.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.SYSTEM_REPLICATIONCHECK" Collapsed="true">
+    <Position X="7" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAgAAAAAEAAAAAAAAAAAgAAAAAAIBAAA=</HashCode>
+      <FileName>EntityDataModel\SYSTEM_REPLICATIONCHECK.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.SYSTEM_REPLICCONFIG" Collapsed="true">
+    <Position X="8.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAJAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEIAAAAAA=</HashCode>
+      <FileName>EntityDataModel\SYSTEM_REPLICCONFIG.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.SYSTEM_REPLICQUEUE" Collapsed="true">
+    <Position X="10.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAACAAAAAAAAAAAAAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>EntityDataModel\SYSTEM_REPLICQUEUE.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.SYSTEM_REPLICREGIONS" Collapsed="true">
+    <Position X="12.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAACAAAAAAAA=</HashCode>
+      <FileName>EntityDataModel\SYSTEM_REPLICREGIONS.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.TABLE_SORTING" Collapsed="true">
+    <Position X="14" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAAgAAAAAAAAACAAAAAAAQAAIAA=</HashCode>
+      <FileName>EntityDataModel\TABLE_SORTING.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.TABLECONFIG" Collapsed="true">
+    <Position X="15.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAACAAAAAAAAAAEABAQAACAAEABAAQAAIAA=</HashCode>
+      <FileName>EntityDataModel\TABLECONFIG.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.TABLELISTCONFIG" Collapsed="true">
+    <Position X="17.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAgAAAAAQAACAAAAAAgRgAIAA=</HashCode>
+      <FileName>EntityDataModel\TABLELISTCONFIG.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.TABLEVAL_CHAR" Collapsed="true">
+    <Position X="19.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAQAAAAAAAAAAACAAAAAAgQAgIAA=</HashCode>
+      <FileName>EntityDataModel\TABLEVAL_CHAR.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.TABLEVAL_DATE" Collapsed="true">
+    <Position X="21" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQAAAAAAAAAAACAAACAAgQAgIAA=</HashCode>
+      <FileName>EntityDataModel\TABLEVAL_DATE.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.TABLEVAL_FLOAT" Collapsed="true">
+    <Position X="22.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQAAAAQAAAAAACAAAAAAgQAgIAA=</HashCode>
+      <FileName>EntityDataModel\TABLEVAL_FLOAT.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.TABLEVAL_INT" Collapsed="true">
+    <Position X="24.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQAAAAAAAAIAACAAAAAAgQAgIAA=</HashCode>
+      <FileName>EntityDataModel\TABLEVAL_INT.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.TREE_ATTRS" Collapsed="true">
+    <Position X="5.25" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACIhAAAAAAAAAAAAAAAAAAACAAAAAAgQAAAAA=</HashCode>
+      <FileName>EntityDataModel\TREE_ATTRS.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.TREE_CONFIG" Collapsed="true">
+    <Position X="7" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIhBAAAAAAgAAAAAAAAQAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EntityDataModel\TREE_CONFIG.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.TYPE_ATTR" Collapsed="true">
+    <Position X="8.75" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIgAAAAAAAAAAAAAABAAAACAAAAAAgQAAAAA=</HashCode>
+      <FileName>EntityDataModel\TYPE_ATTR.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.USER" Collapsed="true">
+    <Position X="10.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAUglEgGAACAFCAIIAAogMQACAAAAgAAEAASI=</HashCode>
+      <FileName>EntityDataModel\USER.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.USER_CONFIG" Collapsed="true">
+    <Position X="12.25" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAACAAAAAAAAgAAAAAAAgAABEAAAAAAAAhAAk=</HashCode>
+      <FileName>EntityDataModel\USER_CONFIG.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.USER_FILES" Collapsed="true">
+    <Position X="14" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQAAAAAAAAgAAAEAAAAAAIAgAAA=</HashCode>
+      <FileName>EntityDataModel\USER_FILES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.VIRTUAL_ATTRS" Collapsed="true">
+    <Position X="19.25" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAIgAAAAACAAAAAAAAAAAAAAQAAAAAAQABIAA=</HashCode>
+      <FileName>EntityDataModel\VIRTUAL_ATTRS.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.VIRTUAL_CONDS" Collapsed="true">
+    <Position X="21" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoAAgQAAIAA=</HashCode>
+      <FileName>EntityDataModel\VIRTUAL_CONDS.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.Repository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAACAQAAAAAAAAIAACwAAAAKAAAAAAEgAEAAE=</HashCode>
+      <FileName>EntityDataModel\Repository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.Entytis.BaesItemNode" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EntityDataModel\Entytis\ItemNode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.Entytis.ItemNode" Collapsed="true">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAEAAAA=</HashCode>
+      <FileName>EntityDataModel\Entytis\ItemNode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.Entytis.NodeAttr" Collapsed="true">
+    <Position X="19.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAUAAAAAAAAAEASAAgARAAIIgAAAAAKIAAIJAAAA=</HashCode>
+      <FileName>EntityDataModel\Entytis\NodeAttr.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.Entytis.NodeValueString" Collapsed="true">
+    <Position X="22.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAgAAAACAA=</HashCode>
+      <FileName>EntityDataModel\Entytis\NodeValueString.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.Entytis.StoronaProc" Collapsed="true">
+    <Position X="24.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EntityDataModel\Entytis\StoronaProc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.EntityDataModel.Entytis.Sud" Collapsed="true">
+    <Position X="5.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EntityDataModel\Entytis\Sud.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.Infrastructure.NinjectDependencyResolver" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACgAAAAAAAAAAAAAAAAAAAAAAAEI=</HashCode>
+      <FileName>Infrastructure\NinjectDependencyResolver.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AsArch.NET.Models.ExternalLoginConfirmationViewModel" Collapsed="true">
+    <Position X="21" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\AccountViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.Models.ExternalLoginListViewModel" Collapsed="true">
+    <Position X="22.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>Models\AccountViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.Models.SendCodeViewModel" Collapsed="true">
+    <Position X="8.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAIAAAAAAAAAAAAAAAAAAIAAAAgAAA=</HashCode>
+      <FileName>Models\AccountViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.Models.VerifyCodeViewModel" Collapsed="true">
+    <Position X="15.75" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAEAAAAAAAgAAAAAAAAAAAAAAIAAAAgAAA=</HashCode>
+      <FileName>Models\AccountViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.Models.ForgotViewModel" Collapsed="true">
+    <Position X="19.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\AccountViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.Models.LoginViewModel" Collapsed="true">
+    <Position X="22.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAACAAAAAAAgAAA=</HashCode>
+      <FileName>Models\AccountViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.Models.RegisterViewModel" Collapsed="true">
+    <Position X="21" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAACAAAAAAAAIAA=</HashCode>
+      <FileName>Models\AccountViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.Models.ResetPasswordViewModel" Collapsed="true">
+    <Position X="8.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAgAAAAAAAAAAACAAAAAAAAIAA=</HashCode>
+      <FileName>Models\AccountViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.Models.ForgotPasswordViewModel" Collapsed="true">
+    <Position X="17.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\AccountViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.Models.ApplicationUser" Collapsed="true">
+    <Position X="14" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\IdentityModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.Models.ApplicationDbContext" Collapsed="true">
+    <Position X="10.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\IdentityModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.Models.IndexViewModel" Collapsed="true">
+    <Position X="15.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAQAAAAAAAAAAAAAAQAAAEAEA=</HashCode>
+      <FileName>Models\ManageViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.Models.ManageLoginsViewModel" Collapsed="true">
+    <Position X="5.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>Models\ManageViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.Models.FactorViewModel" Collapsed="true">
+    <Position X="8.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Models\ManageViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.Models.SetPasswordViewModel" Collapsed="true">
+    <Position X="12.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>Models\ManageViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.Models.ChangePasswordViewModel" Collapsed="true">
+    <Position X="22.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAABAAAAAAAEAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>Models\ManageViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.Models.AddPhoneNumberViewModel" Collapsed="true">
+    <Position X="8.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ManageViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.Models.VerifyPhoneNumberViewModel" Collapsed="true">
+    <Position X="17.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAgQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ManageViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.Models.ConfigureTwoFactorViewModel" Collapsed="true">
+    <Position X="7" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ManageViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.Models.NodeViewModels" Collapsed="true">
+    <Position X="1.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAIAAAAAAAAAAAAAAAAAAAAAABAAAAACAAAAAAA=</HashCode>
+      <FileName>Models\NodeViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.Models.NodeCreateViewModels" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\NodeViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AsArch.NET.Models.NodeEditViewModels" Collapsed="true">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAIAAIAAgA=</HashCode>
+      <FileName>Models\NodeViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="AsArch.NET.Interfaces.IRepository" Collapsed="true">
+    <Position X="5.25" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAAAAAAAIAACwAAAAKAAAAAAEAAEAAE=</HashCode>
+      <FileName>Interfaces\IRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="10" />
+</ClassDiagram>

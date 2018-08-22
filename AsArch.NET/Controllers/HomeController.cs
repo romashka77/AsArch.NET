@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Net;
 using System.Web.Mvc;
 
 namespace AsArch.NET.Controllers
@@ -25,6 +22,16 @@ namespace AsArch.NET.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        public ActionResult GetIP()
+        {
+            //return new JsonResult
+            //{
+            //    JsonRequestBehavior = JsonRequestBehavior.AllowGet,
+            //    Data = new { ip = Dns.GetHostName() }//new { ID = 123, Name = "Name1" };
+            //};
+            return Json(new { ip = Dns.GetHostName() }, JsonRequestBehavior.AllowGet);
         }
     }
 }

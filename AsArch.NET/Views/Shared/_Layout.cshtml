@@ -25,7 +25,7 @@
                     <li>@Html.ActionLink("Домашняя страница", "Index", "Home")</li>
                     <li>@Html.ActionLink("О программе", "About", "Home")</li>
                     <li>@Html.ActionLink("Контакт", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("NODEs", "Index", "NODES")</li>
+                    <li>@Html.ActionLink("Судебно-арбитражная практика", "Index", "NODES")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -34,13 +34,17 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
+        <input type="button" id="but_my_ip" value="Показать мой IP" />
+        <div id="lbl_my_ip"></div>
         <footer>
             <p>&copy; @DateTime.Now.Year – приложение ASP.NET</p>
         </footer>
     </div>
-
+    
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/my_ip")
+    
     @RenderSection("scripts", required: false)
 </body>
 </html>

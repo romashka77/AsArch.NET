@@ -25,6 +25,10 @@ namespace AsArch.NET
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/bundles/my_ip").Include(
+                      "~/Scripts/my_ip*"));
+
         }
     }
 }

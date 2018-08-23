@@ -65,22 +65,25 @@
                             Model.IdAttr = 2234;
                             Html.RenderPartial("_selectList", Model);
 
-                            ////Истец
-                            Html.RenderPartial("_selectListStoronaProc", Model.Attrs[2263]);
+                            //Истец
+                            Model.IdAttr = 2263;
+                            Html.RenderPartial("_selectListStoronaProc", Model);
                             //Истец ИНН
                             Html.RenderPartial("_attrLabel", Model.Attrs[2241]);
                             //Истец Адрес
                             Html.RenderPartial("_attrLabel", Model.Attrs[2228]);
 
                             //Ответчик
-                            Html.RenderPartial("_selectListStoronaProc", Model.Attrs[2264]);
+                            Model.IdAttr = 2264;
+                            Html.RenderPartial("_selectListStoronaProc", Model);
                             //Ответчик ИНН
                             Html.RenderPartial("_attrLabel", Model.Attrs[2242]);
                             //Ответчик Адрес
                             Html.RenderPartial("_attrLabel", Model.Attrs[2229]);
 
                             //3-лицо
-                            Html.RenderPartial("_selectListStoronaProc", Model.Attrs[2266]);
+                            Model.IdAttr = 2266;
+                            Html.RenderPartial("_selectListStoronaProc", Model);
                             //3-лицо ИНН
                             Html.RenderPartial("_attrLabel", Model.Attrs[2243]);
                             //3-лицо Адрес

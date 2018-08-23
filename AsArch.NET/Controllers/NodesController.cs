@@ -155,7 +155,7 @@ namespace AsArch.NET.Controllers
                 case 1954://исковое заявление
                     ViewBag.ListCodIska = repository.ListNode(3).OrderBy(n => n.STR_LABEL).ToList().Select(n => new SelectListItem { Text = n.STR_LABEL, Value = n.ID_NODE.ToString() });
                     ViewBag.ListSud = repository.ListNode(2).OrderBy(n => n.STR_LABEL).ToList().Select(n => new SelectListItem { Text = n.STR_LABEL, Value = n.ID_NODE.ToString() });
-                    ViewBag.ListStoronaProc = repository.ListStoronaProc(model.Id_GrantParent).ToList().Select(n => new SelectListItem { Text = n.Name, Value = n.Id.ToString() });
+                    ViewBag.ListStoronaProc = repository.ListStoronaProc(model.Id_GrantParent).ToList();
                     break;
                 case 2286://предмет иска
 

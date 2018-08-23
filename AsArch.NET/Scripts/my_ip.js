@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
     //вешаем обработчик 
-    $("#RefNode").change(function () {
+    $(".StoronaProc").change(function () {
         $.ajax({
             type: "GET",
             contentType: "application/json; charset=utf-8",

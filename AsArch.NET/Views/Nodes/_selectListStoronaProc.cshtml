@@ -1,10 +1,14 @@
-﻿@using AsArch.NET.EntityDataModel.Entytis
-@model NodeAttr
+﻿@*@using AsArch.NET.EntityDataModel.Entytis
+@model NodeAttr*@
+@using AsArch.NET.EntityDataModel.Entytis
+@using AsArch.NET.Models
+@model NodeEditViewModels
+
 
 <div class="form-group">
-    @Html.Label(Model.NameAttr, htmlAttributes: new { @class = "control-label col-md-2" })
+    @Html.Label(Model.Attrs[Model.IdAttr].NameAttr, htmlAttributes: new { @class = "control-label col-md-2" })
     <div class="col-md-10">
-        @Html.DropDownListFor(model => model.RefNode, ViewBag.ListStoronaProc as IEnumerable<SelectListItem>, "Выберите сторону роцесса", new { htmlAttributes = new { @class = "form-control" } })
+        @Html.DropDownListFor(model => model.Attrs[Model.IdAttr].RefNode, (ViewBag.ListStoronaProc as IEnumerable<BaesItemNode>).Select(a => new SelectListItem { Text = a.Name, Value = a.Id.ToString(),Selected= (a.Id == Model.Attrs[Model.IdAttr].RefNode) }), "Выберите сторону роцесса", htmlAttributes: new { @class = "form-control StoronaProc" })
         @*@Html.ValidationMessageFor(model => model.CHAR_VALUE, "", new { @class = "text-danger" })*@
     </div>
 </div>

@@ -219,10 +219,16 @@ namespace AsArch.NET.Controllers
             return View(model);
         }
         #endregion
-        //public async Task<JsonResult> GetIstec()
-        //{
-
-        //}
+        public ActionResult GetStoronaProc(string value)
+        {
+            var id = value;
+            //return new JsonResult
+            //{
+            //    JsonRequestBehavior = JsonRequestBehavior.AllowGet,
+            //    Data = new { ip = Dns.GetHostName() }//new { ID = 123, Name = "Name1" };
+            //};
+            return Json(new { ip = Dns.GetHostName() }, JsonRequestBehavior.AllowGet);
+        }
         #region Delete
         // GET: Regions/Delete/5
         public async Task<ActionResult> Delete(int? id)

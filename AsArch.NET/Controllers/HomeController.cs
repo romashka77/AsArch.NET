@@ -23,15 +23,5 @@ namespace AsArch.NET.Controllers
 
             return View();
         }
-
-        public ActionResult GetIP()
-        {
-            //return new JsonResult
-            //{
-            //    JsonRequestBehavior = JsonRequestBehavior.AllowGet,
-            //    Data = new { ip = Dns.GetHostName() }//new { ID = 123, Name = "Name1" };
-            //};
-            return Json(new { ip = Dns.GetHostName() }, JsonRequestBehavior.AllowGet);
-        }
     }
 }

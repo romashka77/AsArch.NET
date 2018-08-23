@@ -1,30 +1,30 @@
 ﻿$(document).ready(function () {
     //вешаем обработчик 
     $(".StoronaProc").change(function () {
-        $.ajax({
-            type: "GET",
-            contentType: "application/json; charset=utf-8",
-            dataType: 'json',
-            url: "/Home/GetIP",
-            success: function (data) { alert(data.ip); }
-        });
+        $.getJSON("/NODES/GetStoronaProc", this.value)
+            .done(function (data) {
+                console.log(data);
+            });
+
+
+        //StoronaProc("/NODES/GetStoronaProc/" + $(this).);
     });
 });
+function StoronaProc(url) {
+    // Запустим ajax-запрос, установим обработчики его выполнения и
+    // сохраним объект jqxhr данного запроса для дальнейшего использования.
+    //var jqxhr =
+    $.getJSON(url/*, function () {console.log("success");}*/)
+        .done(function (data) {
+            //console.log("second success");
+            console.log(data.ip);
+        });
+    //.fail(function () {
+    //    console.log("error");
+    //})
+    //.always(function (data) {
+    //    console.log("complete");
+    //    console.log(data.ip);
+    //});
+}
 
-//window.onload = function () {
-//    document.querySelector("#but_my_ip").onclick = function () {
-//        ajaxGet();
-//    }
-//}
-
-//function ajaxGet() {
-//    var request = new XMLHttpRequest();
-
-//    request.onreadystatechange = function () {
-//        if (request.readyState == 4 /*&& request.status == 200*/) {
-//            document.querySelector("#lbl_my_ip").innerHTML = request.responseText;
-//        }
-//    }
-//    request.open('GET', 'Home/GetIP');
-//    request.send();
-//}

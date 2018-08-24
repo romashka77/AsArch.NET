@@ -18,7 +18,6 @@ namespace AsArch.NET.Controllers
     //[Authorize]
     public class NodesController : Controller
     {
-        //private DB_pfr_sap db = new DB_pfr_sap();
         private IRepository repository;
         #region Конструктор
         public NodesController(IRepository repository)
@@ -31,7 +30,6 @@ namespace AsArch.NET.Controllers
         {
             if (disposing)
             {
-                //repository.Dispose();
                 repository = null;
             }
             base.Dispose(disposing);

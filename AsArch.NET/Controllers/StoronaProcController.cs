@@ -13,7 +13,8 @@ namespace AsArch.NET.Controllers
         private IRepository repository;
 
         #region Конструктор
-        public StoronaProcController(IRepository repository)
+        
+        public StoronaProcController(IRepository repository):base()
         {
             this.repository = repository ?? throw new ArgumentNullException(nameof(repository));
         }

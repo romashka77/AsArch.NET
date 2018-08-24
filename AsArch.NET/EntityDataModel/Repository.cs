@@ -129,10 +129,10 @@ namespace AsArch.NET.EntityDataModel
         {
             return db.NODEs.Where(n => n.ID_PARENT == id_parent);
         }
-        public IQueryable<BaesItemNode> ListStoronaProc(int? id_parent = null)
+        public IQueryable<StoronaProc> ListStoronaProc(int? id_parent = null)
         {
-            var query = db.Database.SqlQuery<BaesItemNode>("SELECT B.STR_LABEL as Name,B.ID_NODE as Id FROM NODE A left join NODE B on A.ID_NODE = B.ID_PARENT where A.ID_PARENT = @id_parent  and B.ID_ITEMTYPE = 2159 ORDEr by B.STR_LABEL", new SqlParameter("id_parent", id_parent));
-            return query.AsQueryable<BaesItemNode>();
+            var query = db.Database.SqlQuery<StoronaProc>("SELECT B.STR_LABEL as Name,B.ID_NODE as Id FROM NODE A left join NODE B on A.ID_NODE = B.ID_PARENT where A.ID_PARENT = @id_parent  and B.ID_ITEMTYPE = 2159 ORDEr by B.STR_LABEL", new SqlParameter("id_parent", id_parent));
+            return query.AsQueryable<StoronaProc>();
             //var tmp =  db.NODEs.Where(n => n.ID_ITEMTYPE==2159 && n.ID_PARENT == id_parent);
         }
         public IQueryable<DICTIONARy> ListDict()

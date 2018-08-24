@@ -12,8 +12,6 @@ namespace AsArch.NET
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include("~/Scripts/jquery.validate*"));
 
-            bundles.Add(new ScriptBundle("~/bundles/jqueryajax").Include("~/Scripts/jquery.unobtrusive-ajax.js"));
-
             // Используйте версию Modernizr для разработчиков, чтобы учиться работать. Когда вы будете готовы перейти к работе,
             // готово к выпуску, используйте средство сборки по адресу https://modernizr.com, чтобы выбрать только необходимые тесты.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
@@ -26,9 +24,13 @@ namespace AsArch.NET
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
 
+
             bundles.Add(new StyleBundle("~/bundles/my_ip").Include(
                       "~/Scripts/my_ip*"));
 
+            bundles.Add(new ScriptBundle("~/bundles/knockout").Include("~/Scripts/knockout-{version}.debug.js"));
+
+            
         }
     }
 }

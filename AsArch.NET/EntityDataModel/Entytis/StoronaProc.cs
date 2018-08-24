@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace AsArch.NET.EntityDataModel.Entytis
 {
@@ -9,5 +6,13 @@ namespace AsArch.NET.EntityDataModel.Entytis
     {
         public int Id { get; set; }
         public string Name { get; set; }
+    }
+
+    public class StoronaProcParam
+    {
+        [Display(Name = "ИНН")]
+        public string INN { get; set; }
+        [Display(Name = "Адрес")]
+        public string Adres { get; set; }
     }
 }

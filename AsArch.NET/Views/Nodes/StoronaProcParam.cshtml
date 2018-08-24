@@ -1,0 +1,14 @@
+﻿@model AsArch.NET.EntityDataModel.Entytis.StoronaProcParam
+
+<div class="form-group">
+    @Html.Label(Model.INN, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.DisplayFor(model => model.INN, new { htmlAttributes = new { @class = "form-control" } })
+        @*@Html.ValidationMessageFor(model => model.CHAR_VALUE, "", new { @class = "text-danger" })*@
+    </div>
+    @Html.Label(Model.Adres, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.DisplayFor(model => model.Adres, new { htmlAttributes = new { @class = "form-control" } })
+        @*@Html.ValidationMessageFor(model => model.CHAR_VALUE, "", new { @class = "text-danger" })*@
+    </div>
+</div>

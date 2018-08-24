@@ -605,12 +605,12 @@
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
-    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\knockout-3.4.2.debug.js" />
+    <Content Include="Scripts\knockout-3.4.2.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\my_ip.js" />
     <Content Include="Web.config" />
@@ -671,6 +671,7 @@
     <Content Include="Views\Nodes\_selectList.cshtml" />
     <Content Include="Views\Nodes\_selectListIspolnit.cshtml" />
     <Content Include="Views\Nodes\_selectListCodGrIskov.cshtml" />
+    <Content Include="Views\Nodes\StoronaProcParam.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -65,13 +65,20 @@
                             Model.IdAttr = 2234;
                             Html.RenderPartial("_selectList", Model);
 
-                            //Истец
-                            Model.IdAttr = 2263;
-                            Html.RenderPartial("_selectListStoronaProc", Model);
-                            //Истец ИНН
-                            Html.RenderPartial("_attrLabel", Model.Attrs[2241]);
-                            //Истец Адрес
-                            Html.RenderPartial("_attrLabel", Model.Attrs[2228]);
+                        <div id="Istec">
+                            @{
+                                //Истец
+                                Model.IdAttr = 2263;
+                                Html.RenderPartial("_selectListStoronaProc", Model);
+
+                                @Html.Action("StoronaProcParam", new { value = "test" })
+
+                                //Истец ИНН
+                                //Html.RenderPartial("_attrLabel", Model.Attrs[2241]);
+                                //Истец Адрес
+                                //Html.RenderPartial("_attrLabel", Model.Attrs[2228]);
+                            }
+                        </div>
 
                             //Ответчик
                             Model.IdAttr = 2264;

@@ -219,15 +219,16 @@ namespace AsArch.NET.Controllers
             return View(model);
         }
         #endregion
-        public ActionResult GetStoronaProc(string value)
+        public PartialViewResult StoronaProcParam(string value)
         {
-            var id = value;
-            //return new JsonResult
-            //{
-            //    JsonRequestBehavior = JsonRequestBehavior.AllowGet,
-            //    Data = new { ip = Dns.GetHostName() }//new { ID = 123, Name = "Name1" };
-            //};
-            return Json(new { ip = Dns.GetHostName() }, JsonRequestBehavior.AllowGet);
+            if (String.IsNullOrEmpty(value))
+            {
+                return PartialView(new StoronaProcParam {Adres="", INN="" });
+            }
+
+            return PartialView(new StoronaProcParam { Adres = "Adres", INN = "INN" }); ;
+
+            //return Json(new { ip = Dns.GetHostName() }, JsonRequestBehavior.AllowGet);
         }
         #region Delete
         // GET: Regions/Delete/5

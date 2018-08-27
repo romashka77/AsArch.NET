@@ -13,8 +13,8 @@ namespace AsArch.NET
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
+                routeTemplate: "api/{controller}/{id}/{param}",
+                defaults: new { id = RouteParameter.Optional, param = RouteParameter.Optional }
             );
         }
     }

@@ -9,12 +9,12 @@ using AsArch.NET.Interfaces;
 
 namespace AsArch.NET.Controllers
 {
-    public class StoronaProcController : ApiController
+    public class StoronaProcParamController : ApiController
     {
         private IRepository repository;
 
         #region Конструктор
-        public StoronaProcController(IRepository repository)
+        public StoronaProcParamController(IRepository repository)
         {
             this.repository = repository ?? throw new ArgumentNullException(nameof(repository));
         }
@@ -29,30 +29,24 @@ namespace AsArch.NET.Controllers
             base.Dispose(disposing);
         }
         #endregion
-
-        // GET: api/StoronaProc
-        //public string Get()
-        //{
-        //    return "Get()";
-        //}
-        // GET: api/StoronaProc/10654
-        public IQueryable<StoronaProc> Get(int id)
+        
+        // GET: api/StoronaProcParam/5
+        public StoronaProcParam Get(int id)
         {
-            return repository.ListStoronaProc(id);
+            return repository.StoronaProcParam(id);
         }
 
-
-        // POST: api/StoronaProc
+        // POST: api/StoronaProcParam
         //public void Post([FromBody]string value)
         //{
         //}
 
-        //// PUT: api/StoronaProc/5
+        //// PUT: api/StoronaProcParam/5
         //public void Put(int id, [FromBody]string value)
         //{
         //}
 
-        //// DELETE: api/StoronaProc/5
+        //// DELETE: api/StoronaProcParam/5
         //public void Delete(int id)
         //{
         //}

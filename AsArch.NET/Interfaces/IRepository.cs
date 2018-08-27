@@ -17,7 +17,8 @@ namespace AsArch.NET.Interfaces
         /// <param name="id_parent"></param>
         /// <returns></returns>
         IQueryable<NODE> ListNode(int? id_parent = null);
-        IQueryable<StoronaProc> ListStoronaProc(int? id_parent = null);
+        IQueryable<StoronaProc> ListStoronaProc(int? id_parent);
+        StoronaProcParam StoronaProcParam(int id_node);
         /// <summary>
         ///  Возвращает id, name родителя, name и тип узла по id узла
         /// </summary>

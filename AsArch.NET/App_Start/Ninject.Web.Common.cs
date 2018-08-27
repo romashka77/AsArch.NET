@@ -65,7 +65,6 @@ HibernatingRhinos.Profiler.Appender.EntityFramework.EntityFrameworkProfiler.Init
         private static void RegisterServices(IKernel kernel)
         {
             System.Web.Mvc.DependencyResolver.SetResolver(new NinjectDependencyResolver(kernel));
-            
         }        
     }
 }

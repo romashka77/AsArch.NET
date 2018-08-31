@@ -23,10 +23,10 @@ namespace AsArch.NET
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
-
-
-            bundles.Add(new StyleBundle("~/bundles/my_ip").Include(
-                      "~/Scripts/my_ip*"));
+            bundles.Add(new ScriptBundle("~/bundles/react").Include(
+                      "~/Scripts/react/react.min.js"));
+            bundles.Add(new ScriptBundle("~/bundles/react-dom").Include(
+                      "~/Scripts/react/react-dom.min.js"));
 
         }
     }

@@ -22,7 +22,9 @@ namespace AsArch.NET.App_Start
         public static void Start() 
         {
             //entytiframework profiler 
-HibernatingRhinos.Profiler.Appender.EntityFramework.EntityFrameworkProfiler.Initialize();
+            //https://habr.com/post/221681/
+            //удалить
+            HibernatingRhinos.Profiler.Appender.EntityFramework.EntityFrameworkProfiler.Initialize();
 
             DynamicModuleUtility.RegisterModule(typeof(OnePerRequestHttpModule));
             DynamicModuleUtility.RegisterModule(typeof(NinjectHttpModule));

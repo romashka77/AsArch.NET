@@ -139,7 +139,6 @@ namespace AsArch.NET.EntityDataModel
         public StoronaProcParam StoronaProcParam(int id_node)
         {
             var query = db.Database.SqlQuery<StoronaProcParam>("select A.CHAR_VALUE as INN, B.CHAR_VALUE as Adres from (SELECT CHAR_VALUE FROM ATTRVAL_CHAR where ID_NODE = @id_node and ID_ATTR = 2170) A join ATTRVAL_CHAR B on B.ID_NODE = @id_node and B.ID_ATTR = 2165", new SqlParameter("id_node", id_node));
-            //StoronaProcParam result = new StoronaProcParam();
             return query.AsQueryable<StoronaProcParam>().FirstOrDefault();
         }
 

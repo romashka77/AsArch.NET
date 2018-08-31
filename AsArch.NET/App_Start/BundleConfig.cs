@@ -28,9 +28,6 @@ namespace AsArch.NET
             bundles.Add(new StyleBundle("~/bundles/my_ip").Include(
                       "~/Scripts/my_ip*"));
 
-            bundles.Add(new ScriptBundle("~/bundles/knockout").Include("~/Scripts/knockout-{version}.debug.js"));
-
-            
         }
     }
 }

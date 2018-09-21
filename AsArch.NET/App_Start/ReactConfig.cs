@@ -10,12 +10,12 @@ namespace AsArch.NET
 	{
 		public static void Configure()
 		{
-            ReactSiteConfiguration.Configuration
-                .SetReuseJavaScriptEngines(true)
-                .AddScript("~/Content/Sample.jsx");
+            //ReactSiteConfiguration.Configuration
+            //    .SetReuseJavaScriptEngines(true)
+            //    .AddScript("~/Content/Sample.jsx");
 
-            JsEngineSwitcher.Current.DefaultEngineName = V8JsEngine.EngineName;
-            JsEngineSwitcher.Current.EngineFactories.AddV8();
+            //JsEngineSwitcher.Current.DefaultEngineName = V8JsEngine.EngineName;
+            //JsEngineSwitcher.Current.EngineFactories.AddV8();
             // If you want to use server-side rendering of React components, 
             // add all the necessary JavaScript files here. This includes 
             // your components as well as all of their dependencies.
@@ -31,6 +31,9 @@ namespace AsArch.NET
             //ReactSiteConfiguration.Configuration
             //	.SetLoadBabel(false)
             //	.AddScriptWithoutTransform("~/Scripts/bundle.server.js")
+            ReactSiteConfiguration.Configuration
+                .AddScript("~/Scripts/remarkable/remarkable.min.js")
+                .AddScript("~/Scripts/jsx/app.jsx");
         }
 	}
 }

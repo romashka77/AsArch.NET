@@ -1,5 +1,6 @@
 ﻿using Microsoft.Owin;
 using Owin;
+using React;
 
 [assembly: OwinStartupAttribute(typeof(AsArch.NET.Startup))]
 namespace AsArch.NET
@@ -9,6 +10,7 @@ namespace AsArch.NET
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
+            //React.AssemblyRegistration.Container.Register<IJavaScriptEngineFactory, JavaScriptEngineFactory>().AsSingleton();
         }
     }
 }

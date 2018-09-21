@@ -1,5 +1,6 @@
 ﻿using System.Web;
 using System.Web.Optimization;
+using System.Web.Optimization.React;
 
 namespace AsArch.NET
 {
@@ -23,10 +24,19 @@ namespace AsArch.NET
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
             bundles.Add(new ScriptBundle("~/bundles/react").Include(
                       "~/Scripts/react/react.min.js"));
             bundles.Add(new ScriptBundle("~/bundles/react-dom").Include(
                       "~/Scripts/react/react-dom.min.js"));
+
+            bundles.Add(new BabelBundle("~/bundles/main").Include(
+                // Add your JSX files here
+                "~/Content/Sample.jsx"
+            ));
+
+            // Force minification/combination even in debug mode
+            BundleTable.EnableOptimizations = true;
 
         }
     }

@@ -1,5 +1,6 @@
 ﻿using System.Web;
 using System.Web.Optimization;
+using System.Web.Optimization.React;
 
 namespace AsArch.NET
 {
@@ -27,6 +28,17 @@ namespace AsArch.NET
                       "~/Scripts/react/react.min.js"));
             bundles.Add(new ScriptBundle("~/bundles/react-dom").Include(
                       "~/Scripts/react/react-dom.min.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/remarkable").Include(
+                      "~/Scripts/remarkable/remarkable.min.js"));
+
+            bundles.Add(new BabelBundle("~/bundles/app").Include(
+                "~/Scripts/jsx/app.jsx"
+            ));
+            // Forces files to be combined and minified in debug mode
+            // Only used here to demonstrate how combination/minification works
+            // Normally you would use unminified versions in debug mode.
+            BundleTable.EnableOptimizations = true;
 
         }
     }

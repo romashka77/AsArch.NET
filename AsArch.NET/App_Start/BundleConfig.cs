@@ -25,12 +25,12 @@ namespace AsArch.NET
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
             bundles.Add(new ScriptBundle("~/bundles/react").Include(
-                      "~/Scripts/react/react.min.js"));
+                      "~/Scripts/react/react.js"));
             bundles.Add(new ScriptBundle("~/bundles/react-dom").Include(
-                      "~/Scripts/react/react-dom.min.js"));
+                      "~/Scripts/react/react-dom.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/remarkable").Include(
-                      "~/Scripts/remarkable/remarkable.min.js"));
+                      "~/Scripts/remarkable/remarkable.js"));
 
             bundles.Add(new BabelBundle("~/bundles/app").Include(
                 "~/Scripts/jsx/app.jsx"
@@ -38,7 +38,7 @@ namespace AsArch.NET
             // Forces files to be combined and minified in debug mode
             // Only used here to demonstrate how combination/minification works
             // Normally you would use unminified versions in debug mode.
-            BundleTable.EnableOptimizations = true;
+            BundleTable.EnableOptimizations = false;
 
         }
     }

@@ -25,7 +25,9 @@ namespace AsArch.NET
             //	.AddScriptWithoutTransform("~/Scripts/bundle.server.js")
             ReactSiteConfiguration.Configuration
                 .AddScript("~/Scripts/remarkable/remarkable.min.js")
-                .AddScript("~/Scripts/jsx/app.jsx");
+                .AddScript("~/Scripts/jsx/app.jsx")
+                .SetLoadBabel(false)
+                .AddScriptWithoutTransform("~/Scripts/bundle.server.js");
         }
 	}
 }

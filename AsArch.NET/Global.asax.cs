@@ -19,6 +19,7 @@ namespace AsArch.NET
             GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            ReactConfig.Configure();
 
         }
     }

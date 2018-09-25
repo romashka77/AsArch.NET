@@ -9,8 +9,8 @@ namespace AsArch.NET
     {
         public void Configuration(IAppBuilder app)
         {
-            ConfigureAuth(app);
             //React.AssemblyRegistration.Container.Register<IJavaScriptEngineFactory, JavaScriptEngineFactory>().AsSingleton();
+            ConfigureAuth(app);
         }
     }
 }

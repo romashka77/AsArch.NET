@@ -16,4 +16,4 @@
         );
     }
 }
-export = Comment;
+export default Comment;

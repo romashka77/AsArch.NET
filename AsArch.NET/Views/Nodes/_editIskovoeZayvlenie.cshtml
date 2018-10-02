@@ -3,9 +3,12 @@
 
 @using (Html.BeginForm())
 {
+    @Html.AntiForgeryToken()
     <div class="form-horizontal">
         <h4>@Model.NameNode</h4>
         <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" });
+        @Html.HiddenFor(model => model.IdNode);
         <div id="accordion" role="tablist" aria-multiselectable="true">
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="predmetIska">
@@ -18,8 +21,6 @@
                 <div id="collapsePredmetIska" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="predmetIska">
                     <div class="card card-block">
                         @{
-                            Html.ValidationSummary(true, "", new { @class = "text-danger" });
-                            Html.HiddenFor(model => model.Id_node);
                             //Регистрационный номер
                             Html.RenderPartial("_attrLabel", Model.Attrs[2141]);
                             //Регистрационная дата
@@ -65,20 +66,20 @@
                             Model.IdAttr = 2234;
                             Html.RenderPartial("_selectList", Model);
 
-                        <div id="Istec">
-                            @{
-                                //Истец
-                                Model.IdAttr = 2263;
-                                Html.RenderPartial("_selectListStoronaProc", Model);
+                            <div id="Istec">
+                                @{
+                                    //Истец
+                                    Model.IdAttr = 2263;
+                                    Html.RenderPartial("_selectListStoronaProc", Model);
 
-                                @Html.Action("StoronaProcParam", new { value = "test" })
+                                    @Html.Action("StoronaProcParam", new { value = "test" })
 
-                                //Истец ИНН
-                                //Html.RenderPartial("_attrLabel", Model.Attrs[2241]);
-                                //Истец Адрес
-                                //Html.RenderPartial("_attrLabel", Model.Attrs[2228]);
-                            }
-                        </div>
+                                    //Истец ИНН
+                                    //Html.RenderPartial("_attrLabel", Model.Attrs[2241]);
+                                    //Истец Адрес
+                                    //Html.RenderPartial("_attrLabel", Model.Attrs[2228]);
+                                }
+                            </div>
 
                             //Ответчик
                             Model.IdAttr = 2264;
@@ -254,6 +255,11 @@
                         Документы по иску
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Сохранить" class="btn btn-default itemtype" />
             </div>
         </div>
     </div>

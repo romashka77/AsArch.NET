@@ -751,6 +751,7 @@
     <Content Include="Views\Nodes\_selectListIspolnit.cshtml" />
     <Content Include="Views\Nodes\_selectListCodGrIskov.cshtml" />
     <Content Include="Views\Nodes\StoronaProcParam.cshtml" />
+    <Content Include="Views\Nodes\_editAll.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

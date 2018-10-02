@@ -34,9 +34,8 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <input type="button" id="but_my_ip" value="Показать мой IP" />
-        <div id="lbl_my_ip"></div>
         <footer>
+            @RenderSection("Footer", required: false)
             <p>&copy; @DateTime.Now.Year – приложение ASP.NET</p>
         </footer>
     </div>

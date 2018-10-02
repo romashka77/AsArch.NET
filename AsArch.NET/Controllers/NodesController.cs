@@ -177,18 +177,18 @@ namespace AsArch.NET.Controllers
             
             var model = new NodeEditViewModels
             {
-                Id_node = node.ID_NODE,
+                IdNode = node.ID_NODE,
                 Id_itemtype = node.ID_ITEMTYPE,
                 Id_parent = node.ID_PARENT,
                 NameNode = node.STR_LABEL,
                 Id_GrantParent=node.NODE2.ID_PARENT
             };
-            var query = repository.GetNodeAttrs(model.Id_itemtype, model.Id_node).ToList();
+            var query = repository.GetNodeAttrs(model.Id_itemtype, model.IdNode).ToList();
 
-            foreach (var item in query)
-            {
-                model.Attrs.Add(item.IdAttr, item);
-            }
+            //foreach (var item in query)
+            //{
+            //    model.Attrs.Add(item.IdAttr, item);
+            //}
 
             SetupNodeEditViewModels(model);
 
@@ -199,20 +199,17 @@ namespace AsArch.NET.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit(NodeEditViewModels model)
         {
             if (ModelState.IsValid)
             {
-                NODE node = await repository.FindNodeAsync(model.Id_node);
-
-                if ((node.ID_NODE == model.Id_node) && (node.ID_ITEMTYPE != model.Id_itemtype))
+                NODE node = await repository.FindNodeAsync(model.IdNode);
+                if ((node.ID_NODE == model.IdNode) && (node.ID_ITEMTYPE != model.Id_itemtype))
                 {
-                    repository.ChangeNodeType(model.Id_node, model.Id_itemtype);
-                    return RedirectToAction(nameof(Edit), new { id = model.Id_node });
+                    repository.ChangeNodeType(model.IdNode, model.Id_itemtype);
+                    return RedirectToAction(nameof(Edit), new { id = model.IdNode });
                 }
-
-
             }
             return View(model);
         }

@@ -1,46 +1,40 @@
-﻿@using AsArch.NET.Models
-@model NodeEditViewModels
+﻿@model AsArch.NET.Models.NodeEditViewModels
 
 @{
-    /**/
-
     ViewBag.Title = "Редактировать";
 }
 
-<h2>@ViewBag.Title</h2>
-
+<h4>@Model.NameNode</h4>
+<hr />
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     <div class="form-horizontal">
-        <h4>@Model.NameNode</h4>
-        <hr />
-
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @*HiddenFor *@
-        @Html.EditorFor(model => model.IdNode)
-        @Html.EditorFor(model => model.Id_itemtype)
-        @Html.EditorFor(model => model.Id_parent)
-        @Html.EditorFor(model => model.Id_GrantParent)
-        @Html.EditorFor(model => model.IdAttr)
-        @Html.EditorFor(model => model.Attrs)
+        @Html.HiddenFor(model => model.IdNode)
+        @Html.HiddenFor(model => model.IdItemType)
+        @Html.HiddenFor(model => model.IdParent)
+        @Html.HiddenFor(model => model.IdGrantParent)
+        @Html.HiddenFor(model => model.IdAttr)
+        @Html.HiddenFor(model => model.Attrs)
+        @if (Model.IdItemType == 1954)
+            {
+                Html.RenderPartial("_editIskovoeZayvlenie", Model);
 
-        @if (Model.Id_itemtype == 1954)
-        {
-            Html.RenderPartial("_editIskovoeZayvlenie", Model);
-
-        }
-        //else if (Model.Id_itemtype == 2286)
-        //{
-        //    Html.RenderPartial("_editPredmetIska", Model);
-        //}
-        else
-        {
-            Html.RenderPartial("_editAll", Model);
-        }
-    </div>
-    <div class="col-md-offset-2 col-md-10">
-        <input type="submit" value="Сохранить" class="btn btn-default itemtype" />
+            }
+            //else if (Model.Id_itemtype == 2286)
+            //{
+            //    Html.RenderPartial("_editPredmetIska", Model);
+            //}
+            else
+            {
+                Html.RenderPartial("_editAll", Model);
+            }
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Сохранить" class="btn btn-default" />
+            </div>
+        </div>
     </div>
 }
 

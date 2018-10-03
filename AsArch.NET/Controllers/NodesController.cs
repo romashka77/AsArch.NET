@@ -121,8 +121,8 @@ namespace AsArch.NET.Controllers
         // GET: NODEs/Create
         public ActionResult Create(int? id_parent, int? id_itemType)
         {
-            var model = new NodeCreateViewModels { Id_parent = id_parent, Id_ItemTypeParent = id_itemType };
-            ViewBag.ID_ITEMTYPE = repository.GetListItemTypes(model.Id_ItemTypeParent, model.Id_itemtype);
+            var model = new NodeCreateViewModels { IdParent = id_parent, IdItemTypeParent = id_itemType };
+            ViewBag.ID_ITEMTYPE = repository.GetListItemTypes(model.IdItemTypeParent, model.IdItemType);
             return View(model);
         }
 
@@ -135,10 +135,10 @@ namespace AsArch.NET.Controllers
         {
             if (ModelState.IsValid)
             {
-                var id_newnode = repository.InsertNode2(model.Id_parent, model.Id_itemtype, model.NameNode);
+                var id_newnode = repository.InsertNode2(model.IdParent, model.IdItemType, model.NameNode);
                 return RedirectToAction(nameof(Edit), new { id = id_newnode, isCreated = true });
             }
-            ViewBag.ID_ITEMTYPE = repository.GetListItemTypes(model.Id_ItemTypeParent, model.Id_itemtype);
+            ViewBag.ID_ITEMTYPE = repository.GetListItemTypes(model.IdItemTypeParent, model.IdItemType);
             return View(model);
         }
         #endregion
@@ -148,12 +148,12 @@ namespace AsArch.NET.Controllers
         {
             model.Dict = repository.ListDict();
 
-            switch (model.Id_itemtype)
+            switch (model.IdItemType)
             {
                 case 1954://исковое заявление
                     ViewBag.ListCodIska = repository.ListNode(3).OrderBy(n => n.STR_LABEL).ToList().Select(n => new SelectListItem { Text = n.STR_LABEL, Value = n.ID_NODE.ToString() });
                     ViewBag.ListSud = repository.ListNode(2).OrderBy(n => n.STR_LABEL).ToList().Select(n => new SelectListItem { Text = n.STR_LABEL, Value = n.ID_NODE.ToString() });
-                    ViewBag.ListStoronaProc = repository.ListStoronaProc(model.Id_GrantParent).ToList();
+                    ViewBag.ListStoronaProc = repository.ListStoronaProc(model.IdGrantParent).ToList();
                     break;
                 case 2286://предмет иска
 
@@ -178,17 +178,17 @@ namespace AsArch.NET.Controllers
             var model = new NodeEditViewModels
             {
                 IdNode = node.ID_NODE,
-                Id_itemtype = node.ID_ITEMTYPE,
-                Id_parent = node.ID_PARENT,
+                IdItemType = node.ID_ITEMTYPE,
+                IdParent = node.ID_PARENT,
                 NameNode = node.STR_LABEL,
-                Id_GrantParent=node.NODE2.ID_PARENT
+                IdGrantParent = node.NODE2.ID_PARENT
             };
-            var query = repository.GetNodeAttrs(model.Id_itemtype, model.IdNode).ToList();
 
-            //foreach (var item in query)
-            //{
-            //    model.Attrs.Add(item.IdAttr, item);
-            //}
+            var query = repository.GetNodeAttrs(model.IdItemType, model.IdNode).ToList();
+            foreach (var item in query)
+            {
+                model.Attrs.Add(item.IdAttr, item);
+            }
 
             SetupNodeEditViewModels(model);
 
@@ -199,15 +199,15 @@ namespace AsArch.NET.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        //[ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit(NodeEditViewModels model)
         {
             if (ModelState.IsValid)
             {
                 NODE node = await repository.FindNodeAsync(model.IdNode);
-                if ((node.ID_NODE == model.IdNode) && (node.ID_ITEMTYPE != model.Id_itemtype))
+                if ((node.ID_NODE == model.IdNode) && (node.ID_ITEMTYPE != model.IdItemType))
                 {
-                    repository.ChangeNodeType(model.IdNode, model.Id_itemtype);
+                    repository.ChangeNodeType(model.IdNode, model.IdItemType);
                     return RedirectToAction(nameof(Edit), new { id = model.IdNode });
                 }
             }

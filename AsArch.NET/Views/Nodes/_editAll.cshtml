@@ -1,6 +1,5 @@
 ﻿@using AsArch.NET.EntityDataModel.Entytis
-@using AsArch.NET.Models
-@model NodeEditViewModels
+@model AsArch.NET.Models.NodeEditViewModels
 
 <div class="form-group">
     @*наименование*@
@@ -11,28 +10,31 @@
     </div>
 </div>
 @*Список аребутов*@
-@foreach (var item in Model.Attrs)
+@*@foreach (var item in Model.Attrs)*@
+@for (Model.IdAttr = 0; Model.IdAttr < Model.Attrs.Count; Model.IdAttr++)
 {
-    switch ((item.Value as NodeAttr).IdAttrType)
+    //switch ((item.Value as NodeAttr).IdAttrType)
+
+    switch (Model.Attrs[Model.IdAttr].NodeAttr).IdAttrType)
     {
         case 0:
-            Html.RenderPartial("_attrChar", (item.Value as NodeAttr));
+            Html.RenderPartial("_attrChar", Model);
             break;
         case 2:
-            Html.RenderPartial("_attrText", (item.Value as NodeAttr));
+            Html.RenderPartial("_attrText", Model);
             break;
         case 3:
-            Model.IdAttr = (item.Value as NodeAttr).IdAttr;
+            //Model.IdAttr = (item.Value as NodeAttr).IdAttr;
             Html.RenderPartial("_selectList", Model);
             break;
         case 4:
-            Html.RenderPartial("_attrDate", (item.Value as NodeAttr));
+            Html.RenderPartial("_attrDate", Model);
             break;
         case 11:
-            Html.RenderPartial("_attrFloat", (item.Value as NodeAttr));
+            Html.RenderPartial("_attrFloat", Model);
             break;
         default:
-            Html.RenderPartial("_attrChar", (item.Value as NodeAttr));
+            Html.RenderPartial("_attrChar", Model);
             break;
     }
 }

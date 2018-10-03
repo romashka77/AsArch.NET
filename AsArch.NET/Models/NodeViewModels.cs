@@ -11,11 +11,11 @@ namespace AsArch.NET.Models
 {
     public class NodeViewModels
     {
-        public int IdNode;
-        public int? Id_parent { get; set; }
-        public int? Id_GrantParent { get; set; }
+        public int IdNode { get; set; }
+        public int? IdParent { get; set; }
+        public int? IdGrantParent { get; set; }
         [Display(Name = "Тип")]
-        public int Id_itemtype { get; set; }
+        public int IdItemType { get; set; }
         [Required(ErrorMessage = "Заполните поле {0}.")]
         [StringLength(256)]
         [Display(Name = "Наименование")]
@@ -25,13 +25,13 @@ namespace AsArch.NET.Models
 
     public class NodeCreateViewModels : NodeViewModels
     {
-        public int? Id_ItemTypeParent { get; set; }
+        public int? IdItemTypeParent { get; set; }
 
     }
     public class NodeEditViewModels : NodeViewModels
     {
         
-        public int IdAttr;
+        public int IdAttr { get; set; }
         public Dictionary<int, NodeAttr> Attrs { get; set; }
         public IQueryable<DICTIONARy> Dict { get; set; }
 

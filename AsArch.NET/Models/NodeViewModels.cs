@@ -11,7 +11,7 @@ namespace AsArch.NET.Models
 {
     public class NodeViewModels
     {
-        public int IdNode { get; set; }
+        
         public int? IdParent { get; set; }
         public int? IdGrantParent { get; set; }
         [Display(Name = "Тип")]
@@ -30,7 +30,7 @@ namespace AsArch.NET.Models
     }
     public class NodeEditViewModels : NodeViewModels
     {
-        
+        public int IdNode { get; set; }
         public int IdAttr { get; set; }
         public Dictionary<int, NodeAttr> Attrs { get; set; }
         public IQueryable<DICTIONARy> Dict { get; set; }

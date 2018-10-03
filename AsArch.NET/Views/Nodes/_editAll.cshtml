@@ -10,12 +10,11 @@
     </div>
 </div>
 @*Список аребутов*@
-@*@foreach (var item in Model.Attrs)*@
-@for (Model.IdAttr = 0; Model.IdAttr < Model.Attrs.Count; Model.IdAttr++)
+@foreach (var item in Model.Attrs)
 {
     //switch ((item.Value as NodeAttr).IdAttrType)
-
-    switch (Model.Attrs[Model.IdAttr].NodeAttr).IdAttrType)
+    Model.IdAttr = item.Key;
+    switch (Model.Attrs[item.Key].IdAttrType)
     {
         case 0:
             Html.RenderPartial("_attrChar", Model);

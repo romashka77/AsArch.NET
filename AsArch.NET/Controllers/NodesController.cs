@@ -181,14 +181,18 @@ namespace AsArch.NET.Controllers
                 IdItemType = node.ID_ITEMTYPE,
                 IdParent = node.ID_PARENT,
                 NameNode = node.STR_LABEL,
-                IdGrantParent = node.NODE2.ID_PARENT
-            };
+                IdGrantParent = node.NODE2.ID_PARENT,
+                
+        };
 
-            var query = repository.GetNodeAttrs(model.IdItemType, model.IdNode).ToList();
-            foreach (var item in query)
+            //var query = repository.GetNodeAttrs(model.IdItemType, model.IdNode).ToList();
+            
+            //foreach (var item in query)
             {
-                model.Attrs.Add(item.IdAttr, item);
+              //  model.Attrs.Add(item.IdAttr, item);
             }
+            model.Attrs = repository.GetNodeAttrs(model.IdItemType, model.IdNode).ToList(); 
+
 
             SetupNodeEditViewModels(model);
 

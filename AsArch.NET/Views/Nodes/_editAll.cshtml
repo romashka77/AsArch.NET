@@ -10,14 +10,16 @@
     </div>
 </div>
 @*Список атребутов*@
+@{ Model.IdAttr = -1;}
 @foreach (var item in Model.Attrs)
 {
     //switch ((item.Value as NodeAttr).IdAttrType)
-    Model.IdAttr = item.Key;
-    switch (Model.Attrs[item.Key].IdAttrType)
+    Model.IdAttr++;// = item.IdAttr;
+    switch (item.IdAttrType)
     {
         case 0:
             Html.RenderPartial("_attrChar", Model);
+            
             break;
         case 2:
             Html.RenderPartial("_attrText", Model);

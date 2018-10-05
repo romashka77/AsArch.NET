@@ -32,12 +32,13 @@ namespace AsArch.NET.Models
     {
         public int IdNode { get; set; }
         public int IdAttr { get; set; }
-        public Dictionary<int, NodeAttr> Attrs { get; set; }
+        public List<NodeAttr> Attrs { get; set; }
+        [HiddenInput(DisplayValue = false)]
         public IQueryable<DICTIONARy> Dict { get; set; }
 
-        public NodeEditViewModels()
-        {
-            Attrs = new Dictionary<int, NodeAttr>();
-        }
+        //public NodeEditViewModels()
+        //{
+        //    Attrs = new Dictionary<int, NodeAttr>();
+        //}
     }
 }

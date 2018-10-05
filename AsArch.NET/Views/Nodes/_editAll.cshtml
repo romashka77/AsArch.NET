@@ -1,4 +1,4 @@
-﻿@using AsArch.NET.EntityDataModel.Entytis
+﻿@*@using AsArch.NET.EntityDataModel.Entytis*@
 @model AsArch.NET.Models.NodeEditViewModels
 
 <div class="form-group">
@@ -9,7 +9,7 @@
         @Html.ValidationMessageFor(model => model.NameNode, "", new { @class = "text-danger" })
     </div>
 </div>
-@*Список аребутов*@
+@*Список атребутов*@
 @foreach (var item in Model.Attrs)
 {
     //switch ((item.Value as NodeAttr).IdAttrType)

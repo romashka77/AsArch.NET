@@ -22,30 +22,35 @@
                     <div class="card card-block">
                         @{
                             //Регистрационный номер
-                            Html.RenderPartial("_attrLabel", Model.Attrs[2141]);
-                            //Регистрационная дата
-                            Html.RenderPartial("_attrDate", Model.Attrs[2134]);
-                            //Номер дела
-                            Html.RenderPartial("_attrChar", Model.Attrs[1958]);
-                            //Дата принятия иска
-                            Html.RenderPartial("_attrDate", Model.Attrs[2506]);
+                            Model.IdAttr = 0;
+                            Html.RenderPartial("_attrLabel", Model);//.Attrs[2141]);
+                                                                    //Регистрационная дата
+                            Model.IdAttr = 1;
+                            Html.RenderPartial("_attrDate", Model);//.Attrs[2134]);
+                                                                   //Номер дела
+                            Model.IdAttr = 2;
+                            Html.RenderPartial("_attrChar", Model);//.Attrs[1958]);
+                                                                   //Дата принятия иска
+                            Model.IdAttr = 3;
+                            Html.RenderPartial("_attrDate", Model);//.Attrs[2506]);
 
-                            Model.IdAttr = 2203;
+                            Model.IdAttr = 4;// 2203;
                             Html.RenderPartial("_selectList", Model);
 
-                            Model.IdAttr = 2205;
+                            Model.IdAttr = 5;// 2205;
                             Html.RenderPartial("_selectList", Model);
 
-                            Model.IdAttr = 2207;
+                            Model.IdAttr = 6;// 2207;
                             Html.RenderPartial("_selectList", Model);
 
                             //Категория споров
-                            Model.IdAttr = 2298;
+                            Model.IdAttr = 7;// 2298;
                             Html.RenderPartial("_selectList", Model);
                             //Исковое заявление - код иска
-                            Html.RenderPartial("_attrLabel", Model.Attrs[2369]);
+                            Model.IdAttr = 8;
+                            Html.RenderPartial("_attrLabel", Model);//.Attrs[2369]);
                             //Наименование предмета иска
-                            Html.RenderPartial("_attrLabel", Model.Attrs[1964]);
+                            @*Html.RenderPartial("_attrLabel", Model.Attrs[1964]);
                             //Код предмета иска Ссылка 1:1 сделать кнопку
                             Html.RenderPartial("_selectListCodIska", Model.Attrs[2299]);
 
@@ -98,7 +103,7 @@
                             Html.RenderPartial("_attrLabel", Model.Attrs[2230]);
 
                             //Примечание
-                            Html.RenderPartial("_attrChar", Model.Attrs[969]);
+                            Html.RenderPartial("_attrChar", Model.Attrs[969]);*@
                         }
                     </div>
                 </div>
@@ -114,7 +119,7 @@
                 <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                     @*Таблица*@
                     <div class="table-responsive">
-                        <table class="table table-striped table-hover">
+                        @*<table class="table table-striped table-hover">
                             <tr>
                                 <th></th>
                                 <th>1-я инстанция</th>
@@ -240,7 +245,7 @@
                                 <td>@{Html.RenderPartial("_attrTextTable", Model.Attrs[2042]);}</td>
                                 <td>@{Html.RenderPartial("_attrTextTable", Model.Attrs[2040]);}</td>
                             </tr>
-                        </table>
+                        </table>*@
                     </div>
                 </div>
                 <div class="panel panel-default">

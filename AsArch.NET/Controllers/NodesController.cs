@@ -1,17 +1,15 @@
-﻿using System;
+﻿using AsArch.NET.EntityDataModel;
+using AsArch.NET.EntityDataModel.Entytis;
+using AsArch.NET.Interfaces;
+using AsArch.NET.Models;
+using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.Entity;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Net;
-using System.Web;
+using System.Threading.Tasks;
 using System.Web.Mvc;
-using AsArch.NET.EntityDataModel;
-using AsArch.NET.Interfaces;
 using X.PagedList;
-using AsArch.NET.Models;
-using AsArch.NET.EntityDataModel.Entytis;
 
 namespace AsArch.NET.Controllers
 {
@@ -147,7 +145,6 @@ namespace AsArch.NET.Controllers
         private void SetupNodeEditViewModels(NodeEditViewModels model)
         {
             model.Dict = repository.ListDict();
-
             switch (model.IdItemType)
             {
                 case 1954://исковое заявление
@@ -174,24 +171,77 @@ namespace AsArch.NET.Controllers
             {
                 return HttpNotFound();
             }
-            
+
             var model = new NodeEditViewModels
             {
                 IdNode = node.ID_NODE,
                 IdItemType = node.ID_ITEMTYPE,
                 IdParent = node.ID_PARENT,
                 NameNode = node.STR_LABEL,
-                IdGrantParent = node.NODE2.ID_PARENT
+                IdGrantParent = node.NODE2.ID_PARENT,
             };
-
-            var query = repository.GetNodeAttrs(model.IdItemType, model.IdNode).ToList();
-            foreach (var item in query)
+            //if (model.IdItemType == 1954)
+            //{
+            //    model.Attrs = new List<NodeAttr>();
+            //    var rep = repository.GetNodeAttrs(model.IdItemType, model.IdNode).ToList();
+            //    //Регистрационный номер
+            //    model.Attrs.Add(rep.SingleOrDefault(n =>n.IdAttr == 2141));
+            //    //Регистрационная дата
+            //    model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2134));
+            //    //Номер дела
+            //    model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 1958));
+            //    //Дата принятия иска
+            //    model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2506));
+            //    model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2203));
+            //    model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2205));
+            //    model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2207));
+            //    //Категория споров
+            //    model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2298));
+            //    //Исковое заявление - код иска
+            //    model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2369));
+            //    //Наименование предмета иска
+            //    model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 1964));
+            //    //Код предмета иска Ссылка 1:1 сделать кнопку
+            //    model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2299));
+            //    //Название суда
+            //    model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2253));
+            //    //Вид суда
+            //    model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 1957));
+            //    //Адрес суда
+            //    model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2158));
+            //    //Регион суда(текст)
+            //    model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2272));
+            //    //Сумма иска
+            //    model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2235));
+            //    //Исполнитель
+            //    model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2234));
+            //    //Истец
+            //    model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2263));
+            //    //Истец ИНН
+            //    model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2241));
+            //    //Истец Адрес
+            //    model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2228));
+            //    //Ответчик
+            //    model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2264));
+            //    //Ответчик ИНН
+            //    model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2242));
+            //    //Ответчик Адрес
+            //    model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2229));
+            //    //3-лицо
+            //    model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2266));
+            //    //3-лицо ИНН
+            //    model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2243));
+            //    //3-лицо Адрес
+            //    model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2230));
+            //    //Примечание
+            //    model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 969));
+            //    model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2011));
+            //}
+            //else
             {
-                model.Attrs.Add(item.IdAttr, item);
+                model.Attrs = repository.GetNodeAttrs(model.IdItemType, model.IdNode).ToList();
             }
-
             SetupNodeEditViewModels(model);
-
             return View(model);
         }
 
@@ -205,10 +255,41 @@ namespace AsArch.NET.Controllers
             if (ModelState.IsValid)
             {
                 NODE node = await repository.FindNodeAsync(model.IdNode);
-                if ((node.ID_NODE == model.IdNode) && (node.ID_ITEMTYPE != model.IdItemType))
+                if (node.ID_NODE == model.IdNode)
                 {
-                    repository.ChangeNodeType(model.IdNode, model.IdItemType);
-                    return RedirectToAction(nameof(Edit), new { id = model.IdNode });
+                    if (node.ID_ITEMTYPE != model.IdItemType)
+                    {
+                        repository.ChangeNodeType(model.IdNode, model.IdItemType);
+                        return RedirectToAction(nameof(Edit), new { id = model.IdNode });
+                    }
+                    if (node.STR_LABEL != model.NameNode)
+                    {
+                        repository.RenameNode(model.IdNode, model.NameNode);
+                    }
+                    for (int i = 0; i < model.Attrs.Count; i++)
+                    {
+                        switch (model.Attrs[i].IdAttrType)
+                        {
+                            case 0:
+                                repository.UpdateCharAttr(model.Attrs[i].IdAttr, model.IdNode, model.Attrs[i].CHAR_VALUE);
+                                break;
+                            case 2:
+                                repository.UpdateTextAttr(model.Attrs[i].IdAttr, model.IdNode, model.Attrs[i].TEXT_VALUE);
+                                break;
+                            case 3:
+                                repository.UpdateCharAttr(model.Attrs[i].IdAttr, model.IdNode, model.Attrs[i].CHAR_VALUE);
+                                break;
+                            case 4:
+                                repository.UpdateDateAttr(model.Attrs[i].IdAttr, model.IdNode, model.Attrs[i].DATE_VALUE);
+                                break;
+                            case 11:
+                                repository.UpdateFloatAttr(model.Attrs[i].IdAttr, model.IdNode, model.Attrs[i].FLOAT_VALUE);
+                                break;
+                            default:
+                                repository.UpdateCharAttr(model.Attrs[i].IdAttr, model.IdNode, model.Attrs[i].CHAR_VALUE);
+                                break;
+                        }
+                    }
                 }
             }
             return View(model);
@@ -218,7 +299,7 @@ namespace AsArch.NET.Controllers
         {
             if (String.IsNullOrEmpty(value))
             {
-                return PartialView(new StoronaProcParam {Adres="", INN="" });
+                return PartialView(new StoronaProcParam { Adres = "", INN = "" });
             }
 
             return PartialView(new StoronaProcParam { Adres = "Adres", INN = "INN" }); ;

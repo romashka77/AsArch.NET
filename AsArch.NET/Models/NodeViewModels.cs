@@ -11,10 +11,12 @@ namespace AsArch.NET.Models
 {
     public class NodeViewModels
     {
-        
+        [HiddenInput(DisplayValue = false)]
         public int? IdParent { get; set; }
+        [HiddenInput(DisplayValue = false)]
         public int? IdGrantParent { get; set; }
-        [Display(Name = "Тип")]
+        //[Display(Name = "Тип")]
+        [HiddenInput(DisplayValue = false)]
         public int IdItemType { get; set; }
         [Required(ErrorMessage = "Заполните поле {0}.")]
         [StringLength(256)]
@@ -30,14 +32,13 @@ namespace AsArch.NET.Models
     }
     public class NodeEditViewModels : NodeViewModels
     {
+        [HiddenInput(DisplayValue = false)]
         public int IdNode { get; set; }
+        [HiddenInput(DisplayValue = false)]
         public int IdAttr { get; set; }
-        public Dictionary<int, NodeAttr> Attrs { get; set; }
+        [HiddenInput(DisplayValue = false)]
+        public List<NodeAttr> Attrs { get; set; }
+        [HiddenInput(DisplayValue = false)]
         public IQueryable<DICTIONARy> Dict { get; set; }
-
-        public NodeEditViewModels()
-        {
-            Attrs = new Dictionary<int, NodeAttr>();
-        }
     }
 }

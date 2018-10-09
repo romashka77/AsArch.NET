@@ -74,11 +74,30 @@ namespace AsArch.NET.EntityDataModel
             }
             return node;
         }
+        public int RenameNode(int? id_node, string str_label )
+        {
+            return db.RenameNode(id_node, str_label, null);
+    }
         public int ChangeNodeType(int? id_node, int? id_newtype)
         {
             //вызов функции
-            var res = db.ChangeNodeType(id_node, id_newtype, null);
-            return res;
+            return db.ChangeNodeType(id_node, id_newtype, null);
+        }
+        public int UpdateCharAttr(int? id_attr, int? id_node, string char_val)
+        {
+            return db.UpdateCharAttr(id_attr, id_node, char_val,null,null);
+        }
+        public int UpdateTextAttr(int? id_attr, int? id_node, string text_val)
+        {
+            return db.UpdateTextAttr(id_attr, id_node, null, text_val, null);
+        }
+        public int UpdateDateAttr(int? id_attr, int? id_node, Nullable<System.DateTime> date_val)
+        {
+            return db.UpdateDateAttr(id_attr, id_node, null, date_val, null);
+        }
+        public int UpdateFloatAttr(int? id_attr, int? id_node, double? float_val)
+        {
+            return db.UpdateFloatAttr(id_attr, id_node, null, float_val, null);
         }
         public int? InsertNode2(int? id_parent, int id_itemtype, string str_label)
         {

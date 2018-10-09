@@ -1,35 +1,33 @@
-﻿@model AsArch.NET.Models.NodeEditViewModels
+﻿@using AsArch.NET.EntityDataModel.Entytis
+@model AsArch.NET.Models.NodeEditViewModels
 
 @{
     ViewBag.Title = "Редактировать";
+    //TempData["Attrs"] = Model.Attrs;
 }
 
 <h4>@Model.NameNode</h4>
 <hr />
+
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
+    @*@Html.EditorForModel()*@
     <div class="form-horizontal">
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.IdNode)
         @Html.HiddenFor(model => model.IdItemType)
         @Html.HiddenFor(model => model.IdParent)
         @Html.HiddenFor(model => model.IdGrantParent)
-        @Html.HiddenFor(model => model.IdAttr)
-        @Html.HiddenFor(model => model.Attrs)
-        @if (Model.IdItemType == 1954)
-            {
-                Html.RenderPartial("_editIskovoeZayvlenie", Model);
-
-            }
-            //else if (Model.Id_itemtype == 2286)
-            //{
-            //    Html.RenderPartial("_editPredmetIska", Model);
-            //}
-            else
-            {
-                Html.RenderPartial("_editAll", Model);
-            }
+        @*@if (Model.IdItemType == 1954)
+        {
+            Html.RenderPartial("_editIskovoeZayvlenie", Model);
+        }
+        else*@
+        @{
+            Html.RenderPartial("_editAll", Model);
+        }
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Сохранить" class="btn btn-default" />
@@ -38,19 +36,7 @@
     </div>
 }
 
-
-@section scripts{
+@section scripts
+{
     @Scripts.Render("~/bundles/jqueryval")
 }
-
-
-@*@section scripts
-                    {
-        <script>
-            $(function () {
-                $('.itemtype').change(function () {
-                    $(this).closest('form').trigger('submit');
-                })
-            })
-        </script>
-    }*@

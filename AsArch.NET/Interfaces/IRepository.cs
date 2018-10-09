@@ -25,7 +25,6 @@ namespace AsArch.NET.Interfaces
         /// <param name="id"></param>
         /// <returns></returns>
         Task<(int?, string, string, int?)> GetParentId(int? id = null);
-
         Task<NODE> FindNodeAsync(int? id);
 
         /// <summary>
@@ -46,6 +45,11 @@ namespace AsArch.NET.Interfaces
         int? InsertNode2(int? id_parent, int id_itemtype, string str_label);
         Task<NODE> RemoveNodeAsync(int id);
         int ChangeNodeType(int? id_node, int? id_newtype);
+        int RenameNode(int? id_node, string str_label);
+        int UpdateCharAttr(int? id_attr, int? id_node, string char_val);
+        int UpdateTextAttr(int? id_attr, int? id_node, string text_val);
+        int UpdateDateAttr(int? id_attr, int? id_node, Nullable<System.DateTime> date_val);
+        int UpdateFloatAttr(int? id_attr, int? id_node, double? float_val);
         IQueryable<DICTIONARy> ListDict();
     }
 }

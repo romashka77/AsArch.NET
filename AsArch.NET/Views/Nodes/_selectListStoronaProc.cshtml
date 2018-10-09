@@ -1,14 +1,12 @@
-﻿@*@using AsArch.NET.EntityDataModel.Entytis
-@model NodeAttr*@
-@using AsArch.NET.EntityDataModel.Entytis
-@using AsArch.NET.Models
-@model NodeEditViewModels
-
+﻿@model AsArch.NET.Models.NodeEditViewModels
 
 <div class="form-group">
+    @Html.HiddenFor(model => Model.Attrs[Model.IdAttr].IdAttr)
+    @Html.HiddenFor(model => Model.Attrs[Model.IdAttr].IdAttrType)
+    @Html.HiddenFor(model => Model.Attrs[Model.IdAttr].NameAttr)
     @Html.Label(Model.Attrs[Model.IdAttr].NameAttr, htmlAttributes: new { @class = "control-label col-md-2" })
     <div class="col-md-10">
-        @Html.DropDownListFor(model => model.Attrs[Model.IdAttr].RefNode, (ViewBag.ListStoronaProc as IEnumerable<StoronaProc>).Select(a => new SelectListItem { Text = a.Name, Value = a.Id.ToString(),Selected= (a.Id == Model.Attrs[Model.IdAttr].RefNode) }), "Выберите сторону роцесса", htmlAttributes: new { @class = "form-control StoronaProc" })
+        @Html.DropDownListFor(model => model.Attrs[Model.IdAttr].RefNode, (ViewBag.ListStoronaProc as IEnumerable<StoronaProc>).Select(a => new SelectListItem { Text = a.Name, Value = a.Id.ToString(), Selected = (a.Id == Model.Attrs[Model.IdAttr].RefNode) }), "Выберите сторону роцесса", htmlAttributes: new { @class = "form-control StoronaProc" })
         @*@Html.ValidationMessageFor(model => model.CHAR_VALUE, "", new { @class = "text-danger" })*@
     </div>
 </div>

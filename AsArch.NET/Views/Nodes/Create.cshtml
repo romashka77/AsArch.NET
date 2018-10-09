@@ -8,10 +8,11 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-
+    @Html.HiddenFor(model =>model.IdParent)
     <div class="form-horizontal">
         <h4>NODE</h4>
         <hr />
+
         <div class="form-group">
             @Html.LabelFor(model => model.NameNode, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -22,7 +23,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.IdItemType, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList(  "ID_ITEMTYPE", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownListFor(model => model.IdItemType, ViewBag.ID_ITEMTYPE as IEnumerable<SelectListItem>, "Выберите тип элемента",  htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.IdItemType, "", new { @class = "text-danger" })
             </div>
         </div>

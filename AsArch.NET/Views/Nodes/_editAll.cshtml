@@ -10,23 +10,47 @@
     </div>
 </div>
 @*Список атребутов*@
+
+@if (Model.IdItemType == 1954)
+{
+
+}
 @{ Model.IdAttr = -1;}
 @foreach (var item in Model.Attrs)
 {
-    //switch ((item.Value as NodeAttr).IdAttrType)
+    if ((Model.IdItemType == 1954) && (item.IdAttr == 2011))
+    {
+
+    }
     Model.IdAttr++;// = item.IdAttr;
     switch (item.IdAttrType)
     {
         case 0:
             Html.RenderPartial("_attrChar", Model);
-            
+
             break;
         case 2:
             Html.RenderPartial("_attrText", Model);
             break;
         case 3:
-            //Model.IdAttr = (item.Value as NodeAttr).IdAttr;
-            Html.RenderPartial("_selectList", Model);
+            switch (item.IdAttr)
+            {
+                case 2299:
+                    Html.RenderPartial("_selectListCodIska", Model);
+                    break;
+                case 2253:
+                    Html.RenderPartial("_selectListSud", Model);
+                    break;
+                case 2263:
+                case 2264:
+                case 2266:
+                    Html.RenderPartial("_selectListStoronaProc", Model);
+                    @Html.Action("StoronaProcParam", new { value = "test" })
+                    break;
+                default:
+                    Html.RenderPartial("_selectList", Model);
+                    break;
+            }
             break;
         case 4:
             Html.RenderPartial("_attrDate", Model);

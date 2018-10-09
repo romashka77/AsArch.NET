@@ -1,9 +1,11 @@
-﻿@using AsArch.NET.EntityDataModel.Entytis
-@model NodeAttr
+﻿@model AsArch.NET.Models.NodeEditViewModels
 
 <div class="form-group">
-    @Html.Label(Model.NameAttr, htmlAttributes: new { @class = "control-label col-md-2" })
+    @Html.HiddenFor(model => Model.Attrs[Model.IdAttr].IdAttr)
+    @Html.HiddenFor(model => Model.Attrs[Model.IdAttr].IdAttrType)
+    @Html.HiddenFor(model => Model.Attrs[Model.IdAttr].NameAttr)
+    @Html.Label(Model.Attrs[Model.IdAttr].NameAttr, htmlAttributes: new { @class = "control-label col-md-2" })
     <div class="col-md-10">
-        @Html.DropDownListFor(model => model.RefNode, ViewBag.ListSud as IEnumerable<SelectListItem>, "Выберите суд", htmlAttributes : new { @class = "form-control" } )
+        @Html.DropDownListFor(model => model.Attrs[Model.IdAttr].RefNode, ViewBag.ListSud as IEnumerable<SelectListItem>, "Выберите суд", htmlAttributes: new { @class = "form-control" })
     </div>
 </div>

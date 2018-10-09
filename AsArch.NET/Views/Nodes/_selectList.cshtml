@@ -2,6 +2,9 @@
 @model NodeEditViewModels
 
 <div class="form-group">
+    @Html.HiddenFor(model => Model.Attrs[Model.IdAttr].IdAttr)
+    @Html.HiddenFor(model => Model.Attrs[Model.IdAttr].IdAttrType)
+    @Html.HiddenFor(model => Model.Attrs[Model.IdAttr].NameAttr)
     @Html.Label(Model.Attrs[Model.IdAttr].NameAttr, htmlAttributes: new { @class = "control-label col-md-2" })
     <div class="col-md-10">
         @if (Model.Attrs[Model.IdAttr].Options == 2)
@@ -15,7 +18,8 @@
     }
     else
     {
-        @Html.DropDownListFor(model => model.Attrs[Model.IdAttr].CHAR_VALUE, Model.Dict.Where(a => a.ID_ATTR == Model.IdAttr).OrderBy(a => a.STR_NAME).ToList().Select(a => new SelectListItem { Text = a.STR_NAME, Value = a.ID_DICT.ToString(), Selected = (a.STR_NAME == Model.Attrs[Model.IdAttr].CHAR_VALUE) }), "Выберите " + Model.Attrs[Model.IdAttr].NameAttr, htmlAttributes: new { @class = "form-control" })
+        var i = Model.Attrs[Model.IdAttr].IdAttr;
+        @Html.DropDownListFor(model => model.Attrs[Model.IdAttr].CHAR_VALUE, Model.Dict.Where(a => a.ID_ATTR == i).OrderBy(a => a.STR_NAME).ToList().Select(a => new SelectListItem { Text = a.STR_NAME, Value = a.ID_DICT.ToString(), Selected = (a.STR_NAME == Model.Attrs[Model.IdAttr].CHAR_VALUE) }), "Выберите " + Model.Attrs[Model.IdAttr].NameAttr, htmlAttributes: new { @class = "form-control" })
         @*@Html.ValidationMessageFor(model => model.CHAR_VALUE, "", new { @class = "text-danger" })*@
     }
 

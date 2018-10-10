@@ -1,12 +1,12 @@
 ﻿@model AsArch.NET.Models.NodeEditViewModels
 
 <div class="form-group">
-    @Html.HiddenFor(model => Model.Attrs[Model.IdAttr].IdAttr)
-    @Html.HiddenFor(model => Model.Attrs[Model.IdAttr].IdAttrType)
-    @Html.HiddenFor(model => Model.Attrs[Model.IdAttr].NameAttr)
+    @Html.HiddenFor(model => model.Attrs[model.IdAttr].IdAttr)
+    @Html.HiddenFor(model => model.Attrs[model.IdAttr].IdAttrType)
+    @Html.HiddenFor(model => model.Attrs[model.IdAttr].NameAttr)
     @Html.Label(Model.Attrs[Model.IdAttr].NameAttr, htmlAttributes: new { @class = "control-label col-md-2" })
     <div class="col-md-10">
-        @Html.DropDownListFor(model => model.Attrs[Model.IdAttr].CHAR_VALUE, ViewBag.ListIspolnit as IEnumerable<SelectListItem>, "Выберите исполнителя", new { htmlAttributes = new { @class = "form-control" } })
+        @Html.DropDownListFor(model => model.Attrs[model.IdAttr].CHAR_VALUE, ViewBag.ListIspolnit as IEnumerable<SelectListItem>, "Выберите исполнителя", new { htmlAttributes = new { @class = "form-control" } })
     </div>
 </div>
 

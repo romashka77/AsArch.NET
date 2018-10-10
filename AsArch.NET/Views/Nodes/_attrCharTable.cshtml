@@ -1,5 +1,6 @@
-﻿@using AsArch.NET.EntityDataModel.Entytis
-@model NodeAttr
+﻿@model AsArch.NET.Models.NodeEditViewModels
 
-
-@Html.EditorFor(model => model.CHAR_VALUE, new { htmlAttributes = new { @class = "form-control" } })
+@Html.HiddenFor(model => model.Attrs[Model.IdAttr].IdAttr)
+@Html.HiddenFor(model => model.Attrs[Model.IdAttr].IdAttrType)
+@Html.HiddenFor(model => model.Attrs[Model.IdAttr].NameAttr)
+@Html.EditorFor(model => model.Attrs[Model.IdAttr].CHAR_VALUE, new { htmlAttributes = new { @class = "form-control" } })

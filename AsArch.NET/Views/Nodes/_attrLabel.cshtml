@@ -1,7 +1,11 @@
 ﻿@model AsArch.NET.Models.NodeEditViewModels
 
 <div class="form-group">
+    @Html.HiddenFor(model => model.Attrs[Model.IdAttr].IdAttr)
+    @Html.HiddenFor(model => model.Attrs[Model.IdAttr].IdAttrType)
+    @Html.HiddenFor(model => model.Attrs[Model.IdAttr].NameAttr)
     @Html.Label(Model.Attrs[Model.IdAttr].NameAttr, htmlAttributes: new { @class = "control-label col-md-2" })
+    @Html.HiddenFor(model => model.Attrs[Model.IdAttr].CHAR_VALUE)
     <div class="col-md-10">
         @Html.DisplayFor(model => model.Attrs[Model.IdAttr].CHAR_VALUE, new { htmlAttributes = new { @class = "form-control" } })
         @*@Html.ValidationMessageFor(model => model.CHAR_VALUE, "", new { @class = "text-danger" })*@

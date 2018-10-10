@@ -1,12 +1,13 @@
-﻿@model AsArch.NET.Models.NodeEditViewModels
+﻿@using AsArch.NET.EntityDataModel
+@model AsArch.NET.Models.NodeEditViewModels
 
 <div class="form-group">
-    @Html.HiddenFor(model => Model.Attrs[Model.IdAttr].IdAttr)
-    @Html.HiddenFor(model => Model.Attrs[Model.IdAttr].IdAttrType)
-    @Html.HiddenFor(model => Model.Attrs[Model.IdAttr].NameAttr)
-    @Html.LabelFor(model => Model.Attrs[Model.IdAttr].NameAttr, htmlAttributes: new { @class = "control-label col-md-2" })
+    @Html.HiddenFor(model => model.Attrs[Model.IdAttr].IdAttr)
+    @Html.HiddenFor(model => model.Attrs[Model.IdAttr].IdAttrType)
+    @Html.HiddenFor(model => model.Attrs[Model.IdAttr].NameAttr)
+    @Html.LabelFor(model => model.Attrs[Model.IdAttr].NameAttr, htmlAttributes: new { @class = "control-label col-md-2" })
     <div class="col-md-10">
-        @Html.DropDownListFor(model => model.Attrs[Model.IdAttr].RefNode, ViewBag.ListCodIska as IEnumerable<SelectListItem>, "Выберите код иска", htmlAttributes: new { @class = "form-control" })
+        @Html.DropDownListFor(model => model.Attrs[Model.IdAttr].RefNode, (ViewBag.ListCodIska as IOrderedQueryable<NODE>).ToList().Select(n => new SelectListItem { Text = n.STR_LABEL, Value = n.ID_NODE.ToString(), Selected = (n.ID_NODE.ToString() == Model.Attrs[Model.IdAttr].RefNode.ToString()) }), "Выберите код иска", htmlAttributes: new { @class = "form-control" })
     </div>
 </div>
 

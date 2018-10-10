@@ -148,8 +148,8 @@ namespace AsArch.NET.Controllers
             switch (model.IdItemType)
             {
                 case 1954://исковое заявление
-                    ViewBag.ListCodIska = repository.ListNode(3).OrderBy(n => n.STR_LABEL).ToList().Select(n => new SelectListItem { Text = n.STR_LABEL, Value = n.ID_NODE.ToString() });
-                    ViewBag.ListSud = repository.ListNode(2).OrderBy(n => n.STR_LABEL).ToList().Select(n => new SelectListItem { Text = n.STR_LABEL, Value = n.ID_NODE.ToString() });
+                    ViewBag.ListCodIska = repository.ListNode(3).OrderBy(n => n.STR_LABEL);
+                    ViewBag.ListSud = repository.ListNode(2).OrderBy(n => n.STR_LABEL);
                     ViewBag.ListStoronaProc = repository.ListStoronaProc(model.IdGrantParent).ToList();
                     break;
                 case 2286://предмет иска
@@ -180,64 +180,188 @@ namespace AsArch.NET.Controllers
                 NameNode = node.STR_LABEL,
                 IdGrantParent = node.NODE2.ID_PARENT,
             };
-            //if (model.IdItemType == 1954)
-            //{
-            //    model.Attrs = new List<NodeAttr>();
-            //    var rep = repository.GetNodeAttrs(model.IdItemType, model.IdNode).ToList();
-            //    //Регистрационный номер
-            //    model.Attrs.Add(rep.SingleOrDefault(n =>n.IdAttr == 2141));
-            //    //Регистрационная дата
-            //    model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2134));
-            //    //Номер дела
-            //    model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 1958));
-            //    //Дата принятия иска
-            //    model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2506));
-            //    model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2203));
-            //    model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2205));
-            //    model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2207));
-            //    //Категория споров
-            //    model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2298));
-            //    //Исковое заявление - код иска
-            //    model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2369));
-            //    //Наименование предмета иска
-            //    model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 1964));
-            //    //Код предмета иска Ссылка 1:1 сделать кнопку
-            //    model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2299));
-            //    //Название суда
-            //    model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2253));
-            //    //Вид суда
-            //    model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 1957));
-            //    //Адрес суда
-            //    model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2158));
-            //    //Регион суда(текст)
-            //    model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2272));
-            //    //Сумма иска
-            //    model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2235));
-            //    //Исполнитель
-            //    model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2234));
-            //    //Истец
-            //    model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2263));
-            //    //Истец ИНН
-            //    model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2241));
-            //    //Истец Адрес
-            //    model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2228));
-            //    //Ответчик
-            //    model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2264));
-            //    //Ответчик ИНН
-            //    model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2242));
-            //    //Ответчик Адрес
-            //    model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2229));
-            //    //3-лицо
-            //    model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2266));
-            //    //3-лицо ИНН
-            //    model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2243));
-            //    //3-лицо Адрес
-            //    model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2230));
-            //    //Примечание
-            //    model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 969));
-            //    model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2011));
-            //}
-            //else
+            if (model.IdItemType == 1954)
+            {
+                model.Attrs = new List<NodeAttr>();
+                var rep = repository.GetNodeAttrs(model.IdItemType, model.IdNode).ToList();
+                //0Регистрационный номер
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2141));
+                //1Регистрационная дата
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2134));
+                //2Номер дела
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 1958));
+                //3Дата принятия иска
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2506));
+                //4
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2203));
+                //5
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2205));
+                //6
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2207));
+                //7Категория споров
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2298));
+                //8Исковое заявление - код иска
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2369));
+                //9Наименование предмета иска
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 1964));
+                //10Код предмета иска Ссылка 1:1 сделать кнопку
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2299));
+                //11Название суда
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2253));
+                //12Вид суда
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 1957));
+                //13Адрес суда
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2158));
+                //14Регион суда(текст)
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2272));
+                //15Сумма иска
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2235));
+                //16Исполнитель
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2234));
+                //17Истец
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2263));
+                //18Истец ИНН
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2241));
+                //19Истец Адрес
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2228));
+                //20Ответчик
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2264));
+                //21Ответчик ИНН
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2242));
+                //22Ответчик Адрес
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2229));
+                //23 3-лицо
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2266));
+                //24 3-лицо ИНН
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2243));
+                //25 3-лицо Адрес
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2230));
+                //26 Примечание
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 969));
+                //27
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2011));
+                //28
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2022));
+                //29
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2027));
+                //30
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 1993));
+                //31
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2010));
+                //32
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2023));
+                //33
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2028));
+                //34
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 1994));
+                //35
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2012));
+                //36
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2025));
+                //37
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2029));
+                //38
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 1995));
+                //39
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2013));
+                //40
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2024));
+                //41
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2030));
+                //42
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 1997));
+                //43
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2015));
+                //44
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2034));
+                //45
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2035));
+                //46
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 1996));
+                //47
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2014));
+                //48
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2032));
+                //49
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2033));
+                //50
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 1998));
+                //51
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2019));
+                //52
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2038));
+                //53
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2039));
+                //54
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 1999));
+                //55
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2018));
+                //56
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2036));
+                //57
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2037));
+                //58
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2511));
+                //59
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2512));
+                //60
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2513));
+                //61
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2514));
+                //62
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2310));
+                //63
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2311));
+                //64
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2312));
+                //65
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2313));
+                //66
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2519));
+                //67
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2520));
+                //68
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2521));
+                //69
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2523));
+                //70
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2306));
+                //71
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2307));
+                //72
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2308));
+                //73
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2309));
+                //74
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2515));
+                //75
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2516));
+                //76
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2517));
+                //77
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2518));
+                //78
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2314));
+                //79
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2315));
+                //80
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2316));
+                //81
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2317));
+                //82
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2726));
+                //83
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2438));
+                //84
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2000));
+                //85
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2020));
+                //86
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2042));
+                //87
+                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2040));
+            }
+            else
             {
                 model.Attrs = repository.GetNodeAttrs(model.IdItemType, model.IdNode).ToList();
             }
@@ -277,7 +401,10 @@ namespace AsArch.NET.Controllers
                                 repository.UpdateTextAttr(model.Attrs[i].IdAttr, model.IdNode, model.Attrs[i].TEXT_VALUE);
                                 break;
                             case 3:
-                                repository.UpdateCharAttr(model.Attrs[i].IdAttr, model.IdNode, model.Attrs[i].CHAR_VALUE);
+                                if (model.Attrs[i].CHAR_VALUE!= null)
+                                {
+                                    repository.UpdateCharAttr(model.Attrs[i].IdAttr, model.IdNode, model.Attrs[i].CHAR_VALUE);
+                                }
                                 break;
                             case 4:
                                 repository.UpdateDateAttr(model.Attrs[i].IdAttr, model.IdNode, model.Attrs[i].DATE_VALUE);
@@ -292,6 +419,7 @@ namespace AsArch.NET.Controllers
                     }
                 }
             }
+            SetupNodeEditViewModels(model);
             return View(model);
         }
         #endregion

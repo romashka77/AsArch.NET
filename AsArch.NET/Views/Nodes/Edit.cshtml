@@ -8,7 +8,11 @@
 
 <h4>@Model.NameNode</h4>
 <hr />
-
+<!--#region Назад-->
+<div>
+    @Html.ActionLink("Назад", "Index", new { id = Model.IdParent }, new { @class = "btn btn-default" })
+</div>
+<!-- #endregion -->
 
 @using (Html.BeginForm())
 {
@@ -44,6 +48,11 @@
         </div>
     </div>
 }
+<!--#region Назад-->
+<div>
+    @Html.ActionLink("Назад", "Index", new { id = Model.IdParent }, new { @class = "btn btn-default" })
+</div>
+<!-- #endregion -->
 
 @section scripts
 {

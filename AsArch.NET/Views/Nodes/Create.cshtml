@@ -4,11 +4,15 @@
 }
 
 <h2>@ViewBag.Title</h2>
-
+<!--#region Назад-->
+<div>
+    @Html.ActionLink("Назад", "Index", new { id = Model.IdParent }, new { @class = "btn btn-default" })
+</div>
+<!-- #endregion -->
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    @Html.HiddenFor(model =>model.IdParent)
+    @Html.HiddenFor(model => model.IdParent)
     <div class="form-horizontal">
         <h4>NODE</h4>
         <hr />
@@ -23,7 +27,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.IdItemType, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.IdItemType, ViewBag.ID_ITEMTYPE as IEnumerable<SelectListItem>, "Выберите тип элемента",  htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownListFor(model => model.IdItemType, ViewBag.ID_ITEMTYPE as IEnumerable<SelectListItem>, "Выберите тип элемента", htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.IdItemType, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -35,9 +39,11 @@
     </div>
 }
 
+<!--#region Назад-->
 <div>
-    @Html.ActionLink("Назад", "Index")
+    @Html.ActionLink("Назад", "Index", new { id = Model.IdParent }, new { @class = "btn btn-default" })
 </div>
+<!-- #endregion -->
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

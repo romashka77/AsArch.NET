@@ -15,9 +15,7 @@ namespace AsArch.NET.Models
         public int? IdParent { get; set; }
         [HiddenInput(DisplayValue = false)]
         public int? IdGrantParent { get; set; }
-        //[Display(Name = "Тип")]
-        [HiddenInput(DisplayValue = false)]
-        public int IdItemType { get; set; }
+        
         [Required(ErrorMessage = "Заполните поле {0}.")]
         [StringLength(256)]
         [Display(Name = "Наименование")]
@@ -27,11 +25,15 @@ namespace AsArch.NET.Models
 
     public class NodeCreateViewModels : NodeViewModels
     {
+        [Display(Name = "Тип элемента")]
+        public int IdItemType { get; set; }
         public int? IdItemTypeParent { get; set; }
 
     }
     public class NodeEditViewModels : NodeViewModels
     {
+        [HiddenInput(DisplayValue = false)]
+        public int IdItemType { get; set; }
         [HiddenInput(DisplayValue = false)]
         public int IdNode { get; set; }
         [HiddenInput(DisplayValue = false)]

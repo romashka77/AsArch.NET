@@ -50,6 +50,7 @@ namespace AsArch.NET.Interfaces
         int UpdateTextAttr(int? id_attr, int? id_node, string text_val);
         int UpdateDateAttr(int? id_attr, int? id_node, Nullable<System.DateTime> date_val);
         int UpdateFloatAttr(int? id_attr, int? id_node, double? float_val);
+        int UpdateRefAttrs(int? id_attr, int? id_node1, int? id_node2);
         IQueryable<DICTIONARy> ListDict();
     }
 }

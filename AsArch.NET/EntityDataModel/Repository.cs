@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Data.Entity;
-using System.Web;
+﻿using AsArch.NET.EntityDataModel.Entytis;
 using AsArch.NET.Interfaces;
+using System;
+using System.Data;
+using System.Data.Entity;
+using System.Data.Entity.Core.Objects;
+using System.Data.SqlClient;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
-using System.Data.SqlClient;
-using System.Data;
-using System.Data.Entity.Core.Objects;
-using AsArch.NET.EntityDataModel.Entytis;
 
 namespace AsArch.NET.EntityDataModel
 {
@@ -74,10 +72,10 @@ namespace AsArch.NET.EntityDataModel
             }
             return node;
         }
-        public int RenameNode(int? id_node, string str_label )
+        public int RenameNode(int? id_node, string str_label)
         {
             return db.RenameNode(id_node, str_label, null);
-    }
+        }
         public int ChangeNodeType(int? id_node, int? id_newtype)
         {
             //вызов функции
@@ -85,7 +83,7 @@ namespace AsArch.NET.EntityDataModel
         }
         public int UpdateCharAttr(int? id_attr, int? id_node, string char_val)
         {
-            return db.UpdateCharAttr(id_attr, id_node, char_val,null,null);
+            return db.UpdateCharAttr(id_attr, id_node, char_val, null, null);
         }
         public int UpdateTextAttr(int? id_attr, int? id_node, string text_val)
         {
@@ -99,6 +97,11 @@ namespace AsArch.NET.EntityDataModel
         {
             return db.UpdateFloatAttr(id_attr, id_node, null, float_val, null);
         }
+        public int UpdateRefAttrs(int? id_attr, int? id_node1, int? id_node2)
+        {
+            return db.UpdateRefAttrs(id_attr, id_node1, 0, id_node2, null, null, null);
+        }
+
         public int? InsertNode2(int? id_parent, int id_itemtype, string str_label)
         {
             ObjectParameter id_newnodeParameter = new ObjectParameter("id_newnode", typeof(int));

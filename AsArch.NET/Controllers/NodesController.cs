@@ -409,6 +409,9 @@ namespace AsArch.NET.Controllers
                             case 4:
                                 repository.UpdateDateAttr(model.Attrs[i].IdAttr, model.IdNode, model.Attrs[i].DATE_VALUE);
                                 break;
+                            case 8:
+                                repository.UpdateRefAttrs(model.Attrs[i].IdAttr, model.IdNode, model.Attrs[i].RefNode);
+                                break;
                             case 11:
                                 repository.UpdateFloatAttr(model.Attrs[i].IdAttr, model.IdNode, model.Attrs[i].FLOAT_VALUE);
                                 break;

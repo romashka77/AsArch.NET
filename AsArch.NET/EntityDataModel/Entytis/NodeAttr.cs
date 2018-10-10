@@ -11,6 +11,7 @@ namespace AsArch.NET.EntityDataModel.Entytis
         //public string Alias { get; set; }
         public int IdAttr { get; set; }
         public int IsDefault { get; set; }
+
         public string NameAttr { get; set; }
         public int IdAttrType { get; set; }
         public bool? IsVirtual { get; set; }
@@ -33,5 +34,4 @@ namespace AsArch.NET.EntityDataModel.Entytis
         public int? ID_PARENT { get; set; }
         public string ParentName { get; set; }
     }
-    
 }

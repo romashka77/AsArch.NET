@@ -204,8 +204,11 @@ namespace AsArch.NET.Controllers
                 model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2369));
                 //9Наименование предмета иска
                 model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 1964));
+                
                 //10Код предмета иска Ссылка 1:1 сделать кнопку
-                model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2299));
+                //model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2299));
+                model.Attrs.Add(null);
+
                 //11Название суда
                 model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2253));
                 //12Вид суда
@@ -360,6 +363,9 @@ namespace AsArch.NET.Controllers
                 model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2042));
                 //87
                 model.Attrs.Add(rep.SingleOrDefault(n => n.IdAttr == 2040));
+                var t = rep.Where(n => n.IdAttr == 2153);
+
+
             }
             else
             {

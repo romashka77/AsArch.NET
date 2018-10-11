@@ -33,5 +33,19 @@ namespace AsArch.NET.EntityDataModel.Entytis
 
         public int? ID_PARENT { get; set; }
         public string ParentName { get; set; }
+
+        public string TabColName { get; set; }
+        public int? TabColType { get; set; }
+        public int? INT_FROM { get; set; }
+        public int? INT_TO { get; set; }
+        public int? INT_WIDTH { get; set; }
+        public int? TabIdCol { get; set; }
+        public string TabColCharValue { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public DateTime? TabColDateValue { get; set; }
+        public int? TabColInt { get; set; }
+        public double? TabColFloat { get; set; }
+        public int TabOrder { get; set; }
     }
 }

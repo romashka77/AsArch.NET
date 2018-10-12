@@ -1,5 +1,5 @@
-﻿@using AsArch.NET.EntityDataModel.Entytis
-@model AsArch.NET.Models.NodeEditViewModels
+﻿@using AsArch.NET.Models
+@model NodeEditViewModels
 
 @{
     ViewBag.Title = "Редактировать";
@@ -10,7 +10,7 @@
 <hr />
 <!--#region Назад-->
 <div>
-    @Html.ActionLink("Назад", "Index", new { id = Model.IdParent }, new { @class = "btn btn-default" })
+    @Html.ActionLink("Назад", "Index", new { id = Model.IdParent}, new { @class = "btn btn-default" })
 </div>
 <!-- #endregion -->
 

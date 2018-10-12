@@ -50,6 +50,7 @@ namespace AsArch.NET.EntityDataModel
         }
     
         public int ID_ATTR { get; set; }
+
         public string STR_NAME { get; set; }
         public int ID_ATTRTYPE { get; set; }
         public Nullable<bool> IS_VIRTUAL { get; set; }

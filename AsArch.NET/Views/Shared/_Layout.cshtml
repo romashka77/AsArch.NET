@@ -22,11 +22,11 @@
             </div>
             <div class="navbar-collapse collapse">
                 @*<ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Домашняя страница", "Index", "Home")</li>
-                    <li>@Html.ActionLink("О программе", "About", "Home")</li>
-                    <li>@Html.ActionLink("Контакт", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Судебно-арбитражная практика", "Index", "NODES")</li>
-                </ul>*@
+                        <li>@Html.ActionLink("Домашняя страница", "Index", "Home")</li>
+                        <li>@Html.ActionLink("О программе", "About", "Home")</li>
+                        <li>@Html.ActionLink("Контакт", "Contact", "Home")</li>
+                        <li>@Html.ActionLink("Судебно-арбитражная практика", "Index", "NODES")</li>
+                    </ul>*@
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
@@ -41,6 +41,8 @@
     </div>
 
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/unobtrusive-ajax")
+
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>

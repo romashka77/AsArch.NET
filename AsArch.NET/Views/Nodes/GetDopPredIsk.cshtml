@@ -1,0 +1,92 @@
+﻿@using AsArch.NET.EntityDataModel.Entytis
+@model IEnumerable<DopPredIsk>
+
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <div id="loading" class="load" style="display: none">
+            <p>Loading Data...</p>
+        </div>
+        <thead>
+            <tr>
+                <th>
+                    1
+                </th>
+                <th>
+                    2
+                </th>
+                <th>
+                    3
+                </th>
+            </tr>
+
+        </thead>
+        <tbody id="DopPredIsk">
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.N)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NameIsk)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Prim)
+                </td>
+            </tr>
+
+            }
+        </tbody>
+    </table>
+</div>
+
+
+
+@*@model IEnumerable<TableData>
+    @{
+        var Header = Model.Where(m => m.TabOrder == 0);
+        int countstr = 2;/*Model.Max(m => m.TabOrder);*/
+        int countcol = 0;
+        int col = 0;
+    }
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead>
+                <div id="loading" class="load" style="display: none">
+                    <p>Loading Data...</p>
+                </div>
+                <tr>
+                    @foreach (var h in Header)
+                    {
+                        <th>@h.TabColName</th>
+                        countcol++;
+                    }
+                </tr>
+            </thead>
+            <tbody id="DopPredIsk">
+                @for (int i = 0; i < countstr; i++)
+                {
+                    <tr>
+                        @for (int j = 0; j < countcol; j++)
+                        {
+                            switch (j)
+                            {
+                                case 0:
+                                    <td>
+                                        @Html.DisplayFor(model => model.First(m => m.TabOrder == i && m.TabIdCol == j).TabColFloat)
+                                    </td>
+                                    break;
+                                default:
+                                    <td>
+                                        @Html.DisplayFor(model => model.First(m => m.TabOrder == i && m.TabIdCol == j).TabColCharValue)
+
+                                    </td>
+                                    break;
+                            }
+
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>*@

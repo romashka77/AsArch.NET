@@ -156,19 +156,19 @@ namespace AsArch.NET.EntityDataModel
                 ", I.INT_VALUE" +
                 ", TE.TEXT_VALUE" +
                 ", DE.ID_PARENT" +
-                ", NOD.STR_LABEL as ParentName" +
+                ", NOD.STR_LABEL as ParentName " +
 
-                ", TCON.STR_NAME as TabColName" +
-                ", TCON.COLTYPE as TabColType" +
-                ", TCON.INT_FROM" +
-                ", TCON.INT_TO" +
-                ", TCON.INT_WIDTH" +
-                ", TCON.ID_COL as TabIdCol" +
-                ", TCH.CHAR_VALUE as TabColCharValue" +
-                ", TDAT.DATE_VALUE as TabColDateValue" +
-                ", TINT.INT_VALUE as TabColInt" +
-                ", TFLO.FLOAT_VALUE as TabColFloat" +
-                ", isnull(TCH.N_ORDER, 0) + isnull(TFLO.N_ORDER, 0) + isnull(TDAT.N_ORDER, 0) + isnull(TINT.N_ORDER, 0) as TabOrder " +
+                //", TCON.STR_NAME as TabColName" +
+                //", TCON.COLTYPE as TabColType" +
+                //", TCON.INT_FROM" +
+                //", TCON.INT_TO" +
+                //", TCON.INT_WIDTH" +
+                //", TCON.ID_COL as TabIdCol" +
+                //", TCH.CHAR_VALUE as TabColCharValue" +
+                //", TDAT.DATE_VALUE as TabColDateValue" +
+                //", TINT.INT_VALUE as TabColInt" +
+                //", TFLO.FLOAT_VALUE as TabColFloat" +
+                //", isnull(TCH.N_ORDER, 0) + isnull(TFLO.N_ORDER, 0) + isnull(TDAT.N_ORDER, 0) + isnull(TINT.N_ORDER, 0) as TabOrder " +
                 "from(" +
                 "select DISTINCT B.ID_ATTR as IdAttr,B.IS_DEFAULT as IsDefault, C.STR_NAME as NameAttr, C.ID_ATTRTYPE as IdAttrType, C.IS_VIRTUAL as IsVirtual, D.STR_NAME as NameAttrType from CONTROLS_XML B, ATTRS C, ATTRTYPES D where B.ID_ATTR = C.ID_ATTR and B.IS_DEFAULT=0 and C.ID_ATTRTYPE = D.ID_ATTRTYPE and B.ID_TYPE = @id_type) A " +
                 "left join ATTRVAL_CHAR CH on IdAttr = CH.ID_ATTR and CH.ID_NODE = @id_node " +
@@ -180,13 +180,52 @@ namespace AsArch.NET.EntityDataModel
                 "left join REFATTRS R on IdAttr = R.ID_ATTR and R.ID_NODE1 = @id_node " +
                 "left join DEFAULT_VALUES DE on IdAttr = DE.ID_ATTR and DE.ID_NODE=@id_node " +
                 "left join NODE NOD on DE.ID_PARENT= NOD.ID_NODE " +
-                "left join TABLECONFIG TCON on IdAttr=TCON.ID_ATTR " +
-                "left join TABLEVAL_CHAR TCH on TCON.ID_COL = TCH.ID_COL and IdAttr = TCH.ID_ATTR and TCH.ID_NODE = @id_node " +
-                "left join TABLEVAL_DATE TDAT on TCON.ID_COL = TDAT.ID_COL and IdAttr = TDAT.ID_ATTR and TDAT.ID_NODE = @id_node " +
-                "left join TABLEVAL_INT TINT on TCON.ID_COL = TINT.ID_COL and IdAttr = TINT.ID_ATTR and TINT.ID_NODE = @id_node " +
-                "left join TABLEVAL_FLOAT TFLO on TCON.ID_COL = TFLO.ID_COL and IdAttr = TFLO.ID_ATTR and TFLO.ID_NODE = @id_node "+
-                " Order by NOrder, IdAttr, TabOrder, TabIdCol", new SqlParameter("id_type", id_itemtype), new SqlParameter("id_node", id_node));
+                //"left join TABLECONFIG TCON on IdAttr=TCON.ID_ATTR " +
+                //"left join TABLEVAL_CHAR TCH on TCON.ID_COL = TCH.ID_COL and IdAttr = TCH.ID_ATTR and TCH.ID_NODE = @id_node " +
+                //"left join TABLEVAL_DATE TDAT on TCON.ID_COL = TDAT.ID_COL and IdAttr = TDAT.ID_ATTR and TDAT.ID_NODE = @id_node " +
+                //"left join TABLEVAL_INT TINT on TCON.ID_COL = TINT.ID_COL and IdAttr = TINT.ID_ATTR and TINT.ID_NODE = @id_node " +
+                //"left join TABLEVAL_FLOAT TFLO on TCON.ID_COL = TFLO.ID_COL and IdAttr = TFLO.ID_ATTR and TFLO.ID_NODE = @id_node "+
+                " Order by NOrder, IdAttr "/*, TabOrder, TabIdCol"*/, new SqlParameter("id_type", id_itemtype), new SqlParameter("id_node", id_node));
             return query.AsQueryable<NodeAttr>();
+        }
+        public IQueryable<TableData> GetTableData(int? id_itemtype, int id_node, string nameAttr)
+        {
+            var query = db.Database.SqlQuery<TableData>("select A.*" +
+                ", T.OPTIONS as Options" +
+                ", T.N_ORDER as NOrder" +
+                ", TCON.STR_NAME as TabColName" +
+                ", TCON.COLTYPE as TabColType" +
+                ", TCON.INT_FROM" +
+                ", TCON.INT_TO" +
+                ", TCON.INT_WIDTH" +
+                ", TCON.ID_COL as TabIdCol" +
+                ", TCH.CHAR_VALUE as TabColCharValue" +
+                ", TDAT.DATE_VALUE as TabColDateValue" +
+                ", TINT.INT_VALUE as TabColInt" +
+                ", TFLO.FLOAT_VALUE as TabColFloat" +
+                ", isnull(TCH.N_ORDER, 0) + isnull(TFLO.N_ORDER, 0) + isnull(TDAT.N_ORDER, 0) + isnull(TINT.N_ORDER, 0) as TabOrder" +
+                " from (select DISTINCT B.ID_ATTR as IdAttr" +
+                ", B.IS_DEFAULT as IsDefault" +
+                ", C.STR_NAME as NameAttr" +
+                ", C.ID_ATTRTYPE as IdAttrType" +
+                ", C.IS_VIRTUAL as IsVirtual" +
+                ", D.STR_NAME as NameAttrType" +
+                " from CONTROLS_XML B, ATTRS C, ATTRTYPES D" +
+                " where B.ID_ATTR = C.ID_ATTR" +
+                " and B.IS_DEFAULT = 0" +
+                " and C.ID_ATTRTYPE = D.ID_ATTRTYPE" +
+                " and B.ID_TYPE = @id_type) A" +
+                " left join TYPE_ATTR T on IdAttr = T.ID_ATTR and T.ID_TYPE = @id_type" +
+                " left join TABLECONFIG TCON on IdAttr = TCON.ID_ATTR" +
+                " left join TABLEVAL_CHAR TCH on TCON.ID_COL = TCH.ID_COL and IdAttr = TCH.ID_ATTR and TCH.ID_NODE = @id_node" +
+                " left join TABLEVAL_DATE TDAT on TCON.ID_COL = TDAT.ID_COL and IdAttr = TDAT.ID_ATTR and TDAT.ID_NODE = @id_node" +
+                " left join TABLEVAL_INT TINT on TCON.ID_COL = TINT.ID_COL and IdAttr = TINT.ID_ATTR and TINT.ID_NODE = @id_node" +
+                " left join TABLEVAL_FLOAT TFLO on TCON.ID_COL = TFLO.ID_COL and IdAttr = TFLO.ID_ATTR and TFLO.ID_NODE = @id_node" +
+                " where IdAttrType = 7" +
+                " and NameAttr = @nameAttr" +
+                " order by NOrder, IdAttr, TabOrder, TabIdCol;",
+                new SqlParameter("id_type", id_itemtype), new SqlParameter("id_node", id_node), new SqlParameter("nameAttr", nameAttr));
+            return query.AsQueryable<TableData>();
         }
         public IQueryable<NODE> ListNode(int? id_parent = null)
         {

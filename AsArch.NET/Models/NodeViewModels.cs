@@ -31,24 +31,18 @@ namespace AsArch.NET.Models
 
     }
 
-    public class AcordAttr
-    {
-        public List<NodeAttr> Attrs { get; set; }
-    }
 
     public class NodeEditViewModels : NodeViewModels
     {
         [HiddenInput(DisplayValue = false)]
         public int IdItemType { get; set; }
+        [Display(Name = "Тип элемента")]
         public string ItemType { get; set; }
         [HiddenInput(DisplayValue = false)]
         public int IdNode { get; set; }
         [HiddenInput(DisplayValue = false)]
         public int IdAttr { get; set; }
-        [HiddenInput(DisplayValue = false)]
         public List<NodeAttr> Attrs { get; set; }
-
-        public List<NodeAttr> AttrsAcord1 { get; set; }
 
         [HiddenInput(DisplayValue = false)]
         public IQueryable<DICTIONARy> Dict { get; set; }

@@ -379,11 +379,13 @@
     <Compile Include="EntityDataModel\DICTIONARy.cs">
       <DependentUpon>DB_pfr_sap.tt</DependentUpon>
     </Compile>
+    <Compile Include="EntityDataModel\Entytis\DopPredIsk.cs" />
     <Compile Include="EntityDataModel\Entytis\ItemNode.cs" />
     <Compile Include="EntityDataModel\Entytis\NodeAttr.cs" />
     <Compile Include="EntityDataModel\Entytis\NodeValueString.cs" />
     <Compile Include="EntityDataModel\Entytis\StoronaProc.cs" />
     <Compile Include="EntityDataModel\Entytis\Sud.cs" />
+    <Compile Include="EntityDataModel\Entytis\TableData.cs" />
     <Compile Include="EntityDataModel\EVENT.cs">
       <DependentUpon>DB_pfr_sap.tt</DependentUpon>
     </Compile>
@@ -651,6 +653,8 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="readme.txt" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\jsx\app.jsx" />
@@ -753,10 +757,13 @@
     <Content Include="Views\Nodes\StoronaProcParam.cshtml" />
     <Content Include="Views\Nodes\_editAll.cshtml" />
     <Content Include="Views\Nodes\_selectListTable.cshtml" />
+    <Content Include="Views\Nodes\GetDopPredIsk.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Nodes\EditorTemplates\" />
     <Folder Include="Views\Shared\EditorTemplates\" />
+    <Folder Include="Views\TabData\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

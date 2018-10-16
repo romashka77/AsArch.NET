@@ -7,9 +7,8 @@ namespace AsArch.NET.EntityDataModel.Entytis
 {
     public class DopPredIsk
     {
-        public int? TabOrder { get; set; }
-        public double? N { get; set; }
-        public string NameIsk { get; set; }
-        public string Prim { get; set; }
+        public int? Id { get; set; }
+        public string Name { get; set; }
+        public string Comment { get; set; }
     }
 }

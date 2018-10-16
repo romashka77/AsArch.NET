@@ -1,6 +1,5 @@
 ﻿@using AsArch.NET.Models
 @model NodeEditViewModels
-
 <div id="accordion" role="tablist" aria-multiselectable="true">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="predmetIska">
@@ -125,20 +124,25 @@
             </h4>
         </div>
         <div id="collapse2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading2">
-            @Html.Action("GetDopPredIsk", new { id = Model.IdNode })
+            
+            @*<div id="content"></div>*@
+            <div id="TabDopPredIsk"></div>
 
-            <div class="ajaxLink">
-                @Ajax.ActionLink("test", "GetDopPredIsk",
-                  new {id = Model.IdNode},
-                  new AjaxOptions {
-                      Url = Url.Action("GetDopPredIskJson", new { id = Model.IdNode }),
-                      //OnBegin = "OnBegin",
-                      //OnFailure = "OnFailure",
-                      //OnSuccess = "OnSuccess",
-                      //OnComplete = "OnComplete"
-                      OnSuccess = "processData"
-                  })
-            </div>
+            @*@Html.Action("GetDopPredIsk", new { id = Model.IdNode })*@
+
+            @*<div class="ajaxLink">
+                    @Ajax.ActionLink("test", "GetDopPredIsk",
+                      new {id = Model.IdNode},
+                      new AjaxOptions {
+                          Url = Url.Action("GetDopPredIskJson", new { id = Model.IdNode }),
+                          //OnBegin = "OnBegin",
+                          //OnFailure = "OnFailure",
+                          //OnSuccess = "OnSuccess",
+                          //OnComplete = "OnComplete"
+                          OnSuccess = "processData"
+                      })
+                </div>*@
+
             @*@using (Ajax.BeginForm("GetDopPredIskJson", new AjaxOptions
                 {
                     UpdateTargetId = "tableBody",
@@ -561,12 +565,15 @@
         </div>
     </div>
 </div>
-<script type="text/javascript">
-    function processData(data) {
-        var target = $("#DopPredIsk");
-        target.empty();
-        for (var i = 0; i < data.length; i++) {
-            target.append("<tr><td>" + data[i].N + "</td><td>" + data[i].NameIsk + "</td><td>" + data[i].Prim + "</td ></tr>");
+
+
+
+@*<script type="text/javascript">
+        function processData(data) {
+            var target = $("#DopPredIsk");
+            target.empty();
+            for (var i = 0; i < data.length; i++) {
+                target.append("<tr><td>" + data[i].N + "</td><td>" + data[i].NameIsk + "</td><td>" + data[i].Prim + "</td ></tr>");
+            }
         }
-    }
-</script>
+    </script>*@

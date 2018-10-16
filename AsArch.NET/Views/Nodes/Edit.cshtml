@@ -55,5 +55,13 @@
 
 @section scripts
 {
+    @Scripts.Render("~/bundles/react")
+    @Scripts.Render("~/bundles/react-dom")
+    @*remarkable, берет текст Markdown и преобразует его в необработанный HTML*@
+    @Scripts.Render("~/bundles/remarkable")
+
+    @Scripts.Render("~/bundles/appDopPredIsk")
+    @Scripts.Render("~/bundles/appComment")
+
     @Scripts.Render("~/bundles/jqueryval")
 }

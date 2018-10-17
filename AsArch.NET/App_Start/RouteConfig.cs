@@ -23,11 +23,11 @@ namespace AsArch.NET
             //);
             #endregion
 
-            routes.MapRoute(
-               name: "GetDopPredIskJson",
-               url: "getdopprediskjson",
-               defaults: new { controller = "Nodes", action = "GetDopPredIskJson" }
-           );
+           // routes.MapRoute(
+           //    name: "GetDopPredIskJson",
+           //    url: "getdopprediskjson",
+           //    defaults: new { controller = "Nodes", action = "GetDopPredIskJson" }
+           //);
 
             routes.MapRoute(
                 name: "Default",

@@ -150,23 +150,15 @@ namespace AsArch.NET.Controllers
             var prim = data.Where(m => m.TabColType == 0);
 
             var t = n.Join(name, a => a.TabOrder, b => b.TabOrder, (a, b) => new { TabOrder = a.TabOrder, N = a.TabColFloat, NameIsk = b.TabColCharValue });
-            IEnumerable<DopPredIsk> res = t.Join(prim, a => a.TabOrder, b => b.TabOrder, (a, b) => new { TabOrder = a.TabOrder, N = a.N, NameIsk = a.NameIsk, Prim = b.TabColCharValue }).Select(a => new DopPredIsk { Id = (int)a.N, /*TabOrder = a.TabOrder, */Name = a.NameIsk, Comment = a.Prim });
+            IEnumerable<DopPredIsk> res = t.Join(prim, a => a.TabOrder, b => b.TabOrder, (a, b) => new { TabOrder = a.TabOrder, N = a.N, NameIsk = a.NameIsk, Prim = b.TabColCharValue }).Select(a => new DopPredIsk { Id = (int?)a.N, /*TabOrder = a.TabOrder, */Name = a.NameIsk, Comment = a.Prim });
             return res;
         }
 
         [OutputCache(Location = OutputCacheLocation.None)]
-        public ActionResult GetDopPredIskJson(/*int id = */)
+        public ActionResult GetDopPredIskJson(int id)
         {
-            
-            IEnumerable<DopPredIsk> data = GetData(128922 /*id*/);
 
-            //IList<DopPredIsk> data = new List<DopPredIsk>
-            //{
-            //    new DopPredIsk{Id= 1, Name="Name1", Comment="Comment1" },
-            //    new DopPredIsk{ Id= 2, Name= "Name2", Comment= "Comment2" },
-            //    new DopPredIsk{ Id= 3, Name= "Name3", Comment= "*Comment3*" },
-            //};
-
+            IEnumerable<DopPredIsk> data = GetData(id);
             return Json(data, JsonRequestBehavior.AllowGet);
         }
 

@@ -124,38 +124,47 @@
             </h4>
         </div>
         <div id="collapse2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading2">
-            
+
             @*<div id="content"></div>*@
             <div id="TabDopPredIsk"></div>
+            <script type="text/javascript">
+                var id_global = @Html.Raw(Json.Encode(Model.IdNode)); //For javascript object
+                @*var id2_global = '@Html.Raw(Json.Encode(Model.IdNode))'; //For json data
+                console.log(id_global);
+                console.log(id2_global);*@
+            </script>
+
+
+
 
             @*@Html.Action("GetDopPredIsk", new { id = Model.IdNode })*@
 
             @*<div class="ajaxLink">
-                    @Ajax.ActionLink("test", "GetDopPredIsk",
-                      new {id = Model.IdNode},
-                      new AjaxOptions {
-                          Url = Url.Action("GetDopPredIskJson", new { id = Model.IdNode }),
-                          //OnBegin = "OnBegin",
-                          //OnFailure = "OnFailure",
-                          //OnSuccess = "OnSuccess",
-                          //OnComplete = "OnComplete"
-                          OnSuccess = "processData"
-                      })
-                </div>*@
+            @Ajax.ActionLink("test", "GetDopPredIsk",
+              new {id = Model.IdNode},
+              new AjaxOptions {
+                  Url = Url.Action("GetDopPredIskJson", new { id = Model.IdNode }),
+                  //OnBegin = "OnBegin",
+                  //OnFailure = "OnFailure",
+                  //OnSuccess = "OnSuccess",
+                  //OnComplete = "OnComplete"
+                  OnSuccess = "processData"
+              })
+        </div>*@
 
             @*@using (Ajax.BeginForm("GetDopPredIskJson", new AjaxOptions
-                {
-                    UpdateTargetId = "tableBody",
-                    LoadingElementId = "loading",
-                    LoadingElementDuration = 1000,
-                    Confirm = "Do you wish to request new data?"
-                }))
-                {
-                    <div>
-                        @Html.EditorFor(model => model.IdNode)
-                        <button type="submit">Submit</button>
-                    </div>
-                }*@
+        {
+            UpdateTargetId = "tableBody",
+            LoadingElementId = "loading",
+            LoadingElementDuration = 1000,
+            Confirm = "Do you wish to request new data?"
+        }))
+        {
+            <div>
+                @Html.EditorFor(model => model.IdNode)
+                <button type="submit">Submit</button>
+            </div>
+        }*@
         </div>
     </div>
     <div class="panel panel-default">

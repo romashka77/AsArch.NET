@@ -141,8 +141,18 @@ namespace AsArch.NET.Controllers
             return View(model);
         }
         #endregion
-        #region TableData
-        private IEnumerable<DopPredIsk> GetData(int id)
+        #region TableDopPredIsk
+
+        [HttpPost]
+        public ActionResult AddDopPredIsk(DopPredIsk model)
+        {
+
+            //model.Id = _comments.Count + 1;
+            //_comments.Add(model);
+            return Content("Success :)");
+        }
+
+        private IEnumerable<DopPredIsk> GetDopPredIsk(int id)
         {
             IEnumerable<TableData> data = repository.GetTableData(1954, id, "Дополнительный предмет иска").ToList();
             var n = data.Where(m => m.TabColType == 2);
@@ -150,7 +160,7 @@ namespace AsArch.NET.Controllers
             var prim = data.Where(m => m.TabColType == 0);
 
             var t = n.Join(name, a => a.TabOrder, b => b.TabOrder, (a, b) => new { TabOrder = a.TabOrder, N = a.TabColFloat, NameIsk = b.TabColCharValue });
-            IEnumerable<DopPredIsk> res = t.Join(prim, a => a.TabOrder, b => b.TabOrder, (a, b) => new { TabOrder = a.TabOrder, N = a.N, NameIsk = a.NameIsk, Prim = b.TabColCharValue }).Select(a => new DopPredIsk { Id = (int?)a.N, /*TabOrder = a.TabOrder, */Name = a.NameIsk, Comment = a.Prim });
+            IEnumerable<DopPredIsk> res = t.Join(prim, a => a.TabOrder, b => b.TabOrder, (a, b) => new { TabOrder = a.TabOrder, N = a.N, NameIsk = a.NameIsk, Prim = b.TabColCharValue }).Select(a => new DopPredIsk {IdNode=id, Id = (int?)a.N, /*TabOrder = a.TabOrder, */Name = a.NameIsk, Comment = a.Prim });
             return res;
         }
 
@@ -158,36 +168,16 @@ namespace AsArch.NET.Controllers
         public ActionResult GetDopPredIskJson(int id)
         {
 
-            IEnumerable<DopPredIsk> data = GetData(id);
+            IEnumerable<DopPredIsk> data = GetDopPredIsk(id);
             return Json(data, JsonRequestBehavior.AllowGet);
         }
 
-        public PartialViewResult GetDopPredIsk(int id)
+        [OutputCache(Location = OutputCacheLocation.None)]
+        public ActionResult GetDopPredIskOptionsJson()
         {
-            return PartialView(GetData(id));
+            var data = repository.ListDict().Where(d =>d.ID_ATTR==1964).OrderBy(n => n.STR_NAME).ToList().Select(n => new { Text = n.STR_NAME });
+            return Json(data, JsonRequestBehavior.AllowGet);
         }
-
-
-
-        //public ActionResult GetDopPredIsk(int id)
-        //{
-        //    IEnumerable<TableData> data = repository.GetTableData(1954, id, "Дополнительный предмет иска");
-        //    if (Request.IsAjaxRequest())
-        //    {
-        //        //var formattedData = data.Select(p => new
-        //        //{
-        //        //    FirstName = p.FirstName,
-        //        //    LastName = p.LastName,
-        //        //    Role = Enum.GetName(typeof(Role), p.Role)
-        //        //});
-        //        return Json(data/*formattedData*/, JsonRequestBehavior.AllowGet);
-        //    }
-        //    else
-        //    {
-        //        return PartialView(data);
-        //    }
-        //}
-
         #endregion
         #region Edit
         private void SetupNodeEditViewModels(NodeEditViewModels model)

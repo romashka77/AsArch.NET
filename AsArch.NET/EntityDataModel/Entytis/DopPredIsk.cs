@@ -7,6 +7,7 @@ namespace AsArch.NET.EntityDataModel.Entytis
 {
     public class DopPredIsk
     {
+        public int? IdNode { get; set; }
         public int? Id { get; set; }
         public string Name { get; set; }
         public string Comment { get; set; }

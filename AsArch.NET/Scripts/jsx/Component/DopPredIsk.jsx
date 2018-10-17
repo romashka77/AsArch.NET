@@ -1,12 +1,4 @@
 ﻿class DopPredIsk extends React.Component {
-    //render() {
-    //    return (
-    //        <div className="DopPredIsk">
-    //            <div className="DopPredIskItem">{this.props.NameIsk}</div>
-    //            {this.props.children}
-    //        </div>
-    //    );
-    //}
     rawMarkup() {
         const md = new Remarkable();
         const rawMarkup = md.render(this.props.children.toString());
@@ -14,13 +6,19 @@
     }
     render() {
         return (
-            <div className="dopPredIsk">
-                    <div className="dopPredIskKey">{this.props.key}</div>
+            <tr className="dopPredIsk">
+                <td>
+                    <div className="dopPredIskKey">{this.props.id}</div>
+                </td>
+                <td>
                     <div className="dopPredIskName">{this.props.name}</div>
+                </td>
+                <td>
                     <div>
                         <span dangerouslySetInnerHTML={this.rawMarkup()} />
                     </div>
-            </div>
+                </td>
+            </tr>
         );
     }
 }

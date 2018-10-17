@@ -28,9 +28,9 @@ namespace AsArch.NET
                       "~/Content/site.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/react").Include(
-                      "~/Scripts/react/react.js"));
+                      "~/Scripts/react/react.min.js"));
             bundles.Add(new ScriptBundle("~/bundles/react-dom").Include(
-                      "~/Scripts/react/react-dom.js"));
+                      "~/Scripts/react/react-dom.min.js"));
             bundles.Add(new ScriptBundle("~/bundles/remarkable").Include(
                       "~/Scripts/remarkable/remarkable.js"));
 

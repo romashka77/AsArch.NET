@@ -18,6 +18,11 @@
                         <span dangerouslySetInnerHTML={this.rawMarkup()} />
                     </div>
                 </td>
+                <td>
+                    <button className="btn btn-default" /*onClick={this.press}*/>Редактировать</button>
+                
+                    <button className="btn btn-default" /*onClick={this.press}*/>Удалить</button>
+                </td>
             </tr>
         );
     }

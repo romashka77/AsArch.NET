@@ -175,7 +175,7 @@ namespace AsArch.NET.Controllers
         [OutputCache(Location = OutputCacheLocation.None)]
         public ActionResult GetDopPredIskOptionsJson()
         {
-            var data = repository.ListDict().Where(d =>d.ID_ATTR==1964).OrderBy(n => n.STR_NAME).ToList().Select(n => new { Text = n.STR_NAME });
+            var data = repository.ListDict().Where(d =>d.ID_ATTR==1964).OrderBy(n => n.STR_NAME).ToList().Select(n => new {Text = n.STR_NAME });
             return Json(data, JsonRequestBehavior.AllowGet);
         }
         #endregion

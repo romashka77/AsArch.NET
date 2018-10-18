@@ -24,12 +24,13 @@
         xhr.onload = () => this.loadDopPredIskFromServer();
         xhr.send(data);
     }
-    componentDidMount() {
+    componentWillMount(){ 
+    //componentDidMount() {
         this.loadDopPredIskFromServer();
-        window.setInterval(
-            () => this.loadDopPredIskFromServer(),
-            this.props.pollInterval,
-        );
+        //window.setInterval(
+        //    () => this.loadDopPredIskFromServer(),
+            //this.props.pollInterval,
+        //);
     }
     render() {
         return (
@@ -44,7 +45,7 @@
                             </tr>
                         </thead>
                         <DopPredIskList data={this.state.data} />
-                        <DopPredIskForm onDopPredIskSubmit={this.handleDopPredIskSubmit} />
+                        <DopPredIskForm url={Router.action(`Nodes`, `GetDopPredIskOptionsJson`)} onDopPredIskSubmit={this.handleDopPredIskSubmit} />
                     </table>
                 </div>
                 

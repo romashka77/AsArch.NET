@@ -54,6 +54,7 @@ namespace AsArch.NET
             ));
 
             bundles.Add(new BabelBundle("~/bundles/appDopPredIsk").Include(
+                "~/Scripts/jsx/Component/DopPredIskSelect.jsx",
                 "~/Scripts/jsx/Component/DopPredIsk.jsx",
                 "~/Scripts/jsx/Component/DopPredIskList.jsx",
                 "~/Scripts/jsx/Component/DopPredIskForm.jsx",

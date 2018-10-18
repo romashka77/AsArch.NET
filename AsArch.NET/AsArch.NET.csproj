@@ -695,6 +695,7 @@
     <Content Include="Scripts\jsx\Component\DopPredIsk.jsx" />
     <Content Include="Scripts\jsx\Component\DopPredIskForm.jsx" />
     <Content Include="Scripts\jsx\Component\DopPredIskList.jsx" />
+    <Content Include="Scripts\jsx\Component\DopPredIskSelect.jsx" />
     <Content Include="Scripts\jsx\Component\DopPredIskTable.jsx" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\react\react-dom-server.js" />

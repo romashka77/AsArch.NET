@@ -54,11 +54,12 @@ namespace AsArch.NET
             ));
 
             bundles.Add(new BabelBundle("~/bundles/appDopPredIsk").Include(
-                "~/Scripts/jsx/Component/DopPredIskSelect.jsx",
-                "~/Scripts/jsx/Component/DopPredIsk.jsx",
-                "~/Scripts/jsx/Component/DopPredIskList.jsx",
-                "~/Scripts/jsx/Component/DopPredIskForm.jsx",
-               "~/Scripts/jsx/Component/DopPredIskTable.jsx",
+                "~/Scripts/jsx/Component/Theader.jsx",
+               //"~/Scripts/jsx/Component/DopPredIskSelect.jsx",
+               "~/Scripts/jsx/Component/DopPredIsk/GridRow.jsx",
+               "~/Scripts/jsx/Component/DopPredIsk/Grid.jsx",
+               //"~/Scripts/jsx/Component/DopPredIskForm.jsx",
+               "~/Scripts/jsx/Component/DopPredIsk/DopPredIsk.jsx",
                "~/Scripts/jsx/appDopPredIsk.jsx"
             ));
 
@@ -66,7 +67,8 @@ namespace AsArch.NET
             // Forces files to be combined and minified in debug mode
             // Only used here to demonstrate how combination/minification works
             // Normally you would use unminified versions in debug mode.
-            BundleTable.EnableOptimizations = true;
+            
+            //BundleTable.EnableOptimizations = false;
 
         }
     }

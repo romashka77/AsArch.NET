@@ -1,5 +1,4 @@
 ﻿using System.Web.Optimization;
-using System.Web.Optimization.React;
 
 namespace AsArch.NET
 {
@@ -27,49 +26,8 @@ namespace AsArch.NET
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
 
-            bundles.Add(new ScriptBundle("~/bundles/react").Include(
-                      "~/Scripts/react/react.min.js"));
-            bundles.Add(new ScriptBundle("~/bundles/react-dom").Include(
-                      "~/Scripts/react/react-dom.min.js"));
             bundles.Add(new ScriptBundle("~/bundles/remarkable").Include(
                       "~/Scripts/remarkable/remarkable.js"));
-
-            //bundles.Add(new Bundle("~/bundles/app", new IBundleTransform[]
-            //{
-            //    new BabelTransform(),
-            //    new JsMinify(),
-            //})
-            //.Include(
-            //    "~/Script/jsx/CommentBox.jsx",
-            //    "~/Scripts/jsx/app.jsx"
-            //));
-
-
-            bundles.Add(new BabelBundle("~/bundles/appComment").Include(
-                "~/Scripts/jsx/Component/Comment.jsx",
-                "~/Scripts/jsx/Component/CommentList.jsx",
-                "~/Scripts/jsx/Component/CommentForm.jsx",
-               "~/Scripts/jsx/Component/CommentBox.jsx",
-               "~/Scripts/jsx/appComment.jsx"
-            ));
-
-            bundles.Add(new BabelBundle("~/bundles/appDopPredIsk").Include(
-                "~/Scripts/jsx/Component/Theader.jsx",
-               //"~/Scripts/jsx/Component/DopPredIskSelect.jsx",
-               "~/Scripts/jsx/Component/DopPredIsk/GridRow.jsx",
-               "~/Scripts/jsx/Component/DopPredIsk/Grid.jsx",
-               //"~/Scripts/jsx/Component/DopPredIskForm.jsx",
-               "~/Scripts/jsx/Component/DopPredIsk/DopPredIsk.jsx",
-               "~/Scripts/jsx/appDopPredIsk.jsx"
-            ));
-
-            
-            // Forces files to be combined and minified in debug mode
-            // Only used here to demonstrate how combination/minification works
-            // Normally you would use unminified versions in debug mode.
-            
-            //BundleTable.EnableOptimizations = false;
-
         }
     }
 }

@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
-  <Import Project="..\packages\Microsoft.Net.Compilers.2.9.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.9.0\build\Microsoft.Net.Compilers.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -130,15 +129,6 @@
     </Reference>
     <Reference Include="Ninject.Web.WebApi.WebHost, Version=3.3.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\packages\Ninject.Web.WebApi.WebHost.3.3.0\lib\net45\Ninject.Web.WebApi.WebHost.dll</HintPath>
-    </Reference>
-    <Reference Include="React.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=9aed67b161f7db78, processorArchitecture=MSIL">
-      <HintPath>..\packages\React.Core.4.0.0-beta3\lib\net45\React.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="React.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=9aed67b161f7db78, processorArchitecture=MSIL">
-      <HintPath>..\packages\React.Web.4.0.0-beta3\lib\net40\React.Web.dll</HintPath>
-    </Reference>
-    <Reference Include="React.Web.Mvc4, Version=4.0.0.0, Culture=neutral, PublicKeyToken=9aed67b161f7db78, processorArchitecture=MSIL">
-      <HintPath>..\packages\React.Web.Mvc4.4.0.0-beta3\lib\net40\React.Web.Mvc4.dll</HintPath>
     </Reference>
     <Reference Include="RouteJs, Version=2.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\RouteJs.Mvc5.2.2.0\lib\net45\RouteJs.dll</HintPath>
@@ -285,7 +275,6 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\Ninject.Web.Common.cs" />
-    <Compile Include="App_Start\ReactConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
@@ -658,17 +647,17 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="readme.txt" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\jsx\appComment.jsx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="src\components\TabDopIsk.jsx" />
+    <Content Include="webpack.config.js" />
     <EntityDeploy Include="EntityDataModel\DB_pfr_sap.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>DB_pfr_sap.Designer.cs</LastGenOutput>
@@ -677,6 +666,7 @@
       <DependentUpon>DB_pfr_sap.edmx</DependentUpon>
     </Content>
     <Content Include="ClassDiagram1.cd" />
+    <Content Include="package.json" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
@@ -687,28 +677,12 @@
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jsx\appDopPredIsk.jsx" />
-    <Content Include="Scripts\jsx\Component\Comment.jsx" />
-    <Content Include="Scripts\jsx\Component\CommentBox.jsx" />
-    <Content Include="Scripts\jsx\Component\CommentForm.jsx" />
-    <Content Include="Scripts\jsx\Component\CommentList.jsx" />
-    <Content Include="Scripts\jsx\Component\DopPredIsk\GridRow.jsx" />
-    <Content Include="Scripts\jsx\Component\DopPredIskForm.jsx" />
-    <Content Include="Scripts\jsx\Component\DopPredIsk\Grid.jsx" />
-    <Content Include="Scripts\jsx\Component\DopPredIskSelect.jsx" />
-    <Content Include="Scripts\jsx\Component\DopPredIsk\DopPredIsk.jsx" />
-    <Content Include="Scripts\jsx\Component\Theader.jsx" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Scripts\react\react-dom-server.js" />
-    <Content Include="Scripts\react\react-dom-server.min.js" />
-    <Content Include="Scripts\react\react-dom.js" />
-    <Content Include="Scripts\react\react-dom.min.js" />
-    <Content Include="Scripts\react\react-with-addons.js" />
-    <Content Include="Scripts\react\react-with-addons.min.js" />
-    <Content Include="Scripts\react\react.js" />
-    <Content Include="Scripts\react\react.min.js" />
     <Content Include="Scripts\remarkable\remarkable.js" />
     <Content Include="Scripts\remarkable\remarkable.min.js" />
+    <Content Include="src\tab-dop-isk.jsx" />
+    <Content Include="src\components\ItemsList.jsx" />
+    <Content Include="src\components\SearchPlugin.jsx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -776,7 +750,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Views\Nodes\EditorTemplates\" />
     <Folder Include="Views\Shared\EditorTemplates\" />
-    <Folder Include="Views\TabData\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -826,9 +799,11 @@
     <PropertyGroup>
       <ErrorText>Данный проект ссылается на пакеты NuGet, отсутствующие на этом компьютере. Используйте восстановление пакетов NuGet, чтобы скачать их.  Дополнительную информацию см. по адресу: http://go.microsoft.com/fwlink/?LinkID=322105. Отсутствует следующий файл: {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.9.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.9.0\build\Microsoft.Net.Compilers.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
+  <PropertyGroup>
+    <PreBuildEvent>npm run dev</PreBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

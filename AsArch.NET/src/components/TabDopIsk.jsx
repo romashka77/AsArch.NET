@@ -1,16 +1,6 @@
 ﻿var React = require('react');
 import { BootstrapTable, TableHeaderColumn, InsertButton } from 'react-bootstrap-table';
 
-var products = [{
-    id: 1,
-    name: "Product1",
-    price: 120
-}, {
-    id: 2,
-    name: "Product2",
-    price: 80
-}];
-
 const cellEditProp = {
     mode: 'click',
     blurToSave: true
@@ -43,17 +33,17 @@ function jobStatusValidator(value) {
 export default class TabDopIsk extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { data: [] };
+        this.state = { data: [], options: [] };
         this.handleDopPredIskSubmit = this.handleDopPredIskSubmit.bind(this);
     }
 
     invalidJobStatus = (cell, row) => {
-        console.log(`${cell} at row id: ${row.id} fails on editing`);
+        //console.log(`${cell} at row id: ${row.id} fails on editing`);
         return 'invalid-jobstatus-class';
     }
 
     editingJobStatus = (cell, row) => {
-        console.log(`${cell} at row id: ${row.id} in current editing`);
+        //console.log(`${cell} at row id: ${row.id} in current editing`);
         return 'editing-jobstatus-class';
     }
 
@@ -76,7 +66,20 @@ export default class TabDopIsk extends React.Component {
     }
 
     componentWillMount() {
+        //    componentDidMount() {
+        this.loadDopPredIskOptionsFromServer();
         this.loadDopPredIskFromServer();
+    }
+
+    loadDopPredIskOptionsFromServer() {
+        const xhr = new XMLHttpRequest();
+        xhr.open('get', this.props.url_options, true);
+        xhr.onload = () => {
+            console.log(`xhr.responseText`, xhr.responseText);
+            const options = JSON.parse(xhr.responseText);
+            this.setState({ options: options });
+        };
+        xhr.send();
     }
 
     loadDopPredIskFromServer() {
@@ -88,6 +91,7 @@ export default class TabDopIsk extends React.Component {
         };
         xhr.send();
     }
+
     handleDopPredIskSubmit(dopPredIsk) {
         const data = new FormData();
         data.append('IdNode', id_global);
@@ -103,13 +107,16 @@ export default class TabDopIsk extends React.Component {
         const options = {
             insertBtn: this.createCustomInsertButton
         };
-        console.log(this.state.data);
+        console.log(`this.state.data`, this.state.data);
+        console.log(`this.state.options`, this.state.options);
         return (
             <BootstrapTable data={this.state.data} cellEdit={cellEditProp} options={options} insertRow>
                 <TableHeaderColumn isKey={true} dataField='Id'>№</TableHeaderColumn>
-                <TableHeaderColumn dataField='Name' editable={{ type: 'textarea', validator: jobNameValidator }} editColumnClassName='editing-jobsname-class' invalidEditColumnClassName='invalid-jobsname-class'>Сопутствующий предмет иска</TableHeaderColumn>
-                <TableHeaderColumn dataField='Comment' editable={{ validator: jobStatusValidator }} editColumnClassName={this.editingJobStatus} invalidEditColumnClassName={this.invalidJobStatus}>Примечание</TableHeaderColumn>
+                <TableHeaderColumn dataField='Name' editable={{ type: 'select', options: { values: this.state.options } }}>Сопутствующий предмет иска</TableHeaderColumn>
+                <TableHeaderColumn dataField='Comment' editable={{ type: 'textarea'}}>Примечание</TableHeaderColumn>
             </BootstrapTable>
         );
     }
 }
+//, validator: jobStatusValidator editColumnClassName={this.editingJobStatus} invalidEditColumnClassName={this.invalidJobStatus}
+//editColumnClassName='editing-jobsname-class' invalidEditColumnClassName='invalid-jobsname-class'

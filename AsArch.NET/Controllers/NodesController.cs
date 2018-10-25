@@ -160,7 +160,7 @@ namespace AsArch.NET.Controllers
             var prim = data.Where(m => m.TabColType == 0);
 
             var t = n.Join(name, a => a.TabOrder, b => b.TabOrder, (a, b) => new { TabOrder = a.TabOrder, N = a.TabColFloat, NameIsk = b.TabColCharValue });
-            IEnumerable<DopPredIsk> res = t.Join(prim, a => a.TabOrder, b => b.TabOrder, (a, b) => new { TabOrder = a.TabOrder, N = a.N, NameIsk = a.NameIsk, Prim = b.TabColCharValue }).Select(a => new DopPredIsk {IdNode=id, Id = (int?)a.N, /*TabOrder = a.TabOrder, */Name = a.NameIsk, Comment = a.Prim });
+            IEnumerable<DopPredIsk> res = t.Join(prim, a => a.TabOrder, b => b.TabOrder, (a, b) => new { TabOrder = a.TabOrder, N = a.N, NameIsk = a.NameIsk, Prim = b.TabColCharValue }).Select(a => new DopPredIsk { IdNode = id, Id = (int?)a.N, /*TabOrder = a.TabOrder, */Name = a.NameIsk, Comment = a.Prim });
             return res;
         }
 
@@ -175,8 +175,9 @@ namespace AsArch.NET.Controllers
         [OutputCache(Location = OutputCacheLocation.None)]
         public ActionResult GetDopPredIskOptionsJson()
         {
-            var data = repository.ListDict().Where(d =>d.ID_ATTR==1964).OrderBy(n => n.STR_NAME).ToList().Select(n => new {Text = n.STR_NAME });
+            var data = repository.ListDict().Where(d => d.ID_ATTR == 1964).OrderBy(n => n.STR_NAME).ToList().Select(n => n.STR_NAME);
             return Json(data, JsonRequestBehavior.AllowGet);
+
         }
         #endregion
         #region Edit

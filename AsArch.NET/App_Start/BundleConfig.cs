@@ -28,6 +28,9 @@ namespace AsArch.NET
 
             bundles.Add(new ScriptBundle("~/bundles/remarkable").Include(
                       "~/Scripts/remarkable/remarkable.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/tabdopisk").Include(
+                      "~/Scripts/tabdopisk.js"));
         }
     }
 }

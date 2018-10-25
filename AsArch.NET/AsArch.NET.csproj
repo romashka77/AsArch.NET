@@ -656,6 +656,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\tabdopisk.js" />
     <Content Include="src\components\TabDopIsk.jsx" />
     <Content Include="webpack.config.js" />
     <EntityDeploy Include="EntityDataModel\DB_pfr_sap.edmx">

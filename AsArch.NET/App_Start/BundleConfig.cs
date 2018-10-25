@@ -30,7 +30,7 @@ namespace AsArch.NET
                       "~/Scripts/remarkable/remarkable.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/tabdopisk").Include(
-                      "~/Scripts/tabdopisk.js"));
+                      "~/Scripts/tabdopisk.bundle.js"));
         }
     }
 }

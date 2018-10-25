@@ -8,7 +8,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, './Scripts'),     // путь к каталогу выходных файлов - папка public
         publicPath: '/Scripts/',
-        filename: "[name].js"       // название создаваемого файла
+        filename: "[name].bundle.js"       // название создаваемого файла
     },
     module: {
         rules: [   //загрузчик для jsx

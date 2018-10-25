@@ -65,8 +65,8 @@ export default class TabDopIsk extends React.Component {
         );
     }
 
-    componentWillMount() {
-        //    componentDidMount() {
+    //вызывается после рендеринга компонента. Здесь можно выполнять запросы к удаленным ресурсам
+    componentDidMount() {
         this.loadDopPredIskOptionsFromServer();
         this.loadDopPredIskFromServer();
     }
@@ -107,13 +107,11 @@ export default class TabDopIsk extends React.Component {
         const options = {
             insertBtn: this.createCustomInsertButton
         };
-        console.log(`this.state.data`, this.state.data);
-        console.log(`this.state.options`, this.state.options);
         return (
             <BootstrapTable data={this.state.data} cellEdit={cellEditProp} options={options} insertRow>
                 <TableHeaderColumn isKey={true} dataField='Id'>№</TableHeaderColumn>
                 <TableHeaderColumn dataField='Name' editable={{ type: 'select', options: { values: this.state.options } }}>Сопутствующий предмет иска</TableHeaderColumn>
-                <TableHeaderColumn dataField='Comment' editable={{ type: 'textarea'}}>Примечание</TableHeaderColumn>
+                <TableHeaderColumn dataField='Comment' editable={{ type: 'textarea' }}>Примечание</TableHeaderColumn>
             </BootstrapTable>
         );
     }

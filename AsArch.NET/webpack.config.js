@@ -2,12 +2,12 @@
 
 module.exports = {
     entry: {
-        tabdopisk: "./src/tab-dop-isk.jsx"
+        tabdopisk: "./Scripts/components/tab-dop-isk.jsx"
         //"./src/app.jsx"
     }, // входная точка - исходный файл
     output: {
         path: path.resolve(__dirname, './Scripts'),     // путь к каталогу выходных файлов - папка public
-        publicPath: '/public/',
+        publicPath: '/Scripts/',
         filename: "[name].js"       // название создаваемого файла
     },
     module: {

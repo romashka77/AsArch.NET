@@ -657,7 +657,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\tabdopisk.js" />
-    <Content Include="src\components\TabDopIsk.jsx" />
+    <Content Include="Scripts\components\TabDopIsk.jsx" />
     <Content Include="webpack.config.js" />
     <EntityDeploy Include="EntityDataModel\DB_pfr_sap.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -681,9 +681,9 @@
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\remarkable\remarkable.js" />
     <Content Include="Scripts\remarkable\remarkable.min.js" />
-    <Content Include="src\tab-dop-isk.jsx" />
-    <Content Include="src\components\ItemsList.jsx" />
-    <Content Include="src\components\SearchPlugin.jsx" />
+    <Content Include="Scripts\components\tab-dop-isk.jsx" />
+    <Content Include="Scripts\components\ItemsList.jsx" />
+    <Content Include="Scripts\components\SearchPlugin.jsx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -803,7 +803,7 @@
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
   <PropertyGroup>
-    <PreBuildEvent>npm run dev</PreBuildEvent>
+    <PreBuildEvent>npm run build</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

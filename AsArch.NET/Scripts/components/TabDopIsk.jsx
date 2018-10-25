@@ -1,5 +1,5 @@
 ﻿var React = require('react');
-import { BootstrapTable, TableHeaderColumn, InsertButton } from 'react-bootstrap-table';
+import { BootstrapTable, TableHeaderColumn, InsertButton, InsertModalFooter} from 'react-bootstrap-table';
 
 const cellEditProp = {
     mode: 'click',
@@ -37,15 +37,14 @@ export default class TabDopIsk extends React.Component {
         this.handleDopPredIskSubmit = this.handleDopPredIskSubmit.bind(this);
     }
 
-    invalidJobStatus = (cell, row) => {
-        //console.log(`${cell} at row id: ${row.id} fails on editing`);
-        return 'invalid-jobstatus-class';
-    }
-
-    editingJobStatus = (cell, row) => {
-        //console.log(`${cell} at row id: ${row.id} in current editing`);
-        return 'editing-jobstatus-class';
-    }
+    //invalidJobStatus = (cell, row) => {
+    //    //console.log(`${cell} at row id: ${row.id} fails on editing`);
+    //    return 'invalid-jobstatus-class';
+    //}
+    //editingJobStatus = (cell, row) => {
+    //    //console.log(`${cell} at row id: ${row.id} in current editing`);
+    //    return 'editing-jobstatus-class';
+    //}
 
     //кнопка Добавить
     handleInsertButtonClick = (onClick) => {
@@ -64,7 +63,7 @@ export default class TabDopIsk extends React.Component {
             />
         );
     }
-
+    
     //вызывается после рендеринга компонента. Здесь можно выполнять запросы к удаленным ресурсам
     componentDidMount() {
         this.loadDopPredIskOptionsFromServer();
@@ -105,7 +104,8 @@ export default class TabDopIsk extends React.Component {
     }
     render() {
         const options = {
-            insertBtn: this.createCustomInsertButton
+            insertBtn: this.createCustomInsertButton,
+            //insertModalFooter: this.createCustomModalFooter
         };
         return (
             <BootstrapTable data={this.state.data} cellEdit={cellEditProp} options={options} insertRow>

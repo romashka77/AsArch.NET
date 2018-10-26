@@ -45,7 +45,6 @@ export default class TabDopIsk extends React.Component {
     //    //console.log(`${cell} at row id: ${row.id} in current editing`);
     //    return 'editing-jobstatus-class';
     //}
-
     //кнопка Добавить
     handleInsertButtonClick = (onClick) => {
         // Пользовательское событие onClick здесь, нет необходимости реализовывать эту функцию, если у вас нет никакого процесса перед onClick
@@ -63,7 +62,48 @@ export default class TabDopIsk extends React.Component {
             />
         );
     }
-    
+    //InsertModalFooter
+    beforeClose(e) {
+        alert(`[Custom Event]: Modal close event triggered!`);
+    }
+
+    beforeSave(e) {
+        alert(`[Custom Event]: Modal save event triggered!`);
+    }
+
+    handleModalClose(closeModal) {
+        // Custom your onCloseModal event here,
+        // it's not necessary to implement this function if you have no any process before modal close
+        console.log('This is my custom function for modal close event');
+        closeModal();
+    }
+
+    handleSave(save) {
+        // Custom your onSave event here,
+        // it's not necessary to implement this function if you have no any process before save
+        console.log('This is my custom function for save event');
+        save();
+    }
+
+    createCustomModalFooter = (closeModal, save) => {
+        return (
+            <InsertModalFooter
+                className='my-custom-class'
+                saveBtnText='Сохранить'
+                closeBtnText='Отмена'
+                closeBtnContextual='btn btn-default'
+                saveBtnContextual='btn btn-default'
+                closeBtnClass='my-close-btn-class'
+                saveBtnClass='my-save-btn-class'
+                beforeClose={this.beforeClose}
+                beforeSave={this.beforeSave}
+                onModalClose={() => this.handleModalClose(closeModal)}
+                onSave={() => this.handleSave(save)}
+            />
+        );
+    }
+
+
     //вызывается после рендеринга компонента. Здесь можно выполнять запросы к удаленным ресурсам
     componentDidMount() {
         this.loadDopPredIskOptionsFromServer();
@@ -105,7 +145,7 @@ export default class TabDopIsk extends React.Component {
     render() {
         const options = {
             insertBtn: this.createCustomInsertButton,
-            //insertModalFooter: this.createCustomModalFooter
+            insertModalFooter: this.createCustomModalFooter
         };
         return (
             <BootstrapTable data={this.state.data} cellEdit={cellEditProp} options={options} insertRow>

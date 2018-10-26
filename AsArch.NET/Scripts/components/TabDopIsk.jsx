@@ -84,7 +84,7 @@ export default class TabDopIsk extends React.Component {
         const xhr = new XMLHttpRequest();
         xhr.open('get', this.props.url_options, true);
         xhr.onload = () => {
-            console.log(`xhr.responseText`, xhr.responseText);
+            //console.log(`xhr.responseText`, xhr.responseText);
             const options = JSON.parse(xhr.responseText);
             this.setState({ options: options });
         };

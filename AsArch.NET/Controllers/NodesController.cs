@@ -143,12 +143,28 @@ namespace AsArch.NET.Controllers
         #endregion
         #region TableDopPredIsk
 
-        [HttpPost]
-        public ActionResult AddDopPredIsk(DopPredIsk model)
+        [HttpDelete]
+        public ActionResult DeleteDopPredIsk(DopPredIsk model)
         {
+            if (ModelState.IsValid)
+            {
 
-            //model.Id = _comments.Count + 1;
-            //_comments.Add(model);
+
+                //repository.UpdateTableFloat(2153, model.IdNode, model.Id - 1, 0, model.Id);
+                //repository.UpdateTableChar(2153, model.IdNode, model.Id - 1, 1, model.Name);
+                //repository.UpdateTableChar(2153, model.IdNode, model.Id - 1, 2, model.Comment);
+            }
+            return Content("Success :)");
+        }
+        [HttpPost]
+        public ActionResult InsertDopPredIsk(DopPredIsk model)
+        {
+            if (ModelState.IsValid) {
+
+                repository.UpdateTableFloat(2153, model.IdNode, model.Id-1, 0, model.Id);
+                repository.UpdateTableChar(2153, model.IdNode, model.Id-1, 1, model.Name);
+                repository.UpdateTableChar(2153, model.IdNode, model.Id-1, 2, model.Comment);
+            }
             return Content("Success :)");
         }
 

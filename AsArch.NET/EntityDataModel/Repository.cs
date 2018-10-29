@@ -188,7 +188,14 @@ namespace AsArch.NET.EntityDataModel
                 " Order by NOrder, IdAttr "/*, TabOrder, TabIdCol"*/, new SqlParameter("id_type", id_itemtype), new SqlParameter("id_node", id_node));
             return query.AsQueryable<NodeAttr>();
         }
-        public IQueryable<TableData> GetTableData(int? id_itemtype, int id_node, string nameAttr)
+        public int UpdateTableChar(int? id_attr, int? id_node, int? n_order, int? id_col, string char_val/*, int? history_node, int? transFlag*/) {
+            return db.UpdateTableChar(id_attr, id_node, n_order, id_col, char_val, null, null);
+        }
+        public int UpdateTableFloat(int? id_attr, int? id_node, int? n_order, int? id_col, double? float_val)
+        {
+            return db.UpdateTableFloat(id_attr, id_node, n_order, id_col, float_val, null, null);
+        }
+        public IQueryable<TableData> GetTableData(int? id_itemtype, int? id_node, string nameAttr)
         {
             var query = db.Database.SqlQuery<TableData>("select A.*" +
                 ", T.OPTIONS as Options" +
@@ -259,5 +266,7 @@ namespace AsArch.NET.EntityDataModel
             });
             return new SelectList(itemType, "itemType", "name", id_itemtype);
         }
+
+        
     }
 }

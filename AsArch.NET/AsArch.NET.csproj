@@ -16,7 +16,7 @@
     <AssemblyName>AsArch.NET</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <Use64BitIISExpress>true</Use64BitIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
@@ -374,12 +374,14 @@
     <Compile Include="EntityDataModel\DICTIONARy.cs">
       <DependentUpon>DB_pfr_sap.tt</DependentUpon>
     </Compile>
+    <Compile Include="EntityDataModel\Entytis\BaseJson.cs" />
     <Compile Include="EntityDataModel\Entytis\DopPredIsk.cs" />
     <Compile Include="EntityDataModel\Entytis\ItemNode.cs" />
     <Compile Include="EntityDataModel\Entytis\NodeAttr.cs" />
     <Compile Include="EntityDataModel\Entytis\NodeValueString.cs" />
     <Compile Include="EntityDataModel\Entytis\StoronaProc.cs" />
     <Compile Include="EntityDataModel\Entytis\Sud.cs" />
+    <Compile Include="EntityDataModel\Entytis\SudZas.cs" />
     <Compile Include="EntityDataModel\Entytis\TableData.cs" />
     <Compile Include="EntityDataModel\EVENT.cs">
       <DependentUpon>DB_pfr_sap.tt</DependentUpon>
@@ -647,6 +649,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\components\GrafSudZas.jsx" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -657,7 +660,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\components\TabDopIsk.jsx" />
-    <Content Include="Scripts\tabdopisk.bundle.js" />
     <Content Include="webpack.config.js" />
     <EntityDeploy Include="EntityDataModel\DB_pfr_sap.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -681,7 +683,7 @@
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\remarkable\remarkable.js" />
     <Content Include="Scripts\remarkable\remarkable.min.js" />
-    <Content Include="Scripts\components\tab-dop-isk.jsx" />
+    <Content Include="Scripts\components\IskovoeZajvlenie.jsx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -784,7 +786,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>1152</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:1152/</IISUrl>
+          <IISUrl>http://localhost:90</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

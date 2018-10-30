@@ -2,7 +2,7 @@
 
 module.exports = {
     entry: {
-        tabdopisk: "./Scripts/components/tab-dop-isk.jsx"
+        iskovoezajvlenie: "./Scripts/components/IskovoeZajvlenie.jsx"
         //"./src/app.jsx"
     }, // входная точка - исходный файл
     output: {

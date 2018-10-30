@@ -53,7 +53,11 @@ namespace AsArch.NET.Interfaces
         int UpdateRefAttrs(int? id_attr, int? id_node1, int? id_node2);
 
         int UpdateTableChar(int? id_attr, int? id_node, int? n_order, int? id_col, string char_val);
+        void DeleteTableChar(int? id_attr, int? id_node, int? n_order);
         int UpdateTableFloat(int? id_attr, int? id_node, int? n_order, int? id_col, double? float_val);
+        int UpdateTableDate(int? id_attr, int? id_node, int? n_order, int? id_col, DateTime? date_val);
+        void DeleteTableFloat(int? id_attr, int? id_node, int? n_order);
+        void DeleteTableDate(int? id_attr, int? id_node, int? n_order);
         IQueryable<TableData> GetTableData(int? id_itemtype, int? id_node, string nameAttr);
         IQueryable<DICTIONARy> ListDict();
     }

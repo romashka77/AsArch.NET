@@ -1,12 +1,10 @@
 ﻿var React = require('react');
-import { BootstrapTable, TableHeaderColumn, InsertButton, DeleteButton, InsertModalHeader, InsertModalFooter, SearchField, ClearSearchButton} from 'react-bootstrap-table';
+import { BootstrapTable, TableHeaderColumn, InsertButton, DeleteButton, InsertModalHeader, InsertModalFooter, SearchField, ClearSearchButton } from 'react-bootstrap-table';
 
-export default class TabDopIsk extends React.Component {
+export default class GrafSudZas extends React.Component {
     constructor(props) {
         super(props);
         this.state = { data: [], options: [] };
-        //this.handleDopPredIskSubmit = this.handleDopPredIskSubmit.bind(this);
-        //this.press = this.press.bind(this);
     }
 
     //InsertButton
@@ -23,10 +21,13 @@ export default class TabDopIsk extends React.Component {
         const form = new FormData();
         form.append('IdNode', id_global);
         form.append('Id', row.Id);
-        form.append('Name', row.Name);
+        form.append('DateValue', row.DateValue);
+        form.append('TimeValue', row.TimeValue);
         form.append('Comment', row.Comment);
+        form.append('Isp', row.Isp);
+        form.append('Sud', row.Sud);
         const xhr = new XMLHttpRequest();
-        xhr.open('post', Router.action(`Nodes`, `InsertDopPredIsk`), true);
+        xhr.open('post', Router.action(`Nodes`, `InsertSudZas`), true);
         xhr.onload = () => this.loadDopPredIskFromServer();
         xhr.send(form);
     }
@@ -90,8 +91,8 @@ export default class TabDopIsk extends React.Component {
         form.append('IdNode', id_global);
         form.append('Ids', rowKeys);
         const xhr = new XMLHttpRequest();
-        xhr.open('delete', Router.action(`Nodes`, `DeleteDopPredIsk`), true);
-        xhr.onload = () => this.loadDopPredIskFromServer();
+        xhr.open('delete', Router.action(`Nodes`, `DeleteSudZas`), true);
+        xhr.onload = () => this.loadSudZasFromServer();
         xhr.send(form);
         //alert('The rowkey you drop: ' + rowKeys);
     }
@@ -105,33 +106,36 @@ export default class TabDopIsk extends React.Component {
         const form = new FormData();
         form.append('IdNode', id_global);
         form.append('Id', row.Id);
-        form.append('Name', row.Name);
+        form.append('DateValue', row.DateValue);
+        form.append('TimeValue', row.TimeValue);
         form.append('Comment', row.Comment);
+        form.append('Isp', row.Isp);
+        form.append('Sud', row.Sud);
         const xhr = new XMLHttpRequest();
-        xhr.open('post', Router.action(`Nodes`, `InsertDopPredIsk`), true);
-        xhr.onload = () => this.loadDopPredIskFromServer();
+        xhr.open('post', Router.action(`Nodes`, `InsertSudZas`), true);
+        xhr.onload = () => this.loadSudZasFromServer();
         xhr.send(form);
     }
 
 
     //вызывается после рендеринга компонента. Здесь можно выполнять запросы к удаленным ресурсам
     componentDidMount() {
-        this.loadDopPredIskOptionsFromServer();
-        this.loadDopPredIskFromServer();
+        //this.loadDopPredIskOptionsFromServer();
+        this.loadSudZasFromServer();
     }
 
-    loadDopPredIskOptionsFromServer() {
-        const xhr = new XMLHttpRequest();
-        xhr.open('get', this.props.url_options, true);
-        xhr.onload = () => {
-            //console.log(`xhr.responseText`, xhr.responseText);
-            const options = JSON.parse(xhr.responseText);
-            this.setState({ options: options });
-        };
-        xhr.send();
-    }
+    //loadDopPredIskOptionsFromServer() {
+    //    const xhr = new XMLHttpRequest();
+    //    xhr.open('get', this.props.url_options, true);
+    //    xhr.onload = () => {
+    //        //console.log(`xhr.responseText`, xhr.responseText);
+    //        const options = JSON.parse(xhr.responseText);
+    //        this.setState({ options: options });
+    //    };
+    //    xhr.send();
+    //}
 
-    loadDopPredIskFromServer() {
+    loadSudZasFromServer() {
         const xhr = new XMLHttpRequest();
         xhr.open('get', this.props.url, true);
         xhr.onload = () => {
@@ -140,18 +144,12 @@ export default class TabDopIsk extends React.Component {
         };
         xhr.send();
     }
-
-    //handleDopPredIskSubmit(dopPredIsk) {
-    //    const data = new FormData();
-    //    data.append('IdNode', id_global);
-    //    data.append('Name', dopPredIsk.Name);
-    //    data.append('Comment', dopPredIsk.Comment);
-
-    //    const xhr = new XMLHttpRequest();
-    //    xhr.open('post', this.props.submitUrl, true);
-    //    xhr.onload = () => this.loadDopPredIskFromServer();
-    //    xhr.send(data);
-    //}
+    dateFormatter(cell) {
+        if (!cell) {
+            return "";
+        }
+        return `${moment(cell).format("DD-MM-YYYY") ? moment(cell).format("DD-MM-YYYY") : moment(cell).format("DD-MM-YYYY")}`;
+    }
     render() {
         const options = {
             insertBtn: this.createCustomInsertButton,
@@ -183,14 +181,14 @@ export default class TabDopIsk extends React.Component {
                     search
                 >
                     <TableHeaderColumn isKey={true} dataField='Id'>№</TableHeaderColumn>
-                    <TableHeaderColumn dataField='Name' editable={{ type: 'select', options: { values: this.state.options } }}>Сопутствующий предмет иска</TableHeaderColumn>
+                    <TableHeaderColumn dataField='DateValue' editable={{ type: 'date' }} /*dataFormat={this.dateFormatter}*/>Дата</TableHeaderColumn>
+                    <TableHeaderColumn dataField='TimeValue'>Время</TableHeaderColumn>
                     <TableHeaderColumn dataField='Comment'>Примечание</TableHeaderColumn>
+                    <TableHeaderColumn dataField='Isp'>Исполнитель</TableHeaderColumn>
+                    <TableHeaderColumn dataField='Sud'>Судья</TableHeaderColumn>
                 </BootstrapTable>
-
             </div>
         );
     }
 }
-//<button onClick={this.press}>Добавить</button>;
-//, validator: jobStatusValidator editColumnClassName={this.editingJobStatus} invalidEditColumnClassName={this.invalidJobStatus}
-//editColumnClassName='editing-jobsname-class' invalidEditColumnClassName='invalid-jobsname-class'
+//<TableHeaderColumn dataField='Name' editable={{ type: 'select', options: { values: this.state.options } }}>Сопутствующий предмет иска</TableHeaderColumn>

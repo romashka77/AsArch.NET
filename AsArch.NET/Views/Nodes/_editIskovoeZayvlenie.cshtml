@@ -141,7 +141,20 @@
                     </h4>
                 </div>
                 <div id="collapse-dop-pred-isk" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-dop-pred-isk">
-                    <div id="tabdopisk"></div>
+                    <div id="tab-dop-isk"></div>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="heading-graf-sud-zas">
+                    <h4 class="panel-title">
+                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse-graf-sud-zas" aria-expanded="false" aria-controls="collapse-graf-sud-zas">
+                            График судебных заседаний
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse-graf-sud-zas" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-graf-sud-zas">
+                    <div id="graf-sud-zas"></div>
                 </div>
             </div>
 
@@ -565,4 +578,3 @@
 <script type="text/javascript">var id_global = @Html.Raw(Json.Encode(Model.IdNode));</script>
 <script src="@RouteJs.RouteJsHandler.HandlerUrl"></script>
 
-@*<script src="~/public/tabdopisk.js"></script>*@

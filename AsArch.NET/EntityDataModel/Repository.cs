@@ -188,12 +188,17 @@ namespace AsArch.NET.EntityDataModel
                 " Order by NOrder, IdAttr "/*, TabOrder, TabIdCol"*/, new SqlParameter("id_type", id_itemtype), new SqlParameter("id_node", id_node));
             return query.AsQueryable<NodeAttr>();
         }
-        public int UpdateTableChar(int? id_attr, int? id_node, int? n_order, int? id_col, string char_val/*, int? history_node, int? transFlag*/) {
+        public int UpdateTableChar(int? id_attr, int? id_node, int? n_order, int? id_col, string char_val/*, int? history_node, int? transFlag*/)
+        {
             return db.UpdateTableChar(id_attr, id_node, n_order, id_col, char_val, null, null);
         }
         public int UpdateTableFloat(int? id_attr, int? id_node, int? n_order, int? id_col, double? float_val)
         {
             return db.UpdateTableFloat(id_attr, id_node, n_order, id_col, float_val, null, null);
+        }
+        public int UpdateTableDate(int? id_attr, int? id_node, int? n_order, int? id_col, DateTime? date_val)
+        {
+            return db.UpdateTableDate(id_attr, id_node, n_order, id_col, date_val, null, null);
         }
         public IQueryable<TableData> GetTableData(int? id_itemtype, int? id_node, string nameAttr)
         {
@@ -267,6 +272,19 @@ namespace AsArch.NET.EntityDataModel
             return new SelectList(itemType, "itemType", "name", id_itemtype);
         }
 
-        
+        public void DeleteTableChar(int? id_attr, int? id_node, int? n_order)
+        {
+            db.Database.ExecuteSqlCommand("DELETE TABLEVAL_CHAR WHERE ID_ATTR = @id_attr AND ID_NODE = @id_node AND N_ORDER = @n_order", new SqlParameter("id_attr", id_attr), new SqlParameter("id_node", id_node), new SqlParameter("n_order", n_order));
+        }
+
+        public void DeleteTableFloat(int? id_attr, int? id_node, int? n_order)
+        {
+            db.Database.ExecuteSqlCommand("DELETE TABLEVAL_FLOAT WHERE ID_ATTR = @id_attr AND ID_NODE = @id_node AND N_ORDER = @n_order", new SqlParameter("id_attr", id_attr), new SqlParameter("id_node", id_node), new SqlParameter("n_order", n_order));
+        }
+
+        public void DeleteTableDate(int? id_attr, int? id_node, int? n_order)
+        {
+            db.Database.ExecuteSqlCommand("DELETE TABLEVAL_DATE WHERE ID_ATTR = @id_attr AND ID_NODE = @id_node AND N_ORDER = @n_order", new SqlParameter("id_attr", id_attr), new SqlParameter("id_node", id_node), new SqlParameter("n_order", n_order));
+        }
     }
 }

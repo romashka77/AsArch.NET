@@ -1,4 +1,5 @@
-﻿var React = require('react');
+﻿//http://allenfang.github.io/react-bootstrap-table/example.html#remote
+var React = require('react');
 import { BootstrapTable, TableHeaderColumn, InsertButton, DeleteButton, InsertModalHeader, InsertModalFooter, SearchField, ClearSearchButton} from 'react-bootstrap-table';
 
 export default class TabDopIsk extends React.Component {
@@ -182,7 +183,7 @@ export default class TabDopIsk extends React.Component {
                     deleteRow
                     search
                 >
-                    <TableHeaderColumn isKey={true} dataField='Id'>№</TableHeaderColumn>
+                    <TableHeaderColumn isKey={true} autoValue={true} dataField='Id'>№</TableHeaderColumn>
                     <TableHeaderColumn dataField='Name' editable={{ type: 'select', options: { values: this.state.options } }}>Сопутствующий предмет иска</TableHeaderColumn>
                     <TableHeaderColumn dataField='Comment'>Примечание</TableHeaderColumn>
                 </BootstrapTable>

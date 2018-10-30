@@ -1,4 +1,5 @@
 ﻿//http://allenfang.github.io/react-bootstrap-table/example.html#remote
+//http://allenfang.github.io/react-bootstrap-table/example.html#celledit
 var React = require('react');
 import { BootstrapTable, TableHeaderColumn, InsertButton, DeleteButton, InsertModalHeader, InsertModalFooter, SearchField, ClearSearchButton} from 'react-bootstrap-table';
 

@@ -6,7 +6,6 @@ import GrafSudZas from './GrafSudZas.jsx';
 ReactDOM.render(
     <TabDopIsk
         url={Router.action(`Nodes`, `getdopprediskjson`, { id: id_global })}
-        url_options={Router.action(`Nodes`, `GetDopPredIskOptionsJson`)}
     //pollInterval={2000}
     />,
     document.getElementById('tab-dop-isk')
@@ -15,7 +14,6 @@ ReactDOM.render(
 ReactDOM.render(
     <GrafSudZas
         url={Router.action(`Nodes`, `GetSudZasJson`, { id: id_global })}
-        //url_options={Router.action(`Nodes`, `GetDopPredIskOptionsJson`)}
     //pollInterval={2000}
     />,
     document.getElementById('graf-sud-zas')

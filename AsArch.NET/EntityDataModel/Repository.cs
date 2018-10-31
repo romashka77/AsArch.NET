@@ -260,6 +260,10 @@ namespace AsArch.NET.EntityDataModel
         {
             return db.DICTIONARIES;
         }
+        public IQueryable<TABLELISTCONFIG> ListTabConfig()
+        {
+            return db.TABLELISTCONFIGs;
+        }
 
 
         public SelectList GetListItemTypes(int? id_itemtype_parent = null, int? id_itemtype = null)

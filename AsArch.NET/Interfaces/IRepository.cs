@@ -60,5 +60,6 @@ namespace AsArch.NET.Interfaces
         void DeleteTableDate(int? id_attr, int? id_node, int? n_order);
         IQueryable<TableData> GetTableData(int? id_itemtype, int? id_node, string nameAttr);
         IQueryable<DICTIONARy> ListDict();
+        IQueryable<TABLELISTCONFIG> ListTabConfig();
     }
 }

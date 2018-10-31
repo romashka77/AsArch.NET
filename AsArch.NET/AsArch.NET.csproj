@@ -650,6 +650,9 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\components\GrafSudZas.jsx" />
+    <Content Include="Scripts\components\GrafSudZasView.jsx" />
+    <Content Include="Scripts\components\TabDopIskView.jsx" />
+    <Content Include="Scripts\utils.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />

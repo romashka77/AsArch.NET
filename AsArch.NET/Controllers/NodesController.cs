@@ -163,10 +163,13 @@ namespace AsArch.NET.Controllers
         {
             if (ModelState.IsValid)
             {
-
-                //repository.UpdateTableFloat(2091, model.IdNode, model.Id - 1, 0, model.Id);
-                //repository.UpdateTableChar(2153, model.IdNode, model.Id - 1, 1, model.Name);
-                //repository.UpdateTableChar(2153, model.IdNode, model.Id - 1, 2, model.Comment);
+                var n_order = model.Id - 1;
+                repository.UpdateTableChar(2091, model.IdNode, n_order, 0, model.Id.ToString());
+                repository.UpdateTableDate(2091, model.IdNode, n_order, 1, Convert.ToDateTime(model.DateValue));
+                repository.UpdateTableChar(2091, model.IdNode, n_order, 2, model.TimeValue);
+                repository.UpdateTableChar(2091, model.IdNode, n_order, 3, model.Comment);
+                repository.UpdateTableChar(2091, model.IdNode, n_order, 4, model.Isp);
+                repository.UpdateTableChar(2091, model.IdNode, n_order, 5, model.Sud);
             }
             return Content("Success :)");
         }
@@ -218,10 +221,10 @@ namespace AsArch.NET.Controllers
         {
             if (ModelState.IsValid)
             {
-
-                repository.UpdateTableFloat(2153, model.IdNode, model.Id - 1, 0, model.Id);
-                repository.UpdateTableChar(2153, model.IdNode, model.Id - 1, 1, model.Name);
-                repository.UpdateTableChar(2153, model.IdNode, model.Id - 1, 2, model.Comment);
+                var n_order = model.Id - 1;
+                repository.UpdateTableFloat(2153, model.IdNode, n_order, 0, model.Id);
+                repository.UpdateTableChar(2153, model.IdNode, n_order, 1, model.Name);
+                repository.UpdateTableChar(2153, model.IdNode, n_order, 2, model.Comment);
             }
             return Content("Success :)");
         }
@@ -241,15 +244,21 @@ namespace AsArch.NET.Controllers
         [OutputCache(Location = OutputCacheLocation.None)]
         public ActionResult GetDopPredIskJson(int id)
         {
-
             IEnumerable<DopPredIsk> data = GetDopPredIsk(id);
             return Json(data, JsonRequestBehavior.AllowGet);
         }
 
         [OutputCache(Location = OutputCacheLocation.None)]
-        public ActionResult GetDopPredIskOptionsJson()
+        public ActionResult GetListTabConfig()
         {
-            var data = repository.ListDict().Where(d => d.ID_ATTR == 1964).OrderBy(n => n.STR_NAME).ToList().Select(n => n.STR_NAME);
+            var data = repository.ListTabConfig().OrderBy(n => n.STR_NAME).ToList().Select(n => n.STR_NAME);
+            return Json(data, JsonRequestBehavior.AllowGet);
+
+        }
+        [OutputCache(Location = OutputCacheLocation.None)]
+        public ActionResult GetListDictJson(int id)
+        {
+            var data = repository.ListDict().Where(d => d.ID_ATTR == id).OrderBy(n => n.STR_NAME).ToList().Select(n => n.STR_NAME);
             return Json(data, JsonRequestBehavior.AllowGet);
 
         }

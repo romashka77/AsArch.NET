@@ -90,7 +90,7 @@ export default class GrafSudZasView extends React.Component {
             insertModalHeader: this.createCustomModalHeader,
             insertModalFooter: this.createCustomModalFooter,
             searchField: this.createCustomSearchField,
-            clearSearch: true,
+            //clearSearch: true,
             clearSearchBtn: this.createCustomClearButton,
 
             onCellEdit: this.props.onCellEdit,
@@ -110,6 +110,7 @@ export default class GrafSudZasView extends React.Component {
                     selectRow={{ mode: 'checkbox' }}
                     options={options}
                     insertRow deleteRow search //pagination
+                    containerClass='table-responsive'
                 >
                     <TableHeaderColumn isKey={true} dataField='Id'>№</TableHeaderColumn>
                     <TableHeaderColumn dataField='DateValue' editable={{ type: 'date' }}>Дата</TableHeaderColumn>

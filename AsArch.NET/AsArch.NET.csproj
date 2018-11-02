@@ -633,8 +633,6 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\Sample.css" />
-    <Content Include="Content\Sample.jsx" />
     <Content Include="EntityDataModel\DB_pfr_sap.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DB_pfr_sap.edmx</DependentUpon>

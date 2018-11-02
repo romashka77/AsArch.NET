@@ -1,5 +1,8 @@
-﻿var React = require('react');
+﻿import 'react-bootstrap-table/dist/react-bootstrap-table.min.css';
+
+var React = require('react');
 var ReactDOM = require('react-dom');
+
 import TabDopIsk from './TabDopIsk.jsx';
 import GrafSudZas from './GrafSudZas.jsx';
 

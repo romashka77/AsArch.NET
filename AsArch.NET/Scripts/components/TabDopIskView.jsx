@@ -82,7 +82,7 @@ export default class TabDopIskView extends React.Component {
             insertModalHeader: this.createCustomModalHeader,
             insertModalFooter: this.createCustomModalFooter,
             searchField: this.createCustomSearchField,
-            clearSearch: true,
+            //clearSearch: true,
             clearSearchBtn: this.createCustomClearButton,
 
             onCellEdit: this.props.onCellEdit,
@@ -101,7 +101,8 @@ export default class TabDopIskView extends React.Component {
                     }}
                     selectRow={{ mode: 'checkbox' }}
                     options={options}
-                    insertRow deleteRow search //pagination
+                    insertRow deleteRow search pagination
+                    containerClass='table-responsive'
                 >
                     <TableHeaderColumn isKey={true} dataField='Id'>№</TableHeaderColumn>
                     <TableHeaderColumn dataField='Name' editable={{ type: 'select', options: { values: this.props.options } }}>Сопутствующий предмет иска</TableHeaderColumn>

@@ -32,6 +32,7 @@ export default class TabDopIsk extends React.Component {
         this.loadListDictJsonFromServer(1964);
         this.loadDopPredIskFromServer();
     }
+
     //добавить запись
     onAddRow = (row) => {
         const form = new FormData();
@@ -44,6 +45,7 @@ export default class TabDopIsk extends React.Component {
         xhr.onload = () => this.loadDopPredIskFromServer();
         xhr.send(form);
     }
+
     //удалить записи
     onDeleteRow = (row) => {
         const form = new FormData();
@@ -54,6 +56,7 @@ export default class TabDopIsk extends React.Component {
         xhr.onload = () => this.loadDopPredIskFromServer();
         xhr.send(form);
     }
+
     //редактировать ячейку
     onCellEdit = (row, fieldName, value) => {
         row[fieldName] = value;
@@ -67,8 +70,6 @@ export default class TabDopIsk extends React.Component {
         xhr.onload = () => this.loadDopPredIskFromServer();
         xhr.send(form);
     }
-
-    
 
     render() {
         return (

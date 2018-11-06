@@ -171,7 +171,7 @@ namespace AsArch.NET.Controllers
                     }
                     else
                     {
-                        model.Id = GetDopPredIsk(model.IdNode).Max(n => n.Id) + 1;
+                        model.Id = GetSudZas(model.IdNode).Max(n => n.Id) + 1;
                     }
                 }
                 repository.UpdateTableChar(2091, model.IdNode, model.Id, 0, model.N);

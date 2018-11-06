@@ -23,8 +23,8 @@ namespace AsArch.NET
                       "~/Scripts/bootstrap.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-
                       "~/Content/bootstrap.css",
+                      "~/node_modules/react-bootstrap-table/dist/react-bootstrap-table.min.css ",
                       "~/Content/site.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/remarkable").Include(

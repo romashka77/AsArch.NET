@@ -38,6 +38,7 @@ export default class TabDopIsk extends React.Component {
         const form = new FormData();
         form.append('IdNode', id_global);
         form.append('Id', row.Id);
+        form.append('N', row.N);
         form.append('Name', row.Name);
         form.append('Comment', row.Comment);
         const xhr = new XMLHttpRequest();
@@ -63,6 +64,7 @@ export default class TabDopIsk extends React.Component {
         const form = new FormData();
         form.append('IdNode', id_global);
         form.append('Id', row.Id);
+        form.append('N', row.N);
         form.append('Name', row.Name);
         form.append('Comment', row.Comment);
         const xhr = new XMLHttpRequest();

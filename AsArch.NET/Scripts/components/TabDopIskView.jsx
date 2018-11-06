@@ -104,7 +104,8 @@ export default class TabDopIskView extends React.Component {
                     insertRow deleteRow search pagination
                     containerClass='table-responsive'
                 >
-                    <TableHeaderColumn isKey={true} dataField='Id'>№</TableHeaderColumn>
+                    <TableHeaderColumn isKey={true} autovalue  hiddenOnInsert={true} dataField='Id'></TableHeaderColumn>
+                    <TableHeaderColumn dataField='N'>№</TableHeaderColumn>
                     <TableHeaderColumn dataField='Name' editable={{ type: 'select', options: { values: this.props.options } }}>Сопутствующий предмет иска</TableHeaderColumn>
                     <TableHeaderColumn dataField='Comment'>Примечание</TableHeaderColumn>
                 </BootstrapTable>

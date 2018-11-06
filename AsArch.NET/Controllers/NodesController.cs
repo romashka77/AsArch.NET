@@ -163,17 +163,27 @@ namespace AsArch.NET.Controllers
         {
             if (ModelState.IsValid)
             {
-                var n_order = model.Id - 1;
-                repository.UpdateTableChar(2091, model.IdNode, n_order, 0, model.Id.ToString());
-                repository.UpdateTableDate(2091, model.IdNode, n_order, 1, Convert.ToDateTime(model.DateValue));
-                repository.UpdateTableChar(2091, model.IdNode, n_order, 2, model.TimeValue);
-                repository.UpdateTableChar(2091, model.IdNode, n_order, 3, model.Comment);
-                repository.UpdateTableChar(2091, model.IdNode, n_order, 4, model.Isp);
-                repository.UpdateTableChar(2091, model.IdNode, n_order, 5, model.Sud);
+                if (model.Id == null)
+                {
+                    if (GetSudZas(model.IdNode).Where(n => n.Isp != null || n.Sud != null || n.TimeValue != null || n.DateValue != null || n.Comment != null || n.N != null).Count() == 0)
+                    {
+                        model.Id = 0;
+                    }
+                    else
+                    {
+                        model.Id = GetDopPredIsk(model.IdNode).Max(n => n.Id) + 1;
+                    }
+                }
+                repository.UpdateTableChar(2091, model.IdNode, model.Id, 0, model.N);
+                repository.UpdateTableDate(2091, model.IdNode, model.Id, 1, Convert.ToDateTime(model.DateValue));
+                repository.UpdateTableChar(2091, model.IdNode, model.Id, 2, model.TimeValue);
+                repository.UpdateTableChar(2091, model.IdNode, model.Id, 3, model.Comment);
+                repository.UpdateTableChar(2091, model.IdNode, model.Id, 4, model.Isp);
+                repository.UpdateTableChar(2091, model.IdNode, model.Id, 5, model.Sud);
             }
             return Content("Success :)");
         }
-        private IEnumerable<SudZas> GetSudZas(int id)
+        private IEnumerable<SudZas> GetSudZas(int? id)
         {
             IEnumerable<TableData> data = repository.GetTableData(1954, id, "Предмет иска судебных заседаний").ToList();
 
@@ -189,7 +199,7 @@ namespace AsArch.NET.Controllers
             var t2 = t1.Join(c, a => a.TabOrder, b => b.TabOrder, (a, b) => new { TabOrder = a.TabOrder, Id = a.Id, DateValue = a.DateValue, TimeValue = a.TimeValue, Comment = b.TabColCharValue });
             var t3 = t2.Join(i, a => a.TabOrder, b => b.TabOrder, (a, b) => new { TabOrder = a.TabOrder, Id = a.Id, DateValue = a.DateValue, TimeValue = a.TimeValue, Comment = a.Comment, Isp = b.TabColCharValue });
 
-            IEnumerable<SudZas> res = t3.Join(s, a => a.TabOrder, b => b.TabOrder, (a, b) => new { TabOrder = a.TabOrder, Id = a.Id, DateValue = a.DateValue, TimeValue = a.TimeValue, Comment = a.Comment, Isp = a.Isp, Sud = b.TabColCharValue }).Select(a => new SudZas { IdNode = id, Id = int.Parse(a.Id), /*TabOrder = a.TabOrder, */DateValue = ((DateTime)a.DateValue).ToString("yyyy-MM-dd"), TimeValue = a.TimeValue, Comment = a.Comment, Isp = a.Isp, Sud = a.Sud });
+            IEnumerable<SudZas> res = t3.Join(s, a => a.TabOrder, b => b.TabOrder, (a, b) => new { TabOrder = a.TabOrder, Id = a.Id, DateValue = a.DateValue, TimeValue = a.TimeValue, Comment = a.Comment, Isp = a.Isp, Sud = b.TabColCharValue }).Select(a => new SudZas { IdNode = id, Id = a.TabOrder, N = a.Id, DateValue = ((DateTime)a.DateValue).ToString("yyyy-MM-dd"), TimeValue = a.TimeValue, Comment = a.Comment, Isp = a.Isp, Sud = a.Sud });
             return res;
         }
         [OutputCache(Location = OutputCacheLocation.None)]
@@ -209,7 +219,7 @@ namespace AsArch.NET.Controllers
                 string[] ids = model.Ids.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
                 foreach (var item in ids)
                 {
-                    var n_order = int.Parse(item) - 1;
+                    var n_order = int.Parse(item);
                     repository.DeleteTableChar(2153, model.IdNode, n_order);
                     repository.DeleteTableFloat(2153, model.IdNode, n_order);
                 }
@@ -221,15 +231,25 @@ namespace AsArch.NET.Controllers
         {
             if (ModelState.IsValid)
             {
-                var n_order = model.Id - 1;
-                repository.UpdateTableFloat(2153, model.IdNode, n_order, 0, model.Id);
-                repository.UpdateTableChar(2153, model.IdNode, n_order, 1, model.Name);
-                repository.UpdateTableChar(2153, model.IdNode, n_order, 2, model.Comment);
+                if (model.Id == null)
+                {
+                    if (GetDopPredIsk(model.IdNode).Where(n => n.N != null || n.Name != null || n.Comment != null).Count() == 0)
+                    {
+                        model.Id = 0;
+                    }
+                    else
+                    {
+                        model.Id = GetDopPredIsk(model.IdNode).Max(n => n.Id) + 1;
+                    }
+                }
+                repository.UpdateTableFloat(2153, model.IdNode, model.Id, 0, model.N);
+                repository.UpdateTableChar(2153, model.IdNode, model.Id, 1, model.Name);
+                repository.UpdateTableChar(2153, model.IdNode, model.Id, 2, model.Comment);
             }
             return Content("Success :)");
         }
 
-        private IEnumerable<DopPredIsk> GetDopPredIsk(int id)
+        private IEnumerable<DopPredIsk> GetDopPredIsk(int? id)
         {
             IEnumerable<TableData> data = repository.GetTableData(1954, id, "Дополнительный предмет иска").ToList();
             var n = data.Where(m => m.TabIdCol == 0);
@@ -237,7 +257,7 @@ namespace AsArch.NET.Controllers
             var prim = data.Where(m => m.TabIdCol == 2);
 
             var t = n.Join(name, a => a.TabOrder, b => b.TabOrder, (a, b) => new { TabOrder = a.TabOrder, N = a.TabColFloat, NameIsk = b.TabColCharValue });
-            IEnumerable<DopPredIsk> res = t.Join(prim, a => a.TabOrder, b => b.TabOrder, (a, b) => new { TabOrder = a.TabOrder, N = a.N, NameIsk = a.NameIsk, Prim = b.TabColCharValue }).Select(a => new DopPredIsk { IdNode = id, Id = (int?)a.N, /*TabOrder = a.TabOrder, */Name = a.NameIsk, Comment = a.Prim });
+            IEnumerable<DopPredIsk> res = t.Join(prim, a => a.TabOrder, b => b.TabOrder, (a, b) => new { TabOrder = a.TabOrder, N = a.N, NameIsk = a.NameIsk, Prim = b.TabColCharValue }).Select(a => new DopPredIsk { IdNode = id, N = (int?)a.N, Id = a.TabOrder, Name = a.NameIsk, Comment = a.Prim });
             return res;
         }
 

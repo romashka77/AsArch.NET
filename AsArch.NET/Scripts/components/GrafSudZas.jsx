@@ -72,6 +72,7 @@ export default class GrafSudZas extends React.Component {
         const form = new FormData();
         form.append('IdNode', id_global);
         form.append('Id', row.Id);
+        form.append('N', row.N);
         form.append('DateValue', row.DateValue);
         form.append('TimeValue', row.TimeValue);
         form.append('Comment', row.Comment);

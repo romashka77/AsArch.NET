@@ -109,10 +109,11 @@ export default class GrafSudZasView extends React.Component {
                     }}
                     selectRow={{ mode: 'checkbox' }}
                     options={options}
-                    insertRow deleteRow search //pagination
+                    insertRow deleteRow search pagination
                     containerClass='table-responsive'
                 >
-                    <TableHeaderColumn isKey={true} dataField='Id'>№</TableHeaderColumn>
+                    <TableHeaderColumn isKey={true} autovalue hiddenOnInsert={true} dataField='Id'></TableHeaderColumn>
+                    <TableHeaderColumn dataField='N'>№</TableHeaderColumn>
                     <TableHeaderColumn dataField='DateValue' editable={{ type: 'date' }}>Дата</TableHeaderColumn>
                     <TableHeaderColumn dataField='TimeValue'>Время</TableHeaderColumn>
                     <TableHeaderColumn dataField='Comment'>Примечание</TableHeaderColumn>

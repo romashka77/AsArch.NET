@@ -31,9 +31,11 @@ namespace AsArch.NET
                       "~/Scripts/remarkable/remarkable.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/iskovoezajvlenie").Include(
-                        "~/Scripts/utils.js",
                       "~/Scripts/iskovoezajvlenie.bundle.js"
                       ));
+            bundles.Add(new ScriptBundle("~/bundles/storona-processa").Include(
+                    "~/Scripts/storona-processa.js"
+            ));
         }
     }
 }

@@ -33,5 +33,6 @@ namespace AsArch.NET.EntityDataModel.Entytis
         public int? ID_PARENT { get; set; }
         public string ParentName { get; set; }
 
+        public string NameClass { get; set; }
     }
 }

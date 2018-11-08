@@ -23,48 +23,50 @@
         @foreach (var item in Model.Attrs)
         {
             Model.IdAttr++;// = item.IdAttr;
-            switch (item.IdAttrType)
-            {
-                case 0:
-                    Html.RenderPartial("_attrChar", Model);
+            <div class=@item.NameClass>
+                @switch (item.IdAttrType)
+                {
+                    case 0:
+                        Html.RenderPartial("_attrChar", Model);
 
-                    break;
-                case 2:
-                    Html.RenderPartial("_attrText", Model);
-                    break;
-                case 3:
-                    Html.RenderPartial("_selectList", Model);
-                    break;
-                case 8:
-                    switch (item.IdAttr)
-                    {
-                        case 2299:
-                            Html.RenderPartial("_selectListCodIska", Model);
-                            break;
-                        case 2253:
-                            Html.RenderPartial("_selectListSud", Model);
-                            break;
-                        case 2263:
-                        case 2264:
-                        case 2266:
-                            Html.RenderPartial("_selectListStoronaProc", Model);
-                            @Html.Action("StoronaProcParam", new { value = "test" })
-                            break;
-                        default:
-                            Html.RenderPartial("_selectList", Model);
-                            break;
-                    }
-                    break;
-                case 4:
-                    Html.RenderPartial("_attrDate", Model);
-                    break;
-                case 11:
-                    Html.RenderPartial("_attrFloat", Model);
-                    break;
-                default:
-                    Html.RenderPartial("_attrChar", Model);
-                    break;
-            }
+                        break;
+                    case 2:
+                        Html.RenderPartial("_attrText", Model);
+                        break;
+                    case 3:
+                        Html.RenderPartial("_selectList", Model);
+                        break;
+                    case 8:
+                        switch (item.IdAttr)
+                        {
+                            case 2299:
+                                Html.RenderPartial("_selectListCodIska", Model);
+                                break;
+                            case 2253:
+                                Html.RenderPartial("_selectListSud", Model);
+                                break;
+                            case 2263:
+                            case 2264:
+                            case 2266:
+                                Html.RenderPartial("_selectListStoronaProc", Model);
+                                @Html.Action("StoronaProcParam", new { value = "test" })
+                                break;
+                            default:
+                                Html.RenderPartial("_selectList", Model);
+                                break;
+                        }
+                        break;
+                    case 4:
+                        Html.RenderPartial("_attrDate", Model);
+                        break;
+                    case 11:
+                        Html.RenderPartial("_attrFloat", Model);
+                        break;
+                    default:
+                        Html.RenderPartial("_attrChar", Model);
+                        break;
+                }
+            </div>
         }
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
@@ -73,3 +75,6 @@
         </div>
     </div>
 }
+
+
+    @Scripts.Render("~/bundles/storona-processa")

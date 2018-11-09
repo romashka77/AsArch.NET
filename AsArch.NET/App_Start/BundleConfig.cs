@@ -25,12 +25,14 @@ namespace AsArch.NET
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/node_modules/react-bootstrap-table/dist/react-bootstrap-table.min.css ",
+                      "~/node_modules/scanner-js/dist/scanner.css",
                       "~/Content/site.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/remarkable").Include(
                       "~/Scripts/remarkable/remarkable.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/iskovoezajvlenie").Include(
+                        "~/node_modules/scanner-js/dist/scanner.js",
                       "~/Scripts/iskovoezajvlenie.bundle.js"
                       ));
             bundles.Add(new ScriptBundle("~/bundles/storona-processa").Include(

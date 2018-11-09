@@ -173,9 +173,6 @@
     <Reference Include="System.Web.Mvc, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.6\lib\net45\System.Web.Mvc.dll</HintPath>
     </Reference>
-    <Reference Include="System.Web.Optimization.React, Version=4.0.0.0, Culture=neutral, PublicKeyToken=9aed67b161f7db78, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Web.Optimization.React.4.0.0-beta3\lib\net40\System.Web.Optimization.React.dll</HintPath>
-    </Reference>
     <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.6\lib\net45\System.Web.Razor.dll</HintPath>
     </Reference>
@@ -648,6 +645,8 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="node_modules\react-bootstrap-table\dist\react-bootstrap-table.min.css" />
+    <Content Include="node_modules\scanner-js\dist\scanner.css" />
+    <Content Include="node_modules\scanner-js\dist\scanner.js" />
     <Content Include="Scripts\components\GrafSudZas.jsx" />
     <Content Include="Scripts\components\GrafSudZasView.jsx" />
     <Content Include="Scripts\components\TabDopIskView.jsx" />

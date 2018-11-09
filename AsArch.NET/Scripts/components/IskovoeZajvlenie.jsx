@@ -1,4 +1,4 @@
-﻿import 'react-bootstrap-table/dist/react-bootstrap-table.min.css';
+﻿//import 'react-bootstrap-table/dist/react-bootstrap-table.min.css';
 
 var React = require('react');
 var ReactDOM = require('react-dom');
@@ -21,3 +21,7 @@ ReactDOM.render(
     />,
     document.getElementById('graf-sud-zas')
 );
+
+
+
+

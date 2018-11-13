@@ -5,6 +5,7 @@ var ReactDOM = require('react-dom');
 
 import TabDopIsk from './TabDopIsk.jsx';
 import GrafSudZas from './GrafSudZas.jsx';
+import DocIsk from './DocIsk.jsx';
 
 ReactDOM.render(
     <TabDopIsk
@@ -17,9 +18,15 @@ ReactDOM.render(
 ReactDOM.render(
     <GrafSudZas
         url={Router.action(`Nodes`, `GetSudZasJson`, { id: id_global })}
-    //pollInterval={2000}
     />,
     document.getElementById('graf-sud-zas')
+);
+
+ReactDOM.render(
+    <DocIsk
+        url={Router.action(`Nodes`, `GetDocIskJson`, { id: id_global })}
+    />,
+    document.getElementById('doc-isk')
 );
 
 

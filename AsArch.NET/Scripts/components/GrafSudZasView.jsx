@@ -95,7 +95,8 @@ export default class GrafSudZasView extends React.Component {
 
             onCellEdit: this.props.onCellEdit,
             onDeleteRow: this.props.onDeleteRow,
-            onAddRow: this.props.onAddRow
+            onAddRow: this.props.onAddRow,
+            noDataText: 'Таблица пуста'
         };
         return (
             <div>

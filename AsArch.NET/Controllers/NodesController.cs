@@ -141,6 +141,39 @@ namespace AsArch.NET.Controllers
             return View(model);
         }
         #endregion
+
+        #region TableDocIsk
+        [HttpPost]
+        public JsonResult DocIskUpload()
+        {
+            foreach (string file in Request.Files)
+            {
+                var upload = Request.Files[file];
+                if (upload != null)
+                {
+                    // получаем имя файла
+                    string fileName = System.IO.Path.GetFileName(upload.FileName);
+                    // сохраняем файл в папку Files в проекте
+                    upload.SaveAs(Server.MapPath("~/Files/" + fileName));
+                }
+            }
+            return Json("файл загружен");
+        }
+
+        private IEnumerable<DocIsk> GetDocIsk(int? id)
+        {
+            IEnumerable<DocIsk> data = repository.GetDocIsk(id).ToList();
+            return data;
+        }
+
+        [OutputCache(Location = OutputCacheLocation.None)]
+        public ActionResult GetDocIskJson(int? id)
+        {
+            IEnumerable<DocIsk> data = GetDocIsk(id);
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+        #endregion
+
         #region GrafSudZas
 
         [HttpDelete]

@@ -133,16 +133,7 @@ export default class DocIsk extends React.Component {
     }
     onClickDocIskUpload(Id) {
         console.log('Upload Id #', Id);
-        data = new FormData();
-        data.append('file', this.state.csvFile);
-        $.ajax({
-            type: "POST",
-            url: "/csv/import",
-            data: data,
-            dataType: "JSON"
-        }).done(function (json) {
-            alert("hooray!");
-        }
+
     }
 
     render() {

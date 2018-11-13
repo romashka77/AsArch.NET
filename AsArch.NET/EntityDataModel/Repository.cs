@@ -230,7 +230,6 @@ namespace AsArch.NET.EntityDataModel
         {
             var query = db.Database.SqlQuery<StoronaProc>("SELECT B.STR_LABEL as Name,B.ID_NODE as Id FROM NODE A left join NODE B on A.ID_NODE = B.ID_PARENT where A.ID_PARENT = @id_parent  and B.ID_ITEMTYPE = 2159 ORDEr by B.STR_LABEL", new SqlParameter("id_parent", id_parent));
             return query.AsQueryable<StoronaProc>();
-            //var tmp =  db.NODEs.Where(n => n.ID_ITEMTYPE==2159 && n.ID_PARENT == id_parent);
         }
 
         public StoronaProcParam StoronaProcParam(int id_node)
@@ -272,6 +271,20 @@ namespace AsArch.NET.EntityDataModel
         public void DeleteTableDate(int? id_attr, int? id_node, int? n_order)
         {
             db.Database.ExecuteSqlCommand("DELETE TABLEVAL_DATE WHERE ID_ATTR = @id_attr AND ID_NODE = @id_node AND N_ORDER = @n_order", new SqlParameter("id_attr", id_attr), new SqlParameter("id_node", id_node), new SqlParameter("n_order", n_order));
+        }
+        public IQueryable<DocIsk> GetDocIsk(int? id)
+        {
+            var query = db.Database.SqlQuery<DocIsk>("SELECT " +
+                " A.N_ORDER as 'Id'" +
+                ", STR_NAME as 'Name'" +
+                ", FILTER as 'Filter'" +
+                ", ID_NODE as 'Id_Node'" +
+                ", STR_DOCFILE as 'DocFile'" +
+                " FROM FILESCONFIG A" +
+                " left join STORAGE B on A.N_ORDER = B.N_ORDER and B.ID_NODE = @id_node" +
+                " where ID_TYPE = 1954" +
+                " order by A.N_ORDER", new SqlParameter("id_node", id));
+            return query.AsQueryable<DocIsk>();
         }
     }
 }

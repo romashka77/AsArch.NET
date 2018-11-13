@@ -372,6 +372,7 @@
       <DependentUpon>DB_pfr_sap.tt</DependentUpon>
     </Compile>
     <Compile Include="EntityDataModel\Entytis\BaseJson.cs" />
+    <Compile Include="EntityDataModel\Entytis\DocIsk.cs" />
     <Compile Include="EntityDataModel\Entytis\DopPredIsk.cs" />
     <Compile Include="EntityDataModel\Entytis\ItemNode.cs" />
     <Compile Include="EntityDataModel\Entytis\NodeAttr.cs" />
@@ -647,6 +648,9 @@
     <Content Include="node_modules\react-bootstrap-table\dist\react-bootstrap-table.min.css" />
     <Content Include="node_modules\scanner-js\dist\scanner.css" />
     <Content Include="node_modules\scanner-js\dist\scanner.js" />
+    <Content Include="Scripts\components\DocIsk.jsx" />
+    <Content Include="Scripts\components\DocIskView.jsx" />
+    <Content Include="Scripts\components\FileUpload.jsx" />
     <Content Include="Scripts\components\GrafSudZas.jsx" />
     <Content Include="Scripts\components\GrafSudZasView.jsx" />
     <Content Include="Scripts\components\TabDopIskView.jsx" />
@@ -751,6 +755,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Files\" />
     <Folder Include="Views\Nodes\EditorTemplates\" />
     <Folder Include="Views\Shared\EditorTemplates\" />
   </ItemGroup>
@@ -805,7 +810,12 @@
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
   <PropertyGroup>
-    <PreBuildEvent>npm run build</PreBuildEvent>
+    <PreBuildEvent>if $(ConfigurationName) == Debug (
+  npm run dev
+) ELSE (
+  npm run build
+)
+</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,4 +1,5 @@
-﻿var React = require('react');
+﻿//https://itnext.io/uploading-files-with-react-and-filepond-f8a798308557
+var React = require('react');
 import { BootstrapTable, TableHeaderColumn, InsertButton, DeleteButton, InsertModalHeader, InsertModalFooter, SearchField, ClearSearchButton } from 'react-bootstrap-table';
 export default class TabDopIskView extends React.Component {
     constructor(props) {

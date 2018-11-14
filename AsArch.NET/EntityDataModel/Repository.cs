@@ -89,6 +89,24 @@ namespace AsArch.NET.EntityDataModel
         {
             return db.UpdateTextAttr(id_attr, id_node, null, text_val, null);
         }
+
+        public void UpdateStorege(STORAGE storege)
+        {
+            storege.EDIT_TIME = DateTime.Now;
+            db.Entry(storege).State = EntityState.Modified;
+            db.SaveChanges();
+        }
+
+        public STORAGE GetStorege(int id_node, int order)
+        {
+            return db.STORAGEs.FirstOrDefault(n => n.ID_NODE == id_node && n.N_ORDER == order);
+        }
+        public void UpdateStorege(int id_node, string file_name, int order)
+        {
+            db.STORAGEs.Add(new STORAGE { ID_NODE = id_node, N_ORDER=order,STR_DOCFILE=file_name, EDIT_TIME=DateTime.Now});
+            db.SaveChanges();
+        }
+
         public int UpdateDateAttr(int? id_attr, int? id_node, Nullable<System.DateTime> date_val)
         {
             return db.UpdateDateAttr(id_attr, id_node, null, date_val, null);
@@ -115,7 +133,14 @@ namespace AsArch.NET.EntityDataModel
 
             return (int)id_newnodeParameter.Value;
         }
-
+        public NODE FindNode(int? id)
+        {
+            if (id == null)
+            {
+                return null;
+            }
+            return db.NODEs.Find(id);
+        }
         public async Task<NODE> FindNodeAsync(int? id)
         {
             if (id == null)
@@ -278,7 +303,7 @@ namespace AsArch.NET.EntityDataModel
                 " A.N_ORDER as 'Id'" +
                 ", STR_NAME as 'Name'" +
                 ", FILTER as 'Filter'" +
-                ", ID_NODE as 'Id_Node'" +
+                ", ID_NODE as 'IdNode'" +
                 ", STR_DOCFILE as 'DocFile'" +
                 " FROM FILESCONFIG A" +
                 " left join STORAGE B on A.N_ORDER = B.N_ORDER and B.ID_NODE = @id_node" +

@@ -11,6 +11,9 @@ namespace AsArch.NET.Interfaces
 {
     public interface IRepository
     {
+        void UpdateStorege(STORAGE storege);
+        STORAGE GetStorege(int id_node, int order);
+        void UpdateStorege(int id_node, string file_name, int order);
         /// <summary>
         /// Возвращает набор дочерних узлов (IQueryable<NODE>) по id узла
         /// </summary>
@@ -25,6 +28,7 @@ namespace AsArch.NET.Interfaces
         /// <param name="id"></param>
         /// <returns></returns>
         Task<(int?, string, string, int?)> GetParentId(int? id = null);
+        NODE FindNode(int? id);
         Task<NODE> FindNodeAsync(int? id);
 
         /// <summary>

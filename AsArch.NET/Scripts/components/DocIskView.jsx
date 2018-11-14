@@ -17,7 +17,6 @@ export default class DocIskView extends React.Component {
     remote(remoteObj) {
         remoteObj.cellEdit = true;
         remoteObj.onClickDocIskScan = true;
-        remoteObj.onClickDocIskUpload = true;
         //remoteObj.scan = true;
         //remoteObj.insertRow = true;
         //remoteObj.dropRow = true;
@@ -102,7 +101,7 @@ export default class DocIskView extends React.Component {
     cellUploadButton(cell, row, enumObject, rowIndex) {
         return (
             <FilePond
-                server={Router.action(`Nodes`, `DocIskUpload`, { id: id_global })}
+                server={Router.action(`Nodes`, `DocIskUpload`, { IdNode: id_global, Id: row.Id })}
                 labelIdle='Перенесите файлы или нажмите <span class="filepond--label-action">Обзор</span>'
                 labelFileWaitingForSize='Получение размера'
                 labelFileSizeNotAvailable='Размер не определен'
@@ -122,7 +121,8 @@ export default class DocIskView extends React.Component {
                 labelButtonUndoItemProcessing='Отменить'
                 labelButtonRetryItemProcessing='Повтор'
                 labelButtonProcessItem='Передать'
-                allowMultiple={true}
+                files={[row.Name]}
+                //allowMultiple={true}
             />
             //<button
             //    type="button"

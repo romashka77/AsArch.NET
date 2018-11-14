@@ -5,6 +5,7 @@ using AsArch.NET.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
@@ -144,20 +145,38 @@ namespace AsArch.NET.Controllers
 
         #region TableDocIsk
         [HttpPost]
-        public JsonResult DocIskUpload(int? id)
+        public JsonResult DocIskUpload(DocIskInsert docisk)
         {
-            foreach (string file in Request.Files)
+            if (ModelState.IsValid)
             {
-                var upload = Request.Files[file];
-                if (upload != null)
+                foreach (string file in Request.Files)
                 {
-                    // получаем имя файла
-                    string fileName = System.IO.Path.GetFileName(upload.FileName);
-                    // сохраняем файл в папку Files в проекте
-                    upload.SaveAs(Server.MapPath("~/Files/" + id.ToString() + "_" + fileName));
+                    var upload = Request.Files[file];
+                    if (upload != null)
+                    {
+                        // получаем имя файла
+                        string fileName = System.IO.Path.GetFileName(upload.FileName);
+                        // сохраняем файл в папку Files в проекте
+                        string file_name = $"{docisk.IdNode}_doc{docisk.Id + 1}{Path.GetExtension(fileName)}";
+                        upload.SaveAs(Server.MapPath($"~/Files/{file_name}"));
+                        var storege = repository.GetStorege((int)docisk.IdNode, docisk.Id);
+                        if (storege == null)
+                        {
+                            repository.UpdateStorege((int)docisk.IdNode, file_name, docisk.Id);
+                        }
+                        else
+                        {
+                            storege.STR_DOCFILE = file_name;
+                            repository.UpdateStorege(storege);
+                        }
+                    }
                 }
+                return Json("файл загружен");
             }
-            return Json("файл загружен");
+            else
+            {
+                throw new ApplicationException($"Не удалось загрузить ID_NODE '{docisk.IdNode}'.");
+            }
         }
 
         private IEnumerable<DocIsk> GetDocIsk(int? id)

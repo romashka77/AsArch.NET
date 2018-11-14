@@ -117,7 +117,7 @@ export default class DocIsk extends React.Component {
     onCellEdit = (row, fieldName, value) => {
         row[fieldName] = value;
         const form = new FormData();
-        form.append('Id_Node', id_global);
+        form.append('IdNode', id_global);
         form.append('Id', row.Id);
         form.append('Name', row.Name);
         form.append('Filter', row.Filter);
@@ -131,17 +131,12 @@ export default class DocIsk extends React.Component {
         console.log('Scan Id #', Id);
         scan();
     }
-    onClickDocIskUpload(Id) {
-        console.log('Upload Id #', Id);
-
-    }
 
     render() {
         return (
             <DocIskView
                 onCellEdit={this.onCellEdit}
                 onClickDocIskScan={this.onClickDocIskScan}
-                onClickDocIskUpload={this.onClickDocIskUpload}
                 //onAddRow={this.onAddRow}
                 //onDeleteRow={this.onDeleteRow}
                 {...this.state}

@@ -8,9 +8,11 @@
     "build": "webpack --mode production"
   },
   "dependencies": {
+    "filepond": "^3.3.0",
     "react": "^16.5.0",
     "react-bootstrap-table": "^4.3.1",
     "react-dom": "^16.5.0",
+    "react-filepond": "^5.0.0",
     "scanner-js": "^2.10.3"
   },
   "devDependencies": {

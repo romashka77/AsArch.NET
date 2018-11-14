@@ -645,6 +645,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="node_modules\filepond\dist\filepond.min.css" />
     <Content Include="node_modules\react-bootstrap-table\dist\react-bootstrap-table.min.css" />
     <Content Include="node_modules\scanner-js\dist\scanner.css" />
     <Content Include="node_modules\scanner-js\dist\scanner.js" />

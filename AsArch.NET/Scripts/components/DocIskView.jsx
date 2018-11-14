@@ -1,6 +1,8 @@
 ﻿var React = require('react');
 import { BootstrapTable, TableHeaderColumn, InsertButton, DeleteButton, InsertModalHeader, InsertModalFooter, SearchField, ClearSearchButton } from 'react-bootstrap-table';
-//import FileUpload from './FileUpload.jsx';
+
+import { FilePond } from 'react-filepond';
+
 
 export default class DocIskView extends React.Component {
     constructor(props) {
@@ -99,11 +101,34 @@ export default class DocIskView extends React.Component {
 
     cellUploadButton(cell, row, enumObject, rowIndex) {
         return (
-            <button
-                type="button"
-                onClick={() =>
-                    this.props.onClickDocIskUpload(row.Id)}
-            >Загрузить - {row.Id}</button>
+            <FilePond
+                server={Router.action(`Nodes`, `DocIskUpload`, { id: id_global })}
+                labelIdle='Перенесите файлы или нажмите <span class="filepond--label-action">Обзор</span>'
+                labelFileWaitingForSize='Получение размера'
+                labelFileSizeNotAvailable='Размер не определен'
+                labelFileLoading='Загрузка'
+                labelFileLoadError='Ошибка во время загрузки'
+                labelFileProcessing='Передача'
+                labelFileProcessingComplete='Передача завершена'
+                labelFileProcessingAborted='Передача отменена'
+                labelFileProcessingError='Ошибка во время передачи'
+                labelTapToCancel='Нажмите, чтобы отменить'
+                labelTapToRetry='Нажмите, чтобы повторить'
+                labelTapToUndo='Нажмите, чтобы отменить'
+                labelButtonRemoveItem='Удалить'
+                labelButtonAbortItemLoad='Прервать загрузку'
+                labelButtonRetryItemLoad='Повтор'
+                labelButtonAbortItemProcessing='Отмена'
+                labelButtonUndoItemProcessing='Отменить'
+                labelButtonRetryItemProcessing='Повтор'
+                labelButtonProcessItem='Передать'
+                allowMultiple={true}
+            />
+            //<button
+            //    type="button"
+            //    onClick={() =>
+            //        this.props.onClickDocIskUpload(row.Id)}
+            //>Загрузить - {row.Id}</button>
         );
     }
 
@@ -142,10 +167,10 @@ export default class DocIskView extends React.Component {
                     <TableHeaderColumn dataField='Name'>Тип</TableHeaderColumn>
                     <TableHeaderColumn dataField='Filter'>Фильтр</TableHeaderColumn>
                     <TableHeaderColumn dataField='DocFile'>Файл</TableHeaderColumn>
-                    <TableHeaderColumn dataField='button' dataFormat={this.cellScanButton.bind(this)}></TableHeaderColumn>
                     <TableHeaderColumn dataField='button' dataFormat={this.cellUploadButton.bind(this)}></TableHeaderColumn>
                 </BootstrapTable>
             </div>
         );
     }
 }
+//<TableHeaderColumn dataField='button' dataFormat={this.cellScanButton.bind(this)}></TableHeaderColumn>

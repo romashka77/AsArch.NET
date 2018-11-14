@@ -144,7 +144,7 @@ namespace AsArch.NET.Controllers
 
         #region TableDocIsk
         [HttpPost]
-        public JsonResult DocIskUpload()
+        public JsonResult DocIskUpload(int? id)
         {
             foreach (string file in Request.Files)
             {
@@ -154,7 +154,7 @@ namespace AsArch.NET.Controllers
                     // получаем имя файла
                     string fileName = System.IO.Path.GetFileName(upload.FileName);
                     // сохраняем файл в папку Files в проекте
-                    upload.SaveAs(Server.MapPath("~/Files/" + fileName));
+                    upload.SaveAs(Server.MapPath("~/Files/" + id.ToString() + "_" + fileName));
                 }
             }
             return Json("файл загружен");
@@ -529,7 +529,7 @@ namespace AsArch.NET.Controllers
                 model.Attrs = new List<NodeAttr>();
                 var rep = repository.GetNodeAttrs(model.IdItemType, model.IdNode).ToList();
                 model.Attrs.Add(rep.SingleOrDefault(n => n.NameAttr == "Тип контрагента"));//2161
-                
+
                 model.Attrs.Add(rep.SingleOrDefault(n => n.NameAttr == "Регистрационный №"));
                 //model.Attrs.Last().NameClass = ur_lico;
                 model.Attrs.Add(rep.SingleOrDefault(n => n.NameAttr == "Наименование Контрагента полное"));

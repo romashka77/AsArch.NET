@@ -14,25 +14,25 @@ const scanRequest = {
     }]
 };
 
-const scanRequest2 = {
-    "output_settings": [
-        {
-            "type": "upload",
-            "format": "pdf",
-            "upload_target": {
-                "url": "https://asprise.com/scan/applet/upload.php?action=dump",
-                "post_fields": {
-                    "sample-field": "Test scan"
-                },
-                "cookies": document.cookie,
-                "headers": [
-                    "Referer: " + window.location.href,
-                    "User-Agent: " + navigator.userAgent
-                ]
-            }
-        }
-    ]
-};
+//const scanRequest2 = {
+//    "output_settings": [
+//        {
+//            "type": "upload",
+//            "format": "pdf",
+//            "upload_target": {
+//                "url": "https://asprise.com/scan/applet/upload.php?action=dump",
+//                "post_fields": {
+//                    "sample-field": "Test scan"
+//                },
+//                "cookies": document.cookie,
+//                "headers": [
+//                    "Referer: " + window.location.href,
+//                    "User-Agent: " + navigator.userAgent
+//                ]
+//            }
+//        }
+//    ]
+//};
 
 
 

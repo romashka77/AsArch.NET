@@ -1,6 +1,7 @@
 ﻿using AsArch.NET.EntityDataModel.Entytis;
 using AsArch.NET.Interfaces;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Core.Objects;
@@ -208,7 +209,7 @@ namespace AsArch.NET.EntityDataModel
         {
             return db.UpdateTableDate(id_attr, id_node, n_order, id_col, date_val, null, null);
         }
-        public IQueryable<TableData> GetTableData(int? id_itemtype, int? id_node, string nameAttr)
+        public IQueryable<TableData> GetTableData(int id_itemtype, int id_node, string nameAttr)
         {
             var query = db.Database.SqlQuery<TableData>("select A.*" +
                 ", T.OPTIONS as Options" +
@@ -245,7 +246,7 @@ namespace AsArch.NET.EntityDataModel
                 " and NameAttr = @nameAttr" +
                 " order by NOrder, IdAttr, TabOrder, TabIdCol;",
                 new SqlParameter("id_type", id_itemtype), new SqlParameter("id_node", id_node), new SqlParameter("nameAttr", nameAttr));
-            return query.AsQueryable<TableData>();
+            return query.AsQueryable();
         }
         public IQueryable<NODE> ListNode(int? id_parent = null)
         {

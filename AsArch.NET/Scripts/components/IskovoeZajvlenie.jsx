@@ -3,20 +3,21 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 
-import TabDopIsk from './TabDopIsk.jsx';
-import GrafSudZas from './GrafSudZas.jsx';
+import DopPredIsk from './DopPredIsk.jsx';
+import SudZas from './SudZas.jsx';
 import DocIsk from './DocIsk.jsx';
 
 ReactDOM.render(
-    <TabDopIsk
-        url={Router.action(`Nodes`, `getdopprediskjson`, { id: id_global })}
+    <DopPredIsk
+        url={Router.action(`Nodes`, `GetDopPredIskJson`, { id: id_global })}
     //pollInterval={2000}
+        //url={Router.action(`api`, `DopPredIsk`, { id: id_global })}
     />,
     document.getElementById('tab-dop-isk')
 );
 
 ReactDOM.render(
-    <GrafSudZas
+    <SudZas
         url={Router.action(`Nodes`, `GetSudZasJson`, { id: id_global })}
     />,
     document.getElementById('graf-sud-zas')

@@ -93,15 +93,15 @@ export default class DocIskView extends React.Component {
             <button
                 type="button"
                 onClick={() =>
-                    this.props.onClickDocIskScan(row.Id)}
-            >Сканировать - {row.Id}</button>
+                    this.props.onClickDocIskScan(row.Order)}
+            >Сканировать - {row.Order}</button>
         );
     }
 
     cellUploadButton(cell, row, enumObject, rowIndex) {
         return (
             <FilePond
-                server={Router.action(`Nodes`, `DocIskUpload`, { IdNode: id_global, Id: row.Id })}
+                server={Router.action(`Nodes`, `DocIskUpload`, { Id: id_global, Order: row.Id })}
                 labelIdle='Перенесите файлы или нажмите <span class="filepond--label-action">Обзор</span>'
                 labelFileWaitingForSize='Получение размера'
                 labelFileSizeNotAvailable='Размер не определен'
@@ -121,7 +121,6 @@ export default class DocIskView extends React.Component {
                 labelButtonUndoItemProcessing='Отменить'
                 labelButtonRetryItemProcessing='Повтор'
                 labelButtonProcessItem='Передать'
-                files={[row.Name]}
                 //allowMultiple={true}
             />
             //<button
@@ -163,7 +162,7 @@ export default class DocIskView extends React.Component {
                     search pagination
                     containerClass='table-responsive'
                 >
-                    <TableHeaderColumn isKey={true} /*hidden*/ dataField='Id'>№</TableHeaderColumn>
+                    <TableHeaderColumn isKey={true} /*hidden*/ dataField='Order'>№</TableHeaderColumn>
                     <TableHeaderColumn dataField='Name'>Тип</TableHeaderColumn>
                     <TableHeaderColumn dataField='Filter'>Фильтр</TableHeaderColumn>
                     <TableHeaderColumn dataField='DocFile'>Файл</TableHeaderColumn>

@@ -3,9 +3,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AsArch.NET.EntityDataModel.Entytis
 {
-    public class SudZas : BaseJson
+    public class SudZas : BaseOrder
     {
-        public int? Id { get; set; }
         public string N { get; set; }
         //[DataType(DataType.Date)]
         //[DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]

@@ -1,15 +1,15 @@
-﻿    //http://allenfang.github.io/react-bootstrap-table/example.html#remote
+﻿//http://allenfang.github.io/react-bootstrap-table/example.html#remote
 //http://allenfang.github.io/react-bootstrap-table/example.html#celledit
 var React = require('react');
-import TabDopIskView from './TabDopIskView.jsx';
+import DopPredIskView from './DopPredIskView.jsx';
 
-export default class TabDopIsk extends React.Component {
+export default class DopPredIsk extends React.Component {
     constructor(props) {
         super(props);
         this.state = { data: [], options: [] };
     }
 
-    loadDopPredIskFromServer() {
+    loadFromServer() {
         const xhr = new XMLHttpRequest();
         xhr.open('get', this.props.url, true);
         xhr.onload = () => {
@@ -30,52 +30,47 @@ export default class TabDopIsk extends React.Component {
     //вызывается после рендеринга компонента. Здесь можно выполнять запросы к удаленным ресурсам
     componentDidMount() {
         this.loadListDictJsonFromServer(1964);
-        this.loadDopPredIskFromServer();
+        this.loadFromServer();
     }
 
     //добавить запись
     onAddRow = (row) => {
         const form = new FormData();
-        form.append('IdNode', id_global);
-        form.append('Id', row.Id);
+        form.append('Id', id_global);
+        form.append('Order', row.Order);
         form.append('N', row.N);
         form.append('Name', row.Name);
         form.append('Comment', row.Comment);
         const xhr = new XMLHttpRequest();
-        xhr.open('post', Router.action(`Nodes`, `InsertDopPredIsk`), true);
-        xhr.onload = () => this.loadDopPredIskFromServer();
+        xhr.open('post', Router.action(`Nodes`, `PostDopPredIsk`), true);
+        xhr.onload = () => this.loadFromServer();
         xhr.send(form);
     }
 
     //удалить записи
     onDeleteRow = (row) => {
         const form = new FormData();
-        form.append('IdNode', id_global);
-        form.append('Ids', row);
+        form.append('Id', id_global);
+        form.append('Orders', row);
         const xhr = new XMLHttpRequest();
         xhr.open('delete', Router.action(`Nodes`, `DeleteDopPredIsk`), true);
-        xhr.onload = () => this.loadDopPredIskFromServer();
+        xhr.onload = () => this.loadFromServer();
         xhr.send(form);
     }
 
     //редактировать ячейку
     onCellEdit = (row, fieldName, value) => {
-        row[fieldName] = value;
-        const form = new FormData();
-        form.append('IdNode', id_global);
-        form.append('Id', row.Id);
-        form.append('N', row.N);
-        form.append('Name', row.Name);
-        form.append('Comment', row.Comment);
-        const xhr = new XMLHttpRequest();
-        xhr.open('post', Router.action(`Nodes`, `InsertDopPredIsk`), true);
-        xhr.onload = () => this.loadDopPredIskFromServer();
-        xhr.send(form);
+        if (row[fieldName] !== value) {
+            row[fieldName] = value;
+            this.onAddRow(row);
+        } else {
+            this.loadFromServer();
+        }
     }
 
     render() {
         return (
-            <TabDopIskView
+            <DopPredIskView
                 onCellEdit={this.onCellEdit}
                 onAddRow={this.onAddRow}
                 onDeleteRow={this.onDeleteRow}

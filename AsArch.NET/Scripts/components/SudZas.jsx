@@ -1,13 +1,13 @@
 ﻿var React = require('react');
-import GrafSudZasView from './GrafSudZasView.jsx';
+import SudZasView from './SudZasView.jsx';
 
-export default class GrafSudZas extends React.Component {
+export default class SudZas extends React.Component {
     constructor(props) {
         super(props);
         this.state = { data: [], isps: [], suds: [] };
     }
 
-    loadSudZasFromServer() {
+    loadFromServer() {
         const xhr = new XMLHttpRequest();
         xhr.open('get', this.props.url, true);
         xhr.onload = () => {
@@ -39,39 +39,13 @@ export default class GrafSudZas extends React.Component {
     componentDidMount() {
         this.loadSudsFromServer(/*2091*/);
         this.loadIspsFromServer(2234);
-        this.loadSudZasFromServer();
+        this.loadFromServer();
     }
     //добавить запись
     onAddRow = (row) => {
         const form = new FormData();
-        form.append('IdNode', id_global);
-        form.append('Id', row.Id);
-        form.append('DateValue', row.DateValue);
-        form.append('TimeValue', row.TimeValue);
-        form.append('Comment', row.Comment);
-        form.append('Isp', row.Isp);
-        form.append('Sud', row.Sud);
-        const xhr = new XMLHttpRequest();
-        xhr.open('post', Router.action(`Nodes`, `InsertSudZas`), true);
-        xhr.onload = () => this.loadSudZasFromServer();
-        xhr.send(form);
-    }
-    //удалить записи
-    onDeleteRow = (row) => {
-        const form = new FormData();
-        form.append('IdNode', id_global);
-        form.append('Ids', row);
-        const xhr = new XMLHttpRequest();
-        xhr.open('delete', Router.action(`Nodes`, `DeleteSudZas`), true);
-        xhr.onload = () => this.loadSudZasFromServer();
-        xhr.send(form);
-    }
-    //редактировать ячейку
-    onCellEdit = (row, fieldName, value) => {
-        row[fieldName] = value;
-        const form = new FormData();
-        form.append('IdNode', id_global);
-        form.append('Id', row.Id);
+        form.append('Id', id_global);
+        form.append('Order', row.Order);
         form.append('N', row.N);
         form.append('DateValue', row.DateValue);
         form.append('TimeValue', row.TimeValue);
@@ -79,14 +53,33 @@ export default class GrafSudZas extends React.Component {
         form.append('Isp', row.Isp);
         form.append('Sud', row.Sud);
         const xhr = new XMLHttpRequest();
-        xhr.open('post', Router.action(`Nodes`, `InsertSudZas`), true);
-        xhr.onload = () => this.loadSudZasFromServer();
+        xhr.open('post', Router.action(`Nodes`, `PostSudZas`), true);
+        xhr.onload = () => this.loadFromServer();
         xhr.send(form);
+    }
+    //удалить записи
+    onDeleteRow = (row) => {
+        const form = new FormData();
+        form.append('Id', id_global);
+        form.append('Orders', row);
+        const xhr = new XMLHttpRequest();
+        xhr.open('delete', Router.action(`Nodes`, `DeleteSudZas`), true);
+        xhr.onload = () => this.loadFromServer();
+        xhr.send(form);
+    }
+    //редактировать ячейку
+    onCellEdit = (row, fieldName, value) => {
+        if (row[fieldName] !== value) {
+            row[fieldName] = value;
+            this.onAddRow(row);
+        } else {
+            this.loadFromServer();
+        }
     }
 
     render() {
         return (
-            <GrafSudZasView
+            <SudZasView
                 onCellEdit={this.onCellEdit}
                 onAddRow={this.onAddRow}
                 onDeleteRow={this.onDeleteRow}

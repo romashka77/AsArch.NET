@@ -1,7 +1,7 @@
 ﻿//https://itnext.io/uploading-files-with-react-and-filepond-f8a798308557
 var React = require('react');
 import { BootstrapTable, TableHeaderColumn, InsertButton, DeleteButton, InsertModalHeader, InsertModalFooter, SearchField, ClearSearchButton } from 'react-bootstrap-table';
-export default class TabDopIskView extends React.Component {
+export default class DopPredIskView extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -106,8 +106,8 @@ export default class TabDopIskView extends React.Component {
                     insertRow deleteRow search pagination
                     containerClass='table-responsive'
                 >
-                    <TableHeaderColumn isKey={true} autovalue  hiddenOnInsert={true} dataField='Id'></TableHeaderColumn>
-                    <TableHeaderColumn dataField='N'>№</TableHeaderColumn>
+                    <TableHeaderColumn isKey={true} autovalue hidden hiddenOnInsert dataField='Order'></TableHeaderColumn>
+                    <TableHeaderColumn hiddenOnInsert dataField='N'>№</TableHeaderColumn>
                     <TableHeaderColumn dataField='Name' editable={{ type: 'select', options: { values: this.props.options } }}>Сопутствующий предмет иска</TableHeaderColumn>
                     <TableHeaderColumn dataField='Comment'>Примечание</TableHeaderColumn>
                 </BootstrapTable>
@@ -116,3 +116,4 @@ export default class TabDopIskView extends React.Component {
         );
     }
 }
+//  autovalue hidden hiddenOnInsert={true}

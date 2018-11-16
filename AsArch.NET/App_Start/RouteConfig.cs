@@ -9,20 +9,6 @@ namespace AsArch.NET
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            #region удалить
-            //routes.MapRoute(
-            //    name: "Comments",
-            //    url: "comments",
-            //    defaults: new { controller = "Home", action = "Comments" }
-            //);
-
-            //routes.MapRoute(
-            //    name: "NewComment",
-            //    url: "comments/new",
-            //    defaults: new { controller = "Home", action = "AddComment" }
-            //);
-            #endregion
-
            // routes.MapRoute(
            //    name: "GetDopPredIskJson",
            //    url: "getdopprediskjson",

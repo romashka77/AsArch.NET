@@ -5,12 +5,16 @@ using System.Web;
 
 namespace AsArch.NET.EntityDataModel.Entytis
 {
-    public class BaseJson
+    public class Base
     {
-        public int? IdNode { get; set; }
+        public int Id { get; set; }
     }
-    public class BaseJsonDelete : BaseJson
+    public class BaseOrder : Base
     {
-        public string Ids { get; set; }
+        public int? Order { get; set; }
+    }
+    public class BaseOrders : Base
+    {
+        public string Orders { get; set; }
     }
 }

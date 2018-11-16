@@ -27,7 +27,7 @@ namespace AsArch.NET
             bundles.Add(new StyleBundle("~/Content/css").Include(
                 "~/Content/bootstrap.css",
                 "~/node_modules/react-bootstrap-table/dist/react-bootstrap-table.min.css ",
-                "~/node_modules/scanner-js/dist/scanner.css",
+                //"~/node_modules/scanner-js/dist/scanner.css",
                 "~/node_modules/filepond/dist/filepond.min.css",
                 "~/Content/site.css"));
 
@@ -35,7 +35,7 @@ namespace AsArch.NET
                       "~/Scripts/remarkable/remarkable.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/iskovoezajvlenie").Include(
-                "~/node_modules/scanner-js/dist/scanner.js",
+                //"~/node_modules/scanner-js/dist/scanner.js",
                 "~/Scripts/iskovoezajvlenie.bundle.js"
                       ));
             bundles.Add(new ScriptBundle("~/bundles/storona-processa").Include(

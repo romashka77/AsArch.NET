@@ -117,8 +117,8 @@ export default class DocIsk extends React.Component {
     onCellEdit = (row, fieldName, value) => {
         row[fieldName] = value;
         const form = new FormData();
-        form.append('IdNode', id_global);
-        form.append('Id', row.Id);
+        form.append('Id', id_global);
+        form.append('Order', row.Id);
         form.append('Name', row.Name);
         form.append('Filter', row.Filter);
         form.append('DocFile', row.DocFile);

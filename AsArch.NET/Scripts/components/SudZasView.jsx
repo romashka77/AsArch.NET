@@ -1,7 +1,7 @@
 ﻿var React = require('react');
 import { BootstrapTable, TableHeaderColumn, InsertButton, DeleteButton, InsertModalHeader, InsertModalFooter, SearchField, ClearSearchButton } from 'react-bootstrap-table';
 
-export default class GrafSudZasView extends React.Component {
+export default class SudZasView extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -113,8 +113,8 @@ export default class GrafSudZasView extends React.Component {
                     insertRow deleteRow search pagination
                     containerClass='table-responsive'
                 >
-                    <TableHeaderColumn isKey={true} autovalue hiddenOnInsert={true} dataField='Id'></TableHeaderColumn>
-                    <TableHeaderColumn dataField='N'>№</TableHeaderColumn>
+                    <TableHeaderColumn isKey={true} autovalue hidden hiddenOnInsert dataField='Order'></TableHeaderColumn>
+                    <TableHeaderColumn hiddenOnInsert dataField='N'>№</TableHeaderColumn>
                     <TableHeaderColumn dataField='DateValue' editable={{ type: 'date' }}>Дата</TableHeaderColumn>
                     <TableHeaderColumn dataField='TimeValue'>Время</TableHeaderColumn>
                     <TableHeaderColumn dataField='Comment'>Примечание</TableHeaderColumn>

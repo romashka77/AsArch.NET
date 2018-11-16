@@ -143,9 +143,9 @@ namespace AsArch.NET.Controllers
         }
         #endregion
 
-        #region TableDocIsk
+        #region DocIsk
         [HttpPost]
-        public JsonResult DocIskUpload(DocIskInsert docisk)
+        public JsonResult DocIskUpload(BaseOrder docisk)
         {
             if (ModelState.IsValid)
             {
@@ -155,14 +155,14 @@ namespace AsArch.NET.Controllers
                     if (upload != null)
                     {
                         // получаем имя файла
-                        string fileName = System.IO.Path.GetFileName(upload.FileName);
+                        string fileName = Path.GetFileName(upload.FileName);
                         // сохраняем файл в папку Files в проекте
-                        string file_name = $"{docisk.IdNode}_doc{docisk.Id + 1}{Path.GetExtension(fileName)}";
+                        string file_name = $"{docisk.Id}_doc{docisk.Order + 1}{Path.GetExtension(fileName)}";
                         upload.SaveAs(Server.MapPath($"~/Files/{file_name}"));
-                        var storege = repository.GetStorege((int)docisk.IdNode, docisk.Id);
+                        var storege = repository.GetStorege((int)docisk.Id, (int)docisk.Order);
                         if (storege == null)
                         {
-                            repository.UpdateStorege((int)docisk.IdNode, file_name, docisk.Id);
+                            repository.UpdateStorege((int)docisk.Id, file_name, (int)docisk.Order);
                         }
                         else
                         {
@@ -175,7 +175,7 @@ namespace AsArch.NET.Controllers
             }
             else
             {
-                throw new ApplicationException($"Не удалось загрузить ID_NODE '{docisk.IdNode}'.");
+                throw new ApplicationException($"Не удалось загрузить ID_NODE '{docisk.Id}'.");
             }
         }
 
@@ -193,131 +193,129 @@ namespace AsArch.NET.Controllers
         }
         #endregion
 
-        #region GrafSudZas
-
+        #region SudZas
         [HttpDelete]
-        public ActionResult DeleteSudZas(BaseJsonDelete model)
+        public ActionResult DeleteSudZas(BaseOrders model)
         {
             if (ModelState.IsValid)
             {
-                string[] ids = model.Ids.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                string[] ids = model.Orders.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
                 foreach (var item in ids)
                 {
-                    var n_order = int.Parse(item) - 1;
-                    repository.DeleteTableDate(2091, model.IdNode, n_order);
-                    repository.DeleteTableChar(2091, model.IdNode, n_order);
+                    var i = int.Parse(item);
+                    repository.DeleteTableDate(2091, model.Id, i);
+                    repository.DeleteTableChar(2091, model.Id, i);
                 }
             }
             return Content("Success :)");
         }
         [HttpPost]
-        public ActionResult InsertSudZas(SudZas model)
+        public ActionResult PostSudZas(SudZas model)
         {
             if (ModelState.IsValid)
             {
-                if (model.Id == null)
+                if (model.Order == null)
                 {
-                    if (GetSudZas(model.IdNode).Where(n => n.Isp != null || n.Sud != null || n.TimeValue != null || n.DateValue != null || n.Comment != null || n.N != null).Count() == 0)
+                    if (GetSudZas(model.Id).Where(n => n.Isp != null || n.Sud != null || n.TimeValue != null || n.DateValue != null || n.Comment != null || n.N != null).Count() == 0)
                     {
-                        model.Id = 0;
+                        model.Order = 0;
                     }
                     else
                     {
-                        model.Id = GetSudZas(model.IdNode).Max(n => n.Id) + 1;
+                        model.Order = GetSudZas(model.Id).Max(n => n.Order) + 1;
                     }
+                    model.N = (model.Order + 1).ToString();
                 }
-                repository.UpdateTableChar(2091, model.IdNode, model.Id, 0, model.N);
-                repository.UpdateTableDate(2091, model.IdNode, model.Id, 1, Convert.ToDateTime(model.DateValue));
-                repository.UpdateTableChar(2091, model.IdNode, model.Id, 2, model.TimeValue);
-                repository.UpdateTableChar(2091, model.IdNode, model.Id, 3, model.Comment);
-                repository.UpdateTableChar(2091, model.IdNode, model.Id, 4, model.Isp);
-                repository.UpdateTableChar(2091, model.IdNode, model.Id, 5, model.Sud);
+                repository.UpdateTableChar(2091, model.Id, model.Order, 0, model.N);
+                repository.UpdateTableDate(2091, model.Id, model.Order, 1, Convert.ToDateTime(model.DateValue));
+                repository.UpdateTableChar(2091, model.Id, model.Order, 2, model.TimeValue);
+                repository.UpdateTableChar(2091, model.Id, model.Order, 3, model.Comment);
+                repository.UpdateTableChar(2091, model.Id, model.Order, 4, model.Isp);
+                repository.UpdateTableChar(2091, model.Id, model.Order, 5, model.Sud);
             }
             return Content("Success :)");
         }
-        private IEnumerable<SudZas> GetSudZas(int? id)
+        private IEnumerable<SudZas> GetSudZas(int id)
         {
-            IEnumerable<TableData> data = repository.GetTableData(1954, id, "Предмет иска судебных заседаний").ToList();
-
+            var data = repository.GetTableData(1954, id, "Предмет иска судебных заседаний").ToList();
             var n = data.Where(m => m.TabIdCol == 0);
             var d = data.Where(m => m.TabIdCol == 1);
             var t = data.Where(m => m.TabIdCol == 2);
             var c = data.Where(m => m.TabIdCol == 3);
             var i = data.Where(m => m.TabIdCol == 4);
             var s = data.Where(m => m.TabIdCol == 5);
-
             var t0 = n.Join(d, a => a.TabOrder, b => b.TabOrder, (a, b) => new { TabOrder = a.TabOrder, Id = a.TabColCharValue, DateValue = b.TabColDateValue });
             var t1 = t0.Join(t, a => a.TabOrder, b => b.TabOrder, (a, b) => new { TabOrder = a.TabOrder, Id = a.Id, DateValue = a.DateValue, TimeValue = b.TabColCharValue });
             var t2 = t1.Join(c, a => a.TabOrder, b => b.TabOrder, (a, b) => new { TabOrder = a.TabOrder, Id = a.Id, DateValue = a.DateValue, TimeValue = a.TimeValue, Comment = b.TabColCharValue });
             var t3 = t2.Join(i, a => a.TabOrder, b => b.TabOrder, (a, b) => new { TabOrder = a.TabOrder, Id = a.Id, DateValue = a.DateValue, TimeValue = a.TimeValue, Comment = a.Comment, Isp = b.TabColCharValue });
 
-            IEnumerable<SudZas> res = t3.Join(s, a => a.TabOrder, b => b.TabOrder, (a, b) => new { TabOrder = a.TabOrder, Id = a.Id, DateValue = a.DateValue, TimeValue = a.TimeValue, Comment = a.Comment, Isp = a.Isp, Sud = b.TabColCharValue }).Select(a => new SudZas { IdNode = id, Id = a.TabOrder, N = a.Id, DateValue = ((DateTime)a.DateValue).ToString("yyyy-MM-dd"), TimeValue = a.TimeValue, Comment = a.Comment, Isp = a.Isp, Sud = a.Sud });
+            var res = t3.Join(s, a => a.TabOrder, b => b.TabOrder, (a, b) => new { TabOrder = a.TabOrder, Id = a.Id, DateValue = a.DateValue, TimeValue = a.TimeValue, Comment = a.Comment, Isp = a.Isp, Sud = b.TabColCharValue }).Select(a => new SudZas { Id = id, Order = a.TabOrder, N = a.Id, DateValue = ((DateTime)a.DateValue).ToString("yyyy-MM-dd"), TimeValue = a.TimeValue, Comment = a.Comment, Isp = a.Isp, Sud = a.Sud });
             return res;
         }
         [OutputCache(Location = OutputCacheLocation.None)]
         public ActionResult GetSudZasJson(int id)
         {
-            IEnumerable<SudZas> data = GetSudZas(id);
-            return Json(data, JsonRequestBehavior.AllowGet);
+            return Json(GetSudZas(id), JsonRequestBehavior.AllowGet);
         }
         #endregion 
-        #region TableDopPredIsk
-
-        [HttpDelete]
-        public ActionResult DeleteDopPredIsk(BaseJsonDelete model)
+        #region DopPredIsk
+        private IEnumerable<DopPredIsk> GetDopPredIsk(int id)
         {
-            if (ModelState.IsValid)
-            {
-                string[] ids = model.Ids.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-                foreach (var item in ids)
-                {
-                    var n_order = int.Parse(item);
-                    repository.DeleteTableChar(2153, model.IdNode, n_order);
-                    repository.DeleteTableFloat(2153, model.IdNode, n_order);
-                }
-            }
-            return Content("Success :)");
-        }
-        [HttpPost]
-        public ActionResult InsertDopPredIsk(DopPredIsk model)
-        {
-            if (ModelState.IsValid)
-            {
-                if (model.Id == null)
-                {
-                    if (GetDopPredIsk(model.IdNode).Where(n => n.N != null || n.Name != null || n.Comment != null).Count() == 0)
-                    {
-                        model.Id = 0;
-                    }
-                    else
-                    {
-                        model.Id = GetDopPredIsk(model.IdNode).Max(n => n.Id) + 1;
-                    }
-                }
-                repository.UpdateTableFloat(2153, model.IdNode, model.Id, 0, model.N);
-                repository.UpdateTableChar(2153, model.IdNode, model.Id, 1, model.Name);
-                repository.UpdateTableChar(2153, model.IdNode, model.Id, 2, model.Comment);
-            }
-            return Content("Success :)");
-        }
-
-        private IEnumerable<DopPredIsk> GetDopPredIsk(int? id)
-        {
-            IEnumerable<TableData> data = repository.GetTableData(1954, id, "Дополнительный предмет иска").ToList();
+            var data = repository.GetTableData(1954, id, "Дополнительный предмет иска").ToList();
             var n = data.Where(m => m.TabIdCol == 0);
             var name = data.Where(m => m.TabIdCol == 1);
             var prim = data.Where(m => m.TabIdCol == 2);
 
             var t = n.Join(name, a => a.TabOrder, b => b.TabOrder, (a, b) => new { TabOrder = a.TabOrder, N = a.TabColFloat, NameIsk = b.TabColCharValue });
-            IEnumerable<DopPredIsk> res = t.Join(prim, a => a.TabOrder, b => b.TabOrder, (a, b) => new { TabOrder = a.TabOrder, N = a.N, NameIsk = a.NameIsk, Prim = b.TabColCharValue }).Select(a => new DopPredIsk { IdNode = id, N = (int?)a.N, Id = a.TabOrder, Name = a.NameIsk, Comment = a.Prim });
+            var res = t.Join(prim, a => a.TabOrder, b => b.TabOrder, (a, b) => new { TabOrder = a.TabOrder, N = a.N, NameIsk = a.NameIsk, Prim = b.TabColCharValue }).Select(a => new DopPredIsk { Id = id, N = (int?)a.N, Order = a.TabOrder, Name = a.NameIsk, Comment = a.Prim });
             return res;
         }
-
         [OutputCache(Location = OutputCacheLocation.None)]
+        [HttpGet]
         public ActionResult GetDopPredIskJson(int id)
         {
-            IEnumerable<DopPredIsk> data = GetDopPredIsk(id);
-            return Json(data, JsonRequestBehavior.AllowGet);
+            return Json(GetDopPredIsk(id), JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public ActionResult PostDopPredIsk(DopPredIsk model)
+        {
+            if (ModelState.IsValid)
+            {
+                if (model.Order == null)
+                {
+                    if (GetDopPredIsk(model.Id).Where(n => n.N != null || n.Name != null || n.Comment != null).Count() == 0)
+                    {
+                        model.Order = 0;
+                    }
+                    else
+                    {
+                        model.Order = GetDopPredIsk(model.Id).Max(n => n.Order) + 1;
+                    }
+                    model.N = model.Order + 1;
+                }
+                repository.UpdateTableFloat(2153, model.Id, model.Order, 0, model.N);
+                repository.UpdateTableChar(2153, model.Id, model.Order, 1, model.Name);
+                repository.UpdateTableChar(2153, model.Id, model.Order, 2, model.Comment);
+                return Content("Success :)");
+            }
+            return Content("Error :(");
+        }
+
+        [HttpDelete]
+        public ActionResult DeleteDopPredIsk(BaseOrders model)
+        {
+            if (ModelState.IsValid)
+            {
+                string[] ids = model.Orders.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                foreach (var item in ids)
+                {
+                    var i = int.Parse(item);
+                    repository.DeleteTableChar(2153, model.Id, i);
+                    repository.DeleteTableFloat(2153, model.Id, i);
+                }
+            }
+            return Content("Success :)");
         }
 
         [OutputCache(Location = OutputCacheLocation.None)]

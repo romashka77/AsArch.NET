@@ -75,7 +75,7 @@ export default class DocIsk extends React.Component {
         this.state = { data: [] };
     }
 
-    loadDocIskFromServer() {
+    loadFromServer() {
         const xhr = new XMLHttpRequest();
         xhr.open('get', this.props.url, true);
         xhr.onload = () => {
@@ -86,7 +86,7 @@ export default class DocIsk extends React.Component {
     }
     //вызывается после рендеринга компонента. Здесь можно выполнять запросы к удаленным ресурсам
     componentDidMount() {
-        this.loadDocIskFromServer();
+        this.loadFromServer();
     }
     //добавить запись
     //onAddRow = (row) => {
@@ -118,7 +118,7 @@ export default class DocIsk extends React.Component {
         row[fieldName] = value;
         const form = new FormData();
         form.append('Id', id_global);
-        form.append('Order', row.Id);
+        form.append('Order', row.Order);
         form.append('Name', row.Name);
         form.append('Filter', row.Filter);
         form.append('DocFile', row.DocFile);

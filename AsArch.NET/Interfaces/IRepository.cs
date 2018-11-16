@@ -62,7 +62,7 @@ namespace AsArch.NET.Interfaces
         void DeleteTableFloat(int? id_attr, int? id_node, int? n_order);
         void DeleteTableDate(int? id_attr, int? id_node, int? n_order);
         IQueryable<TableData> GetTableData(int id_itemtype, int id_node, string nameAttr);
-        IQueryable<DocIsk> GetDocIsk(int? id);
+        IQueryable<DocIsk> GetDocIsk(int id);
         IQueryable<DICTIONARy> ListDict();
         IQueryable<TABLELISTCONFIG> ListTabConfig();
     }

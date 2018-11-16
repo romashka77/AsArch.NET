@@ -1,7 +1,6 @@
 ﻿using AsArch.NET.EntityDataModel.Entytis;
 using AsArch.NET.Interfaces;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Core.Objects;
@@ -104,7 +103,7 @@ namespace AsArch.NET.EntityDataModel
         }
         public void UpdateStorege(int id_node, string file_name, int order)
         {
-            db.STORAGEs.Add(new STORAGE { ID_NODE = id_node, N_ORDER=order,STR_DOCFILE=file_name, EDIT_TIME=DateTime.Now});
+            db.STORAGEs.Add(new STORAGE { ID_NODE = id_node, N_ORDER = order, STR_DOCFILE = file_name, EDIT_TIME = DateTime.Now });
             db.SaveChanges();
         }
 
@@ -298,19 +297,32 @@ namespace AsArch.NET.EntityDataModel
         {
             db.Database.ExecuteSqlCommand("DELETE TABLEVAL_DATE WHERE ID_ATTR = @id_attr AND ID_NODE = @id_node AND N_ORDER = @n_order", new SqlParameter("id_attr", id_attr), new SqlParameter("id_node", id_node), new SqlParameter("n_order", n_order));
         }
-        public IQueryable<DocIsk> GetDocIsk(int? id)
+        public IQueryable<DocIsk> GetDocIsk(int id)
         {
-            var query = db.Database.SqlQuery<DocIsk>("SELECT " +
-                " A.N_ORDER as 'Id'" +
-                ", STR_NAME as 'Name'" +
-                ", FILTER as 'Filter'" +
-                ", ID_NODE as 'IdNode'" +
-                ", STR_DOCFILE as 'DocFile'" +
-                " FROM FILESCONFIG A" +
-                " left join STORAGE B on A.N_ORDER = B.N_ORDER and B.ID_NODE = @id_node" +
-                " where ID_TYPE = 1954" +
-                " order by A.N_ORDER", new SqlParameter("id_node", id));
-            return query.AsQueryable<DocIsk>();
+            var a0 = db.FILESCONFIGs.Where(a => a.ID_TYPE == 1954);
+            var b0 = db.STORAGEs.Where(b => b.ID_NODE == id);
+
+            var query = from a in a0
+                        join b in b0 on a.N_ORDER equals b.N_ORDER into c
+                        from d in c.DefaultIfEmpty()
+                        select new DocIsk { Id=id , Order = a.N_ORDER, Filter = a.FILTER, Name = a.STR_NAME, DocFile = d.STR_DOCFILE==null ? string.Empty : d.STR_DOCFILE };
+
+            return query;
+
+            //return db.FILESCONFIGs.Where(a => a.ID_TYPE == 1954).Join(db.STORAGEs.Where(b => b.ID_NODE == id), a => a.N_ORDER, b => b.N_ORDER, (a, b) => new DocIsk { Id = id, Order = a.N_ORDER, DocFile = b.STR_DOCFILE, Filter = a.FILTER, Name = a.STR_NAME });
+
+
+            //var query = db.Database.SqlQuery<DocIsk>("SELECT " +
+            //    " A.N_ORDER as 'Order'" +
+            //    ", STR_NAME as 'Name'" +
+            //    ", FILTER as 'Filter'" +
+            //    //", ID_NODE as 'Id'" +
+            //    ", STR_DOCFILE as 'DocFile'" +
+            //    " FROM FILESCONFIG A" +
+            //    " left join STORAGE B on A.N_ORDER = B.N_ORDER and B.ID_NODE = @id_node" +
+            //    " where ID_TYPE = 1954" +
+            //    " order by A.N_ORDER", new SqlParameter("id_node", id));
+            //return query.AsQueryable();
         }
     }
 }

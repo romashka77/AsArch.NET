@@ -179,17 +179,16 @@ namespace AsArch.NET.Controllers
             }
         }
 
-        private IEnumerable<DocIsk> GetDocIsk(int? id)
+        private IEnumerable<DocIsk> GetDocIsk(int id)
         {
-            IEnumerable<DocIsk> data = repository.GetDocIsk(id).ToList();
+            var data = repository.GetDocIsk(id).ToList();
             return data;
         }
 
         [OutputCache(Location = OutputCacheLocation.None)]
-        public ActionResult GetDocIskJson(int? id)
+        public ActionResult GetDocIskJson(int id)
         {
-            IEnumerable<DocIsk> data = GetDocIsk(id);
-            return Json(data, JsonRequestBehavior.AllowGet);
+            return Json(GetDocIsk(id), JsonRequestBehavior.AllowGet);
         }
         #endregion
 

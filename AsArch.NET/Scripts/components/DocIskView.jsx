@@ -22,34 +22,7 @@ export default class DocIskView extends React.Component {
         //remoteObj.dropRow = true;
         return remoteObj;
     }
-    //InsertButton
-    //createCustomInsertButton = () => {
-    //    return (
-    //        <InsertButton
-    //            btnText='Добавить'
-    //            btnContextual='btn btn-default'
-    //        />
-    //    );
-    //}
-    //CustomModalHeader
-    //createCustomModalHeader = (closeModal, save) => {
-    //    return (
-    //        <InsertModalHeader
-    //            title='Добавить иск'
-    //        />
-    //    );
-    //}
-    //InsertModalFooter
-    //createCustomModalFooter = () => {
-    //    return (
-    //        <InsertModalFooter
-    //            saveBtnText='Сохранить'
-    //            closeBtnText='Отмена'
-    //            closeBtnContextual='btn btn-default'
-    //            saveBtnContextual='btn btn-default'
-    //        />
-    //    );
-    //}
+    
     //SearchField
     createCustomSearchField = () => {
         return (
@@ -68,22 +41,7 @@ export default class DocIskView extends React.Component {
             />
         );
     }
-    //DeleteButton
-    //createCustomDeleteButton = () => {
-    //    return (
-    //        <DeleteButton
-    //            btnText='Удалить'
-    //            btnContextual='btn btn-default'
-    //        />
-    //    );
-    //}
-    //customConfirm(next, dropRowKeys) {
-    //    const dropRowKeysStr = dropRowKeys.join(',');
-    //    if (confirm(`Вы уверены, что хотите удалить ${dropRowKeysStr}?`)) {
-    //        next();
-    //    }
-    //}
-
+    
     //onClickDocIskSelected(Id) {
     //    console.log('Id #', Id);
     //}
@@ -123,27 +81,15 @@ export default class DocIskView extends React.Component {
                 labelButtonProcessItem='Передать'
                 //allowMultiple={true}
             />
-            //<button
-            //    type="button"
-            //    onClick={() =>
-            //        this.props.onClickDocIskUpload(row.Id)}
-            //>Загрузить - {row.Id}</button>
         );
     }
 
     render() {
         const options = {
-            //insertBtn: this.createCustomInsertButton,
-            //deleteBtn: this.createCustomDeleteButton,
-            //handleConfirmDeleteRow: this.customConfirm,
-            //insertModalHeader: this.createCustomModalHeader,
-            //insertModalFooter: this.createCustomModalFooter,
             searchField: this.createCustomSearchField,
             //clearSearch: true,
             clearSearchBtn: this.createCustomClearButton,
             onCellEdit: this.props.onCellEdit,
-            //onDeleteRow: this.props.onDeleteRow,
-            //onAddRow: this.props.onAddRow,
             noDataText: 'Таблица пуста'
         };
         return (
@@ -158,11 +104,10 @@ export default class DocIskView extends React.Component {
                     //}}
                     //selectRow={{ mode: 'checkbox' }}
                     options={options}
-                    //insertRow deleteRow
                     search pagination
                     containerClass='table-responsive'
                 >
-                    <TableHeaderColumn isKey={true} /*hidden*/ dataField='Order'>№</TableHeaderColumn>
+                    <TableHeaderColumn isKey={true} dataField='Order'>№</TableHeaderColumn>
                     <TableHeaderColumn dataField='Name'>Тип</TableHeaderColumn>
                     <TableHeaderColumn dataField='Filter'>Фильтр</TableHeaderColumn>
                     <TableHeaderColumn dataField='DocFile'>Файл</TableHeaderColumn>

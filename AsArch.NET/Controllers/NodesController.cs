@@ -144,39 +144,55 @@ namespace AsArch.NET.Controllers
         #endregion
 
         #region DocIsk
+        //[HttpGet]
+        //public JsonResult DocIskLoad(BaseOrder docisk)
+        //{
+        //    var storege = repository.GetStorege((int)docisk.Id, (int)docisk.Order);
+        //    return Json(storege, JsonRequestBehavior.AllowGet);
+        //}
+        [HttpGet]
+
         [HttpPost]
-        public JsonResult DocIskUpload(BaseOrder docisk)
+        public JsonResult DocIskUpload(int id, int Order, string load) //BaseOrder docisk)
         {
             if (ModelState.IsValid)
             {
                 foreach (string file in Request.Files)
                 {
                     var upload = Request.Files[file];
-                    if (upload != null)
+                    if (upload!=null)
                     {
-                        // получаем имя файла
-                        string fileName = Path.GetFileName(upload.FileName);
                         // сохраняем файл в папку Files в проекте
-                        string file_name = $"{docisk.Id}_doc{docisk.Order + 1}{Path.GetExtension(fileName)}";
-                        upload.SaveAs(Server.MapPath($"~/Files/{file_name}"));
-                        var storege = repository.GetStorege((int)docisk.Id, (int)docisk.Order);
+                        var filePath = Path.Combine("~/Files/", $"{id}_doc{Order + 1}{Path.GetExtension(Path.GetFileName(upload.FileName))}");
+                        //string fileName = $"~/Files/";
+                        upload.SaveAs(Server.MapPath(filePath));
+                        var storege = repository.GetStorege((int)id, (int)Order);
                         if (storege == null)
                         {
-                            repository.UpdateStorege((int)docisk.Id, file_name, (int)docisk.Order);
+                            repository.UpdateStorege((int)id, filePath, (int)Order);
                         }
                         else
                         {
-                            storege.STR_DOCFILE = file_name;
+                            storege.STR_DOCFILE = filePath;
                             repository.UpdateStorege(storege);
                         }
+
+                        return Json(new
+                        {
+                            success = true,
+                            result = "error",
+                            data = new
+                            {
+                                filePath
+                            }
+                        });
                     }
+                    
                 }
-                return Json("файл загружен");
+                
+
             }
-            else
-            {
-                throw new ApplicationException($"Не удалось загрузить ID_NODE '{docisk.Id}'.");
-            }
+            return Json(new { error = "Нужно загрузить файл", success = false });
         }
 
         private IEnumerable<DocIsk> GetDocIsk(int id)

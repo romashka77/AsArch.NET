@@ -127,6 +127,7 @@ export default class DocIsk extends React.Component {
         xhr.onload = () => this.loadDocIskFromServer();
         xhr.send(form);
     }
+
     onClickDocIskScan(Id) {
         console.log('Scan Id #', Id);
         scan();

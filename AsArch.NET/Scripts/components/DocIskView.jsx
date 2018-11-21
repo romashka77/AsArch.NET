@@ -1,12 +1,17 @@
 ﻿var React = require('react');
 import { BootstrapTable, TableHeaderColumn, InsertButton, DeleteButton, InsertModalHeader, InsertModalFooter, SearchField, ClearSearchButton } from 'react-bootstrap-table';
 
-import { FilePond } from 'react-filepond';
+import { FilePond, File, registerPlugin } from 'react-filepond';
 
 
 export default class DocIskView extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            // Set initial files
+
+        };
+        //console.log(`files: [this.props.files]`, files);
         //console.log(`this.props.scanRequest`,this.props.scanRequest);
         //this.state = {
         //    scanRequest: this.props.scanRequest
@@ -22,7 +27,7 @@ export default class DocIskView extends React.Component {
         //remoteObj.dropRow = true;
         return remoteObj;
     }
-    
+
     //SearchField
     createCustomSearchField = () => {
         return (
@@ -41,7 +46,7 @@ export default class DocIskView extends React.Component {
             />
         );
     }
-    
+
     //onClickDocIskSelected(Id) {
     //    console.log('Id #', Id);
     //}
@@ -55,11 +60,30 @@ export default class DocIskView extends React.Component {
             >Сканировать - {row.Order}</button>
         );
     }
+    handleInit() {
+        //this.pond.add(row.DocFile);
+        //this.pond.files this.props.onGetFiles(row));
+        //console.log('FilePond instance has initialised', this.pond);
+    }
 
     cellUploadButton(cell, row, enumObject, rowIndex) {
         return (
-            <FilePond
-                server={Router.action(`Nodes`, `DocIskUpload`, { Id: id_global, Order: row.Id })}
+            <FilePond ref={ref => this.pond = ref}
+                server={
+                    process = Router.action(`Nodes`, `DocIskUpload`, {
+                        Id: id_global,
+                        Order: row.Order
+                    })
+                    
+                }
+                
+                oninit={() => this.handleInit()}
+                onupdatefiles={(fileItems) => {
+                    // Set current file objects to this.state
+                    this.setState({
+                        files: fileItems.map(fileItem => fileItem.file)
+                    });
+                }}
                 labelIdle='Перенесите файлы или нажмите <span class="filepond--label-action">Обзор</span>'
                 labelFileWaitingForSize='Получение размера'
                 labelFileSizeNotAvailable='Размер не определен'
@@ -79,8 +103,13 @@ export default class DocIskView extends React.Component {
                 labelButtonUndoItemProcessing='Отменить'
                 labelButtonRetryItemProcessing='Повтор'
                 labelButtonProcessItem='Передать'
-                //allowMultiple={true}
-            />
+            //allowMultiple={true}
+            >
+
+                <File key={row.DocFile} src={row.DocFile} origin="local" />
+
+
+            </FilePond >
         );
     }
 

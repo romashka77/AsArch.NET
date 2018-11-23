@@ -8,22 +8,12 @@ namespace AsArch.NET
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-
-           // routes.MapRoute(
-           //    name: "GetDopPredIskJson",
-           //    url: "getdopprediskjson",
-           //    defaults: new { controller = "Nodes", action = "GetDopPredIskJson" }
-           //);
-
+            routes.MapMvcAttributeRoutes();
             routes.MapRoute(
                 name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Nodes"/*"Home"*/, action = "Index", id = UrlParameter.Optional }
+                url: "{controller}/{action}/{id}",///{order}",
+                defaults: new { controller = "Nodes"/*"Home"*/, action = "Index", id = UrlParameter.Optional }//, order = UrlParameter.Optional }
             );
-            //routes.MapRoute(
-            //  name: "FormRoute",
-            //  url: "app/forms/{controller}/{action}"
-            //);
         }
     }
 }

@@ -151,29 +151,42 @@ namespace AsArch.NET.Controllers
         //    return Json(storege, JsonRequestBehavior.AllowGet);
         //}
         [HttpGet]
+        [Route("Upload")]
+        public FileResult DocIskUpload(int index, int order)
+        {
+            //int Order = int.Parse(Request.Params["Order"]);
+            //путь к файлу
+            string filePath = Server.MapPath(Path.Combine("~/Files/", Request.Params["load"]));//{Path.GetExtension(Path.GetFileName(upload.FileName))}
+            string fileType = $"application/{Path.GetExtension(Request.Params["load"])}";
+
+            return File(filePath, fileType);
+        }
 
         [HttpPost]
-        public JsonResult DocIskUpload(int id, int Order, string load) //BaseOrder docisk)
+        [Route("Upload")]
+        public ActionResult DocIskUpload()
         {
+            BaseOrder docisk = new BaseOrder();
             if (ModelState.IsValid)
             {
                 foreach (string file in Request.Files)
                 {
                     var upload = Request.Files[file];
-                    if (upload!=null)
+                    if (upload != null)
                     {
                         // сохраняем файл в папку Files в проекте
-                        var filePath = Path.Combine("~/Files/", $"{id}_doc{Order + 1}{Path.GetExtension(Path.GetFileName(upload.FileName))}");
+                        var fileName = $"{docisk.Id}_doc{docisk.Order + 1}{Path.GetExtension(Path.GetFileName(upload.FileName))}";
+                        var filePath = Path.Combine("~/Files/", fileName);
                         //string fileName = $"~/Files/";
                         upload.SaveAs(Server.MapPath(filePath));
-                        var storege = repository.GetStorege((int)id, (int)Order);
+                        var storege = repository.GetStorege((int)docisk.Id, (int)docisk.Order);
                         if (storege == null)
                         {
-                            repository.UpdateStorege((int)id, filePath, (int)Order);
+                            repository.UpdateStorege((int)docisk.Id, fileName, (int)docisk.Order);
                         }
                         else
                         {
-                            storege.STR_DOCFILE = filePath;
+                            storege.STR_DOCFILE = fileName;
                             repository.UpdateStorege(storege);
                         }
 
@@ -183,14 +196,14 @@ namespace AsArch.NET.Controllers
                             result = "error",
                             data = new
                             {
-                                filePath
+                                fileName
                             }
                         });
                     }
-                    
-                }
-                
 
+                }
+
+                return null;
             }
             return Json(new { error = "Нужно загрузить файл", success = false });
         }

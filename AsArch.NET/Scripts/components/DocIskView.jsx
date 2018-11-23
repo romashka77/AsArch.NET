@@ -67,16 +67,18 @@ export default class DocIskView extends React.Component {
     }
 
     cellUploadButton(cell, row, enumObject, rowIndex) {
+
+
+
         return (
             <FilePond ref={ref => this.pond = ref}
                 server={
-                    process = Router.action(`Nodes`, `DocIskUpload`, {
-                        Id: id_global,
-                        Order: row.Order
-                    })
-                    
+                    //process = Router.action(`Nodes`, `DocIskUpload`, {
+                    process = Router.action(`Upload`, { index: id_global, order: row.Order }
+                    )
+
                 }
-                
+
                 oninit={() => this.handleInit()}
                 onupdatefiles={(fileItems) => {
                     // Set current file objects to this.state

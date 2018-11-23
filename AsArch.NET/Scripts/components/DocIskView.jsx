@@ -67,24 +67,18 @@ export default class DocIskView extends React.Component {
     }
 
     cellUploadButton(cell, row, enumObject, rowIndex) {
-
-
-
         return (
             <FilePond ref={ref => this.pond = ref}
                 server={
-                    //process = Router.action(`Nodes`, `DocIskUpload`, {
-                    process = Router.action(`Upload`, { index: id_global, order: row.Order }
-                    )
-
+                    process = Router.action(`Nodes`, `DocIskUpload`, { id: id_global, order: row.Order })
                 }
-
                 oninit={() => this.handleInit()}
                 onupdatefiles={(fileItems) => {
                     // Set current file objects to this.state
                     this.setState({
                         files: fileItems.map(fileItem => fileItem.file)
                     });
+                    this.setState(row.DocFile = this.files);
                 }}
                 labelIdle='Перенесите файлы или нажмите <span class="filepond--label-action">Обзор</span>'
                 labelFileWaitingForSize='Получение размера'
@@ -113,7 +107,8 @@ export default class DocIskView extends React.Component {
 
             </FilePond >
         );
-    }
+    };
+
 
     render() {
         const options = {

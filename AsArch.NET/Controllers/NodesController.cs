@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Mvc;
 using System.Web.UI;
 using X.PagedList;
@@ -151,22 +152,26 @@ namespace AsArch.NET.Controllers
         //    return Json(storege, JsonRequestBehavior.AllowGet);
         //}
         [HttpGet]
-        [Route("Upload")]
-        public FileResult DocIskUpload(int index, int order)
+        //[Route("Upload")]
+        public ActionResult DocIskUpload(int? id, int? order, string load)
         {
             //int Order = int.Parse(Request.Params["Order"]);
             //путь к файлу
-            string filePath = Server.MapPath(Path.Combine("~/Files/", Request.Params["load"]));//{Path.GetExtension(Path.GetFileName(upload.FileName))}
-            string fileType = $"application/{Path.GetExtension(Request.Params["load"])}";
+            string filePath = Server.MapPath(Path.Combine("~/Files/", load));
+            FileStream fs = new FileStream(filePath, FileMode.Open);
+            string fileType = $"application/{Path.GetExtension(load).TrimStart('.')}";
 
-            return File(filePath, fileType);
+            return File(/*filePath*/fs, fileType, load);
         }
-
+        //[HttpDelete]
+        //public ActionResult DocIskUpload(int? id, int? order, string delete)
+        //{
+        //    return null;
+        //}
         [HttpPost]
-        [Route("Upload")]
-        public ActionResult DocIskUpload()
+        //[Route("Upload")]
+        public ActionResult DocIskUpload(BaseOrder docisk)
         {
-            BaseOrder docisk = new BaseOrder();
             if (ModelState.IsValid)
             {
                 foreach (string file in Request.Files)
@@ -189,7 +194,6 @@ namespace AsArch.NET.Controllers
                             storege.STR_DOCFILE = fileName;
                             repository.UpdateStorege(storege);
                         }
-
                         return Json(new
                         {
                             success = true,
@@ -200,10 +204,7 @@ namespace AsArch.NET.Controllers
                             }
                         });
                     }
-
                 }
-
-                return null;
             }
             return Json(new { error = "Нужно загрузить файл", success = false });
         }

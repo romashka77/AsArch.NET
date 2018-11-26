@@ -3,18 +3,16 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 
-import DopPredIsk from './DopPredIsk.jsx';
+//import DopPredIsk from './DopPredIsk.jsx';
 import SudZas from './SudZas.jsx';
 import DocIsk from './DocIsk.jsx';
 
-ReactDOM.render(
-    <DopPredIsk
-        url={Router.action(`Nodes`, `GetDopPredIskJson`, { id: id_global })}
-    //pollInterval={2000}
-        //url={Router.action(`api`, `DopPredIsk`, { id: id_global })}
-    />,
-    document.getElementById('tab-dop-isk')
-);
+//ReactDOM.render(
+//    <DopPredIsk
+//        url={Router.action(`Nodes`, `GetDopPredIskJson`, { id: id_global })}
+//    />,
+//    document.getElementById('tab-dop-isk')
+//);
 
 ReactDOM.render(
     <SudZas

@@ -576,8 +576,9 @@ namespace AsArch.NET.Controllers
                 var rep = repository.GetNodeAttrs(model.IdItemType, model.IdNode).ToList();
                 model.Attrs.Add(rep.SingleOrDefault(n => n.NameAttr == "Тип контрагента"));//2161
 
-                model.Attrs.Add(rep.SingleOrDefault(n => n.NameAttr == "Регистрационный №"));
-                //model.Attrs.Last().NameClass = ur_lico;
+                //model.Attrs.Add(rep.SingleOrDefault(n => n.NameAttr == "Регистрационный №"));
+                
+
                 model.Attrs.Add(rep.SingleOrDefault(n => n.NameAttr == "Наименование Контрагента полное"));
                 model.Attrs.Last().NameClass = ur_lico;
                 model.Attrs.Add(rep.SingleOrDefault(n => n.NameAttr == "Наименование Контрагента краткое "));
@@ -585,35 +586,40 @@ namespace AsArch.NET.Controllers
                 model.Attrs.Add(rep.SingleOrDefault(n => n.NameAttr == "ФИО Контрагента"));
                 model.Attrs.Last().NameClass = fiz_lico;
                 model.Attrs.Add(rep.SingleOrDefault(n => n.NameAttr == "Паспортные данные контрагента"));
+                model.Attrs.Last().NameAttr = "Дата и место рождения";
                 model.Attrs.Last().NameClass = fiz_lico;
+
                 model.Attrs.Add(rep.SingleOrDefault(n => n.NameAttr == "ОПФ"));
                 model.Attrs.Last().NameClass = ur_lico;
-                model.Attrs.Add(rep.SingleOrDefault(n => n.NameAttr == "Адрес фактический"));
-                model.Attrs.Last().NameClass = ur_lico;
+                //model.Attrs.Add(rep.SingleOrDefault(n => n.NameAttr == "Адрес фактический"));
+                //model.Attrs.Last().NameClass = ur_lico;
                 model.Attrs.Add(rep.SingleOrDefault(n => n.NameAttr == "Адрес юридический"));
                 //model.Attrs.Last().NameClass = ur_lico;
-                model.Attrs.Add(rep.SingleOrDefault(n => n.NameAttr == "Наименование банка"));
-                model.Attrs.Last().NameClass = ur_lico;
+                model.Attrs.Last().NameAttr = "Адрес";
+
+
+                //model.Attrs.Add(rep.SingleOrDefault(n => n.NameAttr == "Наименование банка"));
+                //model.Attrs.Last().NameClass = ur_lico;
                 model.Attrs.Add(rep.SingleOrDefault(n => n.NameAttr == "Адрес банка"));
                 model.Attrs.Last().NameClass = ur_lico;
-                model.Attrs.Add(rep.SingleOrDefault(n => n.NameAttr == "БИК"));
-                model.Attrs.Last().NameClass = ur_lico;
-                model.Attrs.Add(rep.SingleOrDefault(n => n.NameAttr == "Р/с"));
-                model.Attrs.Last().NameClass = ur_lico;
-                model.Attrs.Add(rep.SingleOrDefault(n => n.NameAttr == "К/с"));
-                model.Attrs.Last().NameClass = ur_lico;
-                model.Attrs.Add(rep.SingleOrDefault(n => n.NameAttr == "ИНН"));
+                //model.Attrs.Add(rep.SingleOrDefault(n => n.NameAttr == "БИК"));
                 //model.Attrs.Last().NameClass = ur_lico;
-                model.Attrs.Add(rep.SingleOrDefault(n => n.NameAttr == "ОГРН"));
+                //model.Attrs.Add(rep.SingleOrDefault(n => n.NameAttr == "Р/с"));
+                //model.Attrs.Last().NameClass = ur_lico;
+                //model.Attrs.Add(rep.SingleOrDefault(n => n.NameAttr == "К/с"));
+                //model.Attrs.Last().NameClass = ur_lico;
+                model.Attrs.Add(rep.SingleOrDefault(n => n.NameAttr == "ИНН"));
                 model.Attrs.Last().NameClass = ur_lico;
-                model.Attrs.Add(rep.SingleOrDefault(n => n.NameAttr == "КПП"));
-                model.Attrs.Last().NameClass = ur_lico;
-                model.Attrs.Add(rep.SingleOrDefault(n => n.NameAttr == "Телефон контрагента"));
-                model.Attrs.Add(rep.SingleOrDefault(n => n.NameAttr == "Сотовый телефон контрагента"));
-                model.Attrs.Last().NameClass = fiz_lico;
-                model.Attrs.Add(rep.SingleOrDefault(n => n.NameAttr == "Факс контрагента"));
-                model.Attrs.Last().NameClass = ur_lico;
-                model.Attrs.Add(rep.SingleOrDefault(n => n.NameAttr == "e-mail контрагента"));
+                //model.Attrs.Add(rep.SingleOrDefault(n => n.NameAttr == "ОГРН"));
+                //model.Attrs.Last().NameClass = ur_lico;
+                //model.Attrs.Add(rep.SingleOrDefault(n => n.NameAttr == "КПП"));
+                //model.Attrs.Last().NameClass = ur_lico;
+                //model.Attrs.Add(rep.SingleOrDefault(n => n.NameAttr == "Телефон контрагента"));
+                //model.Attrs.Add(rep.SingleOrDefault(n => n.NameAttr == "Сотовый телефон контрагента"));
+                //model.Attrs.Last().NameClass = fiz_lico;
+                //model.Attrs.Add(rep.SingleOrDefault(n => n.NameAttr == "Факс контрагента"));
+                //model.Attrs.Last().NameClass = ur_lico;
+                //model.Attrs.Add(rep.SingleOrDefault(n => n.NameAttr == "e-mail контрагента"));
                 model.Attrs.Add(rep.SingleOrDefault(n => n.NameAttr == "Примечание"));
             }
             else

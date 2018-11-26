@@ -654,7 +654,6 @@
     <Content Include="Scripts\components\DocIskView.jsx" />
     <Content Include="Scripts\components\SudZas.jsx" />
     <Content Include="Scripts\components\SudZasView.jsx" />
-    <Content Include="Scripts\components\DopPredIskView.jsx" />
     <Content Include="Scripts\iskovoezajvlenie.bundle.js" />
     <Content Include="Scripts\storona-processa.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
@@ -666,7 +665,6 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Scripts\components\DopPredIsk.jsx" />
     <Content Include="webpack.config.js" />
     <EntityDeploy Include="EntityDataModel\DB_pfr_sap.edmx">
       <Generator>EntityModelCodeGenerator</Generator>

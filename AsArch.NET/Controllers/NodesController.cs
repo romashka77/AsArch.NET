@@ -393,6 +393,8 @@ namespace AsArch.NET.Controllers
                 model.Attrs.Add(rep.SingleOrDefault(n => n.NameAttr == "Регистрационный номер"/* IdAttr == 2141*/));
                 //1Регистрационная дата
                 model.Attrs.Add(rep.SingleOrDefault(n => n.NameAttr == "Регистрационная дата"/* IdAttr == 2134*/));
+                model.Attrs.Last().NameAttr = "Дата судебного акта";
+
                 //2Номер дела
                 model.Attrs.Add(rep.SingleOrDefault(n => n.NameAttr == "Номер дела"/*IdAttr==1958*/));
                 //3Дата принятия иска

@@ -23,16 +23,6 @@
     @foreach (var item in Model.Attrs)
     {
         Model.IdAttr++;// = item.IdAttr;
-        if (Model.IdItemType == 2159)
-        {
-            //if (item.IdAttr == 2258 || item.IdAttr == 2165 || item.IdAttr == 2175 || item.IdAttr == 2176 || item.IdAttr == 2177 || item.IdAttr == 2181 || item.IdAttr == 2167 || item.IdAttr == 2169 || item.IdAttr == 2173 || item.IdAttr == 2174 || item.IdAttr == 2171 || item.IdAttr == 2172)
-            //{
-            //    continue;
-            //}
-            //if (item.IdAttr == 2180) { item.NameAttr = "Дата и место рождения"; }
-            //if (item.IdAttr == 2166) { item.NameAttr = "Адрес"; }
-
-        }
         @Html.HiddenFor(model => model.Attrs[Model.IdAttr].NameClass)
         <div class=@item.NameClass>
             @switch (item.IdAttrType)

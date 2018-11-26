@@ -9,7 +9,6 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.UI;
 using X.PagedList;
@@ -579,7 +578,7 @@ namespace AsArch.NET.Controllers
                 model.Attrs.Add(rep.SingleOrDefault(n => n.NameAttr == "Тип контрагента"));//2161
 
                 //model.Attrs.Add(rep.SingleOrDefault(n => n.NameAttr == "Регистрационный №"));
-                
+
 
                 model.Attrs.Add(rep.SingleOrDefault(n => n.NameAttr == "Наименование Контрагента полное"));
                 model.Attrs.Last().NameClass = ur_lico;
@@ -673,8 +672,21 @@ namespace AsArch.NET.Controllers
                         repository.ChangeNodeType(model.IdNode, model.IdItemType);
                         return RedirectToAction(nameof(Edit), new { id = model.IdNode });
                     }
-                    if (node.STR_LABEL != model.NameNode)
+                    if (node.STR_LABEL != model.NameNode || model.ItemType == "Исковое заявление")
                     {
+                        if (model.ItemType == "Исковое заявление")
+                        {
+                            model.IdAttr = model.Attrs.FindIndex(a => a.NameAttr == "Дата судебного акта");
+                            var year = ((DateTime)model.Attrs[model.IdAttr].DATE_VALUE).Year;
+                            var d = ((DateTime)model.Attrs[model.IdAttr].DATE_VALUE).ToString("yyyy.MM.dd");
+                            model.IdAttr = model.Attrs.FindIndex(a => a.NameAttr == "Номер дела");
+                            var num = model.Attrs[model.IdAttr].CHAR_VALUE;
+                            model.IdAttr = model.Attrs.FindIndex(a => a.NameAttr == "Регистрационный номер");
+                            model.Attrs[model.IdAttr].CHAR_VALUE = $"{203}-{node.NODE2.NODE2.ATTRVAL_CHAR.SingleOrDefault(n => n.ID_NODE == node.NODE2.NODE2.ID_NODE && n.ID_ATTR == 2278).CHAR_VALUE}\\{year}";
+                            model.NameNode = $"{model.Attrs[model.IdAttr].CHAR_VALUE} от {d} №{num}";
+
+
+                        }
                         repository.RenameNode(model.IdNode, model.NameNode);
                     }
                     for (int i = 0; i < model.Attrs.Count; i++)

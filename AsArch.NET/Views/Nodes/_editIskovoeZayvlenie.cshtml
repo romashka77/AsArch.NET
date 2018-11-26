@@ -10,6 +10,7 @@
         @Html.HiddenFor(model => model.IdItemType)
         @Html.HiddenFor(model => model.IdParent)
         @Html.HiddenFor(model => model.IdGrantParent)
+        @Html.HiddenFor(model => model.ItemType)
         <div class="form-group">
             @Html.LabelFor(model => model.NameNode, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -133,17 +134,17 @@
             </div>
 
             @*<div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="heading-dop-pred-isk">
-                    <h4 class="panel-title">
-                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse-dop-pred-isk" aria-expanded="false" aria-controls="collapse-dop-pred-isk">
-                            Дополнительные предметы иска
-                        </a>
-                    </h4>
-                </div>
-                <div id="collapse-dop-pred-isk" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-dop-pred-isk">
-                    <div id="tab-dop-isk"></div>
-                </div>
-            </div>*@
+                    <div class="panel-heading" role="tab" id="heading-dop-pred-isk">
+                        <h4 class="panel-title">
+                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse-dop-pred-isk" aria-expanded="false" aria-controls="collapse-dop-pred-isk">
+                                Дополнительные предметы иска
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapse-dop-pred-isk" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-dop-pred-isk">
+                        <div id="tab-dop-isk"></div>
+                    </div>
+                </div>*@
 
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="heading-graf-sud-zas">
@@ -204,7 +205,8 @@
                                 <td>
                                     @{
                                         Model.IdAttr = 30;
-                                        Html.RenderPartial("_selectListTable", Model);/*.Attrs[1993]);*/}
+                                        Html.RenderPartial("_selectListTable", Model);/*.Attrs[1993]);*/
+                                    }
                                 </td>
                                 <td>
                                     @{
@@ -227,7 +229,8 @@
                                 <td>
                                     @{
                                         Model.IdAttr = 34;
-                                        Html.RenderPartial("_attrDateTable", Model/*.Attrs[1994]*/);}
+                                        Html.RenderPartial("_attrDateTable", Model/*.Attrs[1994]*/);
+                                    }
                                 </td>
                                 <td>
                                     @{
@@ -246,11 +249,12 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th>Дата получен. реш.</th>
+                                <th>Дата получен.реш.</th>
                                 <td>
                                     @{
                                         Model.IdAttr = 38;
-                                        Html.RenderPartial("_attrDateTable", Model/*.Attrs[1995]*/);}
+                                        Html.RenderPartial("_attrDateTable", Model/*.Attrs[1995]*/);
+                                    }
                                 </td>
                                 <td>
                                     @{
@@ -273,7 +277,8 @@
                                 <td>
                                     @{
                                         Model.IdAttr = 42;
-                                        Html.RenderPartial("_attrFloatTable", Model/*.Attrs[1997]*/);}
+                                        Html.RenderPartial("_attrFloatTable", Model/*.Attrs[1997]*/);
+                                    }
                                 </td>
                                 <td>
                                     @{
@@ -296,7 +301,8 @@
                                 <td>
                                     @{
                                         Model.IdAttr = 46;
-                                        Html.RenderPartial("_attrFloatTable", Model/*.Attrs[1996]*/);}
+                                        Html.RenderPartial("_attrFloatTable", Model/*.Attrs[1996]*/);
+                                    }
                                 </td>
                                 <td>
                                     @{
@@ -319,7 +325,8 @@
                                 <td>
                                     @{
                                         Model.IdAttr = 50;
-                                        Html.RenderPartial("_attrFloatTable", Model/*.Attrs[1998]*/);}
+                                        Html.RenderPartial("_attrFloatTable", Model/*.Attrs[1998]*/);
+                                    }
                                 </td>
                                 <td>
                                     @{
@@ -342,7 +349,8 @@
                                 <td>
                                     @{
                                         Model.IdAttr = 54;
-                                        Html.RenderPartial("_attrFloatTable", Model/*.Attrs[1999]*/);}
+                                        Html.RenderPartial("_attrFloatTable", Model/*.Attrs[1999]*/);
+                                    }
                                 </td>
                                 <td>
                                     @{
@@ -365,7 +373,8 @@
                                 <td>
                                     @{
                                         Model.IdAttr = 58;
-                                        Html.RenderPartial("_attrFloatTable", Model/*.Attrs[2511]*/);}
+                                        Html.RenderPartial("_attrFloatTable", Model/*.Attrs[2511]*/);
+                                    }
                                 </td>
                                 <td>
                                     @{
@@ -388,7 +397,8 @@
                                 <td>
                                     @{
                                         Model.IdAttr = 62;
-                                        Html.RenderPartial("_attrFloatTable", Model/*.Attrs[2310]*/);}
+                                        Html.RenderPartial("_attrFloatTable", Model/*.Attrs[2310]*/);
+                                    }
                                 </td>
                                 <td>
                                     @{
@@ -411,7 +421,8 @@
                                 <td>
                                     @{
                                         Model.IdAttr = 66;
-                                        Html.RenderPartial("_attrFloatTable", Model/*.Attrs[2519]*/);}
+                                        Html.RenderPartial("_attrFloatTable", Model/*.Attrs[2519]*/);
+                                    }
                                 </td>
                                 <td>
                                     @{
@@ -503,9 +514,10 @@
                                 <td>
                                     @{
                                         Model.IdAttr = 82;
-                                        Html.RenderPartial("_attrDateTable", Model/*.Attrs[2726]*/);}
+                                        Html.RenderPartial("_attrDateTable", Model/*.Attrs[2726]*/);
+                                    }
                                 </td>
-                                <th>Итоговое реш. суда (Отчеты)</th>
+                                <th>Итоговое реш.суда(Отчеты)</th>
                                 <td>
                                     @{
                                         Model.IdAttr = 83;
@@ -518,7 +530,8 @@
                                 <td>
                                     @{
                                         Model.IdAttr = 84;
-                                        Html.RenderPartial("_attrTextTable", Model/*.Attrs[2000]*/);}
+                                        Html.RenderPartial("_attrTextTable", Model/*.Attrs[2000]*/);
+                                    }
                                 </td>
                                 <td>
                                     @{
@@ -551,7 +564,8 @@
                 </div>
                 <div id="collapse-doc-isk" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-doc-isk">
                     <div>
-                        <div id="doc-isk"></div>
+                        <div id="doc-isk">
+                        </div>
                         <div class="col-md-2">
                             @*<button type="button" onclick="scan();">Сканировать</button>*@
                         </div>

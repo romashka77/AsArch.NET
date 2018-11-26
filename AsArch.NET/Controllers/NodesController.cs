@@ -157,7 +157,7 @@ namespace AsArch.NET.Controllers
         {
             //int Order = int.Parse(Request.Params["Order"]);
             //путь к файлу
-            string filePath = Server.MapPath(Path.Combine("~/Files/", load));
+            string filePath = Server.MapPath(Path.Combine("~/Content/Files/", load));
             FileStream fs = new FileStream(filePath, FileMode.Open);
             string fileType = $"application/{Path.GetExtension(load).TrimStart('.')}";
 
@@ -181,8 +181,8 @@ namespace AsArch.NET.Controllers
                     {
                         // сохраняем файл в папку Files в проекте
                         var fileName = $"{docisk.Id}_doc{docisk.Order + 1}{Path.GetExtension(Path.GetFileName(upload.FileName))}";
-                        var filePath = Path.Combine("~/Files/", fileName);
-                        //string fileName = $"~/Files/";
+                        var filePath = Path.Combine("~/Content/Files/", fileName);
+                        //string fileName = $"~/Content/Files/";
                         upload.SaveAs(Server.MapPath(filePath));
                         var storege = repository.GetStorege((int)docisk.Id, (int)docisk.Order);
                         if (storege == null)

@@ -144,31 +144,21 @@ namespace AsArch.NET.Controllers
         #endregion
 
         #region DocIsk
-        //[HttpGet]
-        //public JsonResult DocIskLoad(BaseOrder docisk)
-        //{
-        //    var storege = repository.GetStorege((int)docisk.Id, (int)docisk.Order);
-        //    return Json(storege, JsonRequestBehavior.AllowGet);
-        //}
         [HttpGet]
-        //[Route("Upload")]
         public ActionResult DocIskUpload(int? id, int? order, string load)
         {
-            //int Order = int.Parse(Request.Params["Order"]);
             //путь к файлу
             string filePath = Server.MapPath(Path.Combine("~/Content/Files/", load));
-            FileStream fs = new FileStream(filePath, FileMode.Open);
-            string fileType = $"application/{Path.GetExtension(load).TrimStart('.')}";
-
-            return File(/*filePath*/fs, fileType, load);
+            var fileInfo = new FileInfo(filePath);
+            if (fileInfo.Exists)
+            {
+                FileStream fs = new FileStream(filePath, FileMode.Open);
+                string fileType = $"application/{Path.GetExtension(load).TrimStart('.')}";
+                return File(/*filePath*/fs, fileType, load);
+            }
+            return null;
         }
-        //[HttpDelete]
-        //public ActionResult DocIskUpload(int? id, int? order, string delete)
-        //{
-        //    return null;
-        //}
         [HttpPost]
-        //[Route("Upload")]
         public ActionResult DocIskUpload(BaseOrder docisk)
         {
             if (ModelState.IsValid)
@@ -682,10 +672,12 @@ namespace AsArch.NET.Controllers
                             model.IdAttr = model.Attrs.FindIndex(a => a.NameAttr == "Номер дела");
                             var num = model.Attrs[model.IdAttr].CHAR_VALUE;
                             model.IdAttr = model.Attrs.FindIndex(a => a.NameAttr == "Регистрационный номер");
-                            model.Attrs[model.IdAttr].CHAR_VALUE = $"{203}-{node.NODE2.NODE2.ATTRVAL_CHAR.SingleOrDefault(n => n.ID_NODE == node.NODE2.NODE2.ID_NODE && n.ID_ATTR == 2278).CHAR_VALUE}\\{year}";
+                            if (String.IsNullOrEmpty(model.Attrs[model.IdAttr].CHAR_VALUE))
+                            {
+                                int num0 = (int)(await repository.GetRegNum(model.IdParent, $"{year}")) + 1;
+                                model.Attrs[model.IdAttr].CHAR_VALUE = $"{num0}-{node.NODE2.NODE2.ATTRVAL_CHAR.SingleOrDefault(n => n.ID_NODE == node.NODE2.NODE2.ID_NODE && n.ID_ATTR == 2278).CHAR_VALUE}\\{year}";
+                            }
                             model.NameNode = $"{model.Attrs[model.IdAttr].CHAR_VALUE} от {d} №{num}";
-
-
                         }
                         repository.RenameNode(model.IdNode, model.NameNode);
                     }

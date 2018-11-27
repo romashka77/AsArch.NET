@@ -72,6 +72,17 @@ namespace AsArch.NET.EntityDataModel
             }
             return node;
         }
+        public async Task<int?> GetRegNum(int? id_parent, string year)
+        {
+            if (id_parent==null)
+            {
+                return null;
+            }
+            var query = db.Database.SqlQuery<int?>("SELECT " +
+                "Max(CAST(substring(STR_LABEL, 1, CHARINDEX('-', STR_LABEL) - 1) AS int)) FROM NODE where ID_PARENT = @id_parent and " +
+                "CHARINDEX(@year, STR_LABEL) > 0", new SqlParameter("id_parent", id_parent), new SqlParameter("year", year));
+            return await query.SingleOrDefaultAsync();
+        }
         public int RenameNode(int? id_node, string str_label)
         {
             return db.RenameNode(id_node, str_label, null);

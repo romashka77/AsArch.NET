@@ -10,6 +10,7 @@ namespace AsArch.NET.Interfaces
 {
     public interface IRepository
     {
+        Task<int?> GetRegNum(int? id_parent, string year);
         void UpdateStorege(STORAGE storege);
         STORAGE GetStorege(int id_node, int order);
         void UpdateStorege(int id_node, string file_name, int order);

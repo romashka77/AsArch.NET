@@ -10,7 +10,7 @@ export default class SudZas extends React.Component {
     loadFromServer() {
         const xhr = new XMLHttpRequest();
         xhr.open('get', this.props.url, true);
-        xhr.timeout = 30000; // 30 секунд (в миллисекундах)
+        xhr.timeout = 300000; // 30 секунд (в миллисекундах)
         xhr.ontimeout = () => alert('Извините, запрос превысил максимальное время');
         xhr.onload = () => {
             const data = JSON.parse(xhr.responseText);

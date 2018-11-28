@@ -257,7 +257,7 @@ namespace AsArch.NET.EntityDataModel
                 " and (TCH.CHAR_VALUE is not NULL" +
                 " or TDAT.DATE_VALUE is not NULL" +
                 " or TINT.INT_VALUE is not NULL " +
-                " or TFLO.FLOAT_VALUE is not NULL)" +
+                " or TabColFloat is not NULL)" +
                 " order by NOrder, IdAttr, TabOrder, TabIdCol;",
                 new SqlParameter("id_type", id_itemtype), new SqlParameter("id_node", id_node), new SqlParameter("nameAttr", nameAttr));
             return query.AsQueryable();

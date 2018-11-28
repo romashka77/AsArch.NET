@@ -233,7 +233,6 @@ namespace AsArch.NET.Controllers
         {
             if (ModelState.IsValid)
             {
-
                 if (model.Order == null)
                 {
                     var sud_zas = GetSudZas(model.Id);
@@ -248,34 +247,80 @@ namespace AsArch.NET.Controllers
                     model.N = (model.Order + 1).ToString();
                 }
                 repository.UpdateTableChar(2091, model.Id, model.Order, 0, model.N);
-                repository.UpdateTableDate(2091, model.Id, model.Order, 1, Convert.ToDateTime(model.DateValue));
-                repository.UpdateTableChar(2091, model.Id, model.Order, 2, model.TimeValue);
-                repository.UpdateTableChar(2091, model.Id, model.Order, 3, model.Comment);
-                repository.UpdateTableChar(2091, model.Id, model.Order, 4, model.Isp);
-                repository.UpdateTableChar(2091, model.Id, model.Order, 5, model.Sud);
+                if (!string.IsNullOrEmpty(model.DateValue))
+                    repository.UpdateTableDate(2091, model.Id, model.Order, 1, Convert.ToDateTime(model.DateValue));
+                if (!string.IsNullOrEmpty(model.TimeValue))
+                    repository.UpdateTableChar(2091, model.Id, model.Order, 2, model.TimeValue);
+                if (!string.IsNullOrEmpty(model.Comment))
+                    repository.UpdateTableChar(2091, model.Id, model.Order, 3, model.Comment);
+                if (!string.IsNullOrEmpty(model.Isp))
+                    repository.UpdateTableChar(2091, model.Id, model.Order, 4, model.Isp);
+                if (!string.IsNullOrEmpty(model.Sud))
+                    repository.UpdateTableChar(2091, model.Id, model.Order, 5, model.Sud);
             }
             return Content("Success :)");
         }
         private IEnumerable<SudZas> GetSudZas(int id)
         {
-            var data = repository.GetTableData(1954, id, "Предмет иска судебных заседаний").ToList();
-            if (data.Count == 0)
+            NODE node = repository.FindNode(id);
+            if (node == null)
             {
-                return new SudZas [0];
+                return new SudZas[0];
             }
-            var n = data.Where(m => m.TabIdCol == 0);
-            var d = data.Where(m => m.TabIdCol == 1);
-            var t = data.Where(m => m.TabIdCol == 2);
-            var c = data.Where(m => m.TabIdCol == 3);
-            var i = data.Where(m => m.TabIdCol == 4);
-            var s = data.Where(m => m.TabIdCol == 5);
-            var t0 = n.Join(d, a => a.TabOrder, b => b.TabOrder, (a, b) => new { TabOrder = a.TabOrder, Id = a.TabColCharValue, DateValue = b.TabColDateValue });
-            var t1 = t0.Join(t, a => a.TabOrder, b => b.TabOrder, (a, b) => new { TabOrder = a.TabOrder, Id = a.Id, DateValue = a.DateValue, TimeValue = b.TabColCharValue });
-            var t2 = t1.Join(c, a => a.TabOrder, b => b.TabOrder, (a, b) => new { TabOrder = a.TabOrder, Id = a.Id, DateValue = a.DateValue, TimeValue = a.TimeValue, Comment = b.TabColCharValue });
-            var t3 = t2.Join(i, a => a.TabOrder, b => b.TabOrder, (a, b) => new { TabOrder = a.TabOrder, Id = a.Id, DateValue = a.DateValue, TimeValue = a.TimeValue, Comment = a.Comment, Isp = b.TabColCharValue });
+            var n = node.TABLEVAL_CHAR.Where(a => a.ID_NODE == id && a.ID_ATTR == 2091 && a.ID_COL == 0).Select(a => new { Id = a.ID_NODE, Order = a.N_ORDER, N = a.CHAR_VALUE });
+            var d = node.TABLEVAL_DATE.Where(a => a.ID_NODE == id && a.ID_ATTR == 2091 && a.ID_COL == 1).Select(a => new { Order = a.N_ORDER, DateValue = a.DATE_VALUE });
+            var t = node.TABLEVAL_CHAR.Where(a => a.ID_NODE == id && a.ID_ATTR == 2091 && a.ID_COL == 2).Select(a => new { Order = a.N_ORDER, TimeValue = a.CHAR_VALUE });
+            var c = node.TABLEVAL_CHAR.Where(a => a.ID_NODE == id && a.ID_ATTR == 2091 && a.ID_COL == 3).Select(a => new { Order = a.N_ORDER, Comment = a.CHAR_VALUE });
+            var i = node.TABLEVAL_CHAR.Where(a => a.ID_NODE == id && a.ID_ATTR == 2091 && a.ID_COL == 4).Select(a => new { Order = a.N_ORDER, Isp = a.CHAR_VALUE });
+            var s = node.TABLEVAL_CHAR.Where(a => a.ID_NODE == id && a.ID_ATTR == 2091 && a.ID_COL == 5).Select(a => new { Order = a.N_ORDER, Sud = a.CHAR_VALUE });
+            var nd = from a in n
+                     join b in d on a.Order equals b.Order into outer
+                     from r in outer.DefaultIfEmpty()
+                     select new { a.Id, a.Order, a.N, DateValue = r == null ? string.Empty : ((DateTime)r.DateValue).ToString("yyyy-MM-dd") };
+            var ndt = from a in nd
+                      join b in t on a.Order equals b.Order into outer
+                      from r in outer.DefaultIfEmpty()
+                      select new { a.Id, a.Order, a.N, a.DateValue, TimeValue = r == null ? string.Empty : r.TimeValue };
+            var ndtc = from a in ndt
+                       join b in c on a.Order equals b.Order into outer
+                       from r in outer.DefaultIfEmpty()
+                       select new { a.Id, a.Order, a.N, a.DateValue, a.TimeValue, Comment = r == null ? string.Empty : r.Comment };
+            var ndtci = from a in ndtc
+                        join b in i on a.Order equals b.Order into outer
+                        from r in outer.DefaultIfEmpty()
+                        select new { a.Id, a.Order, a.N, a.DateValue, a.TimeValue, a.Comment, Isp = r == null ? string.Empty : r.Isp };
+            var res = from a in ndtci
+                      join b in s on a.Order equals b.Order into outer
+                      from r in outer.DefaultIfEmpty()
+                      select new SudZas { Id = a.Id, Order = a.Order, N = a.N, DateValue = a.DateValue, TimeValue = a.TimeValue, Comment = a.Comment, Isp = a.Isp, Sud = r == null ? string.Empty : r.Sud };
 
-            var res = t3.Join(s, a => a.TabOrder, b => b.TabOrder, (a, b) => new { TabOrder = a.TabOrder, Id = a.Id, DateValue = a.DateValue, TimeValue = a.TimeValue, Comment = a.Comment, Isp = a.Isp, Sud = b.TabColCharValue }).Select(a => new SudZas { Id = id, Order = a.TabOrder, N = a.Id, DateValue = ((DateTime)a.DateValue).ToString("yyyy-MM-dd"), TimeValue = a.TimeValue, Comment = a.Comment, Isp = a.Isp, Sud = a.Sud });
+
             return res;
+            //var data = repository.GetTableData(1954, id, "Предмет иска судебных заседаний").ToList();
+            //if (data.Count == 0)
+            //{
+            //    return new SudZas[0];
+            //}
+            //var query = from a in a0
+            //            join b in b0 on a.N_ORDER equals b.N_ORDER into c
+            //            from d in c.DefaultIfEmpty()
+            //            select new DocIsk { Id = id, Order = a.N_ORDER, Filter = a.FILTER, Name = a.STR_NAME, DocFile = d.STR_DOCFILE == null ? string.Empty : d.STR_DOCFILE };
+
+
+
+            //var n = data.Where(m => m.TabIdCol == 0);
+            //var d = data.Where(m => m.TabIdCol == 1);
+            //var t = data.Where(m => m.TabIdCol == 2);
+            //var c = data.Where(m => m.TabIdCol == 3);
+            //var i = data.Where(m => m.TabIdCol == 4);
+            //var s = data.Where(m => m.TabIdCol == 5);
+            //var t0 = n.Join(d, a => a.TabOrder, b => b.TabOrder, (a, b) => new { TabOrder = a.TabOrder, Id = a.TabColCharValue, DateValue = b.TabColDateValue });
+            //var t1 = t0.Join(t, a => a.TabOrder, b => b.TabOrder, (a, b) => new { TabOrder = a.TabOrder, Id = a.Id, DateValue = a.DateValue, TimeValue = b.TabColCharValue });
+            //var t2 = t1.Join(c, a => a.TabOrder, b => b.TabOrder, (a, b) => new { TabOrder = a.TabOrder, Id = a.Id, DateValue = a.DateValue, TimeValue = a.TimeValue, Comment = b.TabColCharValue });
+            //var t3 = t2.Join(i, a => a.TabOrder, b => b.TabOrder, (a, b) => new { TabOrder = a.TabOrder, Id = a.Id, DateValue = a.DateValue, TimeValue = a.TimeValue, Comment = a.Comment, Isp = b.TabColCharValue });
+
+            //var res = t3.Join(s, a => a.TabOrder, b => b.TabOrder, (a, b) => new { TabOrder = a.TabOrder, Id = a.Id, DateValue = a.DateValue, TimeValue = a.TimeValue, Comment = a.Comment, Isp = a.Isp, Sud = b.TabColCharValue }).Select(a => new SudZas { Id = id, Order = a.TabOrder, N = a.Id, DateValue = ((DateTime)a.DateValue).ToString("yyyy-MM-dd"), TimeValue = a.TimeValue, Comment = a.Comment, Isp = a.Isp, Sud = a.Sud });
+            //return res;
         }
         [OutputCache(Location = OutputCacheLocation.None)]
         public ActionResult GetSudZasJson(int id)

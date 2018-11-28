@@ -10,6 +10,8 @@ export default class SudZas extends React.Component {
     loadFromServer() {
         const xhr = new XMLHttpRequest();
         xhr.open('get', this.props.url, true);
+        xhr.timeout = 30000; // 30 секунд (в миллисекундах)
+        xhr.ontimeout = () => alert('Извините, запрос превысил максимальное время');
         xhr.onload = () => {
             const data = JSON.parse(xhr.responseText);
             this.setState({ data: data });
@@ -20,6 +22,8 @@ export default class SudZas extends React.Component {
     loadIspsFromServer(id) {
         const xhr = new XMLHttpRequest();
         xhr.open('get', Router.action(`Nodes`, `GetListDictJson`, { id: id }), true);
+        xhr.timeout = 30000; // 30 секунд (в миллисекундах)
+        xhr.ontimeout = () => alert('Извините, запрос превысил максимальное время');
         xhr.onload = () => {
             const isps = JSON.parse(xhr.responseText);
             this.setState({ isps: isps });
@@ -29,6 +33,8 @@ export default class SudZas extends React.Component {
     loadSudsFromServer() {
         const xhr = new XMLHttpRequest();
         xhr.open('get', Router.action(`Nodes`, `GetListTabConfig`), true);
+        xhr.timeout = 30000; // 30 секунд (в миллисекундах)
+        xhr.ontimeout = () => alert('Извините, запрос превысил максимальное время');
         xhr.onload = () => {
             const suds = JSON.parse(xhr.responseText);
             this.setState({ suds: suds });
@@ -54,6 +60,8 @@ export default class SudZas extends React.Component {
         form.append('Sud', row.Sud);
         const xhr = new XMLHttpRequest();
         xhr.open('post', Router.action(`Nodes`, `PostSudZas`), true);
+        xhr.timeout = 30000; // 30 секунд (в миллисекундах)
+        xhr.ontimeout = () => lert('Извините, запрос превысил максимальное время');
         xhr.onload = () => this.loadFromServer();
         xhr.send(form);
     }
@@ -64,6 +72,8 @@ export default class SudZas extends React.Component {
         form.append('Orders', row);
         const xhr = new XMLHttpRequest();
         xhr.open('delete', Router.action(`Nodes`, `DeleteSudZas`), true);
+        xhr.timeout = 30000; // 30 секунд (в миллисекундах)
+        xhr.ontimeout = () => lert('Извините, запрос превысил максимальное время');
         xhr.onload = () => this.loadFromServer();
         xhr.send(form);
     }
@@ -72,8 +82,6 @@ export default class SudZas extends React.Component {
         if (row[fieldName] !== value) {
             row[fieldName] = value;
             this.onAddRow(row);
-        } else {
-            this.loadFromServer();
         }
     }
 

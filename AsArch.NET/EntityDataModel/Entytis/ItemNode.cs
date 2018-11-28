@@ -18,5 +18,6 @@ namespace AsArch.NET.EntityDataModel.Entytis
         public int? Id_parent { get; set; }
         public byte[] Icon { get; set; }
         public string TypeName { get; set; }
+        public string INN { get; set; }
     }
 }

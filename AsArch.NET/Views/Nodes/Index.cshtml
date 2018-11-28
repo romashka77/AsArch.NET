@@ -46,6 +46,9 @@
                     @*@Html.DisplayNameFor(model => model.STR_LABEL)*@
                 </th>
                 <th>
+                    ИНН
+                </th>
+                <th>
 
                 </th>
             </tr>
@@ -68,6 +71,9 @@
                         {
                             id = item.@*ID_NODE*@Id
                                       })
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.INN)
                     </td>
                     <td>
                         @Html.ActionLink("Редактировать", "Edit", new { id = item.Id}) |

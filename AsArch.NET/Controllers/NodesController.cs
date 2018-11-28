@@ -45,14 +45,15 @@ namespace AsArch.NET.Controllers
                 Id = n.ID_NODE,
                 Name = n.STR_LABEL,
                 TypeName = n.ITEMTYPE.STR_NAME,
-                Id_parent = n.ID_PARENT
+                Id_parent = n.ID_PARENT,
+                INN = n.ATTRVAL_CHAR.FirstOrDefault(a => a.ID_ATTR == 2170).CHAR_VALUE
             }); ;
             #region фильтрация
             if (searchString != null) { page = 1; }
             else { searchString = currentFilter; }
             ViewBag.CurrentFilter = searchString;
             if (!String.IsNullOrEmpty(searchString))
-            { nodes = nodes.Where(s => s.Name/* STR_LABEL*/.ToUpper().Contains(searchString.ToUpper())); }
+            { nodes = nodes.Where(s => s.Name.ToUpper().Contains(searchString.ToUpper()) || s.INN.ToUpper().Contains(searchString.ToUpper())); }
             #endregion
             #region сортировка изменить на использование Linq.dynamic
             ViewBag.CurrentSort = sortOrder;
@@ -232,15 +233,17 @@ namespace AsArch.NET.Controllers
         {
             if (ModelState.IsValid)
             {
+
                 if (model.Order == null)
                 {
-                    if (GetSudZas(model.Id).Where(n => n.Isp != null || n.Sud != null || n.TimeValue != null || n.DateValue != null || n.Comment != null || n.N != null).Count() == 0)
+                    var sud_zas = GetSudZas(model.Id);
+                    if (sud_zas.Count() == 0)
                     {
                         model.Order = 0;
                     }
                     else
                     {
-                        model.Order = GetSudZas(model.Id).Max(n => n.Order) + 1;
+                        model.Order = sud_zas.Max(n => n.Order) + 1;
                     }
                     model.N = (model.Order + 1).ToString();
                 }
@@ -256,6 +259,10 @@ namespace AsArch.NET.Controllers
         private IEnumerable<SudZas> GetSudZas(int id)
         {
             var data = repository.GetTableData(1954, id, "Предмет иска судебных заседаний").ToList();
+            if (data.Count == 0)
+            {
+                return new SudZas [0];
+            }
             var n = data.Where(m => m.TabIdCol == 0);
             var d = data.Where(m => m.TabIdCol == 1);
             var t = data.Where(m => m.TabIdCol == 2);
@@ -273,6 +280,7 @@ namespace AsArch.NET.Controllers
         [OutputCache(Location = OutputCacheLocation.None)]
         public ActionResult GetSudZasJson(int id)
         {
+
             return Json(GetSudZas(id), JsonRequestBehavior.AllowGet);
         }
         #endregion 
@@ -600,7 +608,8 @@ namespace AsArch.NET.Controllers
                 //model.Attrs.Add(rep.SingleOrDefault(n => n.NameAttr == "К/с"));
                 //model.Attrs.Last().NameClass = ur_lico;
                 model.Attrs.Add(rep.SingleOrDefault(n => n.NameAttr == "ИНН"));
-                model.Attrs.Last().NameClass = ur_lico;
+                //model.Attrs.Last().NameClass = ur_lico;
+
                 //model.Attrs.Add(rep.SingleOrDefault(n => n.NameAttr == "ОГРН"));
                 //model.Attrs.Last().NameClass = ur_lico;
                 //model.Attrs.Add(rep.SingleOrDefault(n => n.NameAttr == "КПП"));

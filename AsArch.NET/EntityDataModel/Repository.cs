@@ -254,6 +254,10 @@ namespace AsArch.NET.EntityDataModel
                 " left join TABLEVAL_FLOAT TFLO on TCON.ID_COL = TFLO.ID_COL and IdAttr = TFLO.ID_ATTR and TFLO.ID_NODE = @id_node" +
                 " where IdAttrType = 7" +
                 " and NameAttr = @nameAttr" +
+                " and (TCH.CHAR_VALUE is not NULL" +
+                " or TDAT.DATE_VALUE is not NULL" +
+                " or TINT.INT_VALUE is not NULL " +
+                " or TFLO.FLOAT_VALUE is not NULL)" +
                 " order by NOrder, IdAttr, TabOrder, TabIdCol;",
                 new SqlParameter("id_type", id_itemtype), new SqlParameter("id_node", id_node), new SqlParameter("nameAttr", nameAttr));
             return query.AsQueryable();

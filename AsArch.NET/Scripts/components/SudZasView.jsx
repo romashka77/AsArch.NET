@@ -69,7 +69,7 @@ export default class SudZasView extends React.Component {
         );
     }
     customConfirm(next, dropRowKeys) {
-        const dropRowKeysStr = dropRowKeys.join(',');
+        const dropRowKeysStr = dropRowKeys.map((value) => { return value + 1; }).join(',');
         if (confirm(`Вы уверены, что хотите удалить ${dropRowKeysStr}?`)) {
             next();
         }

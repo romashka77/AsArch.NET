@@ -10,6 +10,8 @@ namespace AsArch.NET.Interfaces
 {
     public interface IRepository
     {
+        void DeleteSudZas(int? id_node, int? n_order);
+        void PostSudZas(SudZas model);
         Task<int?> GetRegNum(int? id_parent, string year);
         void UpdateStorege(STORAGE storege);
         STORAGE GetStorege(int id_node, int order);
@@ -21,6 +23,7 @@ namespace AsArch.NET.Interfaces
         /// <returns></returns>
         IQueryable<NODE> ListNode(int? id_parent = null);
         IQueryable<StoronaProc> ListStoronaProc(int? id_parent);
+        IQueryable<SudZas> GetSudZas(int id);
         StoronaProcParam StoronaProcParam(int id_node);
         /// <summary>
         ///  Возвращает id, name родителя, name и тип узла по id узла

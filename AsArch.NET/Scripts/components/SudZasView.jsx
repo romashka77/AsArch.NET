@@ -8,9 +8,9 @@ export default class SudZasView extends React.Component {
 
     remote(remoteObj) {
         // Только редактирование ячеек, вставка и удаление строк будут обрабатываться удаленным хранилищем
-        remoteObj.cellEdit = true;
-        remoteObj.insertRow = true;
-        remoteObj.dropRow = true;
+        //remoteObj.cellEdit = true;
+        //remoteObj.insertRow = true;
+        //remoteObj.dropRow = true;
         return remoteObj;
     }
     //InsertButton
@@ -113,7 +113,7 @@ export default class SudZasView extends React.Component {
                     insertRow deleteRow search pagination
                     containerClass='table-responsive'
                 >
-                    <TableHeaderColumn isKey={true} autovalue hidden hiddenOnInsert dataField='Order'></TableHeaderColumn>
+                    <TableHeaderColumn isKey={true} hidden hiddenOnInsert dataField='Order'></TableHeaderColumn>
                     <TableHeaderColumn hiddenOnInsert dataField='N'>№</TableHeaderColumn>
                     <TableHeaderColumn dataField='DateValue' editable={{ type: 'date' }}>Дата</TableHeaderColumn>
                     <TableHeaderColumn dataField='TimeValue'>Время</TableHeaderColumn>

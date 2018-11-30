@@ -216,17 +216,29 @@ namespace AsArch.NET.Controllers
         [HttpDelete]
         public ActionResult DeleteSudZas(BaseOrders model)
         {
-            if (ModelState.IsValid)
+            try
             {
-                string[] ids = model.Orders.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-                foreach (var item in ids)
+                string n = string.Empty;
+                if (ModelState.IsValid)
                 {
-                    var i = int.Parse(item);
-                    repository.DeleteTableDate(2091, model.Id, i);
-                    repository.DeleteTableChar(2091, model.Id, i);
+                    string[] ids = model.Orders.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                    
+                    foreach (var item in ids)
+                    {
+                        var i = int.Parse(item);
+                        repository.DeleteSudZas(model.Id, i);
+                        n = $"{n} {i+1}";
+                    }
+                    return Content($"Удалено {n}.");
                 }
+                Response.StatusCode = 500;
+                return Content($"Не удалено. Orders = {model.Orders}.");
             }
-            return Content("Success :)");
+            catch (Exception ex)
+            {
+                Response.StatusCode = 500;
+                return Content(ex.Message);
+            }
         }
         [HttpPost]
         public ActionResult PostSudZas(SudZas model)
@@ -237,74 +249,25 @@ namespace AsArch.NET.Controllers
                     throw new Exception("Переданные данные не прошли проверку");
                 if (model.Order == null)
                 {
-                    var sud_zas = GetSudZas(model.Id);
+                    var sud_zas = repository.GetSudZas(model.Id);
                     if (sud_zas.Count() == 0) model.Order = 0;
                     else model.Order = sud_zas.Max(n => n.Order) + 1;
                     model.N = (model.Order + 1).ToString();
                 }
-                repository.UpdateTableChar(2091, model.Id, model.Order, 0, model.N);
-                if (!string.IsNullOrEmpty(model.DateValue))
-                    repository.UpdateTableDate(2091, model.Id, model.Order, 1, Convert.ToDateTime(model.DateValue));
-                if (!string.IsNullOrEmpty(model.TimeValue))
-                    repository.UpdateTableChar(2091, model.Id, model.Order, 2, model.TimeValue);
-                if (!string.IsNullOrEmpty(model.Comment))
-                    repository.UpdateTableChar(2091, model.Id, model.Order, 3, model.Comment);
-                if (!string.IsNullOrEmpty(model.Isp))
-                    repository.UpdateTableChar(2091, model.Id, model.Order, 4, model.Isp);
-                if (!string.IsNullOrEmpty(model.Sud))
-                    repository.UpdateTableChar(2091, model.Id, model.Order, 5, model.Sud);
-                return Content("Success");
+                repository.PostSudZas(model);
+                return Content($"Обновлено {model.N}.");
             }
             catch (Exception ex)
             {
-                //в случае ошибки посылаем статусный код 500
-                Response.StatusCode = 500;
+                Response.StatusCode = 500;
                 return Content(ex.Message);
             }
         }
-        private IEnumerable<SudZas> GetSudZas(int id)
-        {
-            NODE node = repository.FindNode(id);
-            if (node == null)
-            {
-                return new SudZas[0];
-            }
-            var n = node.TABLEVAL_CHAR.Where(a => a.ID_NODE == id && a.ID_ATTR == 2091 && a.ID_COL == 0).Select(a => new { Id = a.ID_NODE, Order = a.N_ORDER, N = a.CHAR_VALUE });
-            if (n.Count()==0)
-            {
-                return new SudZas[0];
-            }
-            var d = node.TABLEVAL_DATE.Where(a => a.ID_NODE == id && a.ID_ATTR == 2091 && a.ID_COL == 1).Select(a => new { Order = a.N_ORDER, DateValue = a.DATE_VALUE });
-            var t = node.TABLEVAL_CHAR.Where(a => a.ID_NODE == id && a.ID_ATTR == 2091 && a.ID_COL == 2).Select(a => new { Order = a.N_ORDER, TimeValue = a.CHAR_VALUE });
-            var c = node.TABLEVAL_CHAR.Where(a => a.ID_NODE == id && a.ID_ATTR == 2091 && a.ID_COL == 3).Select(a => new { Order = a.N_ORDER, Comment = a.CHAR_VALUE });
-            var i = node.TABLEVAL_CHAR.Where(a => a.ID_NODE == id && a.ID_ATTR == 2091 && a.ID_COL == 4).Select(a => new { Order = a.N_ORDER, Isp = a.CHAR_VALUE });
-            var s = node.TABLEVAL_CHAR.Where(a => a.ID_NODE == id && a.ID_ATTR == 2091 && a.ID_COL == 5).Select(a => new { Order = a.N_ORDER, Sud = a.CHAR_VALUE });
-            var nd = from a in n
-                     join b in d on a.Order equals b.Order into outer
-                     from r in outer.DefaultIfEmpty()
-                     select new { a.Id, a.Order, a.N, DateValue = r == null ? string.Empty : ((DateTime)r.DateValue).ToString("yyyy-MM-dd") };
-            var ndt = from a in nd
-                      join b in t on a.Order equals b.Order into outer
-                      from r in outer.DefaultIfEmpty()
-                      select new { a.Id, a.Order, a.N, a.DateValue, TimeValue = r == null ? string.Empty : r.TimeValue };
-            var ndtc = from a in ndt
-                       join b in c on a.Order equals b.Order into outer
-                       from r in outer.DefaultIfEmpty()
-                       select new { a.Id, a.Order, a.N, a.DateValue, a.TimeValue, Comment = r == null ? string.Empty : r.Comment };
-            var ndtci = from a in ndtc
-                        join b in i on a.Order equals b.Order into outer
-                        from r in outer.DefaultIfEmpty()
-                        select new { a.Id, a.Order, a.N, a.DateValue, a.TimeValue, a.Comment, Isp = r == null ? string.Empty : r.Isp };
-            var res = from a in ndtci
-                      join b in s on a.Order equals b.Order into outer
-                      from r in outer.DefaultIfEmpty()
-                      select new SudZas { Id = a.Id, Order = a.Order, N = a.N, DateValue = a.DateValue, TimeValue = a.TimeValue, Comment = a.Comment, Isp = a.Isp, Sud = r == null ? string.Empty : r.Sud };
-            return res;
-        }
+
         [OutputCache(Location = OutputCacheLocation.None)]
-        public ActionResult GetSudZasJson(int id)
+        public ActionResult GetSudZas(int id)
         {
-            try{return Json(GetSudZas(id), JsonRequestBehavior.AllowGet);}
+            try { return Json(repository.GetSudZas(id), JsonRequestBehavior.AllowGet); }
             catch (Exception ex)
             {
                 Response.StatusCode = 500;
@@ -377,14 +340,12 @@ namespace AsArch.NET.Controllers
         {
             var data = repository.ListTabConfig().OrderBy(n => n.STR_NAME).ToList().Select(n => n.STR_NAME);
             return Json(data, JsonRequestBehavior.AllowGet);
-
         }
         [OutputCache(Location = OutputCacheLocation.None)]
         public ActionResult GetListDictJson(int id)
         {
             var data = repository.ListDict().Where(d => d.ID_ATTR == id).OrderBy(n => n.STR_NAME).ToList().Select(n => n.STR_NAME);
             return Json(data, JsonRequestBehavior.AllowGet);
-
         }
         #endregion
         #region Edit

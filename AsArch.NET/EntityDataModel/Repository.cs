@@ -59,6 +59,64 @@ namespace AsArch.NET.EntityDataModel
             GC.SuppressFinalize(this);
         }
         #endregion
+        public void DeleteSudZas(int? id_node, int? n_order)
+        {
+            DeleteTableDate(2091, id_node, n_order);
+            DeleteTableChar(2091, id_node, n_order);
+        }
+        public void PostSudZas(SudZas model)
+        {
+            UpdateTableChar(2091, model.Id, model.Order, 0, model.N);
+            if (!string.IsNullOrEmpty(model.DateValue))
+                UpdateTableDate(2091, model.Id, model.Order, 1, Convert.ToDateTime(model.DateValue));
+            if (!string.IsNullOrEmpty(model.TimeValue))
+                UpdateTableChar(2091, model.Id, model.Order, 2, model.TimeValue);
+            if (!string.IsNullOrEmpty(model.Comment))
+                UpdateTableChar(2091, model.Id, model.Order, 3, model.Comment);
+            if (!string.IsNullOrEmpty(model.Isp))
+                UpdateTableChar(2091, model.Id, model.Order, 4, model.Isp);
+            if (!string.IsNullOrEmpty(model.Sud))
+                UpdateTableChar(2091, model.Id, model.Order, 5, model.Sud);
+        }
+        public IQueryable<SudZas> GetSudZas(int id)
+        {
+            NODE node = FindNode(id);
+            if (node == null)
+            {
+                return new SudZas[0].AsQueryable();
+            }
+            var n = node.TABLEVAL_CHAR.Where(a => a.ID_NODE == id && a.ID_ATTR == 2091 && a.ID_COL == 0).Select(a => new { Id = a.ID_NODE, Order = a.N_ORDER, N = a.CHAR_VALUE });
+            if (n.Count() == 0)
+            {
+                return new SudZas[0].AsQueryable();
+            }
+            var d = node.TABLEVAL_DATE.Where(a => a.ID_NODE == id && a.ID_ATTR == 2091 && a.ID_COL == 1).Select(a => new { Order = a.N_ORDER, DateValue = a.DATE_VALUE });
+            var t = node.TABLEVAL_CHAR.Where(a => a.ID_NODE == id && a.ID_ATTR == 2091 && a.ID_COL == 2).Select(a => new { Order = a.N_ORDER, TimeValue = a.CHAR_VALUE });
+            var c = node.TABLEVAL_CHAR.Where(a => a.ID_NODE == id && a.ID_ATTR == 2091 && a.ID_COL == 3).Select(a => new { Order = a.N_ORDER, Comment = a.CHAR_VALUE });
+            var i = node.TABLEVAL_CHAR.Where(a => a.ID_NODE == id && a.ID_ATTR == 2091 && a.ID_COL == 4).Select(a => new { Order = a.N_ORDER, Isp = a.CHAR_VALUE });
+            var s = node.TABLEVAL_CHAR.Where(a => a.ID_NODE == id && a.ID_ATTR == 2091 && a.ID_COL == 5).Select(a => new { Order = a.N_ORDER, Sud = a.CHAR_VALUE });
+            var nd = from a in n
+                     join b in d on a.Order equals b.Order into outer
+                     from r in outer.DefaultIfEmpty()
+                     select new { a.Id, a.Order, a.N, DateValue = r == null ? string.Empty : ((DateTime)r.DateValue).ToString("yyyy-MM-dd") };
+            var ndt = from a in nd
+                      join b in t on a.Order equals b.Order into outer
+                      from r in outer.DefaultIfEmpty()
+                      select new { a.Id, a.Order, a.N, a.DateValue, TimeValue = r == null ? string.Empty : r.TimeValue };
+            var ndtc = from a in ndt
+                       join b in c on a.Order equals b.Order into outer
+                       from r in outer.DefaultIfEmpty()
+                       select new { a.Id, a.Order, a.N, a.DateValue, a.TimeValue, Comment = r == null ? string.Empty : r.Comment };
+            var ndtci = from a in ndtc
+                        join b in i on a.Order equals b.Order into outer
+                        from r in outer.DefaultIfEmpty()
+                        select new { a.Id, a.Order, a.N, a.DateValue, a.TimeValue, a.Comment, Isp = r == null ? string.Empty : r.Isp };
+            var res = from a in ndtci
+                      join b in s on a.Order equals b.Order into outer
+                      from r in outer.DefaultIfEmpty()
+                      select new SudZas { Id = a.Id, Order = a.Order, N = a.N, DateValue = a.DateValue, TimeValue = a.TimeValue, Comment = a.Comment, Isp = a.Isp, Sud = r == null ? string.Empty : r.Sud };
+            return res.AsQueryable();
+        }
         public async Task<NODE> RemoveNodeAsync(int id)
         {
             NODE node = await FindNodeAsync(id);
@@ -100,14 +158,12 @@ namespace AsArch.NET.EntityDataModel
         {
             return db.UpdateTextAttr(id_attr, id_node, null, text_val, null);
         }
-
         public void UpdateStorege(STORAGE storege)
         {
             storege.EDIT_TIME = DateTime.Now;
             db.Entry(storege).State = EntityState.Modified;
             db.SaveChanges();
         }
-
         public STORAGE GetStorege(int id_node, int order)
         {
             return db.STORAGEs.FirstOrDefault(n => n.ID_NODE == id_node && n.N_ORDER == order);
@@ -117,7 +173,6 @@ namespace AsArch.NET.EntityDataModel
             db.STORAGEs.Add(new STORAGE { ID_NODE = id_node, N_ORDER = order, STR_DOCFILE = file_name, EDIT_TIME = DateTime.Now });
             db.SaveChanges();
         }
-
         public int UpdateDateAttr(int? id_attr, int? id_node, Nullable<System.DateTime> date_val)
         {
             return db.UpdateDateAttr(id_attr, id_node, null, date_val, null);
@@ -130,7 +185,6 @@ namespace AsArch.NET.EntityDataModel
         {
             return db.UpdateRefAttrs(id_attr, id_node1, 0, id_node2, null, null, null);
         }
-
         public int? InsertNode2(int? id_parent, int id_itemtype, string str_label)
         {
             ObjectParameter id_newnodeParameter = new ObjectParameter("id_newnode", typeof(int));
@@ -176,8 +230,6 @@ namespace AsArch.NET.EntityDataModel
                 return (null, "Назад", node.STR_LABEL, node.ItemType);
             return (node.ID_PARENT, node.STR_LABEL, node.STR_LABEL2, node.ItemType);
         }
-
-
         public IQueryable<NodeAttr> GetNodeAttrs(int? id_itemtype, int id_node)
         {
             var query = db.Database.SqlQuery<NodeAttr>("select A.* " +
@@ -271,13 +323,11 @@ namespace AsArch.NET.EntityDataModel
             var query = db.Database.SqlQuery<StoronaProc>("SELECT B.STR_LABEL as Name,B.ID_NODE as Id FROM NODE A left join NODE B on A.ID_NODE = B.ID_PARENT where A.ID_PARENT = @id_parent  and B.ID_ITEMTYPE = 2159 ORDEr by B.STR_LABEL", new SqlParameter("id_parent", id_parent));
             return query.AsQueryable<StoronaProc>();
         }
-
         public StoronaProcParam StoronaProcParam(int id_node)
         {
             var query = db.Database.SqlQuery<StoronaProcParam>("select A.CHAR_VALUE as INN, B.CHAR_VALUE as Adres from (SELECT CHAR_VALUE FROM ATTRVAL_CHAR where ID_NODE = @id_node and ID_ATTR = 2170) A join ATTRVAL_CHAR B on B.ID_NODE = @id_node and B.ID_ATTR = 2165", new SqlParameter("id_node", id_node));
             return query.AsQueryable<StoronaProcParam>().FirstOrDefault();
         }
-
         public IQueryable<DICTIONARy> ListDict()
         {
             return db.DICTIONARIES;
@@ -286,8 +336,6 @@ namespace AsArch.NET.EntityDataModel
         {
             return db.TABLELISTCONFIGs;
         }
-
-
         public SelectList GetListItemTypes(int? id_itemtype_parent = null, int? id_itemtype = null)
         {
             var itemType = db.ITEMTYPE_REF.Where(n => n.ID_ITEMTYPE1 == id_itemtype_parent && n.REF_MASK).Select(t => new
@@ -297,17 +345,14 @@ namespace AsArch.NET.EntityDataModel
             });
             return new SelectList(itemType, "itemType", "name", id_itemtype);
         }
-
         public void DeleteTableChar(int? id_attr, int? id_node, int? n_order)
         {
             db.Database.ExecuteSqlCommand("DELETE TABLEVAL_CHAR WHERE ID_ATTR = @id_attr AND ID_NODE = @id_node AND N_ORDER = @n_order", new SqlParameter("id_attr", id_attr), new SqlParameter("id_node", id_node), new SqlParameter("n_order", n_order));
         }
-
         public void DeleteTableFloat(int? id_attr, int? id_node, int? n_order)
         {
             db.Database.ExecuteSqlCommand("DELETE TABLEVAL_FLOAT WHERE ID_ATTR = @id_attr AND ID_NODE = @id_node AND N_ORDER = @n_order", new SqlParameter("id_attr", id_attr), new SqlParameter("id_node", id_node), new SqlParameter("n_order", n_order));
         }
-
         public void DeleteTableDate(int? id_attr, int? id_node, int? n_order)
         {
             db.Database.ExecuteSqlCommand("DELETE TABLEVAL_DATE WHERE ID_ATTR = @id_attr AND ID_NODE = @id_node AND N_ORDER = @n_order", new SqlParameter("id_attr", id_attr), new SqlParameter("id_node", id_node), new SqlParameter("n_order", n_order));

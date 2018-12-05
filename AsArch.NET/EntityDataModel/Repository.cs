@@ -64,26 +64,26 @@ namespace AsArch.NET.EntityDataModel
             DeleteTableDate(2091, id_node, n_order);
             DeleteTableChar(2091, id_node, n_order);
         }
-        public void PostSudZas(SudZas model)
+        public void PostSudZas(int id, SudZas model)
         {
-            UpdateTableChar(2091, model.Id, model.Order, 0, model.N);
+            UpdateTableChar(2091, id, model.Order, 0, model.N);
             if (!string.IsNullOrEmpty(model.DateValue))
-                UpdateTableDate(2091, model.Id, model.Order, 1, Convert.ToDateTime(model.DateValue));
+                UpdateTableDate(2091, id, model.Order, 1, Convert.ToDateTime(model.DateValue));
             if (!string.IsNullOrEmpty(model.TimeValue))
-                UpdateTableChar(2091, model.Id, model.Order, 2, model.TimeValue);
+                UpdateTableChar(2091, id, model.Order, 2, model.TimeValue);
             if (!string.IsNullOrEmpty(model.Comment))
-                UpdateTableChar(2091, model.Id, model.Order, 3, model.Comment);
+                UpdateTableChar(2091, id, model.Order, 3, model.Comment);
             if (!string.IsNullOrEmpty(model.Isp))
-                UpdateTableChar(2091, model.Id, model.Order, 4, model.Isp);
+                UpdateTableChar(2091, id, model.Order, 4, model.Isp);
             if (!string.IsNullOrEmpty(model.Sud))
-                UpdateTableChar(2091, model.Id, model.Order, 5, model.Sud);
+                UpdateTableChar(2091, id, model.Order, 5, model.Sud);
         }
         public IQueryable<SudZas> GetSudZas(int id)
         {
             NODE node = FindNode(id);
             if (node == null)
             {
-                return new SudZas[0].AsQueryable();
+                return null;
             }
             var n = node.TABLEVAL_CHAR.Where(a => a.ID_NODE == id && a.ID_ATTR == 2091 && a.ID_COL == 0).Select(a => new { Id = a.ID_NODE, Order = a.N_ORDER, N = a.CHAR_VALUE });
             if (n.Count() == 0)
@@ -114,7 +114,7 @@ namespace AsArch.NET.EntityDataModel
             var res = from a in ndtci
                       join b in s on a.Order equals b.Order into outer
                       from r in outer.DefaultIfEmpty()
-                      select new SudZas { Id = a.Id, Order = a.Order, N = a.N, DateValue = a.DateValue, TimeValue = a.TimeValue, Comment = a.Comment, Isp = a.Isp, Sud = r == null ? string.Empty : r.Sud };
+                      select new SudZas { /*Id = a.Id,*/ Order = a.Order, N = a.N, DateValue = a.DateValue, TimeValue = a.TimeValue, Comment = a.Comment, Isp = a.Isp, Sud = r == null ? string.Empty : r.Sud };
             return res.AsQueryable();
         }
         public async Task<NODE> RemoveNodeAsync(int id)
@@ -271,49 +271,49 @@ namespace AsArch.NET.EntityDataModel
         {
             return db.UpdateTableDate(id_attr, id_node, n_order, id_col, date_val, null, null);
         }
-        public IQueryable<TableData> GetTableData(int id_itemtype, int id_node, string nameAttr)
-        {
-            var query = db.Database.SqlQuery<TableData>("select A.*" +
-                ", T.OPTIONS as Options" +
-                ", T.N_ORDER as NOrder" +
-                ", TCON.STR_NAME as TabColName" +
-                ", TCON.COLTYPE as TabColType" +
-                ", TCON.INT_FROM" +
-                ", TCON.INT_TO" +
-                ", TCON.INT_WIDTH" +
-                ", TCON.ID_COL as TabIdCol" +
-                ", TCH.CHAR_VALUE as TabColCharValue" +
-                ", TDAT.DATE_VALUE as TabColDateValue" +
-                ", TINT.INT_VALUE as TabColInt" +
-                ", TFLO.FLOAT_VALUE as TabColFloat" +
-                ", isnull(TCH.N_ORDER, 0) + isnull(TFLO.N_ORDER, 0) + isnull(TDAT.N_ORDER, 0) + isnull(TINT.N_ORDER, 0) as TabOrder" +
-                " from (select DISTINCT B.ID_ATTR as IdAttr" +
-                ", B.IS_DEFAULT as IsDefault" +
-                ", C.STR_NAME as NameAttr" +
-                ", C.ID_ATTRTYPE as IdAttrType" +
-                ", C.IS_VIRTUAL as IsVirtual" +
-                ", D.STR_NAME as NameAttrType" +
-                " from CONTROLS_XML B, ATTRS C, ATTRTYPES D" +
-                " where B.ID_ATTR = C.ID_ATTR" +
-                " and B.IS_DEFAULT = 0" +
-                " and C.ID_ATTRTYPE = D.ID_ATTRTYPE" +
-                " and B.ID_TYPE = @id_type) A" +
-                " left join TYPE_ATTR T on IdAttr = T.ID_ATTR and T.ID_TYPE = @id_type" +
-                " left join TABLECONFIG TCON on IdAttr = TCON.ID_ATTR" +
-                " left join TABLEVAL_CHAR TCH on TCON.ID_COL = TCH.ID_COL and IdAttr = TCH.ID_ATTR and TCH.ID_NODE = @id_node" +
-                " left join TABLEVAL_DATE TDAT on TCON.ID_COL = TDAT.ID_COL and IdAttr = TDAT.ID_ATTR and TDAT.ID_NODE = @id_node" +
-                " left join TABLEVAL_INT TINT on TCON.ID_COL = TINT.ID_COL and IdAttr = TINT.ID_ATTR and TINT.ID_NODE = @id_node" +
-                " left join TABLEVAL_FLOAT TFLO on TCON.ID_COL = TFLO.ID_COL and IdAttr = TFLO.ID_ATTR and TFLO.ID_NODE = @id_node" +
-                " where IdAttrType = 7" +
-                " and NameAttr = @nameAttr" +
-                " and (TCH.CHAR_VALUE is not NULL" +
-                " or TDAT.DATE_VALUE is not NULL" +
-                " or TINT.INT_VALUE is not NULL " +
-                " or TabColFloat is not NULL)" +
-                " order by NOrder, IdAttr, TabOrder, TabIdCol;",
-                new SqlParameter("id_type", id_itemtype), new SqlParameter("id_node", id_node), new SqlParameter("nameAttr", nameAttr));
-            return query.AsQueryable();
-        }
+        //public IQueryable<TableData> GetTableData(int id_itemtype, int id_node, string nameAttr)
+        //{
+        //    var query = db.Database.SqlQuery<TableData>("select A.*" +
+        //        ", T.OPTIONS as Options" +
+        //        ", T.N_ORDER as NOrder" +
+        //        ", TCON.STR_NAME as TabColName" +
+        //        ", TCON.COLTYPE as TabColType" +
+        //        ", TCON.INT_FROM" +
+        //        ", TCON.INT_TO" +
+        //        ", TCON.INT_WIDTH" +
+        //        ", TCON.ID_COL as TabIdCol" +
+        //        ", TCH.CHAR_VALUE as TabColCharValue" +
+        //        ", TDAT.DATE_VALUE as TabColDateValue" +
+        //        ", TINT.INT_VALUE as TabColInt" +
+        //        ", TFLO.FLOAT_VALUE as TabColFloat" +
+        //        ", isnull(TCH.N_ORDER, 0) + isnull(TFLO.N_ORDER, 0) + isnull(TDAT.N_ORDER, 0) + isnull(TINT.N_ORDER, 0) as TabOrder" +
+        //        " from (select DISTINCT B.ID_ATTR as IdAttr" +
+        //        ", B.IS_DEFAULT as IsDefault" +
+        //        ", C.STR_NAME as NameAttr" +
+        //        ", C.ID_ATTRTYPE as IdAttrType" +
+        //        ", C.IS_VIRTUAL as IsVirtual" +
+        //        ", D.STR_NAME as NameAttrType" +
+        //        " from CONTROLS_XML B, ATTRS C, ATTRTYPES D" +
+        //        " where B.ID_ATTR = C.ID_ATTR" +
+        //        " and B.IS_DEFAULT = 0" +
+        //        " and C.ID_ATTRTYPE = D.ID_ATTRTYPE" +
+        //        " and B.ID_TYPE = @id_type) A" +
+        //        " left join TYPE_ATTR T on IdAttr = T.ID_ATTR and T.ID_TYPE = @id_type" +
+        //        " left join TABLECONFIG TCON on IdAttr = TCON.ID_ATTR" +
+        //        " left join TABLEVAL_CHAR TCH on TCON.ID_COL = TCH.ID_COL and IdAttr = TCH.ID_ATTR and TCH.ID_NODE = @id_node" +
+        //        " left join TABLEVAL_DATE TDAT on TCON.ID_COL = TDAT.ID_COL and IdAttr = TDAT.ID_ATTR and TDAT.ID_NODE = @id_node" +
+        //        " left join TABLEVAL_INT TINT on TCON.ID_COL = TINT.ID_COL and IdAttr = TINT.ID_ATTR and TINT.ID_NODE = @id_node" +
+        //        " left join TABLEVAL_FLOAT TFLO on TCON.ID_COL = TFLO.ID_COL and IdAttr = TFLO.ID_ATTR and TFLO.ID_NODE = @id_node" +
+        //        " where IdAttrType = 7" +
+        //        " and NameAttr = @nameAttr" +
+        //        " and (TCH.CHAR_VALUE is not NULL" +
+        //        " or TDAT.DATE_VALUE is not NULL" +
+        //        " or TINT.INT_VALUE is not NULL " +
+        //        " or TabColFloat is not NULL)" +
+        //        " order by NOrder, IdAttr, TabOrder, TabIdCol;",
+        //        new SqlParameter("id_type", id_itemtype), new SqlParameter("id_node", id_node), new SqlParameter("nameAttr", nameAttr));
+        //    return query.AsQueryable();
+        //}
         public IQueryable<NODE> ListNode(int? id_parent = null)
         {
             return db.NODEs.Where(n => n.ID_PARENT == id_parent);
@@ -365,24 +365,9 @@ namespace AsArch.NET.EntityDataModel
             var query = from a in a0
                         join b in b0 on a.N_ORDER equals b.N_ORDER into c
                         from d in c.DefaultIfEmpty()
-                        select new DocIsk { Id=id , Order = a.N_ORDER, Filter = a.FILTER, Name = a.STR_NAME, DocFile = d.STR_DOCFILE==null ? string.Empty : d.STR_DOCFILE };
+                        select new DocIsk { /*Id=id , */Order = a.N_ORDER, Filter = a.FILTER, Name = a.STR_NAME, DocFile = d.STR_DOCFILE==null ? string.Empty : d.STR_DOCFILE };
 
             return query;
-
-            //return db.FILESCONFIGs.Where(a => a.ID_TYPE == 1954).Join(db.STORAGEs.Where(b => b.ID_NODE == id), a => a.N_ORDER, b => b.N_ORDER, (a, b) => new DocIsk { Id = id, Order = a.N_ORDER, DocFile = b.STR_DOCFILE, Filter = a.FILTER, Name = a.STR_NAME });
-
-
-            //var query = db.Database.SqlQuery<DocIsk>("SELECT " +
-            //    " A.N_ORDER as 'Order'" +
-            //    ", STR_NAME as 'Name'" +
-            //    ", FILTER as 'Filter'" +
-            //    //", ID_NODE as 'Id'" +
-            //    ", STR_DOCFILE as 'DocFile'" +
-            //    " FROM FILESCONFIG A" +
-            //    " left join STORAGE B on A.N_ORDER = B.N_ORDER and B.ID_NODE = @id_node" +
-            //    " where ID_TYPE = 1954" +
-            //    " order by A.N_ORDER", new SqlParameter("id_node", id));
-            //return query.AsQueryable();
         }
     }
 }

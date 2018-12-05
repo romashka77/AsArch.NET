@@ -113,7 +113,7 @@ export default class SudZasView extends React.Component {
                     insertRow deleteRow search pagination
                     containerClass='table-responsive'
                 >
-                    <TableHeaderColumn isKey={true} hidden hiddenOnInsert dataField='Order'></TableHeaderColumn>
+                    <TableHeaderColumn isKey={true} hidden hiddenOnInsert autoValue={() => { return -1 }}  dataField='Order'></TableHeaderColumn>
                     <TableHeaderColumn hiddenOnInsert dataField='N'>№</TableHeaderColumn>
                     <TableHeaderColumn dataField='DateValue' editable={{ type: 'date' }}>Дата</TableHeaderColumn>
                     <TableHeaderColumn dataField='TimeValue'>Время</TableHeaderColumn>

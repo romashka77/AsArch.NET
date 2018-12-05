@@ -11,7 +11,7 @@ namespace AsArch.NET.Interfaces
     public interface IRepository
     {
         void DeleteSudZas(int? id_node, int? n_order);
-        void PostSudZas(SudZas model);
+        void PostSudZas(int id, SudZas model);
         Task<int?> GetRegNum(int? id_parent, string year);
         void UpdateStorege(STORAGE storege);
         STORAGE GetStorege(int id_node, int order);
@@ -65,7 +65,7 @@ namespace AsArch.NET.Interfaces
         int UpdateTableDate(int? id_attr, int? id_node, int? n_order, int? id_col, DateTime? date_val);
         void DeleteTableFloat(int? id_attr, int? id_node, int? n_order);
         void DeleteTableDate(int? id_attr, int? id_node, int? n_order);
-        IQueryable<TableData> GetTableData(int id_itemtype, int id_node, string nameAttr);
+        //IQueryable<TableData> GetTableData(int id_itemtype, int id_node, string nameAttr);
         IQueryable<DocIsk> GetDocIsk(int id);
         IQueryable<DICTIONARy> ListDict();
         IQueryable<TABLELISTCONFIG> ListTabConfig();

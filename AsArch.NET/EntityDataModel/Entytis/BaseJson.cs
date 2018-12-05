@@ -7,11 +7,11 @@ namespace AsArch.NET.EntityDataModel.Entytis
 {
     public class Base
     {
-        public int Id { get; set; }
+        //public int Id { get; set; }
     }
     public class BaseOrder : Base
     {
-        public int? Order { get; set; }
+        public int Order { get; set; }
     }
     public class BaseOrders : Base
     {

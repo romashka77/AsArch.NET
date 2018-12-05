@@ -13,7 +13,7 @@ export default class SudZas extends React.Component {
     loadFromServer() {
         const xhr = new XMLHttpRequest();
         //xhr.open('get', this.props.url, true);
-        xhr.open('get', Router.action(this.props.controller, this.props.actionGetSudZas, { id: id_global }), true);
+        xhr.open('get', Router.action(`api`, `SudZas`/*this.props.controller, this.props.actionGetSudZas*/, { id: id_global }), true);
         xhr.timeout = time_out; // 30 секунд (в миллисекундах)
         xhr.ontimeout = () => alert(e_timeout);
         xhr.onerror = (e) => alert(`${e_error} : ${e.target.status}`);
@@ -84,17 +84,18 @@ export default class SudZas extends React.Component {
 
     //добавить запись
     onAddRow = (row) => {
-        const form = new FormData();
-        form.append('Id', id_global);
-        form.append('Order', row.Order);
-        form.append('N', row.N);
-        form.append('DateValue', row.DateValue);
-        form.append('TimeValue', row.TimeValue);
-        form.append('Comment', row.Comment);
-        form.append('Isp', row.Isp);
-        form.append('Sud', row.Sud);
+        //const form = new FormData();
+        //form.append('Id', id_global);
+        //form.append('Order', row.Order);
+        //form.append('N', row.N);
+        //form.append('DateValue', row.DateValue);
+        //form.append('TimeValue', row.TimeValue);
+        //form.append('Comment', row.Comment);
+        //form.append('Isp', row.Isp);
+        //form.append('Sud', row.Sud);
+
         const xhr = new XMLHttpRequest();
-        xhr.open('post', Router.action(this.props.controller, this.props.actionPostSudZas), true);
+        xhr.open('post', Router.action(`api`, `SudZas`/*this.props.controller, this.props.actionPostSudZas*/, { id: id_global }), true);
         xhr.timeout = time_out;
         xhr.ontimeout = () => alert(e_timeout);
         xhr.onerror = (e) => alert(`${e_error} : ${e.target.status}`);
@@ -107,20 +108,20 @@ export default class SudZas extends React.Component {
         };
         xhr.onload = () => {
             console.log(`${xhr.status}: ${xhr.statusText}: ${xhr.responseText}`);
-            //var t = data;
-            //t.push(row);
-            //this.state({ data: t });
-            this.loadFromServer();
+            const data = JSON.parse(xhr.responseText);
+            this.setState(function (prevState, props) { return prevState.data.push(data); });
+            //this.loadFromServer();
         };
-        xhr.send(form);
+        //xhr.send(form);
+        xhr.send(JSON.stringify(row));
     }
     //удалить записи
     onDeleteRow = (row) => {
-        const form = new FormData();
-        form.append('Id', id_global);
-        form.append('Orders', row);
+        //const form = new FormData();
+        //form.append('Id', id_global);
+        //form.append('Orders', row);
         const xhr = new XMLHttpRequest();
-        xhr.open('delete', Router.action(this.props.controller, this.props.actionDeleteSudZas), true);
+        xhr.open('delete', Router.action(`api`, `SudZas`/*'Nodes', this.props.actionDeleteSudZas*/, { id: id_global }), true);
         xhr.timeout = time_out;
         xhr.ontimeout = () => alert(e_timeout);
         xhr.onerror = (e) => alert(`${e_error} : ${e.target.status}`);
@@ -132,11 +133,27 @@ export default class SudZas extends React.Component {
             }
         };
         xhr.onload = () => {
+            console.log(`Delete begin========================================`);
             console.log(`${xhr.status}: ${xhr.statusText}: ${xhr.responseText}`);
+            //this.setState();
+            row.map((value) => {
+                this.zas = this.zas.filter((zas) => {
+                    return zas.Order !== value;
+                });
+            });
+            console.log(`zas=${this.zas}-------------------`);
+            this.zas.map((value) => { console.log(value); });
+            //console.log(`this.state.data=${this.state.data}=========================`);
+            //this.state.data.map((value) => { console.log(value); });
+            //alert(`this.setState({ data: this.zas });`);
+            this.setState({ data: this.zas });
+            //console.log(`this.state.data=${this.state.data}=========================`);
+            //this.state.data.map((value) => { console.log(value); });
             //this.loadFromServer();
+            console.log(`Delete end========================================`);
         };
-        xhr.send(form);
-        
+        //xhr.send(form);
+        xhr.send(JSON.stringify(row));
     }
     //редактировать ячейку
     onCellEdit = (row, fieldName, value) => {

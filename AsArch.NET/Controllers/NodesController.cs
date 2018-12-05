@@ -164,37 +164,37 @@ namespace AsArch.NET.Controllers
         {
             if (ModelState.IsValid)
             {
-                foreach (string file in Request.Files)
-                {
-                    var upload = Request.Files[file];
-                    if (upload != null)
-                    {
-                        // сохраняем файл в папку Files в проекте
-                        var fileName = $"{docisk.Id}_doc{docisk.Order + 1}{Path.GetExtension(Path.GetFileName(upload.FileName))}";
-                        var filePath = Path.Combine("~/Content/Files/", fileName);
-                        //string fileName = $"~/Content/Files/";
-                        upload.SaveAs(Server.MapPath(filePath));
-                        var storege = repository.GetStorege((int)docisk.Id, (int)docisk.Order);
-                        if (storege == null)
-                        {
-                            repository.UpdateStorege((int)docisk.Id, fileName, (int)docisk.Order);
-                        }
-                        else
-                        {
-                            storege.STR_DOCFILE = fileName;
-                            repository.UpdateStorege(storege);
-                        }
-                        return Json(new
-                        {
-                            success = true,
-                            result = "error",
-                            data = new
-                            {
-                                fileName
-                            }
-                        });
-                    }
-                }
+                //foreach (string file in Request.Files)
+                //{
+                //    var upload = Request.Files[file];
+                //    if (upload != null)
+                //    {
+                //        // сохраняем файл в папку Files в проекте
+                //        var fileName = $"{docisk.Id}_doc{docisk.Order + 1}{Path.GetExtension(Path.GetFileName(upload.FileName))}";
+                //        var filePath = Path.Combine("~/Content/Files/", fileName);
+                //        //string fileName = $"~/Content/Files/";
+                //        upload.SaveAs(Server.MapPath(filePath));
+                //        var storege = repository.GetStorege((int)docisk.Id, (int)docisk.Order);
+                //        if (storege == null)
+                //        {
+                //            repository.UpdateStorege((int)docisk.Id, fileName, (int)docisk.Order);
+                //        }
+                //        else
+                //        {
+                //            storege.STR_DOCFILE = fileName;
+                //            repository.UpdateStorege(storege);
+                //        }
+                //        return Json(new
+                //        {
+                //            success = true,
+                //            result = "error",
+                //            data = new
+                //            {
+                //                fileName
+                //            }
+                //        });
+                //    }
+                //}
             }
             return Json(new { error = "Нужно загрузить файл", success = false });
         }
@@ -218,19 +218,19 @@ namespace AsArch.NET.Controllers
         {
             try
             {
-                string n = string.Empty;
-                if (ModelState.IsValid)
-                {
-                    string[] ids = model.Orders.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-                    
-                    foreach (var item in ids)
-                    {
-                        var i = int.Parse(item);
-                        repository.DeleteSudZas(model.Id, i);
-                        n = $"{n} {i+1}";
-                    }
-                    return Content($"Удалено {n}.");
-                }
+                //string n = string.Empty;
+                //if (ModelState.IsValid)
+                //{
+                //    string[] ids = model.Orders.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+
+                //    foreach (var item in ids)
+                //    {
+                //        var i = int.Parse(item);
+                //        repository.DeleteSudZas(model.Id, i);
+                //        n = $"{n} {i + 1}";
+                //    }
+                //    return Content($"Удалено {n}.");
+                //}
                 Response.StatusCode = 500;
                 return Content($"Не удалено. Orders = {model.Orders}.");
             }
@@ -245,16 +245,16 @@ namespace AsArch.NET.Controllers
         {
             try
             {
-                if (!ModelState.IsValid)
-                    throw new Exception("Переданные данные не прошли проверку");
-                if (model.Order == null)
-                {
-                    var sud_zas = repository.GetSudZas(model.Id);
-                    if (sud_zas.Count() == 0) model.Order = 0;
-                    else model.Order = sud_zas.Max(n => n.Order) + 1;
-                    model.N = (model.Order + 1).ToString();
-                }
-                repository.PostSudZas(model);
+                //if (!ModelState.IsValid)
+                //    throw new Exception("Переданные данные не прошли проверку");
+                //if (model.Order == -1)
+                //{
+                //    var sud_zas = repository.GetSudZas(model.Id);
+                //    if (sud_zas == null || sud_zas.Count() == 0) model.Order = 0;
+                //    else model.Order = sud_zas.Max(n => n.Order) + 1;
+                //    model.N = (model.Order + 1).ToString();
+                //}
+                //repository.PostSudZas(model);
                 return Content($"Обновлено {model.N}.");
             }
             catch (Exception ex)
@@ -276,64 +276,64 @@ namespace AsArch.NET.Controllers
         }
         #endregion 
         #region DopPredIsk
-        private IEnumerable<DopPredIsk> GetDopPredIsk(int id)
-        {
-            var data = repository.GetTableData(1954, id, "Дополнительный предмет иска").ToList();
-            var n = data.Where(m => m.TabIdCol == 0);
-            var name = data.Where(m => m.TabIdCol == 1);
-            var prim = data.Where(m => m.TabIdCol == 2);
+        //private IEnumerable<DopPredIsk> GetDopPredIsk(int id)
+        //{
+        //    var data = repository.GetTableData(1954, id, "Дополнительный предмет иска").ToList();
+        //    var n = data.Where(m => m.TabIdCol == 0);
+        //    var name = data.Where(m => m.TabIdCol == 1);
+        //    var prim = data.Where(m => m.TabIdCol == 2);
 
-            var t = n.Join(name, a => a.TabOrder, b => b.TabOrder, (a, b) => new { TabOrder = a.TabOrder, N = a.TabColFloat, NameIsk = b.TabColCharValue });
-            var res = t.Join(prim, a => a.TabOrder, b => b.TabOrder, (a, b) => new { TabOrder = a.TabOrder, N = a.N, NameIsk = a.NameIsk, Prim = b.TabColCharValue }).Select(a => new DopPredIsk { Id = id, N = (int?)a.N, Order = a.TabOrder, Name = a.NameIsk, Comment = a.Prim });
-            return res;
-        }
-        [OutputCache(Location = OutputCacheLocation.None)]
-        [HttpGet]
-        public ActionResult GetDopPredIskJson(int id)
-        {
-            return Json(GetDopPredIsk(id), JsonRequestBehavior.AllowGet);
-        }
+        //    var t = n.Join(name, a => a.TabOrder, b => b.TabOrder, (a, b) => new { TabOrder = a.TabOrder, N = a.TabColFloat, NameIsk = b.TabColCharValue });
+        //    var res = t.Join(prim, a => a.TabOrder, b => b.TabOrder, (a, b) => new { TabOrder = a.TabOrder, N = a.N, NameIsk = a.NameIsk, Prim = b.TabColCharValue }).Select(a => new DopPredIsk { Id = id, N = (int?)a.N, Order = a.TabOrder, Name = a.NameIsk, Comment = a.Prim });
+        //    return res;
+        //}
+        //[OutputCache(Location = OutputCacheLocation.None)]
+        //[HttpGet]
+        //public ActionResult GetDopPredIskJson(int id)
+        //{
+        //    return Json(GetDopPredIsk(id), JsonRequestBehavior.AllowGet);
+        //}
 
-        [HttpPost]
-        public ActionResult PostDopPredIsk(DopPredIsk model)
-        {
-            if (ModelState.IsValid)
-            {
-                if (model.Order == null)
-                {
-                    if (GetDopPredIsk(model.Id).Where(n => n.N != null || n.Name != null || n.Comment != null).Count() == 0)
-                    {
-                        model.Order = 0;
-                    }
-                    else
-                    {
-                        model.Order = GetDopPredIsk(model.Id).Max(n => n.Order) + 1;
-                    }
-                    model.N = model.Order + 1;
-                }
-                repository.UpdateTableFloat(2153, model.Id, model.Order, 0, model.N);
-                repository.UpdateTableChar(2153, model.Id, model.Order, 1, model.Name);
-                repository.UpdateTableChar(2153, model.Id, model.Order, 2, model.Comment);
-                return Content("Success :)");
-            }
-            return Content("Error :(");
-        }
+        //[HttpPost]
+        //public ActionResult PostDopPredIsk(DopPredIsk model)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        if (model.Order == null)
+        //        {
+        //            if (GetDopPredIsk(model.Id).Where(n => n.N != null || n.Name != null || n.Comment != null).Count() == 0)
+        //            {
+        //                model.Order = 0;
+        //            }
+        //            else
+        //            {
+        //                model.Order = GetDopPredIsk(model.Id).Max(n => n.Order) + 1;
+        //            }
+        //            model.N = model.Order + 1;
+        //        }
+        //        repository.UpdateTableFloat(2153, model.Id, model.Order, 0, model.N);
+        //        repository.UpdateTableChar(2153, model.Id, model.Order, 1, model.Name);
+        //        repository.UpdateTableChar(2153, model.Id, model.Order, 2, model.Comment);
+        //        return Content("Success :)");
+        //    }
+        //    return Content("Error :(");
+        //}
 
-        [HttpDelete]
-        public ActionResult DeleteDopPredIsk(BaseOrders model)
-        {
-            if (ModelState.IsValid)
-            {
-                string[] ids = model.Orders.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-                foreach (var item in ids)
-                {
-                    var i = int.Parse(item);
-                    repository.DeleteTableChar(2153, model.Id, i);
-                    repository.DeleteTableFloat(2153, model.Id, i);
-                }
-            }
-            return Content("Success :)");
-        }
+        //[HttpDelete]
+        //public ActionResult DeleteDopPredIsk(BaseOrders model)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        string[] ids = model.Orders.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+        //        foreach (var item in ids)
+        //        {
+        //            var i = int.Parse(item);
+        //            repository.DeleteTableChar(2153, model.Id, i);
+        //            repository.DeleteTableFloat(2153, model.Id, i);
+        //        }
+        //    }
+        //    return Content("Success :)");
+        //}
 
         [OutputCache(Location = OutputCacheLocation.None)]
         public ActionResult GetListTabConfig()

@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AsArch.NET.EntityDataModel.Entytis
 {
+    //[Serializable]
     public class SudZas : BaseOrder
     {
         public string N { get; set; }

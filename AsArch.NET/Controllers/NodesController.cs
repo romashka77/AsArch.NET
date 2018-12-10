@@ -335,18 +335,18 @@ namespace AsArch.NET.Controllers
         //    return Content("Success :)");
         //}
 
-        [OutputCache(Location = OutputCacheLocation.None)]
-        public ActionResult GetListTabConfig()
-        {
-            var data = repository.ListTabConfig().OrderBy(n => n.STR_NAME).ToList().Select(n => n.STR_NAME);
-            return Json(data, JsonRequestBehavior.AllowGet);
-        }
-        [OutputCache(Location = OutputCacheLocation.None)]
-        public ActionResult GetListDictJson(int id)
-        {
-            var data = repository.ListDict().Where(d => d.ID_ATTR == id).OrderBy(n => n.STR_NAME).ToList().Select(n => n.STR_NAME);
-            return Json(data, JsonRequestBehavior.AllowGet);
-        }
+        //[OutputCache(Location = OutputCacheLocation.None)]
+        //public ActionResult GetListTabConfig()
+        //{
+        //    var data = repository.ListTabConfig().OrderBy(n => n.STR_NAME).ToList().Select(n => n.STR_NAME);
+        //    return Json(data, JsonRequestBehavior.AllowGet);
+        //}
+        //[OutputCache(Location = OutputCacheLocation.None)]
+        //public ActionResult GetListDictJson(int id)
+        //{
+        //    var data = repository.ListDict().Where(d => d.ID_ATTR == id).OrderBy(n => n.STR_NAME).ToList().Select(n => n.STR_NAME);
+        //    return Json(data, JsonRequestBehavior.AllowGet);
+        //}
         #endregion
         #region Edit
         private void SetupNodeEditViewModels(NodeEditViewModels model)

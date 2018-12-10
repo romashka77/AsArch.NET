@@ -16,12 +16,9 @@ import DocIsk from './DocIsk.jsx';
 
 ReactDOM.render(
     <SudZas
-        controller="Nodes"
-        actionGetSudZas="GetSudZas"
-        actionGetListDict="GetListDictJson"
-        actionGetListTabConfig="GetListTabConfig"
-        actionPostSudZas="PostSudZas"
-        actionDeleteSudZas="DeleteSudZas"
+        controllerSudZas="SudZas"
+        controllerTabConfig="TabConfig"
+        controllerDict="Dict"
     //url={Router.action(`Nodes`, `GetSudZasJson`, { id: id_global })}
     />,
     document.getElementById('graf-sud-zas')

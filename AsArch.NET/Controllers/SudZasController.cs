@@ -27,12 +27,14 @@ namespace AsArch.NET.Controllers
         }
         #endregion
         // GET: api/SudZas
+        [HttpGet]
         public IHttpActionResult Get()
         {
             return BadRequest();
         }
 
         // GET: api/SudZas/5
+        [HttpGet]
         public IHttpActionResult Get(int id)
         {
             try
@@ -51,6 +53,7 @@ namespace AsArch.NET.Controllers
         }
 
         // POST: api/SudZas
+        [HttpPost]
         public IHttpActionResult Post(int id, [FromBody]SudZas model/*[FromBody]string value*/)
         {
             try
@@ -80,18 +83,19 @@ namespace AsArch.NET.Controllers
         //}
 
         // DELETE: api/SudZas/5
-        public IHttpActionResult Delete(int id, BaseOrders model)
+        [HttpDelete]
+        public IHttpActionResult Delete(int id, int[] row)
         {
             try
             {
                 if (!ModelState.IsValid)
                     throw new Exception("Переданные данные не прошли проверку");
 
-                string[] ids = model.Orders.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                //string[] ids = model.Orders.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
                 string n = string.Empty;
-                foreach (var item in ids)
+                foreach (var item in row/*ids*/)
                 {
-                    var i = int.Parse(item);
+                    var i = item;//int.Parse(item);
                     repository.DeleteSudZas(id, i);
                     n = $"{n} {i + 1}";
                 }

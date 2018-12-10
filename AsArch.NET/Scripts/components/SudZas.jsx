@@ -137,21 +137,27 @@ export default class SudZas extends React.Component {
             console.log(`${xhr.status}: ${xhr.statusText}: ${xhr.responseText}`);
             //this.setState();
             row.map((value) => {
-                this.zas = this.zas.filter((zas) => {
-                    return zas.Order !== value;
-                });
+                this.setState(function (prevState, props) {
+                    return this.state.data = prevState.data.filter((zas) => {
+                        return zas.Order !== value;
+                    });
+                })
             });
-            console.log(`zas=${this.zas}-------------------`);
-            this.zas.map((value) => { console.log(value); });
-            //console.log(`this.state.data=${this.state.data}=========================`);
-            //this.state.data.map((value) => { console.log(value); });
-            //alert(`this.setState({ data: this.zas });`);
-            this.setState({ data: this.zas });
-            //console.log(`this.state.data=${this.state.data}=========================`);
-            //this.state.data.map((value) => { console.log(value); });
-            //this.loadFromServer();
-            console.log(`Delete end========================================`);
-        };
+        }
+        //this.zas = this.zas.filter((zas) => {
+        //    return zas.Order !== value;
+        //});
+
+        //console.log(`zas=${this.zas}-------------------`);
+        //this.zas.map((value) => { console.log(value); });
+        //console.log(`this.state.data=${this.state.data}=========================`);
+        //this.state.data.map((value) => { console.log(value); });
+        //alert(`this.setState({ data: this.zas });`);
+        //this.setState({ data: this.zas });
+        //console.log(`this.state.data=${this.state.data}=========================`);
+        //this.state.data.map((value) => { console.log(value); });
+        //this.loadFromServer();
+        //console.log(`Delete end========================================`);
         //xhr.send(form);
         xhr.send(JSON.stringify(row));
     }
